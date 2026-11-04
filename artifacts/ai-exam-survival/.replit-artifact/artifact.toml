@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "AI Exam Survival"
+description = "A responsive study platform landing page for high school students in grades 9–12, introducing a planner, quizzes, flashcards, study coach, progress tracker, and exam calendar."
+version = "1.0.0"
+id = "artifacts/ai-exam-survival"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25995
+
+[services.development]
+run = "pnpm --filter @workspace/ai-exam-survival run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ai-exam-survival", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ai-exam-survival/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25995"
+BASE_PATH = "/"
