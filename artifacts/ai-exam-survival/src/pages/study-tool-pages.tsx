@@ -8,15 +8,14 @@ import {
   ChevronLeft,
   ChevronRight,
   CircleHelp,
-  Clock3,
   Compass,
   Layers3,
   MessageCircle,
-  NotebookPen,
   Sparkles,
   Target,
 } from 'lucide-react';
 import { Link } from 'wouter';
+import FunctionalStudyPlannerPage from './study-planner-page';
 
 type ToolPageFrameProps = {
   eyebrow: string;
@@ -121,154 +120,8 @@ function DemoCard({ eyebrow, title, children, trailing }: DemoCardProps) {
   );
 }
 
-const plannerTasks = [
-  {
-    id: 'biology',
-    time: '3:30 PM',
-    subject: 'Biology',
-    detail: 'Review cell organelles',
-    duration: '25 min',
-    color: 'bg-[#5a4bd0]',
-  },
-  {
-    id: 'algebra',
-    time: '4:00 PM',
-    subject: 'Algebra',
-    detail: 'Practice linear equations',
-    duration: '20 min',
-    color: 'bg-[#20a6ad]',
-  },
-  {
-    id: 'history',
-    time: '4:30 PM',
-    subject: 'World History',
-    detail: 'Review causes of World War I',
-    duration: '20 min',
-    color: 'bg-[#bd7e42]',
-  },
-];
-
 export function StudyPlannerPage() {
-  const [completedTasks, setCompletedTasks] = useState<string[]>([]);
-  const completionPercent = Math.round(
-    (completedTasks.length / plannerTasks.length) * 100,
-  );
-
-  function toggleTask(taskId: string) {
-    setCompletedTasks((current) =>
-      current.includes(taskId)
-        ? current.filter((id) => id !== taskId)
-        : [...current, taskId],
-    );
-  }
-
-  return (
-    <ToolPageFrame
-      eyebrow="A plan that leaves room to breathe"
-      title="Study Planner"
-      description="A sample after-school plan that breaks exam prep into focused sessions, with a real break between subjects."
-      icon={<NotebookPen size={22} />}
-    >
-      <div className="grid gap-5 lg:grid-cols-[1.25fr_.75fr]">
-        <DemoCard
-          eyebrow="Monday · November 9"
-          title="Your after-school plan"
-          trailing={
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e5f7f5] px-3 py-1.5 text-[10px] font-bold text-[#278c8e]">
-              <Clock3 size={13} /> 65 minutes
-            </span>
-          }
-        >
-          <div className="space-y-2">
-            {plannerTasks.map((task) => {
-              const isComplete = completedTasks.includes(task.id);
-
-              return (
-                <label
-                  key={task.id}
-                  className={`flex cursor-pointer items-start gap-3 rounded-[15px] border p-3.5 transition-colors sm:items-center sm:p-4 ${
-                    isComplete
-                      ? 'border-[#d8eee9] bg-[#f5fbf9]'
-                      : 'border-[#eceef4] bg-white hover:border-[#d9d5fa]'
-                  }`}
-                  data-testid={`row-planner-${task.id}`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={isComplete}
-                    onChange={() => toggleTask(task.id)}
-                    className="mt-1 h-4 w-4 accent-[#5144c7] sm:mt-0"
-                    data-testid={`checkbox-planner-${task.id}`}
-                  />
-                  <span
-                    className={`mt-1.5 h-2 w-2 shrink-0 rounded-full sm:mt-0 ${task.color}`}
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="flex flex-wrap items-center gap-x-2 text-[12px] font-extrabold text-[#293354]">
-                      {task.subject}
-                      <span className="font-medium text-[#8790a4]">
-                        {task.time}
-                      </span>
-                    </span>
-                    <span className="mt-1 block text-[11px] text-[#75809a]">
-                      {task.detail}
-                    </span>
-                  </span>
-                  <span className="shrink-0 text-[10px] font-semibold text-[#7e879e]">
-                    {task.duration}
-                  </span>
-                </label>
-              );
-            })}
-          </div>
-          <div className="mt-3 flex items-center gap-2 rounded-[14px] bg-[#f2f4f9] px-4 py-3 text-[11px] font-semibold text-[#626b85]">
-            <Clock3 size={14} className="text-[#5144c7]" />
-            4:20 PM · Take a 10-minute screen break
-          </div>
-        </DemoCard>
-
-        <div className="space-y-5">
-          <DemoCard eyebrow="Weekly focus" title="Three small sessions">
-            <div className="flex items-end justify-between gap-3">
-              <p className="text-[13px] font-bold text-[#35405e]">
-                {completedTasks.length} of {plannerTasks.length} sessions done
-              </p>
-              <span className="font-display text-[20px] font-extrabold text-[#5144c7]">
-                {completionPercent}%
-              </span>
-            </div>
-            <div
-              className="mt-3 h-2 overflow-hidden rounded-full bg-[#e8e8f4]"
-              role="progressbar"
-              aria-label="Sample plan completion"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={completionPercent}
-            >
-              <div
-                className="h-full rounded-full bg-[#5144c7] transition-all"
-                style={{ width: `${completionPercent}%` }}
-              />
-            </div>
-            <p className="mt-3 text-[11px] leading-relaxed text-[#7e879e]">
-              Check off a session to try the sample planner. Your selections
-              are only kept while this page is open.
-            </p>
-          </DemoCard>
-          <div className="rounded-[19px] bg-[#e8f7f5] p-5">
-            <div className="flex items-center gap-2 text-[#168991]">
-              <Sparkles size={17} />
-              <p className="text-[12px] font-extrabold">A helpful reminder</p>
-            </div>
-            <p className="mt-2 text-[12px] leading-[1.7] text-[#56767b]">
-              A short focused session counts. You do not need to finish every
-              subject in one evening.
-            </p>
-          </div>
-        </div>
-      </div>
-    </ToolPageFrame>
-  );
+  return <FunctionalStudyPlannerPage />;
 }
 
 const quizOptions = [
