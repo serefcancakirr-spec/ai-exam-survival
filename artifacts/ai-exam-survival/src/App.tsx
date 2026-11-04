@@ -1,9 +1,18 @@
-import { useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
+import SiteHeader from '@/components/site-header';
+import {
+  AiStudyCoachPage,
+  ExamCalendarPage,
+  ProgressTrackerPage,
+  QuizCenterPage,
+  SmartFlashcardsPage,
+  StudyPlannerPage,
+} from '@/pages/study-tool-pages';
 import {
   ArrowDownRight,
   ArrowRight,
@@ -18,13 +27,12 @@ import {
   Compass,
   GraduationCap,
   Layers3,
-  Menu,
   MessageCircle,
   NotebookPen,
   Sparkles,
-  X,
 } from 'lucide-react';
 import {
+  Link,
   Route,
   Switch,
   useLocation,
@@ -34,60 +42,8 @@ import {
 const queryClient = new QueryClient();
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navItems = [
-    { label: 'Study Planner', href: '#study-planner' },
-    { label: 'Quiz Center', href: '#quiz-center' },
-    { label: 'Flashcards', href: '#smart-flashcards' },
-    { label: 'More tools', href: '#all-tools' },
-  ];
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <div className="page-shell min-h-[100dvh] bg-[#f5f6fb]">
-      <header className="sticky top-0 z-50 border-b border-[#e8eaf2] bg-[#f8f9fc]/95 backdrop-blur-xl">
-        <div className="mx-auto flex h-[74px] max-w-[1240px] items-center justify-between px-5 sm:px-8">
-          <a href="#top" onClick={closeMenu} aria-label="AI Exam Survival home" className="flex items-center gap-3" data-testid="link-home">
-            <span className="grid h-10 w-10 place-items-center rounded-[14px] bg-[#202c68] text-white shadow-[0_6px_16px_rgba(31,44,103,.18)]">
-              <GraduationCap size={22} strokeWidth={1.8} />
-            </span>
-            <span className="font-display text-[17px] font-extrabold tracking-[-.055em] text-[#1b244b]">AI Exam<span className="text-[#5b4bd8]"> Survival</span></span>
-          </a>
-
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="text-[13px] font-semibold text-[#626b85] transition-colors hover:text-[#4940bb]" data-testid={`link-nav-${item.href.slice(1)}`}>
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <a href="#all-tools" className="hidden items-center gap-2 rounded-full bg-[#5144c7] px-5 py-3 text-[13px] font-bold text-white shadow-[0_8px_18px_rgba(81,68,199,.2)] transition-all hover:-translate-y-0.5 hover:bg-[#4337b0] sm:inline-flex" data-testid="link-explore-tools">
-            Explore the tools <ArrowRight size={15} />
-          </a>
-          <button
-            type="button"
-            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="grid h-11 w-11 place-items-center rounded-xl border border-[#e2e5ef] bg-white text-[#202b56] lg:hidden"
-            data-testid="button-mobile-menu"
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-        {menuOpen && (
-          <nav className="border-t border-[#e8eaf2] bg-[#f8f9fc] px-5 pb-5 pt-3 lg:hidden" aria-label="Mobile navigation">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} onClick={closeMenu} className="flex min-h-12 items-center justify-between border-b border-[#e8eaf2] text-sm font-semibold text-[#35405e]" data-testid={`link-mobile-${item.href.slice(1)}`}>
-                {item.label}<ArrowUpRight size={16} />
-              </a>
-            ))}
-            <a href="#all-tools" onClick={closeMenu} className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#5144c7] text-sm font-bold text-white" data-testid="link-mobile-explore">Explore the tools <ArrowRight size={16} /></a>
-          </nav>
-        )}
-      </header>
-
       <main id="top">
         <section className="relative isolate overflow-hidden bg-[#18224d] text-white">
           <div className="hero-grid absolute inset-0 -z-10 opacity-50" />
@@ -280,19 +236,28 @@ type ToolCardProps = {
 
 function ToolCard({ id, number, title, eyebrow, description, icon, tone, note }: ToolCardProps) {
   return (
-    <article id={id} className="group relative flex min-h-[265px] scroll-mt-24 flex-col rounded-[21px] border border-[#e5e7f0] bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#cecaef] hover:shadow-[0_16px_36px_rgba(35,42,91,.09)] sm:p-6" data-testid={`card-tool-${id}`}>
-      <div className="flex items-start justify-between">
-        <span className={`grid h-11 w-11 place-items-center rounded-[15px] ${tone}`}>{icon}</span>
-        <span className="font-display text-[12px] font-extrabold tracking-[.08em] text-[#b0b5c6]">{number}</span>
-      </div>
-      <p className="mt-5 text-[10px] font-extrabold uppercase tracking-[.12em] text-[#777f98]">{eyebrow}</p>
-      <h3 className="mt-1.5 font-display text-[21px] font-extrabold tracking-[-.045em] text-[#222c51]">{title}</h3>
-      <p className="mt-2 max-w-[330px] text-[12px] leading-[1.7] text-[#737d96]">{description}</p>
-      <div className="mt-auto flex items-end justify-between gap-3 pt-5">
-        <span className="text-[10px] font-semibold leading-relaxed text-[#9097a9]">{note}</span>
-        <a href="#how-it-works" aria-label={`Learn about ${title}`} className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#e7e8f1] text-[#5962a5] transition-all group-hover:border-[#d9d5fa] group-hover:bg-[#f2f0ff] group-hover:text-[#5144c7]" data-testid={`link-tool-${id}`}><ArrowUpRight size={16} /></a>
-      </div>
-    </article>
+    <Link
+      href={`/${id}`}
+      aria-label={`Open ${title}`}
+      className="group block rounded-[21px] focus-visible:outline-none"
+      data-testid={`link-tool-${id}`}
+    >
+      <article id={id} className="relative flex min-h-[265px] scroll-mt-24 flex-col rounded-[21px] border border-[#e5e7f0] bg-white p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#cecaef] group-hover:shadow-[0_16px_36px_rgba(35,42,91,.09)] sm:p-6">
+        <div className="flex items-start justify-between">
+          <span className={`grid h-11 w-11 place-items-center rounded-[15px] ${tone}`}>{icon}</span>
+          <span className="font-display text-[12px] font-extrabold tracking-[.08em] text-[#b0b5c6]">{number}</span>
+        </div>
+        <p className="mt-5 text-[10px] font-extrabold uppercase tracking-[.12em] text-[#777f98]">{eyebrow}</p>
+        <h3 className="mt-1.5 font-display text-[21px] font-extrabold tracking-[-.045em] text-[#222c51]">{title}</h3>
+        <p className="mt-2 max-w-[330px] text-[12px] leading-[1.7] text-[#737d96]">{description}</p>
+        <div className="mt-auto flex items-end justify-between gap-3 pt-5">
+          <span className="text-[10px] font-semibold leading-relaxed text-[#9097a9]">{note}</span>
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#e7e8f1] text-[#5962a5] transition-all group-hover:border-[#d9d5fa] group-hover:bg-[#f2f0ff] group-hover:text-[#5144c7]">
+            <ArrowUpRight size={16} />
+          </span>
+        </div>
+      </article>
+    </Link>
   );
 }
 
@@ -301,6 +266,12 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/study-planner" component={StudyPlannerPage} />
+        <Route path="/quiz-center" component={QuizCenterPage} />
+        <Route path="/smart-flashcards" component={SmartFlashcardsPage} />
+        <Route path="/ai-study-coach" component={AiStudyCoachPage} />
+        <Route path="/progress-tracker" component={ProgressTrackerPage} />
+        <Route path="/exam-calendar" component={ExamCalendarPage} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
@@ -317,6 +288,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+          <SiteHeader />
           <Router />
         </WouterRouter>
         <Toaster />
