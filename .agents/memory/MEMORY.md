@@ -1,0 +1,1 @@
+- [Module boundaries](module-boundaries.md) — Keep work on one AI Exam Survival module isolated from completed modules unless the user explicitly asks otherwise.

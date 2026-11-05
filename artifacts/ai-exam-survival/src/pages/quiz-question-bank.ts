@@ -52,13 +52,13 @@ const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
   English: [
     question('Grammar & Usage', 'easy', 'Which sentence correctly joins two independent clauses with a semicolon?', ['I finished the draft; I still need to proofread it.', 'I finished; because I still need to proofread it.', 'I finished the draft; and I proofread it.', 'I; finished the draft before lunch.'], 'A', 'A semicolon can join two complete, closely related sentences without a coordinating conjunction.'),
     question('Grammar & Usage', 'medium', 'Which verb completes the sentence with correct agreement? “Neither the coach nor the players ___ ready.”', ['is', 'are', 'was', 'has'], 'B', 'With “neither…nor,” the verb agrees with the nearer subject. “Players” is plural, so “are” is correct.'),
-    question('Grammar & Usage', 'medium', 'Which sentence uses parallel structure?', ['The club values reading, writing, and discussion.', 'The club values reading, to write, and discussion.', 'The club values to read, writing, and discussing.', 'The club values reading, writers, and to discuss.'], 'A', 'The three items in the list are all gerunds: reading, writing, and discussion is not fully parallel—wait, “discussion” is a noun. The intended parallel form is “reading, writing, and discussing.”'],
-    question('Grammar & Usage', 'hard', 'Which revision best removes the misplaced modifier? “Walking to school, the rain soaked Lena’s backpack.”', ['Walking to school, Lena’s backpack was soaked by rain.', 'As Lena walked to school, rain soaked her backpack.', 'The rain, walking to school, soaked Lena’s backpack.', 'Lena’s backpack soaked the rain while walking to school.'], 'B', 'The opening phrase must describe the person who is walking. In B, Lena is clearly the person walking.'),
-    question('Grammar & Usage', 'easy', 'Which sentence correctly places a comma after an introductory phrase?', ['After the bell rang, the students left the room.', 'After, the bell rang the students left the room.', 'After the bell, rang the students left the room.', 'After the bell rang the students, left the room.'], 'A', 'A comma separates the introductory dependent clause “After the bell rang” from the main clause.'),
+    question('Grammar & Usage', 'medium', 'Which sentence uses parallel structure?', ['The club values reading, writing, and discussing.', 'The club values reading, to write, and discussion.', 'The club values to read, writing, and discussing.', 'The club values reading, writers, and to discuss.'], 'A', 'The three items in the list use the same grammatical form: the gerunds reading, writing, and discussing.'),
+    question('Grammar & Usage', 'hard', 'Which revision best removes the misplaced modifier? “Walking to school, the rain soaked Lena’s backpack.”', ['Walking to school, Lena’s backpack was soaked by rain.', 'As Lena walked to school, rain soaked her backpack.', 'The rain, walking to school, soaked Lena’s backpack.', 'Lena’s backpack soaked the rain while walking to school.'], 'B', 'The revision makes Lena the person doing the opening action, so the modifier is no longer misplaced.'),
+    question('Grammar & Usage', 'easy', 'Which sentence correctly places a comma after an introductory clause?', ['After the bell rang, the students left the room.', 'After, the bell rang the students left the room.', 'After the bell, rang the students left the room.', 'After the bell rang the students, left the room.'], 'A', 'A comma separates the introductory dependent clause “After the bell rang” from the main clause.'),
     question('Rhetoric & Argument', 'easy', 'A speaker cites years of experience treating patients to build trust. Which appeal is used?', ['Ethos', 'Pathos', 'Logos', 'Irony'], 'A', 'Ethos appeals to a speaker’s credibility, character, or relevant experience.'),
     question('Rhetoric & Argument', 'medium', 'Which evidence most directly supports the claim that the school garden increased student participation?', ['A survey found that 68 students joined garden activities, up from 34 the previous term.', 'The garden has a green fence and six raised beds.', 'Several students said gardening is relaxing.', 'The school mascot is a falcon.'], 'A', 'The before-and-after participation counts directly measure the claimed increase.'),
     question('Rhetoric & Argument', 'medium', 'A writer acknowledges that a policy may cost money, then explains its long-term savings. What is the acknowledged concern called?', ['A counterclaim', 'A topic sentence', 'A citation', 'A conclusion'], 'A', 'A counterclaim presents an opposing point or concern that the writer can address.'),
-    question('Rhetoric & Argument', 'hard', 'Which sentence is the clearest, most arguable claim for an essay?', ['Public libraries are buildings with books.', 'The town should extend library hours because students need a quiet study space after school.', 'Libraries have existed for a long time.', 'Some people visit the library on weekends.'], 'B', 'B takes a position and gives a reason that can be supported with evidence.'),
+    question('Rhetoric & Argument', 'hard', 'Which sentence is the clearest, most arguable claim for an essay?', ['Public libraries are buildings with books.', 'The town should extend library hours because students need a quiet study space after school.', 'Libraries have existed for a long time.', 'Some people visit the library on weekends.'], 'B', 'It takes a position and gives a reason that can be supported with evidence.'),
     question('Rhetoric & Argument', 'easy', 'Which rhetorical appeal relies most on facts, data, and logical reasoning?', ['Logos', 'Ethos', 'Pathos', 'Alliteration'], 'A', 'Logos is an appeal to logic, commonly supported with facts, examples, or data.'),
     question('Reading Skills', 'easy', 'Mina checks the forecast, packs an umbrella, and looks at the dark clouds. What is the best inference?', ['She expects rain.', 'She plans to go swimming.', 'She has lost her backpack.', 'She is moving to another town.'], 'A', 'The forecast, umbrella, and dark clouds together support the inference that Mina expects rain.'),
     question('Reading Skills', 'medium', 'A passage describes a crowded station, hurried footsteps, and a train pulling away. Which tone is best supported?', ['Urgent', 'Playful', 'Sleepy', 'Celebratory'], 'A', 'The crowd, hurried movement, and departing train create a sense of urgency.'),
@@ -75,7 +75,7 @@ const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
     question('Algebra', 'easy', 'Solve: 2x + 7 = 19.', ['5', '6', '12', '13'], 'B', 'Subtract 7 from both sides to get 2x = 12, then divide by 2: x = 6.'),
     question('Algebra', 'medium', 'What is the slope of the line through (2, 3) and (6, 11)?', ['1', '2', '4', '8'], 'B', 'Slope is change in y divided by change in x: (11 − 3) / (6 − 2) = 8 / 4 = 2.'),
     question('Algebra', 'medium', 'Factor x² − 5x + 6.', ['(x − 2)(x − 3)', '(x + 2)(x + 3)', '(x − 1)(x − 6)', '(x + 1)(x − 6)'], 'A', 'The numbers −2 and −3 multiply to 6 and add to −5.'),
-    question('Algebra', 'hard', 'If 3(2x − 1) = 4x + 9, what is x?', ['3', '6', '9', '12'], 'C', 'Expand to get 6x − 3 = 4x + 9. Subtract 4x and add 3: 2x = 12, so x = 6. Wait, this calculation gives x = 6; option B is correct.'],
+    question('Algebra', 'hard', 'If 3(2x − 1) = 4x + 9, what is x?', ['3', '6', '9', '12'], 'B', 'Expand to get 6x − 3 = 4x + 9. Subtract 4x and add 3: 2x = 12, so x = 6.'),
     question('Algebra', 'easy', 'Simplify: 3a + 2a − a.', ['2a', '4a', '5a', '6a'], 'B', 'Combine like terms: (3 + 2 − 1)a = 4a.'),
     question('Geometry', 'easy', 'The angles in a triangle add up to how many degrees?', ['90°', '180°', '270°', '360°'], 'B', 'The interior angles of every Euclidean triangle sum to 180 degrees.'),
     question('Geometry', 'medium', 'A right triangle has legs of length 6 and 8. What is the hypotenuse?', ['10', '12', '14', '48'], 'A', 'By the Pythagorean theorem, c² = 6² + 8² = 100, so c = 10.'),
@@ -122,7 +122,7 @@ const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
     question('Atoms & Periodic Table', 'hard', 'A neutral atom has 11 protons. How many electrons does it have?', ['10', '11', '12', '22'], 'B', 'A neutral atom has equal numbers of protons and electrons.'),
     question('Atoms & Periodic Table', 'easy', 'Where are protons and neutrons found in an atom?', ['In the nucleus', 'In the electron cloud only', 'Outside the atom', 'Inside chemical bonds only'], 'A', 'The nucleus contains protons and neutrons; electrons occupy the surrounding electron cloud.'),
     question('Bonding & Reactions', 'easy', 'In a covalent bond, atoms generally:', ['Share pairs of electrons', 'Transfer protons', 'Share neutrons', 'Lose their nuclei'], 'A', 'Covalent bonding involves sharing electron pairs between atoms.'),
-    question('Bonding & Reactions', 'medium', 'Which coefficient balances H₂ + O₂ → H₂O?', ['2H₂ + O₂ → 2H₂O', 'H₂ + 2O₂ → H₂O', 'H₂ + O₂ → 2H₂O', '2H₂ + 2O₂ → H₂O'], 'A', 'Two H₂ molecules and one O₂ molecule form two H₂O molecules, conserving four hydrogen atoms and two oxygen atoms.'),
+    question('Bonding & Reactions', 'medium', 'Which balanced equation has the correct coefficients for H₂ + O₂ → H₂O?', ['2H₂ + O₂ → 2H₂O', 'H₂ + 2O₂ → H₂O', 'H₂ + O₂ → 2H₂O', '2H₂ + 2O₂ → H₂O'], 'A', 'Two H₂ molecules and one O₂ molecule form two H₂O molecules, conserving four hydrogen atoms and two oxygen atoms.'),
     question('Bonding & Reactions', 'medium', 'A catalyst speeds up a reaction by:', ['Lowering the activation energy', 'Increasing the mass of the products', 'Being permanently consumed', 'Changing the identity of the reactants'], 'A', 'A catalyst provides an alternate pathway with lower activation energy and is regenerated by the reaction.'),
     question('Bonding & Reactions', 'hard', 'In a closed system, 12 g of carbon reacts completely with 32 g of oxygen. What mass of carbon dioxide forms?', ['20 g', '32 g', '44 g', '384 g'], 'C', 'Conservation of mass gives 12 g + 32 g = 44 g of products in the closed system.'),
     question('Bonding & Reactions', 'easy', 'What is the chemical formula for water?', ['H₂O', 'HO₂', 'H₂O₂', 'OH'], 'A', 'A water molecule contains two hydrogen atoms and one oxygen atom.'),
@@ -191,7 +191,7 @@ const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
     question('Physical Geography', 'medium', 'What is the difference between weathering and erosion?', ['Weathering breaks rock down; erosion transports the material.', 'Weathering transports rock; erosion creates sunlight.', 'They both mean only volcanic activity.', 'Erosion happens only in deserts.'], 'A', 'Weathering breaks material down in place, while erosion moves it by water, wind, ice, or gravity.'),
     question('Physical Geography', 'medium', 'A river delta most commonly forms where a river:', ['Enters a larger body of water and deposits sediment', 'Begins on a mountain peak', 'Flows through a desert without sediment', 'Moves underground through solid rock'], 'A', 'As river velocity slows at its mouth, sediment can be deposited and build a delta.'),
     question('Physical Geography', 'hard', 'A rain shadow is most likely on the side of a mountain that is:', ['Downwind, after moist air has risen and lost precipitation', 'Upwind, before air reaches the mountain', 'At the Equator only', 'Below sea level in every case'], 'A', 'Moist air often rises and rains on the windward side; descending air on the leeward side is drier.'),
-    question('Physical Geography', 'easy', 'Which process moves loose soil downhill under the force of gravity?', ['Mass movement', 'Condensation', 'Photosynthesis', 'Condensation'], 'A', 'Mass movement is the downslope movement of rock or soil under gravity.'),
+    question('Physical Geography', 'easy', 'Which process moves loose soil downhill under the force of gravity?', ['Mass movement', 'Condensation', 'Photosynthesis', 'Sublimation'], 'A', 'Mass movement is the downslope movement of rock or soil under gravity.'),
     question('Climate & Biomes', 'easy', 'What is climate?', ['Long-term patterns of temperature and precipitation', 'The conditions outside at one moment', 'A single storm forecast', 'The daily movement of ocean tides'], 'A', 'Climate summarizes long-term patterns, while weather describes short-term atmospheric conditions.'),
     question('Climate & Biomes', 'medium', 'Which biome typically has high temperatures and heavy rainfall throughout the year?', ['Tropical rainforest', 'Tundra', 'Hot desert', 'Temperate grassland'], 'A', 'Tropical rainforests are generally warm and receive abundant rainfall year-round.'),
     question('Climate & Biomes', 'medium', 'Which gas is a major greenhouse gas released when fossil fuels are burned?', ['Carbon dioxide', 'Helium', 'Neon', 'Argon'], 'A', 'Burning fossil fuels releases carbon dioxide, which absorbs and emits infrared radiation.'),
@@ -207,7 +207,7 @@ const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
     question('Literary Elements', 'easy', '“The classroom was a beehive of activity” is an example of:', ['Metaphor', 'Simile', 'Onomatopoeia', 'Literal description'], 'A', 'The classroom is directly compared to a beehive without using “like” or “as,” making it a metaphor.'),
     question('Literary Elements', 'medium', 'What is a theme in a story?', ['A central idea or insight developed through the story', 'A list of every event in order', 'The place where the story occurs', 'The name of the narrator'], 'A', 'Theme is an idea or insight a work develops, not simply its plot or setting.'),
     question('Literary Elements', 'medium', 'A reader knows a character is being followed, but the character does not. This is an example of:', ['Dramatic irony', 'Alliteration', 'Personification', 'Flashback'], 'A', 'Dramatic irony occurs when the audience knows something a character does not.'),
-    question('Literary Elements', 'hard', 'A story repeatedly mentions a cracked clock before a major family argument. What might this detail be doing?', ['Foreshadowing a later conflict', 'Resolving the conflict', 'Changing the narrator', 'Providing a dictionary definition'], 'A', 'A repeated detail that hints at a future event can function as foreshadowing.'),
+    question('Literary Elements', 'hard', 'A writer adds an early hint that a conflict will happen later. What is this technique called?', ['Foreshadowing', 'Resolving the conflict', 'Changing the narrator', 'Providing a dictionary definition'], 'A', 'Foreshadowing is a clue or detail that suggests a later event.'),
     question('Literary Elements', 'easy', 'Who tells a first-person narrative?', ['A narrator who uses “I” or “we”', 'An outside narrator who never appears in the story', 'The reader', 'The publisher'], 'A', 'First-person narration uses pronouns such as “I” or “we” from a narrator’s perspective.'),
     question('Poetry', 'easy', '“Her smile was like sunshine” is an example of:', ['Simile', 'Metaphor', 'Hyperbole', 'Irony'], 'A', 'A simile makes a comparison using “like” or “as.”'),
     question('Poetry', 'medium', 'What is a stanza?', ['A grouped set of lines in a poem', 'The repeated end sound only', 'The poem’s title', 'A character’s speech in a play'], 'A', 'A stanza is a grouped section of lines, similar to a paragraph in prose.'),
@@ -222,7 +222,7 @@ const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
     question('World Literature', 'easy', 'An epic is best described as:', ['A long narrative work centered on significant deeds or journeys', 'A one-line poem with no imagery', 'A list of stage directions', 'A short factual map key'], 'A', 'Epics are long narrative works that often recount heroic journeys or events important to a culture.'),
     question('World Literature', 'medium', 'What is an oral tradition?', ['Stories and knowledge passed by speaking and performance across generations', 'A text printed only in a textbook', 'A form of punctuation', 'A map drawn from memory'], 'A', 'Oral traditions preserve and transmit stories, histories, and knowledge through spoken performance.'),
     question('World Literature', 'medium', 'When comparing translations of a poem, why might a phrase differ between versions?', ['Translators make choices about meaning, tone, and word form.', 'The original text changes every time it is read.', 'Poems cannot be translated.', 'Every language has identical word order.'], 'A', 'Translation requires choices because words, sound, and cultural meanings rarely match exactly across languages.'),
-    question('World Literature', 'hard', 'A character’s journey changes how they understand their community’s values. What is a strong comparative focus?', ['How the character’s changing perspective develops the work’s theme', 'How many pages the book has', 'The color of the book cover', 'The order of the publisher’s advertisements'], 'A', 'Comparative literary analysis focuses on how character development contributes to meaning or theme.'),
+    question('World Literature', 'hard', 'A character’s understanding of their community’s values changes. What is a strong focus for literary analysis?', ['How the character’s changing perspective develops the work’s theme', 'How many pages the book has', 'The color of the book cover', 'The order of the publisher’s advertisements'], 'A', 'Tracing a character’s changing perspective connects characterization to the work’s central meaning.'),
     question('World Literature', 'easy', 'What is a folktale?', ['A traditional story shared within a culture, often across generations', 'A laboratory procedure', 'A list of geographic coordinates', 'A stage lighting cue'], 'A', 'Folktales are traditional narratives passed down within communities, often orally.'),
   ],
 };
@@ -233,22 +233,32 @@ const OPTION_IDS: QuizOptionId[] = ['A', 'B', 'C', 'D'];
 // curriculum-aligned release can replace these shared samples with grade-specific
 // collections without changing the quiz flow.
 export const QUIZ_QUESTION_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
-  (subject) =>
+  (subject, subjectIndex) =>
     QUIZ_GRADES.flatMap((grade) =>
-      QUESTION_SEEDS[subject].map((seed, index) => ({
-        id: `${grade}-${subject.toLowerCase().replaceAll(' ', '-')}-${index + 1}`,
-        grade,
-        subject,
-        topic: seed.topic,
-        difficulty: seed.difficulty,
-        prompt: seed.prompt,
-        options: seed.options.map((text, optionIndex) => ({
-          id: OPTION_IDS[optionIndex],
-          text,
-        })),
-        correctOptionId: seed.correctOptionId,
-        explanation: seed.explanation,
-      })),
+      QUESTION_SEEDS[subject].map((seed, index) => {
+        const correctOption = seed.options[OPTION_IDS.indexOf(seed.correctOptionId)];
+        // Rotate correct positions across A–D so answer letters are not predictable.
+        const answerPosition = (index + subjectIndex) % OPTION_IDS.length;
+        const distractors = seed.options.filter(
+          (_, optionIndex) => optionIndex !== OPTION_IDS.indexOf(seed.correctOptionId),
+        );
+        distractors.splice(answerPosition, 0, correctOption);
+
+        return {
+          id: `${grade}-${subject.toLowerCase().replaceAll(' ', '-')}-${index + 1}`,
+          grade,
+          subject,
+          topic: seed.topic,
+          difficulty: seed.difficulty,
+          prompt: seed.prompt,
+          options: distractors.map((text, optionIndex) => ({
+            id: OPTION_IDS[optionIndex],
+            text,
+          })),
+          correctOptionId: OPTION_IDS[answerPosition],
+          explanation: seed.explanation,
+        };
+      }),
     ),
 );
 
@@ -291,6 +301,6 @@ export function getQuizQuestionPool(
     const rightDistance = Math.abs(
       difficultyOrder[right.difficulty] - preferredRank,
     );
-    return leftDistance - rightDistance || left.id.localeCompare(right.id);
+    return leftDistance - rightDistance;
   });
 }

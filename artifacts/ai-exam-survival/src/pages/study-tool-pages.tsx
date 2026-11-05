@@ -1,20 +1,18 @@
 import { useState, type ReactNode } from 'react';
 import {
   ArrowLeft,
-  ArrowRight,
   BarChart3,
   CalendarDays,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  CircleHelp,
-  Compass,
   Layers3,
   MessageCircle,
   Sparkles,
   Target,
 } from 'lucide-react';
 import { Link } from 'wouter';
+import FunctionalQuizCenterPage from './quiz-center-page';
 import FunctionalStudyPlannerPage from './study-planner-page';
 
 type ToolPageFrameProps = {
@@ -124,104 +122,8 @@ export function StudyPlannerPage() {
   return <FunctionalStudyPlannerPage />;
 }
 
-const quizOptions = [
-  { id: 'ribosome', label: 'Ribosome' },
-  { id: 'mitochondrion', label: 'Mitochondrion' },
-  { id: 'golgi', label: 'Golgi apparatus' },
-  { id: 'vacuole', label: 'Vacuole' },
-];
-
 export function QuizCenterPage() {
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [checked, setChecked] = useState(false);
-  const correctAnswer = 'mitochondrion';
-
-  return (
-    <ToolPageFrame
-      eyebrow="Practice with purpose"
-      title="Quiz Center"
-      description="Try a sample biology question, then check your answer. This mini-quiz runs locally in the page and does not save results."
-      icon={<Compass size={22} />}
-    >
-      <div className="grid gap-5 lg:grid-cols-[1.1fr_.9fr]">
-        <DemoCard
-          eyebrow="Biology · Cell structure"
-          title="Quick knowledge check"
-          trailing={
-            <span className="rounded-full bg-[#f2f4f9] px-3 py-1.5 text-[10px] font-bold text-[#626b85]">
-              Question 1 of 1
-            </span>
-          }
-        >
-          <p className="text-[14px] font-bold leading-relaxed text-[#293354]">
-            Which organelle produces most of the energy a cell uses?
-          </p>
-          <div className="mt-4 grid gap-2 sm:grid-cols-2">
-            {quizOptions.map((option, index) => {
-              const isSelected = selectedAnswer === option.id;
-              const isCorrect = option.id === correctAnswer;
-              const resultStyle =
-                checked && isSelected
-                  ? isCorrect
-                    ? 'border-[#69c6a5] bg-[#eff9f5] text-[#26785c]'
-                    : 'border-[#e8a3a3] bg-[#fff5f5] text-[#9c4545]'
-                  : '';
-
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  aria-pressed={isSelected}
-                  onClick={() => {
-                    setSelectedAnswer(option.id);
-                    setChecked(false);
-                  }}
-                  className={`flex min-h-12 items-center gap-3 rounded-[14px] border px-4 text-left text-[12px] font-bold transition-colors ${
-                    isSelected
-                      ? 'border-[#8d83df] bg-[#f5f3ff] text-[#5144c7]'
-                      : 'border-[#e5e7f0] bg-white text-[#56607b] hover:border-[#c8c5eb]'
-                  } ${resultStyle}`}
-                  data-testid={`button-answer-${option.id}`}
-                >
-                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#f1f2f8] text-[10px] font-extrabold text-[#78829c]">
-                    {String.fromCharCode(65 + index)}
-                  </span>
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              disabled={!selectedAnswer}
-              onClick={() => setChecked(true)}
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#5144c7] px-5 text-[12px] font-bold text-white transition-colors hover:bg-[#4337b0] disabled:cursor-not-allowed disabled:opacity-45"
-              data-testid="button-check-answer"
-            >
-              Check answer <ArrowRight size={15} />
-            </button>
-            <p aria-live="polite" className="text-[11px] font-semibold text-[#626b85]">
-              {checked &&
-                (selectedAnswer === correctAnswer
-                  ? 'Correct — mitochondria release usable energy for the cell.'
-                  : 'Not quite. Think about the organelle often called the cell’s powerhouse.')}
-            </p>
-          </div>
-        </DemoCard>
-
-        <DemoCard eyebrow="A useful study habit" title="Learn from each answer">
-          <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#e3f8f7] text-[#138f9a]">
-            <CircleHelp size={20} />
-          </div>
-          <p className="mt-4 text-[12px] leading-[1.75] text-[#707992]">
-            Use practice questions to spot what needs another look. If you miss
-            one, review the idea and try explaining it in your own words.
-          </p>
-        </DemoCard>
-      </div>
-    </ToolPageFrame>
-  );
+  return <FunctionalQuizCenterPage />;
 }
 
 const flashcards = [
