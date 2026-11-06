@@ -144,13 +144,17 @@ export function getWeekDateKeys(startDate: string) {
   );
 }
 
-export function formatPlannerDate(dateKey: string) {
+export function formatPlannerDate(
+  dateKey: string,
+  locale = 'en',
+  fallbackWeekday = 'Study day',
+) {
   const date = parseDateKey(dateKey);
-  if (!date) return { weekday: 'Study day', date: dateKey };
+  if (!date) return { weekday: fallbackWeekday, date: dateKey };
 
   return {
-    weekday: new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date),
-    date: new Intl.DateTimeFormat('en', {
+    weekday: new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date),
+    date: new Intl.DateTimeFormat(locale, {
       month: 'short',
       day: 'numeric',
     }).format(date),
@@ -177,57 +181,107 @@ export function createStudyInputSnapshot(data: StudyPlannerData) {
   });
 }
 
-export function validateStudyPlannerData(
+/**
+ * A problem found in the planner details. `subject` is the saved subject name
+ * (empty when the student has not chosen one yet) and `index` is its position,
+ * so each language can word the message in its own way.
+ */
+export type PlannerIssue = {
+  code:
+    | 'grade'
+    | 'minutes'
+    | 'noSubjects'
+    | 'name'
+    | 'duplicate'
+    | 'date'
+    | 'datePast'
+    | 'topics'
+    | 'difficulty';
+  subject: string;
+  index: number;
+};
+
+export function getStudyPlannerIssues(
   data: StudyPlannerData,
   today = getTodayDateKey(),
 ) {
-  const errors: string[] = [];
+  const issues: PlannerIssue[] = [];
+  const add = (code: PlannerIssue['code'], subject = '', index = -1) =>
+    issues.push({ code, subject, index });
 
-  if (!['9', '10', '11', '12'].includes(data.grade)) {
-    errors.push('Choose a grade level from 9 to 12.');
-  }
+  if (!['9', '10', '11', '12'].includes(data.grade)) add('grade');
 
   if (
     !Number.isInteger(data.dailyMinutes) ||
     data.dailyMinutes < 30 ||
     data.dailyMinutes > 180
   ) {
-    errors.push('Choose 30 to 180 available study minutes per day.');
+    add('minutes');
   }
 
   if (data.subjects.length === 0) {
-    errors.push('Add at least one subject and exam date.');
-    return errors;
+    add('noSubjects');
+    return issues;
   }
 
   const subjectNames = new Set<string>();
 
   data.subjects.forEach((subject, index) => {
-    const subjectLabel = subject.name.trim() || `Subject ${index + 1}`;
+    const name = subject.name.trim();
 
-    if (!subject.name.trim()) {
-      errors.push(`Choose a name for ${subjectLabel}.`);
-    } else if (subjectNames.has(subject.name.trim().toLowerCase())) {
-      errors.push(`${subjectLabel} is listed more than once. Remove the duplicate.`);
+    if (!name) {
+      add('name', name, index);
+    } else if (subjectNames.has(name.toLowerCase())) {
+      add('duplicate', name, index);
     }
-    subjectNames.add(subject.name.trim().toLowerCase());
+    subjectNames.add(name.toLowerCase());
 
     if (!isDateKey(subject.examDate)) {
-      errors.push(`Add a valid exam date for ${subjectLabel}.`);
+      add('date', name, index);
     } else if (daysBetweenDateKeys(today, subject.examDate) < 1) {
-      errors.push(`Set the ${subjectLabel} exam date to tomorrow or later.`);
+      add('datePast', name, index);
     }
 
-    if (splitTopics(subject.topics).length === 0) {
-      errors.push(`Add at least one topic for ${subjectLabel}.`);
-    }
+    if (splitTopics(subject.topics).length === 0) add('topics', name, index);
 
     if (!['easy', 'medium', 'hard'].includes(subject.difficulty)) {
-      errors.push(`Choose a difficulty level for ${subjectLabel}.`);
+      add('difficulty', name, index);
     }
   });
 
-  return errors;
+  return issues;
+}
+
+/** English wording of each issue (unchanged from earlier stages). */
+export function describePlannerIssueInEnglish(issue: PlannerIssue) {
+  const subjectLabel = issue.subject || `Subject ${issue.index + 1}`;
+  switch (issue.code) {
+    case 'grade':
+      return 'Choose a grade level from 9 to 12.';
+    case 'minutes':
+      return 'Choose 30 to 180 available study minutes per day.';
+    case 'noSubjects':
+      return 'Add at least one subject and exam date.';
+    case 'name':
+      return `Choose a name for ${subjectLabel}.`;
+    case 'duplicate':
+      return `${subjectLabel} is listed more than once. Remove the duplicate.`;
+    case 'date':
+      return `Add a valid exam date for ${subjectLabel}.`;
+    case 'datePast':
+      return `Set the ${subjectLabel} exam date to tomorrow or later.`;
+    case 'topics':
+      return `Add at least one topic for ${subjectLabel}.`;
+    case 'difficulty':
+      return `Choose a difficulty level for ${subjectLabel}.`;
+  }
+}
+
+export function validateStudyPlannerData(
+  data: StudyPlannerData,
+  today = getTodayDateKey(),
+) {
+  return getStudyPlannerIssues(data, today).map(describePlannerIssueInEnglish);
 }
 
 export function generateWeeklyStudyTasks(

@@ -7,26 +7,35 @@ import {
   X,
 } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
+import { scrollToSectionSoon } from '@/components/scroll-manager';
+import LanguageSwitch from '@/components/language-switch';
+import { useI18n } from '@/i18n/i18n';
+import type { MessageKey } from '@/i18n/translations-en';
 
 const desktopLinks = [
-  { id: 'study-planner', label: 'Study Planner', href: '/study-planner' },
-  { id: 'quiz-center', label: 'Quiz Center', href: '/quiz-center' },
-  { id: 'smart-flashcards', label: 'Flashcards', href: '/smart-flashcards' },
-];
+  { id: 'study-planner', label: 'nav.studyPlanner', href: '/study-planner' },
+  { id: 'quiz-center', label: 'nav.quizCenter', href: '/quiz-center' },
+  { id: 'smart-flashcards', label: 'nav.flashcardsShort', href: '/smart-flashcards' },
+] satisfies Array<{ id: string; label: MessageKey; href: string }>;
 
 const toolLinks = [
-  { id: 'study-planner', label: 'Study Planner', href: '/study-planner' },
-  { id: 'quiz-center', label: 'Quiz Center', href: '/quiz-center' },
-  { id: 'smart-flashcards', label: 'Smart Flashcards', href: '/smart-flashcards' },
-  { id: 'ai-study-coach', label: 'AI Study Coach', href: '/ai-study-coach' },
-  { id: 'progress-tracker', label: 'Progress Tracker', href: '/progress-tracker' },
-  { id: 'exam-calendar', label: 'Exam Calendar', href: '/exam-calendar' },
-];
+  { id: 'study-planner', label: 'nav.studyPlanner', href: '/study-planner' },
+  { id: 'quiz-center', label: 'nav.quizCenter', href: '/quiz-center' },
+  { id: 'smart-flashcards', label: 'nav.smartFlashcards', href: '/smart-flashcards' },
+  { id: 'ai-study-coach', label: 'nav.aiStudyCoach', href: '/ai-study-coach' },
+  { id: 'progress-tracker', label: 'nav.progressTracker', href: '/progress-tracker' },
+  { id: 'exam-calendar', label: 'nav.examCalendar', href: '/exam-calendar' },
+] satisfies Array<{ id: string; label: MessageKey; href: string }>;
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { t } = useI18n();
   const closeMenu = () => setMenuOpen(false);
+  const goToAllTools = () => {
+    setMenuOpen(false);
+    scrollToSectionSoon('all-tools');
+  };
 
   useEffect(() => {
     setMenuOpen(false);
@@ -38,7 +47,7 @@ export default function SiteHeader() {
         <Link
           href="/"
           onClick={closeMenu}
-          aria-label="AI Exam Survival home"
+          aria-label={t('nav.homeAria')}
           className="flex items-center gap-3"
           data-testid="link-home"
         >
@@ -52,7 +61,7 @@ export default function SiteHeader() {
 
         <nav
           className="hidden items-center gap-8 lg:flex"
-          aria-label="Main navigation"
+          aria-label={t('nav.main')}
         >
           {desktopLinks.map((item) => (
             <Link
@@ -61,29 +70,32 @@ export default function SiteHeader() {
               className="whitespace-nowrap text-[13px] font-semibold text-[#626b85] transition-colors hover:text-[#4940bb]"
               data-testid={`link-nav-${item.id}`}
             >
-              {item.label}
+              {t(item.label)}
             </Link>
           ))}
           <Link
             href="/#all-tools"
+            onClick={goToAllTools}
             className="whitespace-nowrap text-[13px] font-semibold text-[#626b85] transition-colors hover:text-[#4940bb]"
             data-testid="link-nav-all-tools"
           >
-            More tools
+            {t('nav.moreTools')}
           </Link>
         </nav>
 
         <div className="flex items-center gap-3">
+          <LanguageSwitch />
           <Link
             href="/#all-tools"
+            onClick={goToAllTools}
             className="hidden items-center gap-2 rounded-full bg-[#5144c7] px-5 py-3 text-[13px] font-bold text-white shadow-[0_8px_18px_rgba(81,68,199,.2)] transition-all hover:-translate-y-0.5 hover:bg-[#4337b0] sm:inline-flex"
             data-testid="link-explore-tools"
           >
-            Explore the tools <ArrowRight size={15} />
+            {t('nav.exploreTools')} <ArrowRight size={15} />
           </Link>
           <button
             type="button"
-            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
@@ -99,7 +111,7 @@ export default function SiteHeader() {
         <nav
           id="mobile-navigation"
           className="border-t border-[#e8eaf2] bg-[#f8f9fc] px-5 pb-5 pt-3 lg:hidden"
-          aria-label="Mobile navigation"
+          aria-label={t('nav.mobile')}
         >
           <Link
             href="/"
@@ -107,7 +119,7 @@ export default function SiteHeader() {
             className="flex min-h-12 items-center justify-between border-b border-[#e8eaf2] text-sm font-bold text-[#202b56]"
             data-testid="link-mobile-home"
           >
-            Home <ArrowUpRight size={16} />
+            {t('nav.home')} <ArrowUpRight size={16} />
           </Link>
           {toolLinks.map((item) => (
             <Link
@@ -117,16 +129,16 @@ export default function SiteHeader() {
               className="flex min-h-12 items-center justify-between border-b border-[#e8eaf2] text-sm font-semibold text-[#35405e]"
               data-testid={`link-mobile-${item.id}`}
             >
-              {item.label} <ArrowUpRight size={16} />
+              {t(item.label)} <ArrowUpRight size={16} />
             </Link>
           ))}
           <Link
             href="/#all-tools"
-            onClick={closeMenu}
+            onClick={goToAllTools}
             className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#5144c7] text-sm font-bold text-white"
             data-testid="link-mobile-explore"
           >
-            Browse all tools <ArrowRight size={16} />
+            {t('nav.browseAll')} <ArrowRight size={16} />
           </Link>
         </nav>
       )}

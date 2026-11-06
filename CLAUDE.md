@@ -1,0 +1,42 @@
+# AI Exam Survival – working rules for Claude Code
+
+A study web app for high-school students (grades 9–12), built by a teacher and four students in an AI Club.
+The teacher works only on an Android tablet and is a beginner: explain things in simple language, step by step.
+Reply in the language the teacher writes in (usually Turkish).
+
+## How we work (always)
+- Work in numbered stages. Before a stage: explain the plan and wait for approval.
+- Before editing: make a backup (a git branch or tag such as `backup/before-stage-09`).
+- After a stage: typecheck, build, run all tests (new and previous), compare untouched pages, give a preview link and tablet testing steps.
+- Never start the next stage without the teacher's approval.
+- Do not redesign. Keep the design, navigation, all modules and all saved student data.
+- No live AI, paid APIs, API keys, authentication or database unless the teacher approves.
+- Do not change unrelated modules. Never invent statistics or readiness percentages.
+
+## The app
+- Code: `artifacts/ai-exam-survival` (React 19 + TypeScript + Vite 7 + Tailwind v4, wouter routing). pnpm workspace.
+- Run locally: `pnpm install`, then in `artifacts/ai-exam-survival`:
+  `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
+- Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
+- Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
+
+## Saved data (localStorage) – never rename, never change the shape
+- `ai-exam-survival:study-planner:v1`
+- `ai-exam-survival:quiz-center:v1` (up to 30 attempts, newest first)
+- `ai-exam-survival:flashcards:v1`
+- `ai-exam-survival:exam-calendar:v1`
+- `ai-exam-survival:exam-prep:v1`
+- `ai-exam-survival:study-coach:v1`
+- `ai-exam-survival:language:v1` (`tr` or `en`; written only when the student taps TR/EN)
+Each tool checks its saved data and never overwrites data it cannot read.
+Progress Tracker is completely read-only: it reads the other tools' data and never writes.
+
+## Turkish / English (Stage 8A + 8B)
+- Turkish is the default; TR/EN switch in the header; choice remembered after refresh.
+- `src/i18n/i18n.tsx`: `useI18n()` gives `t(key)`, `tn()`, `tx(englishTemplate, vars)`, `phrase(englishSentence)`, `subject(name)`, `locale`.
+- Home, header, Study Planner, Quiz Center: keyed texts in `translations-en.ts` / `translations-tr.ts`.
+- Flashcards, Exam Calendar, Study Coach, Progress Tracker: English sentence as key in `phrases-tr.ts` (`{placeholder}` templates).
+- Only display text is translated. Saved values, IDs, routes and storage keys stay in English.
+- Keep in English: quiz questions/answers/explanations/topics, flashcard card text and starter deck names.
+- Never translate text a student typed. New example data is created in the language in use.
+- English mode must look exactly as before when adding translations.

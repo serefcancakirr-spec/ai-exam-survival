@@ -26,21 +26,28 @@ import {
   getWeekDateKeys,
   isSavedStudyPlannerData,
   splitTopics,
-  validateStudyPlannerData,
+  getStudyPlannerIssues,
+  type PlannerIssue,
   type PlannerSubject,
   type PlannerTask,
   type StudyPlannerData,
 } from './study-planner-model';
+import { useI18n } from '@/i18n/i18n';
+import type { MessageKey } from '@/i18n/translations-en';
 
 type PageFrameProps = {
   children: ReactNode;
   storageUnavailable: boolean;
 };
 
-type Notice = {
+type Message = {
+  key: MessageKey;
+  vars?: Record<string, string | number>;
+};
+
+type Notice = Message & {
   type: 'success' | 'error';
-  message: string;
-  details?: string[];
+  details?: PlannerIssue[];
 };
 
 type TaskEditDraft = {
@@ -52,7 +59,7 @@ type TaskEditDraft = {
 
 type StorageLoadResult = {
   data: StudyPlannerData;
-  message: string;
+  message: MessageKey | '';
   canPersist: boolean;
 };
 
@@ -73,8 +80,7 @@ function loadStudyPlanner(): StorageLoadResult {
     if (!isSavedStudyPlannerData(parsed)) {
       return {
         data: emptyPlan,
-        message:
-          'Saved planner data could not be read, so it was left untouched. Browser storage is disabled until the saved data is repaired.',
+        message: 'planner.storageUnreadable',
         canPersist: false,
       };
     }
@@ -83,14 +89,14 @@ function loadStudyPlanner(): StorageLoadResult {
   } catch {
     return {
       data: emptyPlan,
-      message:
-        'Saved planner data could not be read, so it was left untouched. Browser storage is disabled until the saved data is repaired.',
+      message: 'planner.storageUnreadable',
       canPersist: false,
     };
   }
 }
 
 function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
+  const { t } = useI18n();
   return (
     <div className="page-shell min-h-[100dvh] bg-[#f5f6fb]">
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
@@ -99,7 +105,7 @@ function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
           className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e2e5ef] bg-white px-4 text-[12px] font-bold text-[#35405e] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7]"
           data-testid="link-back-home"
         >
-          <ArrowLeft size={15} /> Back to home
+          <ArrowLeft size={15} /> {t('common.backHome')}
         </Link>
 
         <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#18224d] px-6 py-8 text-white sm:px-9 sm:py-10">
@@ -111,14 +117,13 @@ function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
             </span>
             <div>
               <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#75dfe0] sm:text-[11px]">
-                A plan that leaves room to breathe
+                {t('planner.heroEyebrow')}
               </p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.055em] sm:text-[44px]">
-                Study Planner
+                {t('planner.title')}
               </h1>
               <p className="mt-3 max-w-[650px] text-[13px] leading-[1.75] text-[#c3cbe3] sm:text-[15px]">
-                Build a realistic seven-day timetable from your exams, topics,
-                and available time. This planner uses simple rules—not live AI.
+                {t('planner.heroText')}
               </p>
             </div>
           </div>
@@ -127,11 +132,11 @@ function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
         <div className="mt-7 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[11px] font-semibold text-[#7e879e]">
             {storageUnavailable
-              ? 'Browser saving is unavailable for this planner'
-              : 'Your plan and progress stay in this browser'}
+              ? t('planner.savingUnavailable')
+              : t('planner.savingLocal')}
           </p>
           <span className="rounded-full bg-[#e8e6fb] px-3 py-1.5 text-[10px] font-bold text-[#5b50bb]">
-            Rule-based planner
+            {t('planner.ruleBased')}
           </span>
         </div>
 
@@ -141,14 +146,14 @@ function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="text-[11px] text-[#7e879e]">
-            AI Exam Survival · Study Planner
+            {t('planner.footer')}
           </p>
           <Link
             href="/"
             className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]"
             data-testid="link-footer-home"
           >
-            <ArrowLeft size={13} /> Return to the homepage
+            <ArrowLeft size={13} /> {t('common.returnHome')}
           </Link>
         </div>
       </footer>
@@ -183,6 +188,7 @@ function PlannerCard({ eyebrow, title, children, trailing }: PlannerCardProps) {
 }
 
 export default function StudyPlannerPage() {
+  const { t, tn, locale, subject: subjectLabel, plannerWord, clock } = useI18n();
   const [initialLoad] = useState(loadStudyPlanner);
   const [planner, setPlanner] = useState(initialLoad.data);
   const [storageMessage, setStorageMessage] = useState(initialLoad.message);
@@ -191,7 +197,7 @@ export default function StudyPlannerPage() {
   const [subjectToAdd, setSubjectToAdd] = useState(PLANNER_SUBJECT_OPTIONS[0]);
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
   const [editDraft, setEditDraft] = useState<TaskEditDraft | null>(null);
-  const [editError, setEditError] = useState('');
+  const [editError, setEditError] = useState<Message | null>(null);
 
   useEffect(() => {
     if (!canPersist.current || typeof window === 'undefined') return;
@@ -203,9 +209,7 @@ export default function StudyPlannerPage() {
       );
     } catch {
       canPersist.current = false;
-      setStorageMessage(
-        'Your browser blocked local storage. Changes will work for this visit but will not persist after the page is closed.',
-      );
+      setStorageMessage('planner.storageBlocked');
     }
   }, [planner]);
 
@@ -256,7 +260,7 @@ export default function StudyPlannerPage() {
     if (!selectedName) {
       setNotice({
         type: 'error',
-        message: 'All available subjects are already in your plan.',
+        key: 'planner.allSubjectsInPlan',
       });
       return;
     }
@@ -292,9 +296,7 @@ export default function StudyPlannerPage() {
   function loadSampleInputs() {
     if (
       (planner.subjects.length > 0 || planner.tasks.length > 0) &&
-      !window.confirm(
-        'Replace your current subjects and weekly timetable with sample details? This cannot be undone.',
-      )
+      !window.confirm(t('planner.confirmSample'))
     ) {
       return;
     }
@@ -308,14 +310,14 @@ export default function StudyPlannerPage() {
           id: createPlannerId('subject'),
           name: 'Biology',
           examDate: addDaysToDateKey(today, 4),
-          topics: 'Cell structure, Mitosis, Cell transport',
+          topics: t('planner.sampleTopicsBio'),
           difficulty: 'hard',
         },
         {
           id: createPlannerId('subject'),
           name: 'Algebra II',
           examDate: addDaysToDateKey(today, 8),
-          topics: 'Quadratic equations, Factoring, Functions',
+          topics: t('planner.sampleTopicsAlg'),
           difficulty: 'medium',
         },
       ],
@@ -327,19 +329,19 @@ export default function StudyPlannerPage() {
     setSubjectToAdd('Chemistry');
     setNotice({
       type: 'success',
-      message: 'Sample details loaded. Review them, then generate your week.',
+      key: 'planner.sampleLoaded',
     });
   }
 
   function generatePlan(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const validationErrors = validateStudyPlannerData(planner, today);
+    const validationIssues = getStudyPlannerIssues(planner, today);
 
-    if (validationErrors.length > 0) {
+    if (validationIssues.length > 0) {
       setNotice({
         type: 'error',
-        message: 'Complete these details before generating your plan:',
-        details: validationErrors,
+        key: 'planner.completeDetails',
+        details: validationIssues,
       });
       return;
     }
@@ -353,8 +355,7 @@ export default function StudyPlannerPage() {
     if (tasks.filter((task) => task.kind === 'study').length === 0) {
       setNotice({
         type: 'error',
-        message:
-          'No study sessions could be scheduled. Check that your exam dates are in the future and each subject has at least one topic.',
+        key: 'planner.noSessions',
       });
       return;
     }
@@ -368,8 +369,7 @@ export default function StudyPlannerPage() {
     }));
     setNotice({
       type: 'success',
-      message:
-        'Your seven-day plan is ready. Closer exams and harder subjects receive more focus, with short breaks built in.',
+      key: 'planner.planReady',
     });
   }
 
@@ -382,21 +382,31 @@ export default function StudyPlannerPage() {
     }));
   }
 
+  // What the student sees for a task. Saved values stay as they are; only the display is translated.
+  function shownTask(task: PlannerTask) {
+    return {
+      subject: subjectLabel(task.subject),
+      activity: plannerWord(task.activity),
+      topic: task.kind === 'break' ? plannerWord(task.topic) : task.topic,
+    };
+  }
+
   function beginTaskEdit(task: PlannerTask) {
+    const shown = shownTask(task);
     setEditingTaskId(task.id);
     setEditDraft({
-      subject: task.subject,
-      activity: task.activity,
-      topic: task.topic,
+      subject: shown.subject,
+      activity: shown.activity,
+      topic: shown.topic,
       duration: task.duration,
     });
-    setEditError('');
+    setEditError(null);
   }
 
   function cancelTaskEdit() {
     setEditingTaskId(null);
     setEditDraft(null);
-    setEditError('');
+    setEditError(null);
   }
 
   function saveTaskEdit(event: FormEvent<HTMLFormElement>) {
@@ -411,7 +421,7 @@ export default function StudyPlannerPage() {
       !editDraft.activity.trim() ||
       !editDraft.topic.trim()
     ) {
-      setEditError('Add a subject, activity, and task note before saving.');
+      setEditError({ key: 'planner.editMissing' });
       return;
     }
 
@@ -420,7 +430,7 @@ export default function StudyPlannerPage() {
       editDraft.duration < 5 ||
       editDraft.duration > 60
     ) {
-      setEditError('Task duration must be between 5 and 60 minutes.');
+      setEditError({ key: 'planner.editDuration' });
       return;
     }
 
@@ -431,11 +441,18 @@ export default function StudyPlannerPage() {
       minutesAlreadyScheduled - task.duration + editDraft.duration;
 
     if (minutesAfterEdit > planner.dailyMinutes) {
-      setEditError(
-        `This would exceed your ${planner.dailyMinutes}-minute daily limit. Shorten the task first.`,
-      );
+      setEditError({
+        key: 'planner.editLimit',
+        vars: { minutes: planner.dailyMinutes },
+      });
       return;
     }
+
+    // A field left exactly as it was shown keeps its saved value, so a translated
+    // label is never written into the student's data just by pressing Save.
+    const shown = shownTask(task);
+    const keep = (draft: string, saved: string, displayed: string) =>
+      displayed !== saved && draft.trim() === displayed.trim() ? saved : draft.trim();
 
     setPlanner((current) => ({
       ...current,
@@ -443,9 +460,9 @@ export default function StudyPlannerPage() {
         item.id === task.id
           ? {
               ...item,
-              subject: editDraft.subject.trim(),
-              activity: editDraft.activity.trim(),
-              topic: editDraft.topic.trim(),
+              subject: keep(editDraft.subject, task.subject, shown.subject),
+              activity: keep(editDraft.activity, task.activity, shown.activity),
+              topic: keep(editDraft.topic, task.topic, shown.topic),
               duration: editDraft.duration,
             }
           : item,
@@ -453,8 +470,8 @@ export default function StudyPlannerPage() {
     }));
     setEditingTaskId(null);
     setEditDraft(null);
-    setEditError('');
-    setNotice({ type: 'success', message: 'Task updated and saved.' });
+    setEditError(null);
+    setNotice({ type: 'success', key: 'planner.taskUpdated' });
   }
 
   function deleteTask(taskId: string) {
@@ -463,15 +480,15 @@ export default function StudyPlannerPage() {
       tasks: current.tasks.filter((task) => task.id !== taskId),
     }));
     if (editingTaskId === taskId) cancelTaskEdit();
-    setNotice({ type: 'success', message: 'Task removed from your timetable.' });
+    setNotice({ type: 'success', key: 'planner.taskRemoved' });
   }
 
   return (
     <PlannerFrame storageUnavailable={Boolean(storageMessage)}>
       <div className="space-y-5 sm:space-y-6">
         <PlannerCard
-          eyebrow="Start with your week"
-          title="Your study details"
+          eyebrow={t('planner.detailsEyebrow')}
+          title={t('planner.detailsTitle')}
           trailing={
             <button
               type="button"
@@ -479,7 +496,7 @@ export default function StudyPlannerPage() {
               className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#dcd9f3] bg-[#f6f5ff] px-3.5 text-[11px] font-bold text-[#5144c7] transition-colors hover:bg-[#eeecff]"
               data-testid="button-load-sample"
             >
-              <Sparkles size={14} /> Use sample details
+              <Sparkles size={14} /> {t('planner.useSample')}
             </button>
           }
         >
@@ -489,7 +506,7 @@ export default function StudyPlannerPage() {
               className="mb-4 rounded-[13px] border border-[#f0d8b8] bg-[#fff9f0] px-4 py-3 text-[12px] leading-relaxed text-[#765221]"
               data-testid="message-storage"
             >
-              {storageMessage}
+              {storageMessage ? t(storageMessage) : null}
             </div>
           )}
 
@@ -504,11 +521,17 @@ export default function StudyPlannerPage() {
               }`}
               data-testid={`message-${notice.type}`}
             >
-              <p className="font-bold">{notice.message}</p>
+              <p className="font-bold">{t(notice.key, notice.vars)}</p>
               {notice.details && (
                 <ul className="mt-2 list-disc space-y-1 pl-5">
-                  {notice.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
+                  {notice.details.map((issue) => (
+                    <li key={`${issue.code}-${issue.index}`}>
+                      {t(`planner.err.${issue.code}`, {
+                        subject: issue.subject
+                          ? subjectLabel(issue.subject)
+                          : t('planner.unnamedSubject', { number: issue.index + 1 }),
+                      })}
+                    </li>
                   ))}
                 </ul>
               )}
@@ -522,7 +545,7 @@ export default function StudyPlannerPage() {
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block text-[11px] font-bold text-[#35405e]">
-                Grade level
+                {t('planner.gradeLevel')}
                 <select
                   value={planner.grade}
                   onChange={(event) =>
@@ -531,17 +554,17 @@ export default function StudyPlannerPage() {
                   className={inputClassName}
                   data-testid="select-grade"
                 >
-                  <option value="">Choose your grade</option>
+                  <option value="">{t('planner.chooseGrade')}</option>
                   {['9', '10', '11', '12'].map((grade) => (
                     <option key={grade} value={grade}>
-                      Grade {grade}
+                      {t('common.grade', { grade })}
                     </option>
                   ))}
                 </select>
               </label>
 
               <label className="block text-[11px] font-bold text-[#35405e]">
-                Available study time per day
+                {t('planner.dailyTime')}
                 <select
                   value={planner.dailyMinutes}
                   onChange={(event) =>
@@ -554,7 +577,7 @@ export default function StudyPlannerPage() {
                 >
                   {[30, 45, 60, 75, 90, 120, 150, 180].map((minutes) => (
                     <option key={minutes} value={minutes}>
-                      {minutes} minutes
+                      {t('planner.minutesOption', { minutes })}
                     </option>
                   ))}
                 </select>
@@ -565,22 +588,20 @@ export default function StudyPlannerPage() {
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
                   <p className="text-[11px] font-extrabold text-[#293354]">
-                    Subjects, exams, and topics
+                    {t('planner.subjectsHeading')}
                   </p>
                   <p className="mt-1 text-[11px] leading-relaxed text-[#7e879e]">
-                    Add each subject, its exam date, topics, and how challenging
-                    it feels.
+                    {t('planner.subjectsHelp')}
                   </p>
                 </div>
                 <span className="rounded-full bg-[#f2f4f9] px-3 py-1.5 text-[10px] font-bold text-[#626b85]">
-                  {planner.subjects.length} subject
-                  {planner.subjects.length === 1 ? '' : 's'}
+                  {tn('planner.subjectCount', planner.subjects.length)}
                 </span>
               </div>
 
               <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <label className="min-w-0 flex-1 text-[11px] font-bold text-[#35405e]">
-                  Choose a subject
+                  {t('planner.chooseSubject')}
                   <select
                     value={
                       availableSubjectNames.includes(subjectToAdd)
@@ -595,11 +616,11 @@ export default function StudyPlannerPage() {
                     data-testid="select-subject-to-add"
                   >
                     {availableSubjectNames.length === 0 ? (
-                      <option value="">All subjects added</option>
+                      <option value="">{t('planner.allSubjectsAdded')}</option>
                     ) : (
                       availableSubjectNames.map((subjectName) => (
                         <option key={subjectName} value={subjectName}>
-                          {subjectName}
+                          {subjectLabel(subjectName)}
                         </option>
                       ))
                     )}
@@ -612,17 +633,17 @@ export default function StudyPlannerPage() {
                   className="mt-2 inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-[12px] bg-[#5144c7] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#4136ac] disabled:cursor-not-allowed disabled:opacity-50 sm:mt-[22px]"
                   data-testid="button-add-subject"
                 >
-                  <Plus size={15} /> Add subject
+                  <Plus size={15} /> {t('planner.addSubject')}
                 </button>
               </div>
 
               {planner.subjects.length === 0 ? (
                 <div className="mt-4 rounded-[15px] border border-dashed border-[#dcdfea] bg-[#fafbfe] px-4 py-6 text-center">
                   <p className="text-[12px] font-bold text-[#47516c]">
-                    Add your first subject to get started.
+                    {t('planner.firstSubject')}
                   </p>
                   <p className="mt-1 text-[11px] text-[#8790a4]">
-                    You can add more than one subject to balance your week.
+                    {t('planner.moreSubjects')}
                   </p>
                 </div>
               ) : (
@@ -639,14 +660,14 @@ export default function StudyPlannerPage() {
                             {String(index + 1).padStart(2, '0')}
                           </span>
                           <h3 className="text-[12px] font-extrabold text-[#293354]">
-                            {subject.name}
+                            {subjectLabel(subject.name)}
                           </h3>
                         </div>
                         <button
                           type="button"
                           onClick={() => removeSubject(subject.id)}
                           className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[#8991a5] transition-colors hover:bg-[#fff0f0] hover:text-[#b24c4c]"
-                          aria-label={`Remove ${subject.name}`}
+                          aria-label={t('planner.removeSubject', { subject: subjectLabel(subject.name) })}
                           data-testid={`button-remove-subject-${index}`}
                         >
                           <X size={15} />
@@ -655,7 +676,7 @@ export default function StudyPlannerPage() {
 
                       <div className="mt-3 grid gap-3 sm:grid-cols-2">
                         <label className="block text-[10px] font-bold text-[#626b85]">
-                          Exam date
+                          {t('planner.examDate')}
                           <input
                             type="date"
                             min={earliestExamDate}
@@ -671,7 +692,7 @@ export default function StudyPlannerPage() {
                         </label>
 
                         <label className="block text-[10px] font-bold text-[#626b85]">
-                          Difficulty
+                          {t('planner.difficulty')}
                           <select
                             value={subject.difficulty}
                             onChange={(event) =>
@@ -683,15 +704,15 @@ export default function StudyPlannerPage() {
                             className={inputClassName}
                             data-testid={`select-difficulty-${index}`}
                           >
-                            <option value="easy">Easy · light review</option>
-                            <option value="medium">Medium · some practice</option>
-                            <option value="hard">Hard · needs extra focus</option>
+                            <option value="easy">{t('planner.diffEasy')}</option>
+                            <option value="medium">{t('planner.diffMedium')}</option>
+                            <option value="hard">{t('planner.diffHard')}</option>
                           </select>
                         </label>
                       </div>
 
                       <label className="mt-3 block text-[10px] font-bold text-[#626b85]">
-                        Topics to study
+                        {t('planner.topics')}
                         <textarea
                           rows={2}
                           value={subject.topics}
@@ -700,7 +721,7 @@ export default function StudyPlannerPage() {
                               topics: event.currentTarget.value,
                             })
                           }
-                          placeholder="Separate topics with commas"
+                          placeholder={t('planner.topicsPlaceholder')}
                           className={`${inputClassName} resize-y`}
                           data-testid={`textarea-topics-${index}`}
                         />
@@ -713,15 +734,14 @@ export default function StudyPlannerPage() {
 
             <div className="mt-5 flex flex-col gap-3 border-t border-[#eceef4] pt-5 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-[520px] text-[10px] leading-relaxed text-[#8790a4]">
-                The timetable uses 25-minute focus sessions and 5-minute
-                breaks, with a maximum of four sessions each day.
+                {t('planner.rulesNote')}
               </p>
               <button
                 type="submit"
                 className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#5144c7] px-5 text-[11px] font-extrabold text-white shadow-[0_8px_18px_rgba(81,68,199,.18)] transition-colors hover:bg-[#4136ac]"
                 data-testid="button-generate-plan"
               >
-                <Sparkles size={15} /> Generate my week
+                <Sparkles size={15} /> {t('planner.generate')}
               </button>
             </div>
           </form>
@@ -733,35 +753,34 @@ export default function StudyPlannerPage() {
             className="rounded-[14px] border border-[#e8d9ae] bg-[#fffaf0] px-4 py-3 text-[11px] leading-relaxed text-[#765b26]"
             data-testid="message-plan-outdated"
           >
-            Your study details have changed since this timetable was generated.
-            Generate your week again to update the schedule.
+            {t('planner.outdated')}
           </div>
         )}
 
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-[17px] border border-[#e5e7f0] bg-white px-4 py-4">
             <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#8790a4]">
-              Grade
+              {t('planner.gradeTile')}
             </p>
             <p className="mt-2 text-[15px] font-extrabold text-[#293354]">
-              {planner.grade ? `Grade ${planner.grade}` : 'Not selected'}
+              {planner.grade ? t('common.grade', { grade: planner.grade }) : t('planner.notSelected')}
             </p>
           </div>
           <div className="rounded-[17px] border border-[#e5e7f0] bg-white px-4 py-4">
             <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#8790a4]">
-              Subjects
+              {t('planner.subjectsTile')}
             </p>
             <p className="mt-2 text-[15px] font-extrabold text-[#293354]">
-              {planner.subjects.length} added
+              {t('planner.subjectsAdded', { count: planner.subjects.length })}
             </p>
           </div>
           <div className="rounded-[17px] border border-[#e5e7f0] bg-white px-4 py-4">
             <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#8790a4]">
-              Weekly progress
+              {t('planner.weeklyProgress')}
             </p>
             <div className="mt-2 flex items-center justify-between gap-3">
               <p className="text-[15px] font-extrabold text-[#293354]">
-                {completedStudyTasks.length} of {studyTasks.length} sessions
+                {t('planner.sessionsDone', { done: completedStudyTasks.length, total: studyTasks.length })}
               </p>
               <span className="text-[13px] font-extrabold text-[#5144c7]">
                 {overallProgress}%
@@ -770,7 +789,7 @@ export default function StudyPlannerPage() {
             <div
               className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#e8e8f4]"
               role="progressbar"
-              aria-label="Weekly study plan completion"
+              aria-label={t('planner.weeklyProgressAria')}
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={overallProgress}
@@ -786,18 +805,18 @@ export default function StudyPlannerPage() {
         <PlannerCard
           eyebrow={
             planner.weekStart
-              ? `Starting ${formatPlannerDate(planner.weekStart).date}`
-              : 'Your next seven days'
+              ? t('planner.starting', { date: formatPlannerDate(planner.weekStart, locale ?? 'en', t('planner.studyDay')).date })
+              : t('planner.nextSeven')
           }
-          title="Weekly timetable"
+          title={t('planner.timetableTitle')}
           trailing={
             planner.generatedAt ? (
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e5f7f5] px-3 py-1.5 text-[10px] font-bold text-[#278c8e]">
-                <CheckCircle2 size={13} /> Saved on this device
+                <CheckCircle2 size={13} /> {t('planner.savedDevice')}
               </span>
             ) : (
               <span className="rounded-full bg-[#f2f4f9] px-3 py-1.5 text-[10px] font-bold text-[#626b85]">
-                Ready when you are
+                {t('planner.readyWhenYouAre')}
               </span>
             )
           }
@@ -809,31 +828,29 @@ export default function StudyPlannerPage() {
             >
               <CalendarDays size={22} className="mx-auto text-[#776bd4]" />
               <p className="mt-3 text-[12px] font-bold text-[#47516c]">
-                Your weekly calendar will appear here.
+                {t('planner.emptyTitle')}
               </p>
               <p className="mt-1 text-[11px] text-[#8790a4]">
-                Add your subjects and generate a plan to see daily goals,
-                focused sessions, and breaks.
+                {t('planner.emptyText')}
               </p>
             </div>
           ) : (
             <>
               <div className="mb-4 flex flex-wrap items-center gap-3 text-[10px] font-semibold text-[#75809a]">
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-[#5a4bd0]" /> Study
-                  session
+                  <span className="h-2 w-2 rounded-full bg-[#5a4bd0]" /> {t('planner.legendStudy')}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-[#20a6ad]" /> Short
-                  break
+                  <span className="h-2 w-2 rounded-full bg-[#20a6ad]" /> {t('planner.legendBreak')}
                 </span>
                 {planner.generatedAt && (
                   <span className="inline-flex items-center gap-1.5 sm:ml-auto">
                     <Clock3 size={12} />
-                    Updated{' '}
-                    {new Date(planner.generatedAt).toLocaleDateString('en', {
-                      month: 'short',
-                      day: 'numeric',
+                    {t('planner.updated', {
+                      date: new Date(planner.generatedAt).toLocaleDateString(locale ?? 'en', {
+                        month: 'short',
+                        day: 'numeric',
+                      }),
                     })}
                   </span>
                 )}
@@ -844,7 +861,7 @@ export default function StudyPlannerPage() {
                 data-testid="weekly-timetable"
               >
                 {weekDates.map((date) => {
-                  const dateInfo = formatPlannerDate(date);
+                  const dateInfo = formatPlannerDate(date, locale ?? 'en', t('planner.studyDay'));
                   const dayTasks = planner.tasks.filter(
                     (task) => task.date === date,
                   );
@@ -882,26 +899,26 @@ export default function StudyPlannerPage() {
                         </div>
                         <span className="rounded-full bg-[#f0f1f8] px-2 py-1 text-[9px] font-bold text-[#748099]">
                           {dayTasks.length
-                            ? `${dayTasks.length} blocks`
-                            : 'Open'}
+                            ? t('planner.blocks', { count: dayTasks.length })
+                            : t('planner.open')}
                         </span>
                       </div>
 
                       <div className="mt-3 rounded-[11px] bg-white px-3 py-2.5">
                         <div className="flex items-center justify-between gap-2">
                           <span className="text-[9px] font-bold uppercase tracking-[.08em] text-[#8790a4]">
-                            Daily study goal
+                            {t('planner.dailyGoal')}
                           </span>
                           <span className="text-[10px] font-extrabold text-[#35405e]">
                             {dayGoalMinutes > 0
-                              ? `${dayCompletedMinutes}/${dayGoalMinutes} min`
-                              : 'Rest day'}
+                              ? t('planner.minProgress', { done: dayCompletedMinutes, goal: dayGoalMinutes })
+                              : t('planner.restDay')}
                           </span>
                         </div>
                         <div
                           className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#e8e8f4]"
                           role="progressbar"
-                          aria-label={`${dateInfo.weekday} study goal`}
+                          aria-label={t('planner.dayGoalAria', { weekday: dateInfo.weekday })}
                           aria-valuemin={0}
                           aria-valuemax={100}
                           aria-valuenow={dayProgress}
@@ -913,20 +930,20 @@ export default function StudyPlannerPage() {
                         </div>
                         <p className="mt-1.5 text-[9px] text-[#9199ab]">
                           {dayGoalMinutes > 0
-                            ? `Up to ${planner.dailyMinutes} min available`
-                            : 'No study sessions planned'}
+                            ? t('planner.upTo', { minutes: planner.dailyMinutes })
+                            : t('planner.noStudyPlanned')}
                         </p>
                       </div>
 
                       {dayTasks.length === 0 ? (
                         <p className="mt-3 rounded-[11px] border border-dashed border-[#e1e4ed] px-3 py-4 text-center text-[10px] leading-relaxed text-[#8790a4]">
-                          No sessions scheduled. Rest or focus on another
-                          priority.
+                          {t('planner.noSessionsDay')}
                         </p>
                       ) : (
                         <div className="mt-3 space-y-2">
                           {dayTasks.map((task) => {
                             const isEditing = editingTaskId === task.id;
+                            const shown = shownTask(task);
 
                             return (
                               <article
@@ -951,7 +968,7 @@ export default function StudyPlannerPage() {
                                     />
                                     <div className="min-w-0">
                                       <p className="text-[9px] font-bold text-[#8790a4]">
-                                        {task.startTime} · {task.duration} min
+                                        {t('planner.taskTime', { time: clock(task.startTime), minutes: task.duration })}
                                       </p>
                                       <p
                                         className={`mt-1 break-words text-[10px] font-extrabold ${
@@ -961,8 +978,8 @@ export default function StudyPlannerPage() {
                                         }`}
                                       >
                                         {task.kind === 'break'
-                                          ? 'Short break'
-                                          : task.subject}
+                                          ? t('planner.shortBreak')
+                                          : shown.subject}
                                       </p>
                                     </div>
                                   </div>
@@ -970,9 +987,10 @@ export default function StudyPlannerPage() {
                                     type="checkbox"
                                     checked={task.completed}
                                     onChange={() => toggleTask(task.id)}
-                                    aria-label={`Mark ${task.activity} as ${
-                                      task.completed ? 'not completed' : 'completed'
-                                    }`}
+                                    aria-label={t(
+                                      task.completed ? 'planner.markNotCompleted' : 'planner.markCompleted',
+                                      { activity: shown.activity },
+                                    )}
                                     className="mt-0.5 h-4 w-4 shrink-0 accent-[#5144c7]"
                                     data-testid={`checkbox-task-${task.id}`}
                                   />
@@ -985,7 +1003,7 @@ export default function StudyPlannerPage() {
                                     data-testid={`form-edit-task-${task.id}`}
                                   >
                                     <label className="block text-[9px] font-bold text-[#626b85]">
-                                      Subject or label
+                                      {t('planner.editSubject')}
                                       <input
                                         value={editDraft.subject}
                                         onChange={(event) =>
@@ -999,7 +1017,7 @@ export default function StudyPlannerPage() {
                                       />
                                     </label>
                                     <label className="block text-[9px] font-bold text-[#626b85]">
-                                      Activity
+                                      {t('planner.editActivity')}
                                       <input
                                         value={editDraft.activity}
                                         onChange={(event) =>
@@ -1013,7 +1031,7 @@ export default function StudyPlannerPage() {
                                       />
                                     </label>
                                     <label className="block text-[9px] font-bold text-[#626b85]">
-                                      Topic or note
+                                      {t('planner.editTopic')}
                                       <input
                                         value={editDraft.topic}
                                         onChange={(event) =>
@@ -1027,7 +1045,7 @@ export default function StudyPlannerPage() {
                                       />
                                     </label>
                                     <label className="block text-[9px] font-bold text-[#626b85]">
-                                      Duration in minutes
+                                      {t('planner.editDurationLabel')}
                                       <input
                                         type="number"
                                         min={5}
@@ -1050,7 +1068,7 @@ export default function StudyPlannerPage() {
                                         role="alert"
                                         className="text-[9px] leading-relaxed text-[#a34646]"
                                       >
-                                        {editError}
+                                        {t(editError.key, editError.vars)}
                                       </p>
                                     )}
                                     <div className="flex gap-2 pt-1">
@@ -1059,7 +1077,7 @@ export default function StudyPlannerPage() {
                                         className="inline-flex min-h-8 flex-1 items-center justify-center gap-1 rounded-full bg-[#5144c7] px-2 text-[9px] font-bold text-white hover:bg-[#4136ac]"
                                         data-testid="button-save-task"
                                       >
-                                        <Check size={12} /> Save
+                                        <Check size={12} /> {t('planner.save')}
                                       </button>
                                       <button
                                         type="button"
@@ -1067,7 +1085,7 @@ export default function StudyPlannerPage() {
                                         className="inline-flex min-h-8 items-center justify-center rounded-full border border-[#e1e4ed] px-3 text-[9px] font-bold text-[#626b85] hover:bg-white"
                                         data-testid="button-cancel-task-edit"
                                       >
-                                        Cancel
+                                        {t('planner.cancel')}
                                       </button>
                                     </div>
                                   </form>
@@ -1081,27 +1099,27 @@ export default function StudyPlannerPage() {
                                       }`}
                                     >
                                       {task.kind === 'study' &&
-                                        `${task.activity} · `}
-                                      {task.topic}
+                                        `${shown.activity} · `}
+                                      {shown.topic}
                                     </p>
                                     <div className="mt-2 flex items-center justify-end gap-1">
                                       <button
                                         type="button"
                                         onClick={() => beginTaskEdit(task)}
                                         className="inline-flex min-h-7 items-center gap-1 rounded-full px-2 text-[9px] font-bold text-[#5144c7] transition-colors hover:bg-[#f0efff]"
-                                        aria-label={`Edit ${task.activity}`}
+                                        aria-label={t('planner.editAria', { activity: shown.activity })}
                                         data-testid={`button-edit-task-${task.id}`}
                                       >
-                                        <Pencil size={11} /> Edit
+                                        <Pencil size={11} /> {t('planner.edit')}
                                       </button>
                                       <button
                                         type="button"
                                         onClick={() => deleteTask(task.id)}
                                         className="inline-flex min-h-7 items-center gap-1 rounded-full px-2 text-[9px] font-bold text-[#9c5555] transition-colors hover:bg-[#fff0f0]"
-                                        aria-label={`Delete ${task.activity}`}
+                                        aria-label={t('planner.deleteAria', { activity: shown.activity })}
                                         data-testid={`button-delete-task-${task.id}`}
                                       >
-                                        <Trash2 size={11} /> Delete
+                                        <Trash2 size={11} /> {t('planner.delete')}
                                       </button>
                                     </div>
                                   </>
@@ -1123,13 +1141,10 @@ export default function StudyPlannerPage() {
           <Sparkles size={18} className="shrink-0 text-[#168991]" />
           <div>
             <p className="text-[12px] font-extrabold text-[#28787d]">
-              A steady plan leaves room to breathe
+              {t('planner.tipTitle')}
             </p>
             <p className="mt-1.5 text-[11px] leading-[1.7] text-[#56767b]">
-              Exams coming sooner and subjects marked hard receive more
-              sessions. Topics rotate through review, practice, and recall.
-              Your plan is stored only in this browser; it is not sent to a
-              server.
+              {t('planner.tipText')}
             </p>
           </div>
         </div>
@@ -1140,7 +1155,7 @@ export default function StudyPlannerPage() {
             data-testid="text-local-save-status"
           >
             <CheckCircle2 size={12} className="text-[#278c8e]" />
-            Plan and task progress save automatically in this browser.
+            {t('planner.autoSave')}
           </p>
         )}
       </div>

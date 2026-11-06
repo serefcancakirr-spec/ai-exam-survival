@@ -27,13 +27,15 @@ import {
   type QuizQuestionCount,
   type QuizSubject,
 } from './quiz-question-bank';
+import { useI18n } from '@/i18n/i18n';
+import type { MessageKey } from '@/i18n/translations-en';
 
 const QUIZ_HISTORY_STORAGE_KEY = 'ai-exam-survival:quiz-center:v1';
 const MAX_SAVED_ATTEMPTS = 30;
-const DIFFICULTY_LABELS: Record<QuizDifficulty, string> = {
-  easy: 'Easy',
-  medium: 'Medium',
-  hard: 'Hard',
+const DIFFICULTY_KEYS: Record<QuizDifficulty, MessageKey> = {
+  easy: 'difficulty.easy',
+  medium: 'difficulty.medium',
+  hard: 'difficulty.hard',
 };
 
 const selectClassName =
@@ -67,12 +69,17 @@ type QuizAttempt = {
 
 type Notice = {
   tone: 'success' | 'error' | 'info';
-  message: string;
+  key: MessageKey;
+  vars?: Record<string, string | number>;
+  /** Some notices pick singular/plural wording from a count. */
+  plural?: { base: string; count: number };
+  /** vars.subject is a saved subject name that should be shown in the current language. */
+  subjectVar?: boolean;
 };
 
 type StorageLoadResult = {
   attempts: QuizAttempt[];
-  message: string;
+  message: MessageKey | '';
   canPersist: boolean;
 };
 
@@ -161,8 +168,7 @@ function loadQuizAttempts(): StorageLoadResult {
     ) {
       return {
         attempts: [],
-        message:
-          'Saved quiz history could not be read, so it was left untouched. New results will not overwrite it.',
+        message: 'quiz.storageUnreadable',
         canPersist: false,
       };
     }
@@ -171,8 +177,7 @@ function loadQuizAttempts(): StorageLoadResult {
   } catch {
     return {
       attempts: [],
-      message:
-        'Browser storage is unavailable. Quiz history will not be saved on this device.',
+      message: 'quiz.storageUnavailable',
       canPersist: false,
     };
   }
@@ -182,8 +187,8 @@ function createAttemptId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
-function formatAttemptDate(value: string) {
-  return new Intl.DateTimeFormat(undefined, {
+function formatAttemptDate(value: string, locale: string | undefined) {
+  return new Intl.DateTimeFormat(locale, {
     dateStyle: 'medium',
     timeStyle: 'short',
   }).format(new Date(value));
@@ -194,6 +199,11 @@ function getOptionText(question: QuizQuestion, optionId: QuizOptionId) {
 }
 
 function NoticeBanner({ notice }: { notice: Notice }) {
+  const { t, tn, subject: subjectLabel } = useI18n();
+  const vars =
+    notice.subjectVar && notice.vars
+      ? { ...notice.vars, subject: subjectLabel(String(notice.vars.subject)) }
+      : notice.vars;
   const styles = {
     success: 'border-[#c6eadc] bg-[#eff9f5] text-[#26785c]',
     error: 'border-[#f1d0d0] bg-[#fff5f5] text-[#9c4545]',
@@ -206,7 +216,9 @@ function NoticeBanner({ notice }: { notice: Notice }) {
       className={`rounded-[13px] border px-4 py-3 text-[12px] font-semibold leading-relaxed ${styles[notice.tone]}`}
       data-testid={`quiz-notice-${notice.tone}`}
     >
-      {notice.message}
+      {notice.plural
+        ? tn(notice.plural.base, notice.plural.count, vars)
+        : t(notice.key, vars)}
     </div>
   );
 }
@@ -251,6 +263,7 @@ function QuizSetupCard({
   onStart: () => void;
   notice: Notice | null;
 }) {
+  const { t, subject: subjectLabel } = useI18n();
   const questionPool = getQuizQuestionPool(
     setup.grade,
     setup.subject,
@@ -260,22 +273,22 @@ function QuizSetupCard({
   const topics = getQuizTopics(setup.grade, setup.subject);
   const difficultyOptions: QuizDifficulty[] = ['easy', 'medium', 'hard'];
   const topicLabel =
-    setup.topic === ALL_QUIZ_TOPICS ? 'All topics' : setup.topic;
+    setup.topic === ALL_QUIZ_TOPICS ? t('quiz.allTopics') : setup.topic;
 
   return (
     <SectionCard
-      eyebrow="Build a practice set"
-      title="Set up your quiz"
+      eyebrow={t('quiz.setupEyebrow')}
+      title={t('quiz.setupTitle')}
       trailing={
         <span className="rounded-full bg-[#e8e6fb] px-3 py-1.5 text-[10px] font-bold text-[#5b50bb]">
-          Curated sample questions
+          {t('quiz.curated')}
         </span>
       }
     >
       {notice && <NoticeBanner notice={notice} />}
       <div className="grid gap-x-4 gap-y-4 sm:grid-cols-2">
         <label className="block text-[11px] font-bold text-[#46516f]" htmlFor="quiz-grade">
-          Grade level
+          {t('quiz.gradeLevel')}
           <select
             id="quiz-grade"
             className={selectClassName}
@@ -287,7 +300,7 @@ function QuizSetupCard({
           >
             {QUIZ_GRADES.map((grade) => (
               <option key={grade} value={grade}>
-                Grade {grade}
+                {t('common.grade', { grade })}
               </option>
             ))}
           </select>
@@ -297,7 +310,7 @@ function QuizSetupCard({
           className="block text-[11px] font-bold text-[#46516f]"
           htmlFor="quiz-subject"
         >
-          Subject
+          {t('quiz.subject')}
           <select
             id="quiz-subject"
             className={selectClassName}
@@ -312,14 +325,14 @@ function QuizSetupCard({
           >
             {QUIZ_SUBJECTS.map((subject) => (
               <option key={subject} value={subject}>
-                {subject}
+                {subjectLabel(subject)}
               </option>
             ))}
           </select>
         </label>
 
         <label className="block text-[11px] font-bold text-[#46516f]" htmlFor="quiz-topic">
-          Topic
+          {t('quiz.topic')}
           <select
             id="quiz-topic"
             className={selectClassName}
@@ -327,7 +340,7 @@ function QuizSetupCard({
             onChange={(event) => onChange({ topic: event.target.value })}
             data-testid="select-quiz-topic"
           >
-            <option value={ALL_QUIZ_TOPICS}>All topics</option>
+            <option value={ALL_QUIZ_TOPICS}>{t('quiz.allTopics')}</option>
             {topics.map((topic) => (
               <option key={topic} value={topic}>
                 {topic}
@@ -340,7 +353,7 @@ function QuizSetupCard({
           className="block text-[11px] font-bold text-[#46516f]"
           htmlFor="quiz-difficulty"
         >
-          Difficulty target
+          {t('quiz.difficultyTarget')}
           <select
             id="quiz-difficulty"
             className={selectClassName}
@@ -354,7 +367,7 @@ function QuizSetupCard({
           >
             {difficultyOptions.map((difficulty) => (
               <option key={difficulty} value={difficulty}>
-                {DIFFICULTY_LABELS[difficulty]}
+                {t(DIFFICULTY_KEYS[difficulty])}
               </option>
             ))}
           </select>
@@ -363,7 +376,7 @@ function QuizSetupCard({
 
       <fieldset className="mt-5">
         <legend className="text-[11px] font-bold text-[#46516f]">
-          Number of questions
+          {t('quiz.numberOfQuestions')}
         </legend>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {QUIZ_QUESTION_COUNTS.map((count) => {
@@ -394,32 +407,32 @@ function QuizSetupCard({
                 />
                 <span aria-hidden="true">{count}</span>
                 <span className="sr-only">
-                  {count} questions
-                  {!isAvailable ? ' (not enough questions for this topic)' : ''}
+                  {t('quiz.countQuestions', { count })}
+                  {!isAvailable ? t('quiz.notEnough') : ''}
                 </span>
               </label>
             );
           })}
         </div>
         <p className="mt-2 text-[10px] leading-relaxed text-[#7b849b]">
-          {questionPool.length} unique sample questions are available for this
-          selection. The difficulty target prioritizes matching questions; if
-          a topic has fewer, other levels fill the quiz. Each question shows its
-          actual level.
+          {t('quiz.poolInfo', { count: questionPool.length })}
         </p>
       </fieldset>
 
       <div className="mt-5 rounded-[13px] bg-[#f5f6fb] px-4 py-3 text-[11px] leading-relaxed text-[#69738d]">
-        <span className="font-bold text-[#46516f]">Quiz preview:</span>{' '}
-        Grade {setup.grade} · {setup.subject} · {topicLabel} ·{' '}
-        {DIFFICULTY_LABELS[setup.difficulty]} target · {setup.questionCount}{' '}
-        questions
+        <span className="font-bold text-[#46516f]">{t('quiz.previewLabel')}</span>{' '}
+        {t('quiz.previewText', {
+          grade: setup.grade,
+          subject: subjectLabel(setup.subject),
+          topic: topicLabel,
+          difficulty: t(DIFFICULTY_KEYS[setup.difficulty]),
+          count: setup.questionCount,
+        })}
       </div>
 
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-[430px] text-[10px] leading-relaxed text-[#858da2]">
-          These are reviewed sample questions. This practice quiz uses no live
-          AI and does not require an account.
+          {t('quiz.sampleNote')}
         </p>
         <button
           type="button"
@@ -428,7 +441,7 @@ function QuizSetupCard({
           className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#5144c7] px-5 text-[12px] font-bold text-white transition-colors hover:bg-[#4337b0] disabled:cursor-not-allowed disabled:opacity-45"
           data-testid="button-start-quiz"
         >
-          Start sample quiz <ArrowRight size={15} />
+          {t('quiz.start')} <ArrowRight size={15} />
         </button>
       </div>
     </SectionCard>
@@ -458,13 +471,14 @@ function QuizQuestionCard({
   onNext: () => void;
   onSubmit: () => void;
 }) {
+  const { t, subject: subjectLabel } = useI18n();
   const progress = Math.round(((index + 1) / total) * 100);
   const isLastQuestion = index === total - 1;
 
   return (
     <SectionCard
-      eyebrow={`${question.subject} · Grade ${question.grade}`}
-      title={`Question ${index + 1}`}
+      eyebrow={t('quiz.subjectGrade', { subject: subjectLabel(question.subject), grade: question.grade })}
+      title={t('quiz.questionTitle', { number: index + 1 })}
       trailing={
         <span
           className={`rounded-full px-3 py-1.5 text-[10px] font-bold ${
@@ -475,21 +489,21 @@ function QuizQuestionCard({
                 : 'bg-[#f0efff] text-[#5b50bb]'
           }`}
         >
-          {DIFFICULTY_LABELS[question.difficulty]}
+          {t(DIFFICULTY_KEYS[question.difficulty])}
         </span>
       }
     >
       {notice && <div className="mb-4"><NoticeBanner notice={notice} /></div>}
       <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold text-[#75809a]">
         <span>
-          Question {index + 1} of {total}
+          {t('quiz.questionOf', { number: index + 1, total })}
         </span>
-        <span>{answeredCount} of {total} answered</span>
+        <span>{t('quiz.answeredOf', { answered: answeredCount, total })}</span>
       </div>
       <div
         className="mt-2 h-2 overflow-hidden rounded-full bg-[#eceef5]"
         role="progressbar"
-        aria-label="Quiz progress"
+        aria-label={t('quiz.progressAria')}
         aria-valuemin={0}
         aria-valuemax={total}
         aria-valuenow={index + 1}
@@ -501,7 +515,7 @@ function QuizQuestionCard({
         />
       </div>
 
-      <p className="mt-6 text-[16px] font-bold leading-[1.65] text-[#293354] sm:text-[18px]">
+      <p className="mt-6 text-[16px] font-bold leading-[1.65] text-[#293354] sm:text-[18px]" data-content="quiz">
         {question.prompt}
       </p>
 
@@ -530,7 +544,7 @@ function QuizQuestionCard({
               >
                 {option.id}
               </span>
-              <span>{option.text}</span>
+              <span data-content="quiz">{option.text}</span>
             </button>
           );
         })}
@@ -541,8 +555,8 @@ function QuizQuestionCard({
         className="mt-3 min-h-5 text-[10px] font-semibold text-[#626b85]"
       >
         {selectedOptionId
-          ? 'Answer selected. You can change it before submitting the quiz.'
-          : 'Choose one answer. You can return to this question before submitting.'}
+          ? t('quiz.answerSelected')
+          : t('quiz.chooseOne')}
       </p>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[#edf0f5] pt-4">
@@ -553,7 +567,7 @@ function QuizQuestionCard({
           className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-[#e2e5ef] px-4 text-[11px] font-bold text-[#52607c] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7] disabled:cursor-not-allowed disabled:opacity-40"
           data-testid="button-quiz-previous"
         >
-          <ChevronLeft size={15} /> Previous
+          <ChevronLeft size={15} /> {t('quiz.previous')}
         </button>
         {isLastQuestion ? (
           <button
@@ -562,7 +576,7 @@ function QuizQuestionCard({
             className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#5144c7] px-5 text-[12px] font-bold text-white transition-colors hover:bg-[#4337b0]"
             data-testid="button-submit-quiz"
           >
-            Finish quiz <CheckCircle2 size={15} />
+            {t('quiz.finish')} <CheckCircle2 size={15} />
           </button>
         ) : (
           <button
@@ -571,7 +585,7 @@ function QuizQuestionCard({
             className="inline-flex min-h-10 items-center gap-1.5 rounded-full bg-[#5144c7] px-4 text-[11px] font-bold text-white transition-colors hover:bg-[#4337b0]"
             data-testid="button-quiz-next"
           >
-            Next <ChevronRight size={15} />
+            {t('quiz.next')} <ChevronRight size={15} />
           </button>
         )}
       </div>
@@ -580,6 +594,7 @@ function QuizQuestionCard({
 }
 
 function ReviewList({ items }: { items: QuizAnswerReview[] }) {
+  const { t } = useI18n();
   return (
     <div className="space-y-3">
       {items.map(({ question, selectedOptionId }, index) => {
@@ -592,7 +607,7 @@ function ReviewList({ items }: { items: QuizAnswerReview[] }) {
           >
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#7a849b]">
-                Question {index + 1} · {question.topic}
+                {t('quiz.reviewQuestion', { number: index + 1, topic: question.topic })}
               </p>
               <span
                 className={`rounded-full px-2.5 py-1 text-[9px] font-bold ${
@@ -601,10 +616,10 @@ function ReviewList({ items }: { items: QuizAnswerReview[] }) {
                     : 'bg-[#fff0ec] text-[#a6533a]'
                 }`}
               >
-                {isCorrect ? 'Correct' : 'Review this one'}
+                {isCorrect ? t('quiz.correctBadge') : t('quiz.reviewThis')}
               </span>
             </div>
-            <p className="mt-3 text-[13px] font-bold leading-relaxed text-[#293354]">
+            <p className="mt-3 text-[13px] font-bold leading-relaxed text-[#293354]" data-content="quiz">
               {question.prompt}
             </p>
             <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -624,31 +639,35 @@ function ReviewList({ items }: { items: QuizAnswerReview[] }) {
                     }`}
                   >
                     <span className="mr-1 font-extrabold">{option.id}.</span>
-                    {option.text}
+                    <span data-content="quiz">{option.text}</span>
                     {isAnswer && (
-                      <span className="ml-1 font-bold">(correct)</span>
+                      <span className="ml-1 font-bold">{t('quiz.correctMark')}</span>
                     )}
                     {isChosenWrong && (
-                      <span className="ml-1 font-bold">(your answer)</span>
+                      <span className="ml-1 font-bold">{t('quiz.yourAnswerMark')}</span>
                     )}
                   </div>
                 );
               })}
             </div>
             <p className="mt-3 text-[10px] leading-relaxed text-[#68738d]">
-              <span className="font-bold text-[#46516f]">Your answer:</span>{' '}
-              {selectedOptionId
-                ? `${selectedOptionId}. ${getOptionText(question, selectedOptionId)}`
-                : 'No answer'}
+              <span className="font-bold text-[#46516f]">{t('quiz.yourAnswer')}</span>{' '}
+              {selectedOptionId ? (
+                <span data-content="quiz">{`${selectedOptionId}. ${getOptionText(question, selectedOptionId)}`}</span>
+              ) : (
+                t('quiz.noAnswer')
+              )}
             </p>
             <p className="mt-1 text-[10px] leading-relaxed text-[#68738d]">
-              <span className="font-bold text-[#46516f]">Correct answer:</span>{' '}
-              {question.correctOptionId}.{' '}
-              {getOptionText(question, question.correctOptionId)}
+              <span className="font-bold text-[#46516f]">{t('quiz.correctAnswer')}</span>{' '}
+              <span data-content="quiz">
+                {question.correctOptionId}.{' '}
+                {getOptionText(question, question.correctOptionId)}
+              </span>
             </p>
             <p className="mt-2 rounded-[10px] bg-[#f5f6fb] px-3 py-2.5 text-[10px] leading-relaxed text-[#68738d]">
-              <span className="font-bold text-[#46516f]">Explanation:</span>{' '}
-              {question.explanation}
+              <span className="font-bold text-[#46516f]">{t('quiz.explanation')}</span>{' '}
+              <span data-content="quiz">{question.explanation}</span>
             </p>
           </article>
         );
@@ -666,22 +685,23 @@ function QuizResults({
   onRetry: () => void;
   onNewQuiz: () => void;
 }) {
+  const { t, subject: subjectLabel } = useI18n();
   const incorrect = attempt.questionCount - attempt.score;
   return (
     <div className="space-y-5">
       <SectionCard
-        eyebrow={`${attempt.subject} · Grade ${attempt.grade}`}
-        title="Quiz results"
+        eyebrow={t('quiz.subjectGrade', { subject: subjectLabel(attempt.subject), grade: attempt.grade })}
+        title={t('quiz.resultsTitle')}
         trailing={
           <span className="rounded-full bg-[#e8e6fb] px-3 py-1.5 text-[10px] font-bold text-[#5b50bb]">
-            Sample quiz
+            {t('quiz.sampleQuiz')}
           </span>
         }
       >
         <div className="grid gap-3 sm:grid-cols-3">
           <div className="rounded-[15px] bg-[#f5f3ff] p-4">
             <p className="text-[10px] font-bold uppercase tracking-[.1em] text-[#6860b7]">
-              Score
+              {t('quiz.score')}
             </p>
             <p className="font-display mt-1 text-[28px] font-extrabold tracking-[-.05em] text-[#27234e]">
               {attempt.score}/{attempt.questionCount}
@@ -689,7 +709,7 @@ function QuizResults({
           </div>
           <div className="rounded-[15px] bg-[#eff9f5] p-4">
             <p className="text-[10px] font-bold uppercase tracking-[.1em] text-[#38836b]">
-              Correct
+              {t('quiz.correct')}
             </p>
             <p className="font-display mt-1 text-[28px] font-extrabold tracking-[-.05em] text-[#236a54]">
               {attempt.score}
@@ -697,7 +717,7 @@ function QuizResults({
           </div>
           <div className="rounded-[15px] bg-[#fff5f3] p-4">
             <p className="text-[10px] font-bold uppercase tracking-[.1em] text-[#a2604e]">
-              Incorrect
+              {t('quiz.incorrect')}
             </p>
             <p className="font-display mt-1 text-[28px] font-extrabold tracking-[-.05em] text-[#8b4a3b]">
               {incorrect}
@@ -707,7 +727,7 @@ function QuizResults({
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-[14px] border border-[#e8e9f1] px-4 py-3">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[.1em] text-[#7b849b]">
-              Percentage
+              {t('quiz.percentage')}
             </p>
             <p className="font-display mt-0.5 text-[24px] font-extrabold tracking-[-.04em] text-[#20294d]">
               {attempt.percentage}%
@@ -720,7 +740,7 @@ function QuizResults({
               className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#d9d6f3] px-4 text-[11px] font-bold text-[#5144c7] transition-colors hover:bg-[#f6f4ff]"
               data-testid="button-retry-quiz"
             >
-              <RotateCcw size={14} /> Retry quiz
+              <RotateCcw size={14} /> {t('quiz.retry')}
             </button>
             <button
               type="button"
@@ -728,18 +748,18 @@ function QuizResults({
               className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#5144c7] px-4 text-[11px] font-bold text-white transition-colors hover:bg-[#4337b0]"
               data-testid="button-new-quiz"
             >
-              New quiz <ArrowRight size={14} />
+              {t('quiz.newQuiz')} <ArrowRight size={14} />
             </button>
           </div>
         </div>
       </SectionCard>
 
       <SectionCard
-        eyebrow="Answer review"
-        title="Learn from each question"
+        eyebrow={t('quiz.reviewEyebrow')}
+        title={t('quiz.reviewTitle')}
         trailing={
           <span className="text-[10px] font-semibold text-[#79839a]">
-            {attempt.questionCount} explanations
+            {t('quiz.explanations', { count: attempt.questionCount })}
           </span>
         }
       >
@@ -758,6 +778,7 @@ function QuizHistory({
   expandedAttemptId: string | null;
   onToggle: (id: string) => void;
 }) {
+  const { t, locale, subject: subjectLabel } = useI18n();
   const average = attempts.length
     ? Math.round(
         attempts.reduce((total, attempt) => total + attempt.percentage, 0) /
@@ -767,18 +788,18 @@ function QuizHistory({
 
   return (
     <SectionCard
-      eyebrow="Latest 30 saved on this device"
-      title="Previous attempts"
+      eyebrow={t('quiz.historyEyebrow')}
+      title={t('quiz.historyTitle')}
       trailing={
         <span className="rounded-full bg-[#f2f4f9] px-3 py-1.5 text-[10px] font-bold text-[#626b85]">
-          {attempts.length} saved
+          {t('quiz.saved', { count: attempts.length })}
         </span>
       }
     >
       <div className="mb-4 grid grid-cols-2 gap-3">
         <div className="rounded-[13px] bg-[#f5f6fb] p-3.5">
           <p className="text-[9px] font-bold uppercase tracking-[.1em] text-[#7b849b]">
-            Completed quizzes
+            {t('quiz.completedQuizzes')}
           </p>
           <p className="font-display mt-1 text-[21px] font-extrabold text-[#20294d]">
             {attempts.length}
@@ -786,7 +807,7 @@ function QuizHistory({
         </div>
         <div className="rounded-[13px] bg-[#f5f6fb] p-3.5">
           <p className="text-[9px] font-bold uppercase tracking-[.1em] text-[#7b849b]">
-            Average score
+            {t('quiz.averageScore')}
           </p>
           <p className="font-display mt-1 text-[21px] font-extrabold text-[#20294d]">
             {attempts.length ? `${average}%` : '—'}
@@ -800,10 +821,10 @@ function QuizHistory({
             <BarChart3 size={18} />
           </div>
           <p className="mt-3 text-[12px] font-bold text-[#46516f]">
-            Your attempts will show here
+            {t('quiz.historyEmptyTitle')}
           </p>
           <p className="mt-1 text-[10px] leading-relaxed text-[#858da2]">
-            Finish a quiz to save its score and question review on this device.
+            {t('quiz.historyEmptyText')}
           </p>
         </div>
       ) : (
@@ -819,13 +840,13 @@ function QuizHistory({
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <p className="text-[12px] font-bold text-[#293354]">
-                      {attempt.subject} · Grade {attempt.grade}
+                      {t('quiz.subjectGrade', { subject: subjectLabel(attempt.subject), grade: attempt.grade })}
                     </p>
                     <p className="mt-1 text-[10px] text-[#7b849b]">
                       {attempt.topic === ALL_QUIZ_TOPICS
-                        ? 'All topics'
+                        ? t('quiz.allTopics')
                         : attempt.topic}{' '}
-                      · {formatAttemptDate(attempt.completedAt)}
+                      · {formatAttemptDate(attempt.completedAt, locale)}
                     </p>
                   </div>
                   <div className="text-right">
@@ -833,7 +854,7 @@ function QuizHistory({
                       {attempt.percentage}%
                     </p>
                     <p className="text-[9px] font-semibold text-[#7b849b]">
-                      {attempt.score}/{attempt.questionCount} correct
+                      {t('quiz.correctCount', { score: attempt.score, total: attempt.questionCount })}
                     </p>
                   </div>
                 </div>
@@ -844,7 +865,7 @@ function QuizHistory({
                   className="mt-3 inline-flex min-h-8 items-center gap-1.5 rounded-full bg-[#f5f3ff] px-3 text-[10px] font-bold text-[#5144c7] hover:bg-[#eeebff]"
                   data-testid={`button-review-attempt-${attempt.id}`}
                 >
-                  {isExpanded ? 'Hide review' : 'Review answers'}
+                  {isExpanded ? t('quiz.hideReview') : t('quiz.reviewAnswers')}
                   {isExpanded ? (
                     <ChevronLeft size={13} className="-rotate-90" />
                   ) : (
@@ -878,6 +899,7 @@ function QuizInfoSidebar({
           attempts.length,
       )
     : null;
+  const { t } = useI18n();
 
   return (
     <aside className="space-y-5">
@@ -888,22 +910,22 @@ function QuizInfoSidebar({
           </span>
           <div>
             <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#75dfe0]">
-              Your quiz snapshot
+              {t('quiz.snapshot')}
             </p>
             <p className="mt-0.5 text-[12px] font-bold text-white">
-              Progress on this device
+              {t('quiz.snapshotSub')}
             </p>
           </div>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-2.5">
           <div className="rounded-[12px] bg-white/[.08] p-3">
-            <p className="text-[9px] font-bold text-[#c3cbe3]">Attempts</p>
+            <p className="text-[9px] font-bold text-[#c3cbe3]">{t('quiz.attempts')}</p>
             <p className="font-display mt-1 text-[21px] font-extrabold">
               {attempts.length}
             </p>
           </div>
           <div className="rounded-[12px] bg-white/[.08] p-3">
-            <p className="text-[9px] font-bold text-[#c3cbe3]">Average</p>
+            <p className="text-[9px] font-bold text-[#c3cbe3]">{t('quiz.average')}</p>
             <p className="font-display mt-1 text-[21px] font-extrabold">
               {average === null ? '—' : `${average}%`}
             </p>
@@ -911,7 +933,7 @@ function QuizInfoSidebar({
         </div>
         {activeQuestionCount > 0 && (
           <p className="mt-3 text-[10px] leading-relaxed text-[#c3cbe3]">
-            Current set: {activeQuestionCount} questions
+            {t('quiz.currentSet', { count: activeQuestionCount })}
           </p>
         )}
       </section>
@@ -921,34 +943,34 @@ function QuizInfoSidebar({
           <CircleHelp size={19} />
         </div>
         <h2 className="font-display mt-4 text-[16px] font-extrabold tracking-[-.03em] text-[#20294d]">
-          Practice one step at a time
+          {t('quiz.tipsTitle')}
         </h2>
         <ul className="mt-3 space-y-3 text-[10px] leading-relaxed text-[#707992]">
           <li className="flex gap-2">
             <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5a4bc9]" />
-            Choose one answer, and change it any time before submitting.
+            {t('quiz.tip1')}
           </li>
           <li className="flex gap-2">
             <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22a6b0]" />
-            Move between questions; unanswered items are flagged before results.
+            {t('quiz.tip2')}
           </li>
           <li className="flex gap-2">
             <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5a4bc9]" />
-            Review explanations after finishing to decide what to study next.
+            {t('quiz.tip3')}
           </li>
         </ul>
       </section>
 
       <div className="rounded-[18px] border border-[#e3e6ef] bg-white px-4 py-4 text-[10px] leading-relaxed text-[#7b849b]">
         <Sparkles size={15} className="mb-2 text-[#5144c7]" />
-        Sample questions are included for practice. The quiz is rule-based and
-        does not use live AI.
+        {t('quiz.sidebarNote')}
       </div>
     </aside>
   );
 }
 
 export default function FunctionalQuizCenterPage() {
+  const { t } = useI18n();
   const initialStorage = useRef<StorageLoadResult | null>(null);
   if (initialStorage.current === null) {
     initialStorage.current = loadQuizAttempts();
@@ -985,9 +1007,7 @@ export default function FunctionalQuizCenterPage() {
       );
     } catch {
       canPersistRef.current = false;
-      setStorageMessage(
-        'Browser storage is full or unavailable. This result is visible now but may not be saved.',
-      );
+      setStorageMessage('quiz.storageFull');
     }
   }, [attempts]);
 
@@ -1009,7 +1029,8 @@ export default function FunctionalQuizCenterPage() {
         nextSetup.questionCount = adjustedCount;
         nextNotice = {
           tone: 'info',
-          message: `This topic has ${availableQuestions} unique sample questions, so the quiz length was adjusted to ${adjustedCount}.`,
+          key: 'quiz.adjusted',
+          vars: { available: availableQuestions, count: adjustedCount },
         };
       }
     }
@@ -1028,7 +1049,7 @@ export default function FunctionalQuizCenterPage() {
     if (pool.length < setup.questionCount) {
       setNotice({
         tone: 'error',
-        message: 'There are not enough unique sample questions for that quiz length.',
+        key: 'quiz.notEnoughError',
       });
       return;
     }
@@ -1043,7 +1064,9 @@ export default function FunctionalQuizCenterPage() {
     submitLockRef.current = false;
     setNotice({
       tone: 'success',
-      message: `Your ${setup.questionCount}-question ${setup.subject} sample quiz is ready.`,
+      key: 'quiz.ready',
+      vars: { count: setup.questionCount, subject: setup.subject },
+      subjectVar: true,
     });
   }
 
@@ -1073,9 +1096,8 @@ export default function FunctionalQuizCenterPage() {
     if (unansweredCount > 0) {
       setNotice({
         tone: 'error',
-        message: `Answer all questions before finishing. ${unansweredCount} ${
-          unansweredCount === 1 ? 'question is' : 'questions are'
-        } still unanswered.`,
+        key: 'quiz.unanswered_other',
+        plural: { base: 'quiz.unanswered', count: unansweredCount },
       });
       return;
     }
@@ -1107,7 +1129,7 @@ export default function FunctionalQuizCenterPage() {
     setAttempts((previous) => [attempt, ...previous].slice(0, MAX_SAVED_ATTEMPTS));
     setNotice({
       tone: 'success',
-      message: 'Quiz complete. Your score and answer explanations are ready.',
+      key: 'quiz.complete',
     });
   }
 
@@ -1120,7 +1142,7 @@ export default function FunctionalQuizCenterPage() {
     submitLockRef.current = false;
     setNotice({
       tone: 'info',
-      message: 'Retry started. Your previous attempt remains in history.',
+      key: 'quiz.retryStarted',
     });
   }
 
@@ -1148,7 +1170,7 @@ export default function FunctionalQuizCenterPage() {
           className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e2e5ef] bg-white px-4 text-[12px] font-bold text-[#35405e] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7]"
           data-testid="link-back-home"
         >
-          <ArrowLeft size={15} /> Back to home
+          <ArrowLeft size={15} /> {t('common.backHome')}
         </Link>
 
         <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#18224d] px-6 py-8 text-white sm:px-9 sm:py-10">
@@ -1160,14 +1182,13 @@ export default function FunctionalQuizCenterPage() {
             </span>
             <div>
               <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#75dfe0] sm:text-[11px]">
-                Practice with purpose
+                {t('quiz.heroEyebrow')}
               </p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.055em] sm:text-[44px]">
-                Quiz Center
+                {t('quiz.title')}
               </h1>
               <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#c3cbe3] sm:text-[15px]">
-                Build a short practice set, work through one question at a
-                time, and use clear explanations to plan what to review next.
+                {t('quiz.heroText')}
               </p>
             </div>
           </div>
@@ -1175,16 +1196,16 @@ export default function FunctionalQuizCenterPage() {
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[11px] font-semibold text-[#7e879e]">
-            Questions are curated examples for grades 9–12.
+            {t('quiz.curatedNote')}
           </p>
           <span className="rounded-full bg-[#e8e6fb] px-3 py-1.5 text-[10px] font-bold text-[#5b50bb]">
-            No live AI · No account
+            {t('quiz.noLiveAi')}
           </span>
         </div>
 
         {storageMessage && (
           <div className="mt-4">
-            <NoticeBanner notice={{ tone: 'info', message: storageMessage }} />
+            <NoticeBanner notice={{ tone: 'info', key: storageMessage }} />
           </div>
         )}
 
@@ -1247,14 +1268,14 @@ export default function FunctionalQuizCenterPage() {
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="text-[11px] text-[#7e879e]">
-            AI Exam Survival · Quiz Center sample practice
+            {t('quiz.footer')}
           </p>
           <Link
             href="/"
             className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]"
             data-testid="link-footer-home"
           >
-            <ArrowLeft size={13} /> Return to the homepage
+            <ArrowLeft size={13} /> {t('common.returnHome')}
           </Link>
         </div>
       </footer>
