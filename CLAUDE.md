@@ -45,10 +45,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - English mode must look exactly as before when adding translations.
 
 ## Where we are
-- Done and approved: Stages 1–8B (8B waiting for the teacher's tablet test when moved to GitHub).
+- Done: Stages 1–8B (1–8A tested and approved by the teacher; 8B finished, tablet test still to be confirmed).
 - Next (planned, NOT approved yet): Stage 9 – publish as a website on GitHub Pages.
   Plan: tag `backup/before-stage-09`; work on branch `stage-09-website`; GitHub Actions workflow that builds
   `artifacts/ai-exam-survival` with `BASE_PATH=/ai-exam-survival/` and deploys `dist/public`; 404.html fallback so
   refreshing a sub-page works; fix outdated homepage texts ("features are not live yet", "concept preview",
   "Tool previews only") in TR and EN; check page title/description/icon; run all tests; merge to `main` only after approval.
-  The teacher must make the repository Public and set Settings → Pages → Source to "GitHub Actions" (she does this herself).
+  The teacher must make the repository Public and set Settings → Pages → Source to "GitHub Actions" (the teacher does this; Claude cannot change repository settings).
