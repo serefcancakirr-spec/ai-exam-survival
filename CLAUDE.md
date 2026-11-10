@@ -19,7 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 95/95; browser stage01 59 pass + 3 known old failures, all other suites 0 failures.
+  Expected today: logic 95/95; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18: website build served like GitHub Pages).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -44,11 +45,13 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Never translate text a student typed. New example data is created in the language in use.
 - English mode must look exactly as before when adding translations.
 
+## Website (Stage 9)
+- `.github/workflows/deploy-pages.yml` builds with `BASE_PATH=/ai-exam-survival/` and deploys `dist/public` on every push to `main`.
+- `404.html` is a copy of `index.html` (made in the workflow) so refreshing a sub-page works on GitHub Pages.
+- Address: https://serefcancakirr-spec.github.io/ai-exam-survival/ (repository is Public; Pages source is "GitHub Actions").
+- Use `%BASE_URL%` in `index.html` and wouter `Link` in the app; never hard-code a leading `/` for files.
+
 ## Where we are
 - Done: Stages 1–8B (1–8A tested and approved by the teacher; 8B finished, tablet test still to be confirmed).
-- Next (planned, NOT approved yet): Stage 9 – publish as a website on GitHub Pages.
-  Plan: tag `backup/before-stage-09`; work on branch `stage-09-website`; GitHub Actions workflow that builds
-  `artifacts/ai-exam-survival` with `BASE_PATH=/ai-exam-survival/` and deploys `dist/public`; 404.html fallback so
-  refreshing a sub-page works; fix outdated homepage texts ("features are not live yet", "concept preview",
-  "Tool previews only") in TR and EN; check page title/description/icon; run all tests; merge to `main` only after approval.
-  The teacher must make the repository Public and set Settings → Pages → Source to "GitHub Actions" (the teacher does this; Claude cannot change repository settings).
+- Stage 9 (website): finished and tested on the work branch, backup tag `backup/before-stage-09`.
+  Waiting for the teacher's approval; the site goes live only after the branch is merged into `main`.

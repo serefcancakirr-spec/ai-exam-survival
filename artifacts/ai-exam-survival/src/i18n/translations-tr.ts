@@ -74,7 +74,7 @@ export const TR: Record<MessageKey, string> = {
   'home.flashNote': 'Küçük tekrarlar bilgiyi kalıcı yapar.',
   'home.coachEyebrow': 'Takıldığın yerde nazik bir destek',
   'home.coachText': 'Aklındaki konular için destekleyici çalışma önerilerini ve sade açıklamaları keşfet.',
-  'home.coachNote': 'Bir konsept önizlemesi. Henüz canlı yapay zekâ özelliği yok.',
+  'home.coachNote': 'Kurallara dayalı öneriler. Canlı yapay zekâ yok, cihazında çalışır.',
   'home.progressEyebrow': 'Ne kadar yol aldığını gör',
   'home.progressText': 'Emeğinin derslere, oturumlara ve kendine koyduğun hedeflere nasıl yansıdığını gör.',
   'home.progressNote': 'İlerleme, nottan daha fazlasıdır.',
@@ -96,9 +96,9 @@ export const TR: Record<MessageKey, string> = {
   'home.how4Text': 'Haftan değiştikçe planın da değişebilir.',
   'home.ctaEyebrow': 'Mükemmel bir düzen gerekmez',
   'home.ctaTitle': 'Daha net bir sonraki adım burada başlar.',
-  'home.ctaText': 'Önizlemelere göz at ve bu okul haftasını daha yönetilebilir kılacak küçük bir değişiklik bul.',
-  'home.ctaBrowse': 'Araç önizlemelerine göz at',
-  'home.footerText': 'Sınavlara daha düzenli hazırlanmanın ilk hali. Yalnızca araç önizlemeleri; özellikler henüz canlı değil.',
+  'home.ctaText': 'Araçlara göz at ve bu okul haftasını daha yönetilebilir kılacak küçük bir değişiklik bul.',
+  'home.ctaBrowse': 'Araçlara göz at',
+  'home.footerText': 'Sınavlara daha düzenli hazırlanmanın yolu. Ücretsiz; çalışmaların yalnızca bu cihazdaki tarayıcıda kaydedilir.',
   'home.footerExplore': 'Araçları keşfet',
 
   // ---------- sayfa bulunamadı ----------
