@@ -18,6 +18,9 @@ Reply in the language the teacher writes in (usually Turkish).
 - Run locally: `pnpm install`, then in `artifacts/ai-exam-survival`:
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
+- All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
+  Expected today: logic 95/95; browser stage01 59 pass + 3 known old failures, all other suites 0 failures.
+  Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
 ## Saved data (localStorage) – never rename, never change the shape
@@ -40,3 +43,12 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Keep in English: quiz questions/answers/explanations/topics, flashcard card text and starter deck names.
 - Never translate text a student typed. New example data is created in the language in use.
 - English mode must look exactly as before when adding translations.
+
+## Where we are
+- Done and approved: Stages 1–8B (8B waiting for the teacher's tablet test when moved to GitHub).
+- Next (planned, NOT approved yet): Stage 9 – publish as a website on GitHub Pages.
+  Plan: tag `backup/before-stage-09`; work on branch `stage-09-website`; GitHub Actions workflow that builds
+  `artifacts/ai-exam-survival` with `BASE_PATH=/ai-exam-survival/` and deploys `dist/public`; 404.html fallback so
+  refreshing a sub-page works; fix outdated homepage texts ("features are not live yet", "concept preview",
+  "Tool previews only") in TR and EN; check page title/description/icon; run all tests; merge to `main` only after approval.
+  The teacher must make the repository Public and set Settings → Pages → Source to "GitHub Actions" (she does this herself).
