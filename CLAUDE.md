@@ -53,5 +53,6 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 
 ## Where we are
 - Done: Stages 1–8B (1–8A tested and approved by the teacher; 8B finished, tablet test still to be confirmed).
-- Stage 9 (website): finished and tested on the work branch, backup tag `backup/before-stage-09`.
-  Waiting for the teacher's approval; the site goes live only after the branch is merged into `main`.
+- Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
+  The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
+- Next: no stage planned yet. Ask the teacher before starting anything new.
