@@ -1,0 +1,69 @@
+# Stage 9: publishes AI Exam Survival as a website on GitHub Pages.
+# Runs every time the main branch changes (or by hand from the Actions tab).
+# Site address: https://<owner>.github.io/ai-exam-survival/
+name: Deploy website to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        working-directory: artifacts/ai-exam-survival
+        run: PORT=4180 BASE_PATH=/ai-exam-survival/ pnpm run typecheck
+
+      - name: Build
+        working-directory: artifacts/ai-exam-survival
+        env:
+          PORT: '4180'
+          BASE_PATH: /ai-exam-survival/
+          NODE_ENV: production
+        run: pnpm run build
+
+      # GitHub Pages shows 404.html for any address it has no file for (for example after
+      # refreshing /ai-exam-survival/quiz-center). A copy of the app opens the right page instead.
+      - name: Add 404.html fallback
+        run: cp artifacts/ai-exam-survival/dist/public/index.html artifacts/ai-exam-survival/dist/public/404.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: artifacts/ai-exam-survival/dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
