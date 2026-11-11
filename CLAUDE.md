@@ -70,6 +70,6 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
   The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
 - Stage 10 (Menti mascot): done, merged into `main` (PR #2), deployed, tested on the tablet and approved by the teacher.
-- Stage 11 (Turkish quiz questions and starter decks): built and tested on the work branch, backup tag
-  `backup/before-stage-11` (local only). Waiting for the teacher's check of the translations and approval to merge.
+- Stage 11 (Turkish quiz questions and starter decks): done, merged into `main` (PR #3), deployed, tested on the tablet
+  and approved by the teacher.
 - Next: no stage planned yet. Ask the teacher before starting anything new.
