@@ -27,6 +27,7 @@ import {
   type QuizQuestionCount,
   type QuizSubject,
 } from './quiz-question-bank';
+import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -698,6 +699,13 @@ function QuizResults({
           </span>
         }
       >
+        <Menti
+          pose={attempt.percentage >= 70 ? 'cheer' : 'encourage'}
+          size={84}
+          message={attempt.percentage >= 70 ? t('menti.quizHigh', { percentage: attempt.percentage }) : t('menti.quizLow')}
+          testId="menti-quiz"
+          className="mb-4"
+        />
         <div className="grid gap-3 sm:grid-cols-3">
           <div className="rounded-[15px] bg-[#f5f3ff] p-4">
             <p className="text-[10px] font-bold uppercase tracking-[.1em] text-[#6860b7]">

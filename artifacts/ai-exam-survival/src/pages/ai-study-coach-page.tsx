@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, Check, Clipboard, Lightbulb, MessageCircle, RotateCcw, Sparkles, Target } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Clipboard, Lightbulb, RotateCcw, Sparkles, Target } from 'lucide-react';
 import { Link } from 'wouter';
 import { formatExamDate, getCountdown, getTodayKey } from './exam-calendar-model';
 import {
@@ -25,6 +25,7 @@ import {
   type CoachRequest,
   type StudyCoachData,
 } from './study-coach-model';
+import { Menti, MentiArt } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 
 // ---------- shared styles (match the other tools) ----------
@@ -93,7 +94,7 @@ function readCalendarRaw() {
 // ---------- page layout pieces ----------
 
 function CoachFrame({ children }: { children: ReactNode }) {
-  const { tx } = useI18n();
+  const { t, tx } = useI18n();
   return (
     <div className="page-shell min-h-[100dvh] bg-[#f5f6fb]">
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
@@ -108,9 +109,17 @@ function CoachFrame({ children }: { children: ReactNode }) {
         <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#18224d] px-6 py-8 text-white sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
           <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5944d2]/25" />
+          <Menti
+            pose="think"
+            size={128}
+            bubble="left"
+            message={t('menti.coach')}
+            testId="menti-coach"
+            className="absolute bottom-6 right-8 z-10 hidden lg:flex"
+          />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#75dfe0] sm:h-14 sm:w-14">
-              <MessageCircle size={22} />
+            <span className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[15px] bg-white/10 p-1 sm:h-14 sm:w-14 lg:hidden" data-testid="menti-coach-face">
+              <MentiArt pose="think" faceOnly title={t('menti.label')} />
             </span>
             <div>
               <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#75dfe0] sm:text-[11px]">

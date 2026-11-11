@@ -20,7 +20,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
   Expected today: logic 95/95; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18: website build served like GitHub Pages).
+  (stage09-test 18/18: website build served like GitHub Pages; stage10-test 23/23: Menti).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -51,8 +51,20 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Address: https://serefcancakirr-spec.github.io/ai-exam-survival/ (repository is Public; Pages source is "GitHub Actions").
 - Use `%BASE_URL%` in `index.html` and wouter `Link` in the app; never hard-code a leading `/` for files.
 
+## Menti, the mascot (Stage 10)
+- A friendly blue cow drawn as SVG in `src/components/menti.tsx` (based on the teacher's picture).
+  `<Menti pose size message bubble testId />` = Menti + speech bubble; `<MentiArt pose faceOnly />` = drawing only.
+  Poses: wave, think, cheer, encourage, surprised, point, clap. Animations: `menti-*` classes in `index.css`, off with reduced motion.
+- Where: home hero (wave), AI Study Coach (think; face icon on narrow screens), Quiz results (cheer at 70% or more,
+  otherwise encourage), Flashcards round finished (clap), empty Study Planner / Exam Calendar / Progress Tracker (point/wave),
+  page not found (surprised + home button). Texts: `menti.*` keys in translations-en.ts / translations-tr.ts.
+- Tab icon `public/favicon.svg` is Menti's face; rebuild it with `bash scripts/menti/make-favicon.sh`.
+- Menti is decoration only: it never reads or writes saved data.
+
 ## Where we are
 - Done: Stages 1–8B (1–8A tested and approved by the teacher; 8B finished, tablet test still to be confirmed).
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
   The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
+- Stage 10 (Menti mascot): drawing approved by the teacher; built and tested on the work branch,
+  backup tag `backup/before-stage-10` (local only). Waiting for the teacher's approval to open a PR and merge.
 - Next: no stage planned yet. Ask the teacher before starting anything new.

@@ -105,6 +105,19 @@ export const TR: Record<MessageKey, string> = {
   'notFound.title': '404 Sayfa Bulunamadı',
   'notFound.text': 'Bu adreste bir sayfa yok. Üstteki menüden bir araç seçebilirsin.',
 
+  // ---------- Menti, maskot (Stage 10) ----------
+  'menti.label': 'Menti, AI Exam Survival maskotu',
+  'menti.homeHello': 'Merhaba, ben Menti! Bugün birlikte çalışalım mı?',
+  'menti.coach': 'Bana sınavını anlat, birlikte bir plan yapalım.',
+  'menti.quizHigh': 'Harika iş! %{percentage} aldın. Böyle devam!',
+  'menti.quizLow': 'Pes etme! Aşağıdaki cevaplara bak ve tekrar dene.',
+  'menti.flashDone': 'Tur bitti! Aferin sana.',
+  'menti.plannerEmpty': 'Hadi ilk haftanı birlikte planlayalım!',
+  'menti.calendarEmpty': 'Hadi ilk sınavını ekleyelim!',
+  'menti.progressEmpty': 'Biraz çalış, ilerlemeni burada göstereyim.',
+  'menti.notFound': 'Hoppala! Böyle bir sayfa yok.',
+  'menti.goHome': 'Ana sayfaya git',
+
   // ---------- ders adları (yalnızca görünüm; kayıtlı değerler İngilizce kalır) ----------
   'subject.Algebra I': 'Cebir I',
   'subject.Algebra II': 'Cebir II',

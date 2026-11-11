@@ -55,6 +55,7 @@ import {
   type StepDraft,
 } from './exam-prep-model';
 import type { StudyPlannerData } from './study-planner-model';
+import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 
 // ---------- shared styles (match the other tools) ----------
@@ -808,7 +809,7 @@ export default function ExamCalendarPage() {
 
           {upcoming.length === 0 ? (
             <div className="rounded-[16px] border border-dashed border-[#dcdfea] bg-[#fafbfe] px-5 py-8 text-center" data-testid="upcoming-empty">
-              <CalendarDays className="mx-auto text-[#8d83df]" size={24} />
+              <Menti pose="point" size={76} message={t('menti.calendarEmpty')} testId="menti-calendar" className="mb-1 justify-center" />
               <p className="mt-3 text-[13px] font-bold text-[#47516c]">{tx('No upcoming exams.')}</p>
               <p className="mx-auto mt-1 max-w-[380px] text-[11px] leading-relaxed text-[#8790a4]">
                 {tx('Add your next exam to start the countdown.')}
