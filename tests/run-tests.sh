@@ -34,13 +34,18 @@ done
 echo "Known: stage01-test has 3 old placeholder checks that fail by design since Stages 2, 6 and 7."
 pkill -f "vite preview --config vite.config.ts --host 0.0.0.0 --port $PORT" 2>/dev/null || true
 
-echo "== 4. website test (Stage 9): built exactly like the GitHub Pages workflow, served like GitHub Pages"
+echo "== 4. website tests (Stages 9 and 12): built exactly like the GitHub Pages workflow, served like GitHub Pages"
+# The workflow builds with BASE_PATH=/ai-exam-survival/ (github.io address) or BASE_PATH=/ (custom domain).
 PAGES_PORT=$((PORT + 10))
-(cd "$APP" && PORT=$PORT BASE_PATH=/ai-exam-survival/ NODE_ENV=production pnpm run build --outDir "$OUT/pages" --emptyOutDir > "$OUT/pages-build.log" 2>&1) || { echo "website build failed (see $OUT/pages-build.log)"; exit 1; }
-cp "$OUT/pages/index.html" "$OUT/pages/404.html"
-node "$T/browser/pages-server.cjs" "$OUT/pages" "$PAGES_PORT" > "$OUT/pages-server.log" 2>&1 &
-PAGES_PID=$!
-sleep 1
-node "$T/browser/stage09-test.cjs" "http://127.0.0.1:$PAGES_PORT/ai-exam-survival" > "$OUT/stage09-test.log" 2>&1
-echo "stage09-test: $(grep -c '^PASS' "$OUT/stage09-test.log") pass, $(grep -c '^FAIL' "$OUT/stage09-test.log") fail"
-{ kill "$PAGES_PID"; wait "$PAGES_PID"; } 2>/dev/null || true
+for MODE in subfolder domain; do
+  if [ "$MODE" = subfolder ]; then BP=/ai-exam-survival/; PREFIX=/ai-exam-survival; else BP=/; PREFIX=/; fi
+  (cd "$APP" && PORT=$PORT BASE_PATH=$BP NODE_ENV=production pnpm run build --outDir "$OUT/pages-$MODE" --emptyOutDir > "$OUT/pages-$MODE-build.log" 2>&1) || { echo "website build failed (see $OUT/pages-$MODE-build.log)"; exit 1; }
+  cp "$OUT/pages-$MODE/index.html" "$OUT/pages-$MODE/404.html"
+  node "$T/browser/pages-server.cjs" "$OUT/pages-$MODE" "$PAGES_PORT" "$PREFIX" > "$OUT/pages-server.log" 2>&1 &
+  PAGES_PID=$!
+  sleep 1
+  SITE="http://127.0.0.1:$PAGES_PORT${PREFIX%/}"
+  node "$T/browser/stage09-test.cjs" "$SITE" > "$OUT/stage09-test-$MODE.log" 2>&1
+  echo "stage09-test ($MODE): $(grep -c '^PASS' "$OUT/stage09-test-$MODE.log") pass, $(grep -c '^FAIL' "$OUT/stage09-test-$MODE.log") fail"
+  { kill "$PAGES_PID"; wait "$PAGES_PID"; } 2>/dev/null || true
+done
