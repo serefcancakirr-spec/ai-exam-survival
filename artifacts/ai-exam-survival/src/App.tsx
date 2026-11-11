@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import SiteHeader from '@/components/site-header';
 import ScrollManager from '@/components/scroll-manager';
+import { Menti } from '@/components/menti';
 import { LanguageProvider, useI18n } from '@/i18n/i18n';
 import {
   AiStudyCoachPage,
@@ -85,6 +86,14 @@ function Home() {
             <div className="relative mx-auto w-full max-w-[530px] pb-7 pt-2 sm:py-6 lg:ml-auto">
               <div className="absolute -left-2 top-10 hidden h-20 w-20 rounded-[24px] border border-white/10 sm:block" />
               <div className="absolute -right-4 bottom-3 hidden h-28 w-28 rounded-full border border-[#65d6dc]/20 sm:block" />
+              <Menti
+                pose="wave"
+                size={116}
+                bubble="left"
+                message={t('menti.homeHello')}
+                testId="menti-home"
+                className="rise-in rise-delay-2 relative z-20 -mb-[18px] justify-start pr-1 sm:pr-4"
+              />
               <div className="float-card relative z-10 rounded-[26px] border border-white/15 bg-[#f8f9ff] p-4 text-[#20294d] shadow-[0_30px_90px_rgba(5,10,35,.38)] sm:p-5">
                 <div className="flex items-center justify-between border-b border-[#e9ebf3] pb-4">
                   <div className="flex items-center gap-3">

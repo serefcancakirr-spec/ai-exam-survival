@@ -45,6 +45,7 @@ import {
   type MarkResult,
   type StudyMode,
 } from './flashcards-model';
+import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 
 // ---------- shared styles (match Study Planner and Quiz Center) ----------
@@ -934,6 +935,7 @@ export default function SmartFlashcardsPage() {
       const skipped = activeSession.order.length - sessionMarks.length;
       return (
         <div className="rounded-[18px] border border-[#e4e2f5] bg-[#f6f5ff] px-5 py-8 text-center sm:px-8" data-testid="session-summary">
+          <Menti pose="clap" size={80} message={t('menti.flashDone')} testId="menti-flashcards" className="mb-4 justify-center" />
           <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#5a4bc9]">
             {tx('{mode} round complete', { mode: tx(MODE_INFO[activeSession.mode].label) })}
           </p>

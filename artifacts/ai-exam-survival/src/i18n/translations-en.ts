@@ -101,7 +101,20 @@ export const EN = {
 
   // ---------- page not found ----------
   'notFound.title': '404 Page Not Found',
-  'notFound.text': 'Did you forget to add the page to the router?',
+  'notFound.text': 'There is no page at this address. Pick a tool from the menu above.',
+
+  // ---------- Menti, the mascot (Stage 10) ----------
+  'menti.label': 'Menti, the AI Exam Survival mascot',
+  'menti.homeHello': "Hi, I'm Menti! Shall we study together today?",
+  'menti.coach': "Tell me about your exam and I'll help you make a plan.",
+  'menti.quizHigh': 'Great job! You scored {percentage}%. Keep it up!',
+  'menti.quizLow': "Don't give up! Look at the answers below and try again.",
+  'menti.flashDone': 'Round finished! Well done.',
+  'menti.plannerEmpty': "Let's plan your first week together!",
+  'menti.calendarEmpty': "Let's add your first exam!",
+  'menti.progressEmpty': "Study a little and I'll show your progress here.",
+  'menti.notFound': "Oops! This page doesn't exist.",
+  'menti.goHome': 'Go to the home page',
 
   // ---------- subject names (display only; saved values stay in English) ----------
   'subject.Algebra I': 'Algebra I',

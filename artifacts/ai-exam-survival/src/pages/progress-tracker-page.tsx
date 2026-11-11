@@ -25,6 +25,7 @@ import {
   type SubjectRow,
   type TopicResult,
 } from './progress-tracker-model';
+import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 
 /** "November 5, 2026" / "5 Kasım 2026": the long date without the weekday. */
@@ -418,6 +419,7 @@ export default function ProgressTrackerPage() {
 
       {nothingYet && (
         <div className="rounded-[18px] border border-[#d8d4f5] bg-[#f6f4ff] px-5 py-4" data-testid="getting-started">
+          <Menti pose="wave" size={72} message={t('menti.progressEmpty')} testId="menti-progress" className="mb-3" />
           <p className="text-[13px] font-extrabold text-[#35405e]">{tx('Your dashboard fills up as you study.')}</p>
           <p className="mt-1 text-[12px] leading-relaxed text-[#56607b]">
             {tx('Finish a quiz, review some flashcards, plan a week or add an exam. Each one shows up here automatically.')}

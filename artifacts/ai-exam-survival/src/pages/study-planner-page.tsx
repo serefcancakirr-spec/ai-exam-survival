@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
   ArrowLeft,
-  CalendarDays,
+ 
   Check,
   CheckCircle2,
   Clock3,
@@ -32,6 +32,7 @@ import {
   type PlannerTask,
   type StudyPlannerData,
 } from './study-planner-model';
+import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -826,7 +827,7 @@ export default function StudyPlannerPage() {
               className="rounded-[16px] border border-dashed border-[#dcdfea] bg-[#fafbfe] px-4 py-8 text-center"
               data-testid="empty-timetable"
             >
-              <CalendarDays size={22} className="mx-auto text-[#776bd4]" />
+              <Menti pose="point" size={76} message={t('menti.plannerEmpty')} testId="menti-planner" className="mb-1 justify-center" />
               <p className="mt-3 text-[12px] font-bold text-[#47516c]">
                 {t('planner.emptyTitle')}
               </p>
