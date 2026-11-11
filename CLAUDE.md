@@ -20,7 +20,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
   Expected today: logic 105/105; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18: website build served like GitHub Pages; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content).
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -50,9 +50,13 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - English mode must look exactly as before when adding translations.
 
 ## Website (Stage 9)
-- `.github/workflows/deploy-pages.yml` builds with `BASE_PATH=/ai-exam-survival/` and deploys `dist/public` on every push to `main`.
+- `.github/workflows/deploy-pages.yml` deploys `dist/public` on every push to `main` (or Actions → Run workflow).
+  Stage 12: BASE_PATH comes from `actions/configure-pages` (`base_path`): `/` with the custom domain
+  aiexamsurvival.com.tr, `/ai-exam-survival/` without it. After changing the custom domain, run the workflow again.
 - `404.html` is a copy of `index.html` (made in the workflow) so refreshing a sub-page works on GitHub Pages.
-- Address: https://serefcancakirr-spec.github.io/ai-exam-survival/ (repository is Public; Pages source is "GitHub Actions").
+- Address: https://aiexamsurvival.com.tr/ (domain bought at METUnic; DNS: 4 GitHub A records + www CNAME).
+  Old address https://serefcancakirr-spec.github.io/ai-exam-survival/ redirects there once the custom domain is set.
+  Saved data is per address: students had not used the site before the move (teacher confirmed).
 - Use `%BASE_URL%` in `index.html` and wouter `Link` in the app; never hard-code a leading `/` for files.
 
 ## Menti, the mascot (Stage 10)
@@ -70,6 +74,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
   The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
 - Stage 10 (Menti mascot): done, merged into `main` (PR #2), deployed, tested on the tablet and approved by the teacher.
-- Stage 11 (Turkish quiz questions and starter decks): built and tested on the work branch, backup tag
-  `backup/before-stage-11` (local only). Waiting for the teacher's check of the translations and approval to merge.
+- Stage 11 (Turkish quiz questions and starter decks): done, merged into `main` (PR #3), deployed, tested on the tablet
+  and approved by the teacher.
+- Stage 12 (custom domain aiexamsurvival.com.tr): code built and tested on the work branch, backup tag
+  `backup/before-stage-12` (local only). The teacher sets DNS at METUnic and the custom domain in Settings → Pages.
 - Next: no stage planned yet. Ask the teacher before starting anything new.

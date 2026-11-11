@@ -1,12 +1,13 @@
-// Browser tests for Stage 9: the app published as a website on GitHub Pages under /ai-exam-survival/.
+// Browser tests for Stage 9 and 12: the app published on GitHub Pages (github.io sub-folder or custom domain).
 // Runs against pages-server.cjs (behaves like GitHub Pages). Clock fixed at 5 Nov 2026, Istanbul.
-// Usage: node stage09-test.cjs <siteUrl>   e.g. http://127.0.0.1:4190/ai-exam-survival
+// Usage: node stage09-test.cjs <siteUrl>   e.g. http://127.0.0.1:4190/ai-exam-survival (github.io address)
+//                                         or http://127.0.0.1:4191 (custom domain, site at the root)
 const { chromium } = require('playwright');
 const F = require('./fixtures.cjs');
 
 const SITE = (process.argv[2] || 'http://127.0.0.1:4190/ai-exam-survival').replace(/\/$/, '');
 const ORIGIN = new URL(SITE).origin;
-const PREFIX = new URL(SITE).pathname; // "/ai-exam-survival"
+const PREFIX = new URL(SITE).pathname.replace(/\/$/, ''); // "/ai-exam-survival", or "" for a custom domain
 const LANG_KEY = 'ai-exam-survival:language:v1';
 const PAGES = ['/study-planner', '/quiz-center', '/smart-flashcards', '/exam-calendar', '/ai-study-coach', '/progress-tracker'];
 const OLD_TEXTS = [/not live yet/i, /concept preview/i, /tool previews/i, /previews/i, /önizleme/i, /canlı değil/i];
@@ -115,7 +116,7 @@ const storage = (page) => page.evaluate(() => Object.fromEntries(Object.keys(loc
     await context.close();
   });
 
-  await check('header links keep the /ai-exam-survival/ address; "all tools" goes back to the home tools section', async () => {
+  await check('header links keep the site address; "all tools" goes back to the home tools section', async () => {
     const { context, page } = await open(browser, { path: '/progress-tracker' });
     await tid(page, 'link-nav-quiz-center').click();
     await page.waitForURL(`**${PREFIX}/quiz-center`);

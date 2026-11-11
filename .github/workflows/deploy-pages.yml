@@ -1,6 +1,7 @@
 # Stage 9: publishes AI Exam Survival as a website on GitHub Pages.
 # Runs every time the main branch changes (or by hand from the Actions tab).
-# Site address: https://<owner>.github.io/ai-exam-survival/
+# Site address: https://aiexamsurvival.com.tr/ once the custom domain is set in Settings → Pages
+# (before that: https://<owner>.github.io/ai-exam-survival/). The build asks GitHub which one is active.
 name: Deploy website to GitHub Pages
 
 on:
@@ -35,24 +36,28 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      # Tells us where the site lives: "" with the custom domain, "/ai-exam-survival" without it.
+      - id: pages
+        uses: actions/configure-pages@v5
+
       - name: Typecheck
         working-directory: artifacts/ai-exam-survival
-        run: PORT=4180 BASE_PATH=/ai-exam-survival/ pnpm run typecheck
+        run: PORT=4180 BASE_PATH=/ pnpm run typecheck
 
       - name: Build
         working-directory: artifacts/ai-exam-survival
         env:
           PORT: '4180'
-          BASE_PATH: /ai-exam-survival/
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
           NODE_ENV: production
-        run: pnpm run build
+        run: |
+          echo "Building for BASE_PATH=$BASE_PATH"
+          pnpm run build
 
       # GitHub Pages shows 404.html for any address it has no file for (for example after
       # refreshing /ai-exam-survival/quiz-center). A copy of the app opens the right page instead.
       - name: Add 404.html fallback
         run: cp artifacts/ai-exam-survival/dist/public/index.html artifacts/ai-exam-survival/dist/public/404.html
-
-      - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
