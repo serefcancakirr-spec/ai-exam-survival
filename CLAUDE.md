@@ -65,6 +65,5 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Done: Stages 1–8B (1–8A tested and approved by the teacher; 8B finished, tablet test still to be confirmed).
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
   The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
-- Stage 10 (Menti mascot): drawing approved by the teacher; built and tested on the work branch,
-  backup tag `backup/before-stage-10` (local only). Waiting for the teacher's approval to open a PR and merge.
+- Stage 10 (Menti mascot): done, merged into `main` (PR #2), deployed, tested on the tablet and approved by the teacher.
 - Next: no stage planned yet. Ask the teacher before starting anything new.
