@@ -33,7 +33,7 @@ export type QuizQuestion = {
   explanation: string;
 };
 
-type QuestionSeed = Omit<QuizQuestion, 'id' | 'grade' | 'subject' | 'options'> & {
+export type QuestionSeed = Omit<QuizQuestion, 'id' | 'grade' | 'subject' | 'options'> & {
   options: [string, string, string, string];
 };
 
@@ -48,7 +48,7 @@ function question(
   return { topic, difficulty, prompt, options, correctOptionId, explanation };
 }
 
-const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
+export const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
   English: [
     question('Grammar & Usage', 'easy', 'Which sentence correctly joins two independent clauses with a semicolon?', ['I finished the draft; I still need to proofread it.', 'I finished; because I still need to proofread it.', 'I finished the draft; and I proofread it.', 'I; finished the draft before lunch.'], 'A', 'A semicolon can join two complete, closely related sentences without a coordinating conjunction.'),
     question('Grammar & Usage', 'medium', 'Which verb completes the sentence with correct agreement? “Neither the coach nor the players ___ ready.”', ['is', 'are', 'was', 'has'], 'B', 'With “neither…nor,” the verb agrees with the nearer subject. “Players” is plural, so “are” is correct.'),

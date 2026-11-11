@@ -46,6 +46,7 @@ import {
   type StudyMode,
 } from './flashcards-model';
 import { Menti } from '@/components/menti';
+import { deckName, deckTopic, localizeCard } from '@/i18n/content';
 import { useI18n } from '@/i18n/i18n';
 
 // ---------- shared styles (match Study Planner and Quiz Center) ----------
@@ -534,7 +535,7 @@ function CardForm({
 // ---------- the page ----------
 
 export default function SmartFlashcardsPage() {
-  const { t, tx, phrase, subject: subjectLabel } = useI18n();
+  const { t, tx, phrase, lang, subject: subjectLabel } = useI18n();
   const [initialLoad] = useState(loadFlashcards);
   const [data, setData] = useState<FlashcardsData>(initialLoad.data);
   const [storageMessage, setStorageMessage] = useState(initialLoad.message);
@@ -619,10 +620,10 @@ export default function SmartFlashcardsPage() {
     setDeckForm({
       mode: 'edit',
       draft: {
-        name: selectedDeck.name,
+        name: deckName(selectedDeck, lang),
         grade: selectedDeck.grade,
         subject: selectedDeck.subject,
-        topic: selectedDeck.topic,
+        topic: deckTopic(selectedDeck, lang),
       },
       errors: [],
     });
@@ -656,7 +657,17 @@ export default function SmartFlashcardsPage() {
     } else if (selectedDeck) {
       setData((current) => ({
         ...current,
-        decks: current.decks.map((deck) => (deck.id === selectedDeck.id ? { ...deck, ...clean } : deck)),
+        // A Turkish starter name or topic the student left unchanged keeps its saved English text.
+        decks: current.decks.map((deck) =>
+          deck.id === selectedDeck.id
+            ? {
+                ...deck,
+                ...clean,
+                name: clean.name === deckName(deck, lang) ? deck.name : clean.name,
+                topic: clean.topic === deckTopic(deck, lang) ? deck.topic : clean.topic,
+              }
+            : deck,
+        ),
       }));
       setNotice({ tone: 'success', message: 'Deck details saved.' });
     }
@@ -694,7 +705,7 @@ export default function SmartFlashcardsPage() {
     setConfirm(null);
     setDeckForm(null);
     setEditingCard(null);
-    setNotice({ tone: 'success', message: `“${deck.name}” and its cards were deleted.` });
+    setNotice({ tone: 'success', message: `“${deckName(deck, lang)}” and its cards were deleted.` });
   }
 
   function resetDeckProgress(deckId: string) {
@@ -755,7 +766,7 @@ export default function SmartFlashcardsPage() {
   function beginEditCard(card: Flashcard) {
     setEditingCard({
       id: card.id,
-      draft: { front: card.front, answer: card.answer, explanation: card.explanation },
+      draft: (({ front, answer, explanation }) => ({ front, answer, explanation }))(localizeCard(card, lang)),
       errors: [],
     });
     setConfirm(null);
@@ -774,12 +785,17 @@ export default function SmartFlashcardsPage() {
       ...current,
       cards: current.cards.map((card) =>
         card.id === editingCard.id
-          ? {
-              ...card,
-              front: editingCard.draft.front.trim(),
-              answer: editingCard.draft.answer.trim(),
-              explanation: editingCard.draft.explanation.trim(),
-            }
+          ? (() => {
+              // A Turkish starter text the student left unchanged keeps its saved English text.
+              const shown = localizeCard(card, lang);
+              const keep = (draft: string, saved: string, seen: string) => (draft.trim() === seen ? saved : draft.trim());
+              return {
+                ...card,
+                front: keep(editingCard.draft.front, card.front, shown.front),
+                answer: keep(editingCard.draft.answer, card.answer, shown.answer),
+                explanation: keep(editingCard.draft.explanation, card.explanation, shown.explanation),
+              };
+            })()
           : card,
       ),
     }));
@@ -1000,7 +1016,7 @@ export default function SmartFlashcardsPage() {
                 {tx('Front')}
               </span>
               <span className="font-display mt-5 block max-w-[560px] break-words text-[22px] font-extrabold leading-snug tracking-[-.04em] text-[#20294d] sm:text-[27px]" data-content="card">
-                {currentCard.front}
+                {localizeCard(currentCard, lang).front}
               </span>
               <span className="mt-5 block text-[10px] font-semibold text-[#858da2]">{tx('Tap to reveal the answer')}</span>
             </span>
@@ -1013,11 +1029,11 @@ export default function SmartFlashcardsPage() {
                 {tx('Answer')}
               </span>
               <span className="font-display mt-4 block max-w-[560px] break-words text-[19px] font-extrabold leading-snug tracking-[-.035em] text-[#20294d] sm:text-[23px]" data-content="card">
-                {currentCard.answer}
+                {localizeCard(currentCard, lang).answer}
               </span>
               {currentCard.explanation && (
                 <span className="mt-3 block max-w-[540px] break-words text-[12px] leading-[1.7] text-[#56767b] sm:text-[13px]" data-content="card">
-                  {currentCard.explanation}
+                  {localizeCard(currentCard, lang).explanation}
                 </span>
               )}
               <span className="mt-4 block text-[10px] font-semibold text-[#80958d]">{tx('Tap to see the front again')}</span>
@@ -1191,10 +1207,10 @@ export default function SmartFlashcardsPage() {
                 >
                   <span className="flex w-full items-start justify-between gap-2">
                     <span className="min-w-0">
-                      <span className="block break-words text-[14px] font-extrabold text-[#222c51]" data-content="card">{deck.name}</span>
+                      <span className="block break-words text-[14px] font-extrabold text-[#222c51]" data-content="card">{deckName(deck, lang)}</span>
                       <span className="mt-1 block text-[10px] font-bold text-[#7e879e]">
                         {t('common.grade', { grade: deck.grade })} · {subjectLabel(deck.subject)}
-                        {deck.topic ? <span data-content="card">{` · ${deck.topic}`}</span> : ''}
+                        {deck.topic ? <span data-content="card">{` · ${deckTopic(deck, lang)}`}</span> : ''}
                       </span>
                     </span>
                     {deck.starter && (
@@ -1237,7 +1253,7 @@ export default function SmartFlashcardsPage() {
       <div ref={studyRef} className="grid scroll-mt-24 gap-5 lg:grid-cols-[1.25fr_.75fr]">
         <Panel
           eyebrow={selectedDeck ? `${t('common.grade', { grade: selectedDeck.grade })} · ${subjectLabel(selectedDeck.subject)}` : tx('Study')}
-          title={selectedDeck ? <span data-content="card">{selectedDeck.name}</span> : tx('No deck selected')}
+          title={selectedDeck ? <span data-content="card">{deckName(selectedDeck, lang)}</span> : tx('No deck selected')}
           testId="panel-study"
         >
           {selectedDeck && (
@@ -1359,7 +1375,7 @@ export default function SmartFlashcardsPage() {
                   deckCards.length === 1
                     ? 'Delete “{name}” and its {count} card? This cannot be undone.'
                     : 'Delete “{name}” and its {count} cards? This cannot be undone.',
-                  { name: confirmDeck.name, count: deckCards.length },
+                  { name: deckName(confirmDeck, lang), count: deckCards.length },
                 )}
                 confirmLabel={tx('Delete deck')}
                 onConfirm={() => deleteDeck(confirmDeck.id)}
@@ -1426,10 +1442,10 @@ export default function SmartFlashcardsPage() {
                           {String(index + 1).padStart(2, '0')}
                         </span>
                         <div className="min-w-0">
-                          <p className="break-words text-[13px] font-extrabold text-[#293354]" data-content="card">{card.front}</p>
-                          <p className="mt-1 break-words text-[12px] text-[#56607b]" data-content="card">{card.answer}</p>
+                          <p className="break-words text-[13px] font-extrabold text-[#293354]" data-content="card">{localizeCard(card, lang).front}</p>
+                          <p className="mt-1 break-words text-[12px] text-[#56607b]" data-content="card">{localizeCard(card, lang).answer}</p>
                           {card.explanation && (
-                            <p className="mt-1 break-words text-[11px] leading-relaxed text-[#8790a4]" data-content="card">{card.explanation}</p>
+                            <p className="mt-1 break-words text-[11px] leading-relaxed text-[#8790a4]" data-content="card">{localizeCard(card, lang).explanation}</p>
                           )}
                         </div>
                       </div>
@@ -1439,7 +1455,7 @@ export default function SmartFlashcardsPage() {
                           type="button"
                           onClick={() => beginEditCard(card)}
                           className={smallButton}
-                          aria-label={tx('Edit card: {front}', { front: card.front })}
+                          aria-label={tx('Edit card: {front}', { front: localizeCard(card, lang).front })}
                           data-testid={`button-edit-card-${card.id}`}
                         >
                           <Pencil size={13} /> {tx('Edit')}
@@ -1448,7 +1464,7 @@ export default function SmartFlashcardsPage() {
                           type="button"
                           onClick={() => setConfirm({ kind: 'delete-card', id: card.id })}
                           className={smallButton}
-                          aria-label={tx('Delete card: {front}', { front: card.front })}
+                          aria-label={tx('Delete card: {front}', { front: localizeCard(card, lang).front })}
                           data-testid={`button-delete-card-${card.id}`}
                         >
                           <X size={13} /> {tx('Delete')}

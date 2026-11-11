@@ -332,7 +332,7 @@ export const TR: Record<MessageKey, string> = {
   'quiz.heroEyebrow': 'Amaçlı pratik yap',
   'quiz.title': 'Test Merkezi',
   'quiz.heroText': 'Kısa bir alıştırma seti oluştur, soruları tek tek çöz ve net açıklamalarla sırada neyi tekrar edeceğini planla.',
-  'quiz.curatedNote': 'Sorular 9–12. sınıflar için seçilmiş örneklerdir. Soru içerikleri İngilizcedir.',
+  'quiz.curatedNote': 'Sorular 9–12. sınıflar için seçilmiş örneklerdir. İngilizce dersinin soruları İngilizcedir.',
   'quiz.noLiveAi': 'Canlı yapay zekâ yok · Hesap yok',
   'quiz.footer': 'AI Exam Survival · Test Merkezi örnek alıştırmaları',
 };

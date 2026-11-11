@@ -317,7 +317,8 @@ const cutOff = (page) =>
     assert(/BUGÜN|Bugün/.test(await tid(page, 'weekly-chart').locator('xpath=..').innerText()), 'chart day labels');
     await expectTurkish(page, 'with data');
     const topics = await page.locator('[data-testid="topic-name"]').allInnerTexts();
-    assert(topics.some((x) => /Algebra|Modern World|Evolution/.test(x)), `quiz topic names should stay: ${topics.join(',')}`);
+    // Stage 11 (approved by the teacher): quiz topic names are now shown in Turkish too (saved values stay English).
+    assert(topics.some((x) => /Cebir|Modern Dünya|Evrim/.test(x)) && !topics.some((x) => /^(Algebra|Modern World|Evolution & Ecology)$/.test(x.trim())), `quiz topic names should be Turkish: ${topics.join(',')}`);
     await context.close();
   });
 

@@ -28,6 +28,7 @@ import {
   type QuizSubject,
 } from './quiz-question-bank';
 import { Menti } from '@/components/menti';
+import { localizeQuestion, topicName } from '@/i18n/content';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -264,7 +265,7 @@ function QuizSetupCard({
   onStart: () => void;
   notice: Notice | null;
 }) {
-  const { t, subject: subjectLabel } = useI18n();
+  const { t, lang, subject: subjectLabel } = useI18n();
   const questionPool = getQuizQuestionPool(
     setup.grade,
     setup.subject,
@@ -274,7 +275,7 @@ function QuizSetupCard({
   const topics = getQuizTopics(setup.grade, setup.subject);
   const difficultyOptions: QuizDifficulty[] = ['easy', 'medium', 'hard'];
   const topicLabel =
-    setup.topic === ALL_QUIZ_TOPICS ? t('quiz.allTopics') : setup.topic;
+    setup.topic === ALL_QUIZ_TOPICS ? t('quiz.allTopics') : topicName(setup.topic, lang);
 
   return (
     <SectionCard
@@ -344,7 +345,7 @@ function QuizSetupCard({
             <option value={ALL_QUIZ_TOPICS}>{t('quiz.allTopics')}</option>
             {topics.map((topic) => (
               <option key={topic} value={topic}>
-                {topic}
+                {topicName(topic, lang)}
               </option>
             ))}
           </select>
@@ -450,7 +451,7 @@ function QuizSetupCard({
 }
 
 function QuizQuestionCard({
-  question,
+  question: rawQuestion,
   index,
   total,
   answeredCount,
@@ -472,7 +473,8 @@ function QuizQuestionCard({
   onNext: () => void;
   onSubmit: () => void;
 }) {
-  const { t, subject: subjectLabel } = useI18n();
+  const { t, lang, subject: subjectLabel } = useI18n();
+  const question = localizeQuestion(rawQuestion, lang);
   const progress = Math.round(((index + 1) / total) * 100);
   const isLastQuestion = index === total - 1;
 
@@ -595,10 +597,11 @@ function QuizQuestionCard({
 }
 
 function ReviewList({ items }: { items: QuizAnswerReview[] }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   return (
     <div className="space-y-3">
-      {items.map(({ question, selectedOptionId }, index) => {
+      {items.map(({ question: savedQuestion, selectedOptionId }, index) => {
+        const question = localizeQuestion(savedQuestion, lang);
         const isCorrect = selectedOptionId === question.correctOptionId;
         return (
           <article
@@ -608,7 +611,7 @@ function ReviewList({ items }: { items: QuizAnswerReview[] }) {
           >
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#7a849b]">
-                {t('quiz.reviewQuestion', { number: index + 1, topic: question.topic })}
+                {t('quiz.reviewQuestion', { number: index + 1, topic: topicName(question.topic, lang) })}
               </p>
               <span
                 className={`rounded-full px-2.5 py-1 text-[9px] font-bold ${
@@ -786,7 +789,7 @@ function QuizHistory({
   expandedAttemptId: string | null;
   onToggle: (id: string) => void;
 }) {
-  const { t, locale, subject: subjectLabel } = useI18n();
+  const { t, lang, locale, subject: subjectLabel } = useI18n();
   const average = attempts.length
     ? Math.round(
         attempts.reduce((total, attempt) => total + attempt.percentage, 0) /
@@ -853,7 +856,7 @@ function QuizHistory({
                     <p className="mt-1 text-[10px] text-[#7b849b]">
                       {attempt.topic === ALL_QUIZ_TOPICS
                         ? t('quiz.allTopics')
-                        : attempt.topic}{' '}
+                        : topicName(attempt.topic, lang)}{' '}
                       · {formatAttemptDate(attempt.completedAt, locale)}
                     </p>
                   </div>
