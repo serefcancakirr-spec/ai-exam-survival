@@ -26,6 +26,7 @@ import {
   type TopicResult,
 } from './progress-tracker-model';
 import { Menti } from '@/components/menti';
+import { learningName } from '@/i18n/content';
 import { useI18n } from '@/i18n/i18n';
 
 /** "November 5, 2026" / "5 Kasım 2026": the long date without the weekday. */
@@ -299,13 +300,13 @@ function SubjectRowView({ row }: { row: SubjectRow }) {
 }
 
 function TopicItem({ topic }: { topic: TopicResult }) {
-  const { t, tx, phrase, subject: subjectLabel, locale } = useI18n();
+  const { t, tx, phrase, lang, subject: subjectLabel, locale } = useI18n();
   return (
     <li className="rounded-[14px] border border-[#eceef4] p-3.5" data-testid={`topic-${topic.source}`}>
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div className="min-w-0">
           <p className="break-words text-[12px] font-extrabold text-[#293354]" data-testid="topic-name" data-content="topic">
-            {topic.topic}
+            {learningName(topic.topic, lang)}
           </p>
           <p className="text-[10px] text-[#8790a4]">
             {subjectLabel(topic.subject)} ·{' '}
@@ -320,7 +321,7 @@ function TopicItem({ topic }: { topic: TopicResult }) {
         </span>
       </div>
       <ul className="mt-2 space-y-1.5">
-        {recommendFor(topic).map((rec) => (
+        {recommendFor({ ...topic, topic: learningName(topic.topic, lang), deckName: topic.deckName && learningName(topic.deckName, lang) }).map((rec) => (
           <li key={rec.text} className="text-[11px] leading-relaxed text-[#56607b]">
             {phrase(rec.text)}{' '}
             <Link href={rec.link.href} className="inline-flex min-h-8 items-center gap-0.5 font-extrabold text-[#5144c7] hover:text-[#31278e]" data-testid="topic-link">

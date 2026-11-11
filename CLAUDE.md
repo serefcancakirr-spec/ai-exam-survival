@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 95/95; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18: website build served like GitHub Pages; stage10-test 23/23: Menti).
+  Expected today: logic 105/105; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18: website build served like GitHub Pages; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -41,7 +41,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Home, header, Study Planner, Quiz Center: keyed texts in `translations-en.ts` / `translations-tr.ts`.
 - Flashcards, Exam Calendar, Study Coach, Progress Tracker: English sentence as key in `phrases-tr.ts` (`{placeholder}` templates).
 - Only display text is translated. Saved values, IDs, routes and storage keys stay in English.
-- Keep in English: quiz questions/answers/explanations/topics, flashcard card text and starter deck names.
+- Keep in English: the English subject's quiz questions and the two English vocabulary starter decks (they teach English).
+- Stage 11: all other quiz questions/options/explanations, quiz topic names and starter decks are shown in Turkish
+  (`src/i18n/quiz-questions-tr.ts` in the same order as `QUESTION_SEEDS`, `src/i18n/flashcards-starter-tr.ts`,
+  helpers in `src/i18n/content.ts`). Display only: saved quiz results, topics and cards stay English.
+  A starter deck/card text is shown in Turkish only while it still equals the original English text (student edits win).
 - Never translate text a student typed. New example data is created in the language in use.
 - English mode must look exactly as before when adding translations.
 
@@ -62,9 +66,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Menti is decoration only: it never reads or writes saved data.
 
 ## Where we are
-- Done: Stages 1–8B (1–8A tested and approved by the teacher; 8B finished, tablet test still to be confirmed).
+- Done: Stages 1–8B, all tested on the tablet and approved by the teacher.
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
   The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
-- Stage 10 (Menti mascot): drawing approved by the teacher; built and tested on the work branch,
-  backup tag `backup/before-stage-10` (local only). Waiting for the teacher's approval to open a PR and merge.
+- Stage 10 (Menti mascot): done, merged into `main` (PR #2), deployed, tested on the tablet and approved by the teacher.
+- Stage 11 (Turkish quiz questions and starter decks): built and tested on the work branch, backup tag
+  `backup/before-stage-11` (local only). Waiting for the teacher's check of the translations and approval to merge.
 - Next: no stage planned yet. Ask the teacher before starting anything new.
