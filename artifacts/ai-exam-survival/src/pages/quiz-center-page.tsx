@@ -30,6 +30,7 @@ import {
 import { Menti } from '@/components/menti';
 import { quizMood } from '@/components/menti-moods';
 import { localizeQuestion, topicName } from '@/i18n/content';
+import { mebOutcome, usesMeb9 } from './quiz-bank-meb9';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -422,6 +423,15 @@ function QuizSetupCard({
         </p>
       </fieldset>
 
+      {usesMeb9(setup.grade, setup.subject) && (
+        <p
+          className="mt-5 rounded-[13px] border border-[#d9ecf0] bg-[#f1fafb] px-4 py-3 text-[11px] leading-relaxed text-[#3f6d76]"
+          data-testid="quiz-meb-note"
+        >
+          {t('quiz.mebNote')}
+        </p>
+      )}
+
       <div className="mt-5 rounded-[13px] bg-[#f5f6fb] px-4 py-3 text-[11px] leading-relaxed text-[#69738d]">
         <span className="font-bold text-[#46516f]">{t('quiz.previewLabel')}</span>{' '}
         {t('quiz.previewText', {
@@ -522,6 +532,7 @@ function QuizQuestionCard({
       <p className="mt-6 text-[16px] font-bold leading-[1.65] text-[#293354] sm:text-[18px]" data-content="quiz">
         {question.prompt}
       </p>
+      <OutcomeTag question={question} />
 
       <div className="mt-5 grid gap-2.5">
         {question.options.map((option) => {
@@ -597,6 +608,18 @@ function QuizQuestionCard({
   );
 }
 
+/** Stage 15: the MEB learning outcome a grade 9 question measures (nothing for other questions). */
+function OutcomeTag({ question }: { question: QuizQuestion }) {
+  const { t } = useI18n();
+  const code = mebOutcome(question);
+  if (!code) return null;
+  return (
+    <p className="mt-2 text-[10px] font-bold text-[#3f6d76]" data-testid="quiz-meb-outcome">
+      {t('quiz.mebOutcome', { code })}
+    </p>
+  );
+}
+
 function ReviewList({ items }: { items: QuizAnswerReview[] }) {
   const { t, lang } = useI18n();
   return (
@@ -627,6 +650,7 @@ function ReviewList({ items }: { items: QuizAnswerReview[] }) {
             <p className="mt-3 text-[13px] font-bold leading-relaxed text-[#293354]" data-content="quiz">
               {question.prompt}
             </p>
+            <OutcomeTag question={question} />
             <div className="mt-3 grid gap-2 sm:grid-cols-2">
               {question.options.map((option) => {
                 const isAnswer = option.id === question.correctOptionId;
@@ -1031,6 +1055,13 @@ export default function FunctionalQuizCenterPage() {
 
   function changeSetup(patch: Partial<QuizSetup>) {
     const nextSetup = { ...setup, ...patch };
+    // Stage 15: grade 9 can have other topics (MEB themes); a topic the new grade does not have goes back to all topics.
+    if (
+      nextSetup.topic !== ALL_QUIZ_TOPICS &&
+      !getQuizTopics(nextSetup.grade, nextSetup.subject).includes(nextSetup.topic)
+    ) {
+      nextSetup.topic = ALL_QUIZ_TOPICS;
+    }
     const availableQuestions = getQuizQuestionPool(
       nextSetup.grade,
       nextSetup.subject,

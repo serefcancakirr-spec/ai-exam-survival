@@ -373,6 +373,8 @@ export const EN = {
   'quiz.heroText': 'Build a short practice set, work through one question at a time, and use clear explanations to plan what to review next.',
   'quiz.curatedNote': 'Questions are curated examples for grades 9–12.',
   'quiz.noLiveAi': 'No live AI · No account',
+  'quiz.mebNote': 'Grade 9 questions for this subject follow the MEB Türkiye Yüzyılı Maarif Modeli curriculum and are written in Turkish. Our subject teachers are still reviewing them.',
+  'quiz.mebOutcome': 'Learning outcome: {code}',
   'quiz.footer': 'AI Exam Survival · Quiz Center sample practice',
 } as const;
 

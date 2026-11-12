@@ -5,6 +5,7 @@ import { QUESTION_SEEDS, QUIZ_QUESTION_BANK, QUIZ_SUBJECTS } from '../../artifac
 import { STARTER_DECKS } from '../../artifacts/ai-exam-survival/src/pages/flashcards-starter-decks';
 import { QUESTIONS_TR, TOPICS_TR } from '../../artifacts/ai-exam-survival/src/i18n/quiz-questions-tr';
 import { STARTER_CARDS_TR, STARTER_DECK_NAMES_TR } from '../../artifacts/ai-exam-survival/src/i18n/flashcards-starter-tr';
+import { mebOutcome } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
 import { deckName, deckTopic, learningName, localizeCard, localizeQuestion, topicName } from '../../artifacts/ai-exam-survival/src/i18n/content';
 
 const TRANSLATED = QUIZ_SUBJECTS.filter((s) => s !== 'English');
@@ -48,7 +49,8 @@ test('translations keep every number of the English question, options and explan
 });
 
 test('in Turkish every question of the bank is shown in Turkish and the correct answer does not change', () => {
-  for (const question of QUIZ_QUESTION_BANK) {
+  // Stage 15: grade 9 MEB questions are written in Turkish and have no English seed (tested in stage15-model).
+  for (const question of QUIZ_QUESTION_BANK.filter((q) => !mebOutcome(q))) {
     const shown = localizeQuestion(question, 'tr');
     if (question.subject === 'English') {
       assert.equal(shown, question, 'English question changed');
@@ -76,7 +78,7 @@ test('English mode and unknown questions are shown exactly as saved', () => {
 });
 
 test('a quiz result saved earlier (JSON in the browser) is shown in Turkish too, and the saved copy is not changed', () => {
-  const question = QUIZ_QUESTION_BANK.find((q) => q.subject === 'Physics')!;
+  const question = QUIZ_QUESTION_BANK.find((q) => q.subject === 'Physics' && !mebOutcome(q))!;
   const saved = JSON.stringify({ review: [{ question, selectedOptionId: 'A' }] });
   const parsed = JSON.parse(saved);
   const shown = localizeQuestion(parsed.review[0].question, 'tr');
@@ -85,7 +87,7 @@ test('a quiz result saved earlier (JSON in the browser) is shown in Turkish too,
 });
 
 test('every quiz topic and starter-deck topic has a Turkish name; English mode keeps the name', () => {
-  for (const q of QUIZ_QUESTION_BANK) assert.ok(TOPICS_TR[q.topic], `topic ${q.topic}`);
+  for (const q of QUIZ_QUESTION_BANK.filter((x) => !mebOutcome(x))) assert.ok(TOPICS_TR[q.topic], `topic ${q.topic}`);
   for (const d of STARTER_DECKS) assert.ok(TOPICS_TR[d.topic], `deck topic ${d.topic}`);
   assert.equal(topicName('Algebra', 'tr'), 'Cebir');
   assert.equal(topicName('Algebra', 'en'), 'Algebra');
