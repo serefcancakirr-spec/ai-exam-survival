@@ -28,6 +28,7 @@ import {
   type QuizSubject,
 } from './quiz-question-bank';
 import { Menti } from '@/components/menti';
+import { quizMood } from '@/components/menti-moods';
 import { localizeQuestion, topicName } from '@/i18n/content';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
@@ -703,9 +704,15 @@ function QuizResults({
         }
       >
         <Menti
-          pose={attempt.percentage >= 70 ? 'cheer' : 'encourage'}
+          pose={quizMood(attempt.percentage)}
           size={84}
-          message={attempt.percentage >= 70 ? t('menti.quizHigh', { percentage: attempt.percentage }) : t('menti.quizLow')}
+          message={
+            quizMood(attempt.percentage) === 'cheer'
+              ? t('menti.quizHigh', { percentage: attempt.percentage })
+              : quizMood(attempt.percentage) === 'encourage'
+                ? t('menti.quizLow')
+                : t('menti.quizComfort')
+          }
           testId="menti-quiz"
           className="mb-4"
         />

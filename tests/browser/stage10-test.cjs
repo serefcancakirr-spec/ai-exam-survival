@@ -93,7 +93,8 @@ async function finishQuiz(page, choose) {
       await page.waitForTimeout(900);
       const m = await mentiInfo(page, 'menti-home');
       assert(m.pose === 'wave', `pose ${m.pose}`);
-      assert(m.text === D['menti.homeHello'], `text "${m.text}"`);
+      // Stage 13: the greeting follows the time of day; the test clock is 10:00 (morning).
+      assert(m.text === D['menti.greetMorning'], `text "${m.text}"`);
       assert(m.label === D['menti.label'], `label "${m.label}"`);
       await context.close();
     });
@@ -115,9 +116,10 @@ async function finishQuiz(page, choose) {
       await finishQuiz(page, () => page.locator('[data-testid^="button-quiz-answer-"]').nth(1).click());
       const first = JSON.parse(await page.evaluate((k) => localStorage.getItem(k), QUIZ_KEY))[0];
       let m = await mentiInfo(page, 'menti-quiz');
-      const lowExpected = first.percentage >= 70 ? fill(D['menti.quizHigh'], { percentage: first.percentage }) : D['menti.quizLow'];
+      // Stage 13: three levels – 70% or more cheer, 40–69% encourage, below 40% comfort.
+      const lowExpected = first.percentage >= 70 ? fill(D['menti.quizHigh'], { percentage: first.percentage }) : first.percentage >= 40 ? D['menti.quizLow'] : D['menti.quizComfort'];
       assert(m.text === lowExpected, `after ${first.percentage}%: "${m.text}"`);
-      assert(m.pose === (first.percentage >= 70 ? 'cheer' : 'encourage'), `pose ${m.pose}`);
+      assert(m.pose === (first.percentage >= 70 ? 'cheer' : first.percentage >= 40 ? 'encourage' : 'comfort'), `pose ${m.pose}`);
       // Retry the same questions with the correct answers.
       await tid(page, 'button-retry-quiz').click();
       const correct = first.review.map((r) => r.question.correctOptionId);

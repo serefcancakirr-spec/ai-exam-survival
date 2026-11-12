@@ -7,7 +7,9 @@ import NotFound from '@/pages/not-found';
 import SiteHeader from '@/components/site-header';
 import ScrollManager from '@/components/scroll-manager';
 import { Menti } from '@/components/menti';
+import { dayPart, type DayPart } from '@/components/menti-moods';
 import { LanguageProvider, useI18n } from '@/i18n/i18n';
+import type { MessageKey } from '@/i18n/translations-en';
 import {
   AiStudyCoachPage,
   ExamCalendarPage,
@@ -44,8 +46,17 @@ import {
 
 const queryClient = new QueryClient();
 
+// Stage 13: Menti greets by time of day (and is sleepy late at night).
+const GREETING: Record<DayPart, MessageKey> = {
+  morning: 'menti.greetMorning',
+  day: 'menti.homeHello',
+  evening: 'menti.greetEvening',
+  night: 'menti.greetNight',
+};
+
 function Home() {
   const { t } = useI18n();
+  const part = dayPart(new Date().getHours());
   return (
     <div className="page-shell min-h-[100dvh] bg-[#f5f6fb]">
       <main id="top">
@@ -87,10 +98,10 @@ function Home() {
               <div className="absolute -left-2 top-10 hidden h-20 w-20 rounded-[24px] border border-white/10 sm:block" />
               <div className="absolute -right-4 bottom-3 hidden h-28 w-28 rounded-full border border-[#65d6dc]/20 sm:block" />
               <Menti
-                pose="wave"
+                pose={part === 'night' ? 'sleepy' : 'wave'}
                 size={116}
                 bubble="left"
-                message={t('menti.homeHello')}
+                message={t(GREETING[part])}
                 testId="menti-home"
                 className="rise-in rise-delay-2 relative z-20 -mb-[18px] justify-start pr-1 sm:pr-4"
               />

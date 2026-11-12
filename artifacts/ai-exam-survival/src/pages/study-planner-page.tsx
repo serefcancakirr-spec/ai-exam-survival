@@ -33,6 +33,8 @@ import {
   type StudyPlannerData,
 } from './study-planner-model';
 import { Menti } from '@/components/menti';
+import { weekComplete } from '@/components/menti-moods';
+import { FocusTimerCard } from './focus-timer';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -802,6 +804,14 @@ export default function StudyPlannerPage() {
             </div>
           </div>
         </div>
+
+        {weekComplete(studyTasks) && (
+          <div className="rounded-[19px] border border-[#d8d4f5] bg-[#f6f4ff] px-5 py-4" data-testid="planner-proud">
+            <Menti pose="proud" size={84} message={t('menti.plannerProud')} testId="menti-planner-proud" />
+          </div>
+        )}
+
+        <FocusTimerCard />
 
         <PlannerCard
           eyebrow={
