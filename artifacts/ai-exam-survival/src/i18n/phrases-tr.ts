@@ -141,6 +141,17 @@ const FLASHCARDS: Record<string, string> = {
   'Delete card': 'Kartı sil',
   // messages
   '“{name}” was created. Add your first card below.': '“{name}” oluşturuldu. İlk kartını aşağıdan ekle.',
+  // Stage 14
+  'A deck called “{name}” already exists. Choose a different name, for example add the grade.':
+    '“{name}” adında bir deste zaten var. Farklı bir ad seç; örneğin sonuna sınıfı ekleyebilirsin.',
+  'This deck is new. Start with Learn mode to get to know the cards.': 'Bu deste yeni. Kartları tanımak için Öğren moduyla başla.',
+  '{count} card is giving you trouble. Let’s go over it in Review mode.': '{count} kart seni zorluyor. Tekrar modunda üzerinden geçelim.',
+  '{count} cards are giving you trouble. Let’s go over them in Review mode.': '{count} kart seni zorluyor. Tekrar modunda üzerinden geçelim.',
+  'You know every card in this deck! Test yourself now and then with Practice.': 'Bu destedeki bütün kartları biliyorsun! Ara sıra Alıştırma ile kendini sına.',
+  'Nice progress! Test yourself with Practice to see what has stuck.': 'Güzel gidiyorsun! Neleri öğrendiğini görmek için Alıştırma ile kendini sına.',
+  'You marked {count} cards to review in this round. That is normal. When the round ends, try Review mode.':
+    'Bu turda {count} karta “Tekrar et” dedin. Zorlanman çok normal. Tur bitince Tekrar modunu dene.',
+  'Switch to {mode}': '{mode} moduna geç',
   'Deck details saved.': 'Deste bilgileri kaydedildi.',
   '“{name}” and its cards were deleted.': '“{name}” ve kartları silindi.',
   'Progress for this deck was reset. Every card is new again.': 'Bu destenin ilerlemesi sıfırlandı. Tüm kartlar yeniden yeni.',

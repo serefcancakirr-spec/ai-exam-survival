@@ -47,6 +47,7 @@ import {
 } from './flashcards-model';
 import { Menti } from '@/components/menti';
 import { deckName, deckTopic, localizeCard } from '@/i18n/content';
+import { findDuplicateDeck, isOwnDeckName, studyAdvice } from './flashcards-guide';
 import { useI18n } from '@/i18n/i18n';
 
 // ---------- shared styles (match Study Planner and Quiz Center) ----------
@@ -634,6 +635,13 @@ export default function SmartFlashcardsPage() {
     event.preventDefault();
     if (!deckForm) return;
     const errors = validateDeckDraft(deckForm.draft);
+    // Stage 14: no two decks with the same name (any grade or subject). An edited deck may keep its own name.
+    const editing = deckForm.mode === 'edit' ? selectedDeck : null;
+    const keepsOwnName = editing ? isOwnDeckName(deckForm.draft.name, editing) : false;
+    if (!keepsOwnName && findDuplicateDeck(deckForm.draft.name, data.decks, editing?.id ?? null)) {
+      // English sentence here; it is shown in the chosen language like the other form errors.
+      errors.push(`A deck called “${deckForm.draft.name.trim()}” already exists. Choose a different name, for example add the grade.`);
+    }
     if (errors.length > 0) {
       setDeckForm({ ...deckForm, errors });
       return;
@@ -901,6 +909,45 @@ export default function SmartFlashcardsPage() {
   const againInSession = sessionMarks.filter((value) => value === 'again').length;
   const needsFlip = Boolean(activeSession && activeSession.mode !== 'learn' && !activeSession.flipped);
   const currentMark = activeSession ? activeSession.marks[activeSession.index] : undefined;
+
+  // Stage 14: Menti suggests how to study this deck, from the student's real progress.
+  function renderGuide() {
+    if (!activeSession || activeSession.finished || deckCards.length === 0) return null;
+    const advice = studyAdvice(deckCounts, activeSession.mode, againInSession);
+    if (!advice) return null;
+    const message =
+      advice.kind === 'hard-round'
+        ? tx('You marked {count} cards to review in this round. That is normal. When the round ends, try Review mode.', { count: advice.count })
+        : advice.kind === 'new'
+          ? tx('This deck is new. Start with Learn mode to get to know the cards.')
+          : advice.kind === 'struggling'
+            ? tx(
+                advice.count === 1
+                  ? '{count} card is giving you trouble. Let’s go over it in Review mode.'
+                  : '{count} cards are giving you trouble. Let’s go over them in Review mode.',
+                { count: advice.count },
+              )
+            : advice.kind === 'mastered'
+              ? tx('You know every card in this deck! Test yourself now and then with Practice.')
+              : tx('Nice progress! Test yourself with Practice to see what has stuck.');
+    const canSwitch = advice.suggest !== activeSession.mode && advice.kind !== 'hard-round';
+    return (
+      <div className="mt-3 rounded-[16px] border border-[#e4e2f5] bg-[#f8f7ff] px-3 py-3" data-testid="study-guide" data-advice={advice.kind}>
+        <Menti pose={advice.pose} size={60} message={message} testId="menti-guide">
+          {canSwitch && (
+            <button
+              type="button"
+              onClick={() => changeMode(advice.suggest)}
+              className="inline-flex min-h-9 items-center rounded-full bg-[#5144c7] px-3.5 text-[11px] font-extrabold text-white hover:bg-[#4337b0]"
+              data-testid="button-guide-switch"
+            >
+              {tx('Switch to {mode}', { mode: tx(MODE_INFO[advice.suggest].label) })}
+            </button>
+          )}
+        </Menti>
+      </div>
+    );
+  }
 
   function renderStudyArea() {
     if (!selectedDeck) {
@@ -1283,6 +1330,7 @@ export default function SmartFlashcardsPage() {
                   {tx(MODE_INFO[activeSession.mode].hint)}
                 </p>
               )}
+              {renderGuide()}
             </div>
           )}
           {renderStudyArea()}
