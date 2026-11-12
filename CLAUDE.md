@@ -72,10 +72,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 ## Where we are
 - Done: Stages 1–8B, all tested on the tablet and approved by the teacher.
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
-  The site is live at https://serefcancakirr-spec.github.io/ai-exam-survival/ and updates on every push to `main`.
+  The site updates on every push to `main`.
 - Stage 10 (Menti mascot): done, merged into `main` (PR #2), deployed, tested on the tablet and approved by the teacher.
 - Stage 11 (Turkish quiz questions and starter decks): done, merged into `main` (PR #3), deployed, tested on the tablet
   and approved by the teacher.
-- Stage 12 (custom domain aiexamsurvival.com.tr): code built and tested on the work branch, backup tag
-  `backup/before-stage-12` (local only). The teacher sets DNS at METUnic and the custom domain in Settings → Pages.
+- Stage 12 (custom domain): done, merged into `main` (PR #4). DNS set at METUnic, custom domain saved in Settings → Pages,
+  workflow re-run (built with BASE_PATH=/). The site is live at https://aiexamsurvival.com.tr/ (teacher confirmed).
 - Next: no stage planned yet. Ask the teacher before starting anything new.
