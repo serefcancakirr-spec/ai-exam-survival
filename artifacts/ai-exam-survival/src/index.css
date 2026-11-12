@@ -170,3 +170,12 @@
 @media (prefers-reduced-motion: reduce) {
   .menti-figure * { animation: none !important; }
 }
+
+/* ---------- Stage 13: focus timer and new Menti moods ---------- */
+.menti-heart { animation: menti-heart 1.6s ease-in-out infinite; }
+@keyframes menti-heart { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } }
+.focus-breathe { animation: focus-breathe 8s ease-in-out infinite; }
+@keyframes focus-breathe { 0%, 100% { transform: scale(.72); opacity: .55; } 50% { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .focus-breathe { animation: none !important; transform: none; }
+}

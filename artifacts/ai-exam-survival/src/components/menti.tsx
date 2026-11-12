@@ -8,7 +8,20 @@
 import type { ReactNode } from 'react';
 import { useI18n } from '@/i18n/i18n';
 
-export type MentiPose = 'wave' | 'think' | 'cheer' | 'encourage' | 'surprised' | 'point' | 'clap';
+export type MentiPose =
+  | 'wave'
+  | 'think'
+  | 'cheer'
+  | 'encourage'
+  | 'surprised'
+  | 'point'
+  | 'clap'
+  // Stage 13
+  | 'sleepy'
+  | 'calm'
+  | 'focused'
+  | 'proud'
+  | 'comfort';
 
 const C = {
   line: '#1d3566',
@@ -105,6 +118,27 @@ const ARMS: Record<MentiPose, [Arm, Arm]> = {
       origin: '154px 184px',
     },
   ],
+  // ---------- Stage 13 ----------
+  sleepy: [
+    { pts: '88,180 76,208 72,234', hand: [71, 238], spot: [77, 208] },
+    { pts: '152,180 164,208 170,236', hand: [171, 240], spot: [163, 206] },
+  ],
+  calm: [
+    { pts: '86,184 92,212 112,224', hand: [114, 224], front: true },
+    { pts: '154,184 148,212 128,224', hand: [126, 224], front: true },
+  ],
+  focused: [
+    { pts: '88,180 76,208 72,234', hand: [71, 238], spot: [77, 208] },
+    { pts: '152,178 176,168 186,146', hand: [187, 140], front: true, spot: [174, 166] },
+  ],
+  proud: [
+    { pts: '88,180 62,204 82,228', hand: [84, 228], front: true, spot: [70, 200] },
+    { pts: '152,180 178,204 158,228', hand: [156, 228], front: true, spot: [170, 200] },
+  ],
+  comfort: [
+    { pts: '86,184 96,210 110,206', hand: [112, 204], front: true },
+    { pts: '154,184 144,210 130,206', hand: [128, 204], front: true },
+  ],
 };
 
 function Limb({ arm }: { arm: Arm }) {
@@ -127,7 +161,18 @@ function Limb({ arm }: { arm: Arm }) {
 }
 
 function Eyes({ pose }: { pose: MentiPose }) {
-  if (pose === 'cheer' || pose === 'clap') {
+  if (pose === 'sleepy' || pose === 'calm') {
+    // closed, relaxed eyes (sleepy ones sit a little lower)
+    const y = pose === 'sleepy' ? 102 : 99;
+    return (
+      <g fill="none" stroke={C.line} strokeWidth={4} strokeLinecap="round">
+        <path d={`M88 ${y} q10 8 20 0`} />
+        <path d={`M132 ${y} q10 8 20 0`} />
+        <path d={`M87 ${y + 2} l-5 2 M153 ${y + 2} l5 2`} strokeWidth={2.4} />
+      </g>
+    );
+  }
+  if (pose === 'cheer' || pose === 'clap' || pose === 'proud') {
     return (
       <g fill="none" stroke={C.line} strokeWidth={4} strokeLinecap="round">
         <path d="M88 99 q10 -12 20 0" />
@@ -136,7 +181,7 @@ function Eyes({ pose }: { pose: MentiPose }) {
     );
   }
   const r = pose === 'surprised' ? 12.5 : 11.5;
-  const look = pose === 'think' ? -2 : 0;
+  const look = pose === 'think' ? -2 : pose === 'focused' ? 1.5 : 0;
   return (
     <g>
       <g className="menti-blink" style={{ transformOrigin: '120px 98px' }}>
@@ -163,7 +208,13 @@ function Brows({ pose }: { pose: MentiPose }) {
         ? ['M90 80 q8 -3 16 1', 'M134 76 q8 -5 16 0']
         : pose === 'encourage'
           ? ['M90 79 q8 -5 16 -2', 'M134 77 q8 -3 16 2']
-          : ['M91 80 q7 -4 14 -1', 'M135 79 q7 -3 14 1'];
+          : pose === 'focused'
+            ? ['M90 77 q8 1 16 5', 'M134 82 q8 -4 16 -5']
+            : pose === 'comfort'
+              ? ['M90 81 q8 -2 16 -7', 'M134 74 q8 2 16 7']
+              : pose === 'sleepy'
+                ? ['M91 85 q7 -3 14 0', 'M135 85 q7 -3 14 0']
+                : ['M91 80 q7 -4 14 -1', 'M135 79 q7 -3 14 1'];
   return (
     <g fill="none" stroke={C.line} strokeWidth={2.6} strokeLinecap="round">
       <path d={d[0]} />
@@ -179,7 +230,17 @@ function Mouth({ pose }: { pose: MentiPose }) {
   if (pose === 'think') {
     return <path d="M106 141 q10 6 22 -3" fill="none" stroke={C.line} strokeWidth={3.2} strokeLinecap="round" />;
   }
-  const big = pose === 'cheer' || pose === 'clap';
+  if (pose === 'sleepy') {
+    // a small yawn
+    return <ellipse cx={120} cy={143} rx={6} ry={7.5} fill="#7a2c45" stroke={C.line} strokeWidth={3} />;
+  }
+  if (pose === 'calm' || pose === 'comfort') {
+    return <path d="M107 139 q13 10 26 0" fill="none" stroke={C.line} strokeWidth={3.2} strokeLinecap="round" />;
+  }
+  if (pose === 'focused') {
+    return <path d="M109 142 q11 4 22 -2" fill="none" stroke={C.line} strokeWidth={3.2} strokeLinecap="round" />;
+  }
+  const big = pose === 'cheer' || pose === 'clap' || pose === 'proud';
   return (
     <g>
       <path
@@ -206,7 +267,32 @@ function Extras({ pose }: { pose: MentiPose }) {
       </g>
     );
   }
-  if (pose === 'cheer' || pose === 'clap') {
+  if (pose === 'sleepy') {
+    return (
+      <g className="menti-float" fill={C.hair} fontFamily="Inter, sans-serif" fontWeight={800}>
+        <text x={176} y={68} fontSize={16}>
+          z
+        </text>
+        <text x={192} y={52} fontSize={21}>
+          z
+        </text>
+        <text x={210} y={34} fontSize={27}>
+          Z
+        </text>
+      </g>
+    );
+  }
+  if (pose === 'calm') {
+    return (
+      <g className="menti-sparkle" fill="#5be0dc">
+        <circle cx={34} cy={120} r={4} />
+        <circle cx={24} cy={150} r={2.6} />
+        <circle cx={206} cy={120} r={4} />
+        <circle cx={216} cy={150} r={2.6} />
+      </g>
+    );
+  }
+  if (pose === 'cheer' || pose === 'clap' || pose === 'proud') {
     const star = (x: number, y: number, s: number, fill: string) => (
       <path
         key={`${x}-${y}`}
@@ -324,9 +410,27 @@ export function MentiArt({ pose = 'wave', title, faceOnly = false }: { pose?: Me
               />
               <circle cx={120} cy={201} r={3.4} fill={C.line} />
             </g>
+            {pose === 'focused' && (
+              <g>
+                <path d="M186 150 L198 100" stroke={C.line} strokeWidth={11} strokeLinecap="round" />
+                <path d="M186 150 L198 100" stroke="#f6c35b" strokeWidth={6.5} strokeLinecap="round" />
+                <path d="M196 108 L198 100" stroke="#f28a9e" strokeWidth={6.5} strokeLinecap="round" />
+              </g>
+            )}
             {front.map((arm, i) => (
               <Limb key={`f${i}`} arm={arm} />
             ))}
+            {pose === 'comfort' && (
+              <path
+                className="menti-heart"
+                style={{ transformOrigin: '120px 196px' }}
+                d="M120 208 C106 198 104 186 112 182 C116 180 119 182 120 186 C121 182 124 180 128 182 C136 186 134 198 120 208 Z"
+                fill="#f28a9e"
+                stroke={C.line}
+                strokeWidth={2.6}
+                strokeLinejoin="round"
+              />
+            )}
           </>
         )}
         {/* ears */}
@@ -401,7 +505,20 @@ export function MentiArt({ pose = 'wave', title, faceOnly = false }: { pose?: Me
   );
 }
 
-export const MENTI_POSES: MentiPose[] = ['wave', 'think', 'cheer', 'encourage', 'surprised', 'point', 'clap'];
+export const MENTI_POSES: MentiPose[] = [
+  'wave',
+  'think',
+  'cheer',
+  'encourage',
+  'surprised',
+  'point',
+  'clap',
+  'sleepy',
+  'calm',
+  'focused',
+  'proud',
+  'comfort',
+];
 
 /**
  * Menti with an optional speech bubble. `size` is Menti's width in pixels (height is 1.25 × width).
