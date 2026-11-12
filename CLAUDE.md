@@ -110,7 +110,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   workflow re-run (built with BASE_PATH=/). The site is live at https://aiexamsurvival.com.tr/ (teacher confirmed).
 - Stage 13 (focus timer, calm sounds, new Menti moods): done, merged into `main` (PR #5), deployed, tested on the tablet
   and approved by the teacher.
-- Stage 14 (no duplicate deck names, Menti study advice): done, merged into `main` (PR #6), deployed.
+- Stage 14 (no duplicate deck names, Menti study advice): done, merged into `main` (PR #6), deployed, tested on the tablet
+  and approved by the teacher.
 - Stage 15A (grade 9 MEB questions: Mathematics, Physics, Chemistry, Biology): built and tested on the work branch, backup tag
   `backup/before-stage-15` (local only). Teacher review list made for the subject teachers. Waiting for approval to open a PR.
 - Stage 15B (approved plan, not started): grade 9 History, Geography, Türk Dili ve Edebiyatı. English and Din Kültürü left out
