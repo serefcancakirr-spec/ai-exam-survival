@@ -89,8 +89,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   and approved by the teacher.
 - Stage 12 (custom domain): done, merged into `main` (PR #4). DNS set at METUnic, custom domain saved in Settings → Pages,
   workflow re-run (built with BASE_PATH=/). The site is live at https://aiexamsurvival.com.tr/ (teacher confirmed).
-- Stage 13 (focus timer, calm sounds, new Menti moods): built and tested on the work branch, backup tag
-  `backup/before-stage-13` (local only). Waiting for the teacher's approval to open a PR and merge.
+- Stage 13 (focus timer, calm sounds, new Menti moods): done, merged into `main` (PR #5), deployed, tested on the tablet
+  and approved by the teacher.
+- Teacher feedback (not started): duplicate flashcard deck names are allowed (should be blocked); wants more guidance while
+  studying decks; content must follow the MEB curriculum and the Türkiye Yüzyılı Maarif Modeli (grades 9–11 new program
+  in 2026-27, grade 12 old program). Official programs: tymm.meb.gov.tr (host not reachable from the cloud session).
 - Ideas discussed for later (not approved yet): Stage 14 rule-based chat Menti (no live AI); Stage 15 install as an app (PWA)
   and an About/Privacy page; live AI only later, with school approval, a small server to hide the key and a spending cap.
 - Next: no stage planned yet. Ask the teacher before starting anything new.
