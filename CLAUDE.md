@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 120/120; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice).
+  Expected today: logic 130/130; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 13/13: grade 9 MEB questions).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -87,6 +87,18 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Menti study advice under the mode tabs (from real progress): all new → Learn, cards marked "Review again" → Review,
   all mastered or mostly known → Practice, 3+ "Review again" in one round (not in Review) → reassurance. Writes nothing.
 
+## Grade 9 MEB questions (Stage 15)
+- `src/pages/quiz-bank-meb9.ts`: grade 9 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs
+  (Stage 15A: Mathematics 20, Physics 21, Chemistry 24, Biology 23). Each has its learning outcome code (MAT/FİZ/KİM/BİY.9.x.y);
+  the topic is the MEB theme. In the source the first option is the correct one; the bank moves it to A–D.
+- Only grade 9 of these subjects changed (ids `9-<subject>-meb-<n>`); grades 10–12 and the other subjects keep the shared samples.
+- Turkish in both languages. Quiz shows a note (`quiz.mebNote`, "öğretmen kontrolü sürüyor") and "Öğrenme çıktısı: CODE"
+  under each question and in the review (found by question text, so nothing new is saved). Never write "MEB onaylı".
+- Official outcome list for the tests: `tests/data/meb9-outcomes.json` (from the 2026-2027 Anadolu Lisesi frame plans on
+  tymm.meb.gov.tr). Questions follow the MEB "Bağlam Temelli Çoktan Seçmeli Soru Yazım Kılavuzu" (context, misconception
+  distractors, no "hepsi/hiçbiri").
+- Network: the personal cloud environment "ai-exam-survival" allows tymm.meb.gov.tr (use curl; WebFetch cannot reach it).
+
 ## Where we are
 - Done: Stages 1–8B, all tested on the tablet and approved by the teacher.
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
@@ -98,10 +110,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   workflow re-run (built with BASE_PATH=/). The site is live at https://aiexamsurvival.com.tr/ (teacher confirmed).
 - Stage 13 (focus timer, calm sounds, new Menti moods): done, merged into `main` (PR #5), deployed, tested on the tablet
   and approved by the teacher.
-- Stage 14 (no duplicate deck names, Menti study advice): built and tested on the work branch, backup tag
-  `backup/before-stage-14` (local only). Waiting for the teacher's approval to open a PR and merge.
-- Teacher feedback (not started, Stage 15 candidate): content must follow the MEB curriculum and the Türkiye Yüzyılı Maarif Modeli (grades 9–11 new program
-  in 2026-27, grade 12 old program). Official programs: tymm.meb.gov.tr (host not reachable from the cloud session).
+- Stage 14 (no duplicate deck names, Menti study advice): done, merged into `main` (PR #6), deployed.
+- Stage 15A (grade 9 MEB questions: Mathematics, Physics, Chemistry, Biology): built and tested on the work branch, backup tag
+  `backup/before-stage-15` (local only). Teacher review list made for the subject teachers. Waiting for approval to open a PR.
+- Stage 15B (approved plan, not started): grade 9 History, Geography, Türk Dili ve Edebiyatı. English and Din Kültürü left out
+  for now (English plan only as RAR; Din Kültürü plan not on the page). Grades 10–11 later.
 - Ideas discussed for later (not approved yet): Stage 14 rule-based chat Menti (no live AI); Stage 15 install as an app (PWA)
   and an About/Privacy page; live AI only later, with school approval, a small server to hide the key and a spending cap.
-- Next: no stage planned yet. Ask the teacher before starting anything new.
+- Next: Stage 15B after the teacher's approval.

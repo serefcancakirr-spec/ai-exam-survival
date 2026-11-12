@@ -1,3 +1,5 @@
+import { MEB9_SEEDS } from './quiz-bank-meb9';
+
 export const QUIZ_GRADES = ['9', '10', '11', '12'] as const;
 
 export const QUIZ_SUBJECTS = [
@@ -229,13 +231,32 @@ export const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
 
 const OPTION_IDS: QuizOptionId[] = ['A', 'B', 'C', 'D'];
 
-// The same reviewed sample set is tagged for each high-school grade. A future
-// curriculum-aligned release can replace these shared samples with grade-specific
-// collections without changing the quiz flow.
+// The same reviewed sample set is tagged for each high-school grade, except grade 9 of the
+// subjects that have MEB (Maarif Modeli) questions (Stage 15): those use their own collection,
+// with ids like "9-mathematics-meb-1" so they never collide with the shared samples.
+function seedsFor(grade: QuizGrade, subject: QuizSubject): { seeds: QuestionSeed[]; idPart: string } {
+  const meb = grade === '9' ? MEB9_SEEDS[subject] : undefined;
+  if (meb) {
+    return {
+      idPart: '-meb',
+      seeds: meb.map((seed) => ({
+        topic: seed.theme,
+        difficulty: seed.difficulty,
+        prompt: seed.prompt,
+        options: seed.options,
+        correctOptionId: 'A' as QuizOptionId,
+        explanation: seed.explanation,
+      })),
+    };
+  }
+  return { idPart: '', seeds: QUESTION_SEEDS[subject] };
+}
+
 export const QUIZ_QUESTION_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
   (subject, subjectIndex) =>
-    QUIZ_GRADES.flatMap((grade) =>
-      QUESTION_SEEDS[subject].map((seed, index) => {
+    QUIZ_GRADES.flatMap((grade) => {
+      const { seeds, idPart } = seedsFor(grade, subject);
+      return seeds.map((seed, index) => {
         const correctOption = seed.options[OPTION_IDS.indexOf(seed.correctOptionId)];
         // Rotate correct positions across A–D so answer letters are not predictable.
         const answerPosition = (index + subjectIndex) % OPTION_IDS.length;
@@ -245,7 +266,7 @@ export const QUIZ_QUESTION_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
         distractors.splice(answerPosition, 0, correctOption);
 
         return {
-          id: `${grade}-${subject.toLowerCase().replaceAll(' ', '-')}-${index + 1}`,
+          id: `${grade}-${subject.toLowerCase().replaceAll(' ', '-')}${idPart}-${index + 1}`,
           grade,
           subject,
           topic: seed.topic,
@@ -258,8 +279,8 @@ export const QUIZ_QUESTION_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
           correctOptionId: OPTION_IDS[answerPosition],
           explanation: seed.explanation,
         };
-      }),
-    ),
+      });
+    }),
 );
 
 export const ALL_QUIZ_TOPICS = '__all_topics__';

@@ -372,5 +372,7 @@ export const TR: Record<MessageKey, string> = {
   'quiz.heroText': 'Kısa bir alıştırma seti oluştur, soruları tek tek çöz ve net açıklamalarla sırada neyi tekrar edeceğini planla.',
   'quiz.curatedNote': 'Sorular 9–12. sınıflar için seçilmiş örneklerdir. İngilizce dersinin soruları İngilizcedir.',
   'quiz.noLiveAi': 'Canlı yapay zekâ yok · Hesap yok',
+  'quiz.mebNote': 'Bu dersin 9. sınıf soruları MEB Türkiye Yüzyılı Maarif Modeli öğretim programına göre hazırlandı. Ders öğretmenlerimizin kontrolü sürüyor.',
+  'quiz.mebOutcome': 'Öğrenme çıktısı: {code}',
   'quiz.footer': 'AI Exam Survival · Test Merkezi örnek alıştırmaları',
 };
