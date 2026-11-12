@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 115/115; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods).
+  Expected today: logic 120/120; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -80,6 +80,13 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   home greeting by hour (05–11 morning, 12–17 day, 18–22 evening, 23–04 night = sleepy); quiz 70%+ cheer, 40–69% encourage,
   below 40% comfort; proud on the Study Planner when every study session of the week is ticked.
 
+## Flashcards: deck names and study advice (Stage 14)
+- `src/pages/flashcards-guide.ts`: no two decks with the same name (any grade/subject; letter case, Turkish İ/ı and extra
+  spaces ignored; unchanged starter decks count with their Turkish and English names). An edited deck may keep its own name;
+  duplicates saved before Stage 14 are kept untouched.
+- Menti study advice under the mode tabs (from real progress): all new → Learn, cards marked "Review again" → Review,
+  all mastered or mostly known → Practice, 3+ "Review again" in one round (not in Review) → reassurance. Writes nothing.
+
 ## Where we are
 - Done: Stages 1–8B, all tested on the tablet and approved by the teacher.
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
@@ -91,8 +98,9 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   workflow re-run (built with BASE_PATH=/). The site is live at https://aiexamsurvival.com.tr/ (teacher confirmed).
 - Stage 13 (focus timer, calm sounds, new Menti moods): done, merged into `main` (PR #5), deployed, tested on the tablet
   and approved by the teacher.
-- Teacher feedback (not started): duplicate flashcard deck names are allowed (should be blocked); wants more guidance while
-  studying decks; content must follow the MEB curriculum and the Türkiye Yüzyılı Maarif Modeli (grades 9–11 new program
+- Stage 14 (no duplicate deck names, Menti study advice): built and tested on the work branch, backup tag
+  `backup/before-stage-14` (local only). Waiting for the teacher's approval to open a PR and merge.
+- Teacher feedback (not started, Stage 15 candidate): content must follow the MEB curriculum and the Türkiye Yüzyılı Maarif Modeli (grades 9–11 new program
   in 2026-27, grade 12 old program). Official programs: tymm.meb.gov.tr (host not reachable from the cloud session).
 - Ideas discussed for later (not approved yet): Stage 14 rule-based chat Menti (no live AI); Stage 15 install as an app (PWA)
   and an About/Privacy page; live AI only later, with school approval, a small server to hide the key and a spending cap.
