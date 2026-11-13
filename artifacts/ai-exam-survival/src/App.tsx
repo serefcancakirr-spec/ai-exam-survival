@@ -4,6 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
+import AboutPage, { FooterAboutLink } from '@/pages/about-page';
 import SiteHeader from '@/components/site-header';
 import ScrollManager from '@/components/scroll-manager';
 import { Menti } from '@/components/menti';
@@ -238,7 +239,7 @@ function Home() {
             <span className="grid h-8 w-8 place-items-center rounded-[11px] bg-[#202c68] text-white"><GraduationCap size={17} /></span>
             <span className="font-display text-[14px] font-extrabold tracking-[-.045em] text-[#1b244b]">AI Exam Survival</span>
           </a>
-          <p className="text-[11px] leading-relaxed text-[#7e879e]">{t('home.footerText')}</p>
+          <p className="text-[11px] leading-relaxed text-[#7e879e]">{t('home.footerText')}<FooterAboutLink /></p>
           <a href="#all-tools" className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]" data-testid="link-footer-tools">{t('home.footerExplore')} <ArrowUpRight size={13} /></a>
         </div>
       </footer>
@@ -296,6 +297,7 @@ function Router() {
         <Route path="/ai-study-coach" component={AiStudyCoachPage} />
         <Route path="/progress-tracker" component={ProgressTrackerPage} />
         <Route path="/exam-calendar" component={ExamCalendarPage} />
+        <Route path="/about" component={AboutPage} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>

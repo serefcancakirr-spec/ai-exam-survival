@@ -19,10 +19,10 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 141/141; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 24/24: grade 9 and 10 MEB questions).
+  Expected today: logic 144/144; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 24/24: grade 9 and 10 MEB questions; stage17-test 15/15: About and Privacy).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
-- Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
+- Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
 ## Saved data (localStorage) – never rename, never change the shape
 - `ai-exam-survival:study-planner:v1`
@@ -104,6 +104,15 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   distractors, no "hepsi/hiçbiri").
 - Network: the personal cloud environment "ai-exam-survival" allows tymm.meb.gov.tr (use curl; WebFetch cannot reach it).
 
+## About and Privacy (Stage 17)
+- `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link
+  (`FooterAboutLink`, test id `link-footer-about`) added inside the footer text, so the footer layout stays the same.
+- Says “AI Kulübü” only (no school or student names, teacher's choice). Contact: aiexamsurvival@gmail.com (teacher approved).
+- Privacy text must stay true: no account, no server, data only in this browser, no ads/analytics/cookies; GitHub Pages and
+  Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB.
+- “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
+  (the 8 saved-data keys above). A model test checks the list matches every key used in the code.
+
 ## Where we are
 - Done: Stages 1–8B, all tested on the tablet and approved by the teacher.
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
@@ -123,12 +132,13 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   tablet and approved by the teacher. English and Din Kültürü left out (English plan only as RAR; Din Kültürü plan not on the page).
 - Stage 16A (grade 10 MEB questions: Mathematics, Physics, Chemistry, Biology): done, merged into `main` (PR #9), deployed.
   Review list given to the teacher. Tablet test not yet confirmed.
-- Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): built and tested, backup tag `backup/before-stage-16b`
-  (local only), review list made. Waiting for approval to open a PR.
-- Teacher asked next: an About/Privacy page (Stage 17), then a chat with Menti (Stage 18, rule-based, no live AI).
-  Plans were shown; the teacher's answers to the open questions (school/student names, contact e-mail, "delete my data" button,
-  where Menti's chat button goes, whether Menti may read saved data) are still needed before starting.
+- Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #10), deployed.
+  Tablet test of 16A/16B not yet confirmed.
+- Stage 17 (About and Privacy page): built and tested on the work branch, backup tag `backup/before-stage-17` (local only).
+  Waiting for approval to open a PR.
+- Stage 18 (chat with Menti, rule-based, no live AI) – teacher's answers: chat button on every page; Menti MAY read saved data
+  (read-only) to give personal advice, as actively as possible, and point to the right tool. This changes the Stage 10 rule
+  “Menti never reads saved data” for the chat only; Menti still never writes. Plan to be shown before starting.
 - Ideas discussed for later (not approved yet): install as an app (PWA); live AI only later, with school approval, a small server
   to hide the key and a spending cap.
-- Next: PR for Stage 16B after the teacher's approval; then Stages 17–18 once the open questions are answered. Corrections from the
-  subject teachers whenever they arrive.
+- Next: PR for Stage 17 after the teacher's approval; then Stage 18. Corrections from the subject teachers whenever they arrive.

@@ -13,6 +13,7 @@ import {
   Target,
 } from 'lucide-react';
 import { Link } from 'wouter';
+import { FooterAboutLink } from './about-page';
 import {
   ALL_QUIZ_TOPICS,
   getQuizQuestionPool,
@@ -1317,7 +1318,7 @@ export default function FunctionalQuizCenterPage() {
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="text-[11px] text-[#7e879e]">
-            {t('quiz.footer')}
+            {t('quiz.footer')}<FooterAboutLink />
           </p>
           <Link
             href="/"

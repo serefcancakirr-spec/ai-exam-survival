@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, Check, Clipboard, Lightbulb, RotateCcw, Sparkles, Target } from 'lucide-react';
 import { Link } from 'wouter';
+import { FooterAboutLink } from './about-page';
 import { formatExamDate, getCountdown, getTodayKey } from './exam-calendar-model';
 import {
   COACH_DIFFICULTIES,
@@ -147,7 +148,7 @@ function CoachFrame({ children }: { children: ReactNode }) {
 
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · AI Study Coach')}</p>
+          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · AI Study Coach')}<FooterAboutLink /></p>
           <Link
             href="/"
             className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]"

@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import { Link } from 'wouter';
+import { FooterAboutLink } from './about-page';
 import {
   PLANNER_SUBJECT_OPTIONS,
   STUDY_PLANNER_STORAGE_KEY,
@@ -149,7 +150,7 @@ function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="text-[11px] text-[#7e879e]">
-            {t('planner.footer')}
+            {t('planner.footer')}<FooterAboutLink />
           </p>
           <Link
             href="/"

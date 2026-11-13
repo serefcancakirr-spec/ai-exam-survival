@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import { Link } from 'wouter';
+import { FooterAboutLink } from './about-page';
 import {
   EXAM_CALENDAR_STORAGE_KEY,
   EXAM_GRADES,
@@ -193,7 +194,7 @@ function CalendarFrame({ children, storageUnavailable }: { children: ReactNode; 
 
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · Exam Calendar')}</p>
+          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · Exam Calendar')}<FooterAboutLink /></p>
           <Link
             href="/"
             className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]"
