@@ -54,6 +54,8 @@ const promptText = async (page) => (await page.locator('[data-content="quiz"]').
 async function choose(page, grade, subject) {
   await page.selectOption('#quiz-grade', grade);
   await page.selectOption('#quiz-subject', subject);
+  // Stage 21A: the older shared English samples are the level "Genel (ileri)"; A1–C1 are tested in stage21-test.
+  if (subject === 'English') await tid(page, 'button-quiz-level-general').click();
 }
 async function finish(page, count = 5) {
   await tid(page, 'button-start-quiz').click();
