@@ -22,7 +22,7 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-full bg-[#5144c7] px-4 text-[12px] font-bold text-white hover:bg-[#4337b0]"
+            className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-full bg-[#54769d] px-4 text-[12px] font-bold text-white hover:bg-[#527195]"
             data-testid="link-not-found-home"
           >
             <ArrowLeft size={14} /> {t('menti.goHome')}

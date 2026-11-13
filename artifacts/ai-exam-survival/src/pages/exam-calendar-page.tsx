@@ -62,22 +62,22 @@ import { useI18n } from '@/i18n/i18n';
 // ---------- shared styles (match the other tools) ----------
 
 const inputClassName =
-  'mt-2 w-full rounded-[12px] border border-[#e3e6ef] bg-white px-3.5 py-3 text-[13px] text-[#293354] outline-none transition placeholder:text-[#a0a7b8] focus:border-[#7568dc] focus:ring-2 focus:ring-[#7568dc]/10';
+  'mt-2 w-full rounded-[12px] border border-[#e6e9ec] bg-white px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
 const primaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#5144c7] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#4337b0] disabled:cursor-not-allowed disabled:opacity-45';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195] disabled:cursor-not-allowed disabled:opacity-45';
 const secondaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#e2e5ef] bg-white px-4 text-[12px] font-bold text-[#56607b] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7]';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
 const smallButton =
-  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-[#e2e5ef] bg-white px-3 text-[11px] font-bold text-[#56607b] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7]';
+  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-[#e5e8ec] bg-white px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
 const dangerSmallButton =
-  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full bg-[#b24c4c] px-3 text-[11px] font-bold text-white transition-colors hover:bg-[#983c3c]';
+  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full bg-[#a35b5b] px-3 text-[11px] font-bold text-white transition-colors hover:bg-[#8a4a4a]';
 
 const TONE_STYLES: Record<CountdownTone, { tile: string; pill: string }> = {
-  today: { tile: 'bg-[#fff0ec] text-[#a6533a]', pill: 'bg-[#a6533a] text-white' },
-  soon: { tile: 'bg-[#fff0e7] text-[#be7446]', pill: 'bg-[#fff0e7] text-[#a6533a]' },
-  week: { tile: 'bg-[#eeebff] text-[#5d4fce]', pill: 'bg-[#eeebff] text-[#5144c7]' },
-  later: { tile: 'bg-[#e3f8f7] text-[#138f9a]', pill: 'bg-[#e3f8f7] text-[#168991]' },
-  past: { tile: 'bg-[#f2f4f9] text-[#8790a4]', pill: 'bg-[#f2f4f9] text-[#7e879e]' },
+  today: { tile: 'bg-[#fcf2ef] text-[#8f5847]', pill: 'bg-[#965c4a] text-white' },
+  soon: { tile: 'bg-[#fbf1eb] text-[#885e44]', pill: 'bg-[#fbf1eb] text-[#8f5847]' },
+  week: { tile: 'bg-[#f1f5f9] text-[#4a688c]', pill: 'bg-[#f1f5f9] text-[#4c6a8c]' },
+  later: { tile: 'bg-[#e8f3f0] text-[#396f5f]', pill: 'bg-[#e8f3f0] text-[#396e5e]' },
+  past: { tile: 'bg-[#f8f6f3] text-[#60686f]', pill: 'bg-[#f8f6f3] text-[#5f6870]' },
 };
 
 const emptyDraft: ExamDraft = { subject: 'Algebra I', grade: '9', title: '', date: '', time: '', notes: '' };
@@ -149,31 +149,31 @@ function readStudyPlanner(): StudyPlannerData | null {
 function CalendarFrame({ children, storageUnavailable }: { children: ReactNode; storageUnavailable: boolean }) {
   const { tx } = useI18n();
   return (
-    <div className="page-shell min-h-[100dvh] bg-[#f5f6fb]">
+    <div className="page-shell min-h-[100dvh] bg-[#f9f7f4]">
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e2e5ef] bg-white px-4 text-[12px] font-bold text-[#35405e] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {tx('Back to home')}
         </Link>
 
-        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#18224d] px-6 py-8 text-white sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#2f4255] px-6 py-8 text-white sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
-          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5944d2]/25" />
+          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5376a0]/25" />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#75dfe0] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#d9bdaa] sm:h-14 sm:w-14">
               <CalendarDays size={22} />
             </span>
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#75dfe0] sm:text-[11px]">
+              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#d9bdaa] sm:text-[11px]">
                 {tx('Know what is coming')}
               </p>
-              <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.055em] sm:text-[44px]">
+              <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">
                 {tx('Exam Calendar')}
               </h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#c3cbe3] sm:text-[15px]">
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#cad3dc] sm:text-[15px]">
                 {tx('Add your real exams and see exactly how many days you have left. Past exams move out of the way on their own.')}
               </p>
             </div>
@@ -181,10 +181,10 @@ function CalendarFrame({ children, storageUnavailable }: { children: ReactNode; 
         </section>
 
         <div className="mt-7 flex flex-wrap items-center justify-between gap-2">
-          <p className="text-[11px] font-semibold text-[#7e879e]" data-testid="text-calendar-save-status">
+          <p className="text-[11px] font-semibold text-[#5f6870]" data-testid="text-calendar-save-status">
             {storageUnavailable ? tx('Browser saving is unavailable for the calendar') : tx('Your exams stay in this browser')}
           </p>
-          <span className="rounded-full bg-[#e8e6fb] px-3 py-1.5 text-[10px] font-bold text-[#5b50bb]">
+          <span className="rounded-full bg-[#ebf0f6] px-3 py-1.5 text-[10px] font-bold text-[#506783]">
             {tx('Saved on this device')}
           </span>
         </div>
@@ -192,12 +192,12 @@ function CalendarFrame({ children, storageUnavailable }: { children: ReactNode; 
         <div className="mt-4 space-y-5 sm:space-y-6">{children}</div>
       </main>
 
-      <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
+      <footer className="border-t border-[#e6e9ec] bg-[#f7f5f1]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · Exam Calendar')}<FooterAboutLink /></p>
+          <p className="text-[11px] text-[#5f6870]">{tx('AI Exam Survival · Exam Calendar')}<FooterAboutLink /></p>
           <Link
             href="/"
-            className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]"
+            className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#516986] hover:text-[#3e5977]"
             data-testid="link-footer-home"
           >
             <ArrowLeft size={13} /> {tx('Return to the homepage')}
@@ -223,13 +223,13 @@ function Panel({
 }) {
   return (
     <section
-      className="min-w-0 rounded-[21px] border border-[#e5e7f0] bg-white p-5 shadow-[0_8px_28px_rgba(29,42,90,.035)] sm:p-6"
+      className="min-w-0 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6"
       data-testid={testId}
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#5a4bc9]">{eyebrow}</p>
-          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.04em] text-[#20294d] sm:text-[22px]">
+          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{eyebrow}</p>
+          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">
             {title}
           </h2>
         </div>
@@ -243,9 +243,9 @@ function Panel({
 function NoticeBanner({ notice }: { notice: Notice }) {
   const { phrase } = useI18n();
   const styles = {
-    success: 'border-[#cfe9df] bg-[#f1faf6] text-[#2b765b]',
-    error: 'border-[#f0d1d1] bg-[#fff5f5] text-[#914949]',
-    info: 'border-[#d8d4f5] bg-[#f6f4ff] text-[#5144b5]',
+    success: 'border-[#d3e5de] bg-[#f8f6f3] text-[#366b58]',
+    error: 'border-[#ebd6d6] bg-[#fef7f7] text-[#865454]',
+    info: 'border-[#dbe4ee] bg-[#f7f9fc] text-[#506986]',
   };
   return (
     <div
@@ -278,9 +278,9 @@ function ExamForm({
 }) {
   const { t, tx, phrase, subject: subjectLabel, lang, locale } = useI18n();
   return (
-    <form onSubmit={onSubmit} noValidate className="rounded-[16px] border border-[#e8eaf2] bg-[#fbfcfe] p-4" data-testid={`form-${idPrefix}`}>
+    <form onSubmit={onSubmit} noValidate className="rounded-[16px] border border-[#eaedf0] bg-[#fcfdfd] p-4" data-testid={`form-${idPrefix}`}>
       {errors.length > 0 && (
-        <div role="alert" className="mb-3 rounded-[13px] border border-[#f0d1d1] bg-[#fff5f5] px-4 py-3 text-[12px] leading-relaxed text-[#914949]">
+        <div role="alert" className="mb-3 rounded-[13px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 text-[12px] leading-relaxed text-[#865454]">
           <p className="font-bold">{tx('Check these details:')}</p>
           <ul className="mt-1.5 list-disc space-y-1 pl-5">
             {errors.map((error) => (
@@ -290,7 +290,7 @@ function ExamForm({
         </div>
       )}
       <div className="grid gap-3 sm:grid-cols-2">
-        <label className="block text-[11px] font-bold text-[#35405e]" htmlFor={`${idPrefix}-subject`}>
+        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor={`${idPrefix}-subject`}>
           {tx('Subject')}
           <select
             id={`${idPrefix}-subject`}
@@ -306,7 +306,7 @@ function ExamForm({
             ))}
           </select>
         </label>
-        <label className="block text-[11px] font-bold text-[#35405e]" htmlFor={`${idPrefix}-grade`}>
+        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor={`${idPrefix}-grade`}>
           {tx('Grade')}
           <select
             id={`${idPrefix}-grade`}
@@ -322,7 +322,7 @@ function ExamForm({
             ))}
           </select>
         </label>
-        <label className="block text-[11px] font-bold text-[#35405e] sm:col-span-2" htmlFor={`${idPrefix}-title`}>
+        <label className="block text-[11px] font-bold text-[#4b5966] sm:col-span-2" htmlFor={`${idPrefix}-title`}>
           {tx('Exam title')}
           <input
             id={`${idPrefix}-title`}
@@ -334,7 +334,7 @@ function ExamForm({
             data-testid={`${idPrefix}-title`}
           />
         </label>
-        <label className="block text-[11px] font-bold text-[#35405e]" htmlFor={`${idPrefix}-date`}>
+        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor={`${idPrefix}-date`}>
           {tx('Exam date')}
           <input
             id={`${idPrefix}-date`}
@@ -345,8 +345,8 @@ function ExamForm({
             data-testid={`${idPrefix}-date`}
           />
         </label>
-        <label className="block text-[11px] font-bold text-[#35405e]" htmlFor={`${idPrefix}-time`}>
-          {tx('Start time')} <span className="font-semibold text-[#8790a4]">{tx('(optional)')}</span>
+        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor={`${idPrefix}-time`}>
+          {tx('Start time')} <span className="font-semibold text-[#60686f]">{tx('(optional)')}</span>
           <input
             id={`${idPrefix}-time`}
             type="time"
@@ -356,8 +356,8 @@ function ExamForm({
             data-testid={`${idPrefix}-time`}
           />
         </label>
-        <label className="block text-[11px] font-bold text-[#35405e] sm:col-span-2" htmlFor={`${idPrefix}-notes`}>
-          {tx('What it covers')} <span className="font-semibold text-[#8790a4]">{tx('(optional)')}</span>
+        <label className="block text-[11px] font-bold text-[#4b5966] sm:col-span-2" htmlFor={`${idPrefix}-notes`}>
+          {tx('What it covers')} <span className="font-semibold text-[#60686f]">{tx('(optional)')}</span>
           <textarea
             id={`${idPrefix}-notes`}
             rows={2}
@@ -622,7 +622,7 @@ export default function ExamCalendarPage() {
     return (
       <li
         key={exam.id}
-        className={`rounded-[16px] border p-3.5 sm:p-4 ${isPast ? 'border-[#eceef4] bg-[#fafbfe]' : 'border-[#eceef4] bg-white'}`}
+        className={`rounded-[16px] border p-3.5 sm:p-4 ${isPast ? 'border-[#eef0f2] bg-[#fbfcfd]' : 'border-[#eef0f2] bg-white'}`}
         data-testid={`exam-${exam.id}`}
       >
         <article className="flex gap-3 sm:gap-4">
@@ -637,10 +637,10 @@ export default function ExamCalendarPage() {
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div className="min-w-0">
-                <h3 className={`break-words text-[13px] font-extrabold ${isPast ? 'text-[#626b85]' : 'text-[#293354]'}`} data-testid="exam-title">
+                <h3 className={`break-words text-[13px] font-extrabold ${isPast ? 'text-[#5e676f]' : 'text-[#3f4e5d]'}`} data-testid="exam-title">
                   {exam.title}
                 </h3>
-                <p className="mt-1 text-[11px] font-semibold text-[#75809a]">
+                <p className="mt-1 text-[11px] font-semibold text-[#5d676f]">
                   {subjectLabel(exam.subject)} · {t('common.grade', { grade: exam.grade })}
                 </p>
               </div>
@@ -651,7 +651,7 @@ export default function ExamCalendarPage() {
                 {phrase(countdown.label)}
               </span>
             </div>
-            <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#75809a]">
+            <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#5d676f]">
               <span data-testid="exam-date-long">{date.long}</span>
               {time && (
                 <span className="inline-flex items-center gap-1" data-testid="exam-time">
@@ -659,14 +659,14 @@ export default function ExamCalendarPage() {
                 </span>
               )}
             </p>
-            {exam.notes && <p className="mt-2 break-words text-[11px] leading-relaxed text-[#56607b]">{exam.notes}</p>}
+            {exam.notes && <p className="mt-2 break-words text-[11px] leading-relaxed text-[#5e6973]">{exam.notes}</p>}
             <div className="mt-3 flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() => (openPrepId === exam.id ? setOpenPrepId(null) : openPrep(exam))}
                 aria-expanded={openPrepId === exam.id}
                 className={`inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full px-3.5 text-[11px] font-extrabold transition-colors ${
-                  openPrepId === exam.id ? 'bg-[#5144c7] text-white hover:bg-[#4337b0]' : 'bg-[#eeebff] text-[#5144c7] hover:bg-[#e3dfff]'
+                  openPrepId === exam.id ? 'bg-[#54769d] text-white hover:bg-[#527195]' : 'bg-[#f1f5f9] text-[#4c6a8c] hover:bg-[#e8eef6]'
                 }`}
                 data-testid={`button-prepare-${exam.id}`}
               >
@@ -703,10 +703,10 @@ export default function ExamCalendarPage() {
               <div
                 role="alertdialog"
                 aria-label={tx('Delete {title}?', { title: exam.title })}
-                className="mt-3 flex flex-col gap-3 rounded-[14px] border border-[#f0d1d1] bg-[#fff6f6] px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+                className="mt-3 flex flex-col gap-3 rounded-[14px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
                 data-testid="confirm-delete-exam"
               >
-                <p className="text-[12px] font-bold text-[#914949]">
+                <p className="text-[12px] font-bold text-[#865454]">
                   {progressFor(exam.id).total === 0
                     ? tx('Delete “{title}”? This cannot be undone.', { title: exam.title })
                     : tx(
@@ -752,7 +752,7 @@ export default function ExamCalendarPage() {
       {storageMessage && (
         <div
           role="alert"
-          className="rounded-[13px] border border-[#f0d8b8] bg-[#fff9f0] px-4 py-3 text-[12px] leading-relaxed text-[#765221]"
+          className="rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
           data-testid="message-calendar-storage"
         >
           {phrase(storageMessage)}
@@ -761,7 +761,7 @@ export default function ExamCalendarPage() {
       {prepStorageMessage && (
         <div
           role="alert"
-          className="rounded-[13px] border border-[#f0d8b8] bg-[#fff9f0] px-4 py-3 text-[12px] leading-relaxed text-[#765221]"
+          className="rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
           data-testid="message-prep-storage"
         >
           {phrase(prepStorageMessage)}
@@ -809,10 +809,10 @@ export default function ExamCalendarPage() {
           )}
 
           {upcoming.length === 0 ? (
-            <div className="rounded-[16px] border border-dashed border-[#dcdfea] bg-[#fafbfe] px-5 py-8 text-center" data-testid="upcoming-empty">
+            <div className="rounded-[16px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-8 text-center" data-testid="upcoming-empty">
               <Menti pose="point" size={76} message={t('menti.calendarEmpty')} testId="menti-calendar" className="mb-1 justify-center" />
-              <p className="mt-3 text-[13px] font-bold text-[#47516c]">{tx('No upcoming exams.')}</p>
-              <p className="mx-auto mt-1 max-w-[380px] text-[11px] leading-relaxed text-[#8790a4]">
+              <p className="mt-3 text-[13px] font-bold text-[#4f5a64]">{tx('No upcoming exams.')}</p>
+              <p className="mx-auto mt-1 max-w-[380px] text-[11px] leading-relaxed text-[#60686f]">
                 {tx('Add your next exam to start the countdown.')}
                 {data.exams.length === 0 && ` ${tx('Or add three examples to see how the calendar works.')}`}
               </p>
@@ -833,7 +833,7 @@ export default function ExamCalendarPage() {
             </ol>
           )}
 
-          <div className="mt-5 border-t border-[#eceef4] pt-4">
+          <div className="mt-5 border-t border-[#eef0f2] pt-4">
             <button
               type="button"
               onClick={() => setPastOpen((open) => !open)}
@@ -842,18 +842,18 @@ export default function ExamCalendarPage() {
               className="flex min-h-11 w-full items-center justify-between gap-3 rounded-[12px] px-1 text-left"
               data-testid="button-toggle-past"
             >
-              <span className="text-[12px] font-extrabold text-[#35405e]">
-                {tx('Past exams')} <span className="font-semibold text-[#8790a4]" data-testid="text-past-count">({past.length})</span>
+              <span className="text-[12px] font-extrabold text-[#4b5966]">
+                {tx('Past exams')} <span className="font-semibold text-[#60686f]" data-testid="text-past-count">({past.length})</span>
               </span>
               <ChevronDown
                 size={17}
-                className={`text-[#7e879e] transition-transform motion-reduce:transition-none ${pastOpen ? 'rotate-180' : ''}`}
+                className={`text-[#5f6870] transition-transform motion-reduce:transition-none ${pastOpen ? 'rotate-180' : ''}`}
               />
             </button>
             {pastOpen && (
               <div id="past-exams" className="mt-3">
                 {past.length === 0 ? (
-                  <p className="text-[11px] text-[#8790a4]" data-testid="past-empty">
+                  <p className="text-[11px] text-[#60686f]" data-testid="past-empty">
                     {tx('Exams move here automatically the day after they happen.')}
                   </p>
                 ) : (
@@ -870,17 +870,17 @@ export default function ExamCalendarPage() {
           <Panel eyebrow={tx('Next up')} title={summary.next ? summary.next.title : tx('Nothing scheduled')} testId="panel-next">
             {summary.next && nextCountdown ? (
               <div>
-                <p className="font-display text-[34px] font-extrabold leading-none tracking-[-.05em] text-[#5144c7]" data-testid="next-countdown">
+                <p className="font-display text-[34px] font-extrabold leading-none tracking-[-.015em] text-[#4c6a8c]" data-testid="next-countdown">
                   {phrase(nextCountdown.label)}
                 </p>
-                <p className="mt-2 text-[11px] font-semibold text-[#75809a]">
+                <p className="mt-2 text-[11px] font-semibold text-[#5d676f]">
                   {subjectLabel(summary.next.subject)} · {t('common.grade', { grade: summary.next.grade })} ·{' '}
                   {formatExamDate(summary.next.date, locale ?? 'en').long}
                   {summary.next.time ? ` · ${formatExamTime(summary.next.time, lang === 'tr')}` : ''}
                 </p>
               </div>
             ) : (
-              <p className="text-[12px] leading-relaxed text-[#7e879e]">{tx('Add an exam to see your next countdown here.')}</p>
+              <p className="text-[12px] leading-relaxed text-[#5f6870]">{tx('Add an exam to see your next countdown here.')}</p>
             )}
             <dl className="mt-5 grid grid-cols-3 gap-2">
               {[
@@ -888,9 +888,9 @@ export default function ExamCalendarPage() {
                 { label: 'Next 30 days', value: summary.nextMonth, id: 'month' },
                 { label: 'Upcoming', value: summary.total, id: 'total' },
               ].map((item) => (
-                <div key={item.id} className="rounded-[14px] border border-[#eceef4] px-3 py-2.5" data-testid={`stat-${item.id}`}>
-                  <dt className="text-[10px] font-bold text-[#7e879e]">{tx(item.label)}</dt>
-                  <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.04em] text-[#20294d] tabular-nums">
+                <div key={item.id} className="rounded-[14px] border border-[#eef0f2] px-3 py-2.5" data-testid={`stat-${item.id}`}>
+                  <dt className="text-[10px] font-bold text-[#5f6870]">{tx(item.label)}</dt>
+                  <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.015em] text-[#364656] tabular-nums">
                     {item.value}
                   </dd>
                 </div>
@@ -899,10 +899,10 @@ export default function ExamCalendarPage() {
           </Panel>
 
           <Panel eyebrow={tx('Keep it manageable')} title={tx('One step per exam')}>
-            <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#eeebff] text-[#5d4fce]">
+            <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#f1f5f9] text-[#4a688c]">
               <Target size={20} />
             </div>
-            <p className="mt-4 text-[12px] leading-[1.75] text-[#707992]">
+            <p className="mt-4 text-[12px] leading-[1.75] text-[#60676f]">
               {tx('Look at the next exam and pick one small preparation step for today: review flashcards for 20 minutes, or take a short practice quiz. Small steps every day beat one long night before.')}
             </p>
           </Panel>

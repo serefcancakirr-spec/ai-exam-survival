@@ -11,7 +11,7 @@ export default function LanguageSwitch() {
     <div
       role="group"
       aria-label={t('lang.groupLabel')}
-      className="flex shrink-0 items-center rounded-full border border-[#e2e5ef] bg-white p-0.5"
+      className="flex shrink-0 items-center rounded-full border border-[#e5e8ec] bg-white p-0.5"
       data-testid="language-switch"
     >
       {OPTIONS.map((option) => {
@@ -25,7 +25,7 @@ export default function LanguageSwitch() {
             aria-label={option.value === 'tr' ? t('lang.trLabel') : t('lang.enLabel')}
             onClick={() => setLang(option.value)}
             className={`min-h-10 min-w-10 rounded-full px-2.5 text-[12px] font-extrabold transition-colors ${
-              active ? 'bg-[#202c68] text-white' : 'text-[#626b85] hover:text-[#4940bb]'
+              active ? 'bg-[#3b536c] text-white' : 'text-[#5e676f] hover:text-[#4f6a88]'
             }`}
             data-testid={`button-lang-${option.value}`}
           >

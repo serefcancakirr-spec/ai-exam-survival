@@ -130,7 +130,7 @@ export function MentiChat() {
           onClick={openChat}
           aria-label={ui.open}
           title={ui.open}
-          className="fixed bottom-4 right-4 z-40 grid h-[56px] w-[56px] place-items-center overflow-hidden rounded-full border-2 border-white bg-[#e8f4ff] shadow-[0_10px_28px_rgba(29,42,90,.25)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8d83df]/50 sm:bottom-6 sm:right-6"
+          className="fixed bottom-4 right-4 z-40 grid h-[56px] w-[56px] place-items-center overflow-hidden rounded-full border-2 border-white bg-[#eff4f8] shadow-[0_10px_28px_rgba(54,75,96,.25)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#98afca]/50 sm:bottom-6 sm:right-6"
           data-testid="menti-chat-button"
         >
           <span className="block h-[46px] w-[46px]" aria-hidden="true">
@@ -144,20 +144,20 @@ export function MentiChat() {
           role="dialog"
           aria-modal="false"
           aria-labelledby="menti-chat-title"
-          className="fixed inset-x-0 bottom-0 z-[60] flex max-h-[82vh] flex-col overflow-hidden rounded-t-[22px] border border-[#e3e6ef] bg-white shadow-[0_-12px_40px_rgba(29,42,90,.22)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-h-[min(640px,80vh)] sm:w-[390px] sm:rounded-[22px]"
+          className="fixed inset-x-0 bottom-0 z-[60] flex max-h-[82vh] flex-col overflow-hidden rounded-t-[22px] border border-[#e6e9ec] bg-white shadow-[0_-12px_40px_rgba(54,75,96,.22)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-h-[min(640px,80vh)] sm:w-[390px] sm:rounded-[22px]"
           data-testid="menti-chat"
         >
-          <div className="flex items-center gap-3 bg-[#18224d] px-4 py-3 text-white">
-            <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full bg-[#e8f4ff]" aria-hidden="true">
+          <div className="flex items-center gap-3 bg-[#2f4255] px-4 py-3 text-white">
+            <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full bg-[#eff4f8]" aria-hidden="true">
               <span className="block h-9 w-9">
                 <MentiArt pose="wave" faceOnly />
               </span>
             </span>
             <div className="min-w-0 flex-1">
-              <h2 id="menti-chat-title" ref={titleRef} tabIndex={-1} className="font-display text-[16px] font-extrabold tracking-[-.03em] outline-none">
+              <h2 id="menti-chat-title" ref={titleRef} tabIndex={-1} className="font-display text-[16px] font-extrabold tracking-[-.015em] outline-none">
                 {ui.title}
               </h2>
-              <p className="truncate text-[10px] text-[#c3cbe3]">{ui.subtitle}</p>
+              <p className="truncate text-[10px] text-[#cad3dc]">{ui.subtitle}</p>
             </div>
             <button
               type="button"
@@ -170,11 +170,11 @@ export function MentiChat() {
             </button>
           </div>
 
-          <div ref={listRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto bg-[#f6f7fb] px-3.5 py-4" aria-live="polite" data-testid="menti-chat-messages">
+          <div ref={listRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto bg-[#f9f8f5] px-3.5 py-4" aria-live="polite" data-testid="menti-chat-messages">
             {messages.map((m) =>
               m.from === 'me' ? (
                 <div key={m.id} className="flex justify-end">
-                  <p className="max-w-[85%] break-words rounded-[16px] rounded-br-[5px] bg-[#5144c7] px-3.5 py-2.5 text-[13px] leading-relaxed text-white" data-testid="menti-chat-me">
+                  <p className="max-w-[85%] break-words rounded-[16px] rounded-br-[5px] bg-[#54769d] px-3.5 py-2.5 text-[13px] leading-relaxed text-white" data-testid="menti-chat-me">
                     <span className="sr-only">{ui.you}: </span>
                     {m.text}
                   </p>
@@ -193,7 +193,7 @@ export function MentiChat() {
                       key={intent}
                       type="button"
                       onClick={() => ask(intent, chipLabel(intent, lang))}
-                      className="min-h-9 rounded-full border border-[#d9d5fa] bg-white px-3 text-[11px] font-bold text-[#5144c7] transition-colors hover:bg-[#f2f0ff]"
+                      className="min-h-9 rounded-full border border-[#dee7f1] bg-white px-3 text-[11px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f4f7fb]"
                       data-testid={`menti-chip-${intent}`}
                     >
                       {chipLabel(intent, lang)}
@@ -204,7 +204,7 @@ export function MentiChat() {
             })()}
           </div>
 
-          <form onSubmit={submit} className="flex items-center gap-2 border-t border-[#e8eaf1] bg-white p-3">
+          <form onSubmit={submit} className="flex items-center gap-2 border-t border-[#eaecef] bg-white p-3">
             <label htmlFor="menti-chat-input" className="sr-only">{ui.placeholder}</label>
             <input
               id="menti-chat-input"
@@ -213,13 +213,13 @@ export function MentiChat() {
               maxLength={300}
               autoComplete="off"
               placeholder={ui.placeholder}
-              className="min-h-11 min-w-0 flex-1 rounded-full border border-[#e2e5ef] bg-[#f8f9fc] px-4 text-[13px] text-[#20294d] outline-none focus:border-[#8d83df] focus:bg-white"
+              className="min-h-11 min-w-0 flex-1 rounded-full border border-[#e5e8ec] bg-[#fbf9f7] px-4 text-[13px] text-[#364656] outline-none focus:border-[#98afca] focus:bg-white"
               data-testid="menti-chat-input"
             />
             <button
               type="submit"
               aria-label={ui.send}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#5144c7] text-white hover:bg-[#4337b0] disabled:opacity-40"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#54769d] text-white hover:bg-[#527195] disabled:opacity-40"
               disabled={!draft.trim()}
               data-testid="menti-chat-send"
             >
@@ -247,12 +247,12 @@ function MentiMessage({
   const reply = message.first ? greetingReply(message.facts, lang, names) : replyTo(message.intent, message.facts, lang, names);
   return (
     <div className="flex items-end gap-2" data-testid="menti-chat-reply" data-intent={reply.intent} data-pose={reply.pose}>
-      <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full bg-[#e8f4ff]" aria-hidden="true">
+      <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full bg-[#eff4f8]" aria-hidden="true">
         <span className="block h-7 w-7">
           <MentiArt pose={reply.pose} faceOnly />
         </span>
       </span>
-      <div className="max-w-[88%] rounded-[16px] rounded-bl-[5px] border border-[#e5e7f0] bg-white px-3.5 py-2.5 text-[13px] leading-relaxed text-[#35405e] shadow-[0_4px_14px_rgba(29,42,90,.05)]">
+      <div className="max-w-[88%] rounded-[16px] rounded-bl-[5px] border border-[#e7eaee] bg-white px-3.5 py-2.5 text-[13px] leading-relaxed text-[#4b5966] shadow-[0_4px_14px_rgba(54,75,96,.05)]">
         <span className="sr-only">Menti: </span>
         {reply.lines.map((line, i) => (
           <p key={i} className={i > 0 ? 'mt-1.5' : ''}>
@@ -266,7 +266,7 @@ function MentiMessage({
                 key={link.href + (link.section ?? '')}
                 type="button"
                 onClick={() => onFollow(link)}
-                className="min-h-9 rounded-full bg-[#18224d] px-3 text-[11px] font-bold text-white hover:bg-[#283673]"
+                className="min-h-9 rounded-full bg-[#2f4255] px-3 text-[11px] font-bold text-white hover:bg-[#394d62]"
                 data-testid="menti-chat-link"
                 data-href={link.href}
               >
