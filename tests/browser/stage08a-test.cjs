@@ -119,7 +119,7 @@ async function noOverflow(page) {
     assert((await page.evaluate((k) => localStorage.getItem(k), LANG_KEY)) === 'en', 'not saved');
     await page.reload();
     text = await bodyText(page);
-    assert(text.includes('Make the next exam feel'), 'English lost after refresh');
+    assert(text.includes('Prepare for exams step by step'), 'English lost after refresh');
     assert((await tid(page, 'button-lang-en').getAttribute('aria-pressed')) === 'true', 'EN not pressed after refresh');
     await context.close();
   });
