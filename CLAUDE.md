@@ -146,9 +146,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Review list given to the teacher. Tablet test not yet confirmed.
 - Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #10), deployed.
   Tablet test of 16A/16B not yet confirmed.
-- Stage 17 (About and Privacy page): done, merged into `main` (PR #11), deployed. Tablet test not yet confirmed.
-- Stage 18 (chat with Menti, rule-based, no live AI): plan approved by the teacher; built and tested, backup tag
-  `backup/before-stage-18` (local only). Waiting for approval to open a PR.
+- Stage 17 (About and Privacy page): done, merged into `main` (PR #11), deployed, tested on the tablet and approved
+  by the teacher.
+- Stage 18 (chat with Menti, rule-based, no live AI): done, merged into `main` (PR #12), deployed, tested on the tablet
+  and approved by the teacher.
 - Ideas discussed for later (not approved yet): install as an app (PWA); live AI only later, with school approval, a small server
   to hide the key and a spending cap.
-- Next: a PR for Stage 18 after the teacher's approval. Corrections from the subject teachers whenever they arrive.
+- Next: wait for the teacher to choose the next stage (options: grade 11 questions, PWA). Corrections from the subject
+  teachers whenever they arrive.
