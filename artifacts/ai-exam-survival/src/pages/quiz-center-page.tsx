@@ -36,6 +36,7 @@ import { localizeQuestion, topicName } from '@/i18n/content';
 import { mebOutcome, usesMeb } from './quiz-bank-meb';
 import { ENGLISH_LEVELS, SUGGESTED_LEVEL, englishFocus } from './quiz-bank-english';
 import { PassageBlock } from './english-passage-view';
+import { ExamMode } from './exam-mode';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -1090,6 +1091,7 @@ export default function FunctionalQuizCenterPage() {
   }
 
   const [setup, setSetup] = useState<QuizSetup>(DEFAULT_SETUP);
+  const [examActive, setExamActive] = useState(false);
   const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[] | null>(
     null,
   );
@@ -1332,7 +1334,7 @@ export default function FunctionalQuizCenterPage() {
 
         <div className="mt-4 grid items-start gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
           <div className="space-y-5">
-            {submitted && latestAttempt ? (
+            {examActive ? null : submitted && latestAttempt ? (
               <QuizResults
                 attempt={latestAttempt}
                 onRetry={retryQuiz}
@@ -1368,7 +1370,10 @@ export default function FunctionalQuizCenterPage() {
               />
             )}
 
-            <QuizHistory
+            {/* Stage 22A: YKS exam mode (TYT); while an exam or its result is open, only the exam is shown */}
+            <ExamMode onActiveChange={setExamActive} />
+
+            {!examActive && <QuizHistory
               attempts={attempts}
               expandedAttemptId={expandedAttemptId}
               onToggle={(id) =>
@@ -1376,7 +1381,7 @@ export default function FunctionalQuizCenterPage() {
                   current === id ? null : id,
                 )
               }
-            />
+            />}
           </div>
 
           <QuizInfoSidebar

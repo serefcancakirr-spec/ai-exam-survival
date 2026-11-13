@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 182/182; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening).
+  Expected today: logic 192/192; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -32,6 +32,8 @@ Reply in the language the teacher writes in (usually Turkish).
 - `ai-exam-survival:exam-prep:v1`
 - `ai-exam-survival:study-coach:v1`
 - `ai-exam-survival:language:v1` (`tr` or `en`; written only when the student taps TR/EN)
+- `ai-exam-survival:exam-mode:v1` (Stage 22A, teacher approved: YKS exam mode – `{version: 1, results: last 20 exam results,
+  current: the exam in progress or null}`; written only after an exam starts or finishes, never by a visit)
 - `ai-exam-survival:focus:v1` (Stage 13, teacher approved: focus timer settings only – workMinutes 15/25/45, sound, volume 0–100, chime; written only when a setting changes)
 Each tool checks its saved data and never overwrites data it cannot read.
 Progress Tracker is completely read-only: it reads the other tools' data and never writes.
@@ -167,6 +169,22 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   voices exist, so no young children speak). Speed by level (`LISTENING_SPEED`: A1 0.85 … C1 1.05).
   Re-record after changing a listening text: `scripts/english-audio/README.md`. `stage21b-model` checks every file exists.
 
+## YKS exam mode: TYT (Stage 22A)
+- `src/pages/tyt-bank.ts`: 120 original TYT questions in the real distribution (Türkçe 40; Tarih, Coğrafya, Felsefe,
+  Din Kültürü 5 each; Temel Matematik 40; Fizik 7, Kimya 7, Biyoloji 6), five options A–E, Turkish in both languages.
+  First source option = correct; number answers (and I–V) are shown in increasing order like ÖSYM, others rotated.
+  Ids `tyt-<subject>-<n>`. Never write "ÖSYM onaylı" / "MEB onaylı": they are original questions in the ÖSYM style.
+- `src/pages/exam-mode-model.ts` (pure, tested): mini exam 30 questions / 41 min (Türkçe 10, Sosyal 5, Matematik 10, Fen 5,
+  same proportions and time per question as the real 120 / 165 min), full exam 120 / 165 min; real TYT order; each new
+  mini continues where the last one stopped (`round`). Time from `endsAt` (keeps running if the page closes; an exam whose
+  time ran out while closed is finished as timed out on the next visit). Net = correct − wrong ÷ 4, per test and total;
+  no scores, rankings or university estimates.
+- `src/pages/exam-mode.tsx` (`ExamMode`, in Quiz Center under the quiz card; label "12. sınıf · YKS", open to everyone):
+  start screen + saved results, exam screen (timer, test tabs, number grid, five options, "İşareti kaldır", finish with
+  confirmation and the number of blanks), result table + explained review (all / wrong / blank). While an exam or its
+  result is open, the normal quiz card and history are hidden.
+- Next: 22B AYT, 22C YDT (separate approvals). Felsefe and Din Kültürü exist only in the exam mode so far.
+
 ## About and Privacy (Stage 17)
 - `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link
   (`FooterAboutLink`, test id `link-footer-about`) added inside the footer text, so the footer layout stays the same.
@@ -175,7 +193,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB
   (`about.content1` names grades 9, 10, 11 and English A1–C1; mistakes can be reported by e-mail).
 - “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
-  (the 8 saved-data keys above). A model test checks the list matches every key used in the code.
+  (the 9 saved-data keys above). A model test checks the list matches every key used in the code.
 
 ## Chat with Menti (Stage 18)
 - `src/components/menti-chat.tsx` (mounted once in `App.tsx`, so it is on every page): round Menti button bottom-right
@@ -228,8 +246,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   approved first; the teacher, an English teacher, reviewed all of it): done, merged into `main` (PR #17), deployed,
   tested on the tablet and approved by the teacher. The "öğretmen kontrolü sürüyor" note was removed from all subjects at the teacher's request.
 - Stage 21B (English reading + listening, 105 questions, 15 recorded listening texts; samples shown first, voices chosen
-  with the teacher): done, merged into `main` (PR #18), deployed. Waiting for the teacher's tablet test.
-  Next: Stage 22 (grade 12 TYT / AYT / YDT exam mode), plan first.
+  with the teacher): done, merged into `main` (PR #18), deployed, tested on the tablet and approved by the teacher.
+- Stage 22 split by the teacher into 22A TYT, 22B AYT, 22C YDT. Results saved (last 20, new key approved); open to everyone
+  with a "12. sınıf · YKS" label. 22A (120 TYT questions, mini and full timed exams; samples shown and approved first):
+  built and tested, backup tag `backup/before-stage-22a` (local only). Waiting for approval to open a PR.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
