@@ -1,4 +1,4 @@
-// Browser tests for Stage 15A: grade 9 MEB (Maarif Modeli) questions for Mathematics, Physics, Chemistry, Biology.
+// Browser tests for Stage 15 (A + B): grade 9 MEB (Maarif Modeli) questions for every subject except English.
 // Clock fixed at 5 Nov 2026, Istanbul. Usage: node stage15-test.cjs <baseUrl>
 const { chromium } = require('playwright');
 const { EN, TR, QUESTIONS_TR, QUESTION_SEEDS, MEB9_SEEDS } = require('../out/dict.cjs');
@@ -20,7 +20,7 @@ const assert = (c, m) => {
   if (!c) throw new Error(m);
 };
 const VIEWPORTS = { phone: { width: 390, height: 844 }, 'tablet portrait': { width: 800, height: 1280 }, 'tablet landscape': { width: 1280, height: 800 } };
-const SUBJECTS = ['Mathematics', 'Physics', 'Chemistry', 'Biology'];
+const SUBJECTS = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', 'Geography', 'Literature'];
 const MEB_BY_PROMPT = new Map(Object.entries(MEB9_SEEDS).flatMap(([subject, list]) => list.map((s) => [s.prompt, { ...s, subject }])));
 const OLD_PROMPTS = new Set([...Object.values(QUESTION_SEEDS).flat().map((q) => q.prompt), ...Object.values(QUESTIONS_TR).flat().map((q) => q[0])]);
 const fill = (text, vars) => text.replace(/\{(\w+)\}/g, (_, k) => String(vars[k]));
@@ -101,9 +101,9 @@ async function finish(page, count = 5) {
     await context.close();
   });
 
-  await check('grade 10 and grade 9 History / English / Geography / Literature: unchanged, no note and no outcome tag', async () => {
+  await check('grades 10–12 and grade 9 English: unchanged, no note and no outcome tag', async () => {
     const { context, page } = await open(browser);
-    for (const [grade, subject] of [['10', 'Mathematics'], ['12', 'Biology'], ['9', 'History'], ['9', 'English'], ['9', 'Geography'], ['9', 'Literature']]) {
+    for (const [grade, subject] of [['10', 'Mathematics'], ['12', 'Biology'], ['11', 'History'], ['10', 'Literature'], ['9', 'English']]) {
       await choose(page, grade, subject);
       assert((await tid(page, 'quiz-meb-note').count()) === 0, `${grade} ${subject}: note shown`);
       await tid(page, 'button-start-quiz').click();
@@ -180,7 +180,8 @@ async function finish(page, count = 5) {
   for (const [name, viewport] of Object.entries(VIEWPORTS)) {
     await check(`${name}: note, long questions and outcome tag fit the screen (no sideways scrolling)`, async () => {
       const { context, page } = await open(browser, { viewport });
-      await choose(page, '9', 'Mathematics');
+      // Türk Dili ve Edebiyatı has the longest questions (a text inside the question)
+      await choose(page, '9', 'Literature');
       let o = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       assert(o <= 0, `setup +${o}px`);
       await page.locator('[data-testid="radio-quiz-count-20"]').check({ force: true });

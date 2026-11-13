@@ -413,6 +413,442 @@
     "tema": "ORGANİZASYON",
     "cikti": "Biyoçeşitliliği oluşturan unsurlarla ilgili bilimsel çıkarım yapabilme"
    }
+  ],
+  "TAR": [
+   {
+    "code": "TAR.9.1.1",
+    "tema": "GEÇMİŞİN İNŞA SÜRECİNDE TARİH",
+    "cikti": "Tarih öğrenmenin bireye ve topluma faydalarını yorumlayabilme"
+   },
+   {
+    "code": "TAR.9.1.2",
+    "tema": "GEÇMİŞİN İNŞA SÜRECİNDE TARİH",
+    "cikti": "Tarihin doğasını farklı kaynaklar üzerinden inceleyebilme"
+   },
+   {
+    "code": "TAR.9.1.3",
+    "tema": "GEÇMİŞİN İNŞA SÜRECİNDE TARİH",
+    "cikti": "Tarihsel bilginin üretim sürecini çözümleyebilme"
+   },
+   {
+    "code": "TAR.9.1.4",
+    "tema": "GEÇMİŞİN İNŞA SÜRECİNDE TARİH",
+    "cikti": "Dijitalleşmenin tarih araştırma ve yazımının dönüşümüne etkisini değerlendirebilme"
+   },
+   {
+    "code": "TAR.9.2.1",
+    "tema": "ESKİ ÇAĞ MEDENİYETLERİ",
+    "cikti": "Tarım Devrimi’nin Eski Çağ medeniyetlerindeki yerleşmeye ve ekonomik faaliyetlere etkisini değerlendirebilme"
+   },
+   {
+    "code": "TAR.9.2.2",
+    "tema": "ESKİ ÇAĞ MEDENİYETLERİ",
+    "cikti": "Eski Çağ’daki farklı medeniyetlerin yönetim ve ordu sistemlerini özetleyebilme"
+   },
+   {
+    "code": "TAR.9.2.3",
+    "tema": "ESKİ ÇAĞ MEDENİYETLERİ",
+    "cikti": "Eski Çağ medeniyetlerinde hukukun toplumsal düzeni sağlamadaki rolünü sorgulayabilme"
+   },
+   {
+    "code": "TAR.9.2.4",
+    "tema": "ESKİ ÇAĞ MEDENİYETLERİ",
+    "cikti": "Eski Çağ toplumlarındaki inançlar ile bilim ve sanat anlayışları arasındaki ilişkiyi yorumlayabilme"
+   },
+   {
+    "code": "TAR.9.2.5",
+    "tema": "ESKİ ÇAĞ MEDENİYETLERİ",
+    "cikti": "Türklerde konargöçer yaşama ilişkin bakış açısı geliştirebilme"
+   },
+   {
+    "code": "TAR.9.3.1",
+    "tema": "ORTA ÇAĞ MEDENİYETLERİ",
+    "cikti": "Orta Çağ’da yaşanan kitlesel göçlerin Avrupa ve Asya’da oluşturduğu değişimi neden ve sonuçlarıyla birlikte yorumlayabilme"
+   },
+   {
+    "code": "TAR.9.3.2",
+    "tema": "ORTA ÇAĞ MEDENİYETLERİ",
+    "cikti": "Orta Çağ’daki başlıca devletlerin yönetim ve ordu yapılarını karşılaştırabilme"
+   },
+   {
+    "code": "TAR.9.3.3",
+    "tema": "ORTA ÇAĞ MEDENİYETLERİ",
+    "cikti": "Orta Çağ’daki ticaret yollarının kendi çevresinde meydana getirdiği etkiyi sorgulayabilme"
+   },
+   {
+    "code": "TAR.9.3.4",
+    "tema": "ORTA ÇAĞ MEDENİYETLERİ",
+    "cikti": "Orta Çağ’daki başlıca medeniyet havzalarının bilim, kültür ve sanata etkilerine ilişkin oluşturduğu ürünleri paylaşabilme"
+   }
+  ],
+  "COĞ": [
+   {
+    "code": "COĞ.9.1.1",
+    "tema": "COĞRAFYANIN DOĞASI",
+    "cikti": "Coğrafya biliminin konusu ve bölümlerini çözümleyebilme"
+   },
+   {
+    "code": "COĞ.9.1.2",
+    "tema": "COĞRAFYANIN DOĞASI",
+    "cikti": "Örnek olay, olgu veya konu üzerinden mekânsal düşünme ile coğrafya öğrenmenin önemini çözümleyebilme"
+   },
+   {
+    "code": "COĞ.9.1.3",
+    "tema": "COĞRAFYANIN DOĞASI",
+    "cikti": "Coğrafya biliminin gelişimi hakkında bilgi toplayabilme"
+   },
+   {
+    "code": "COĞ.9.2.1",
+    "tema": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+    "cikti": "Harita uygulamaları yapabilme"
+   },
+   {
+    "code": "COĞ.9.2.2",
+    "tema": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+    "cikti": "Türkiye’nin konum özelliklerini algılayabilme"
+   },
+   {
+    "code": "COĞ.9.2.3",
+    "tema": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+    "cikti": "Mekânsal bilgi teknolojilerini oluşturan bileşenleri çözümleyebilme"
+   },
+   {
+    "code": "COĞ.9.3.1",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Hava olaylarının günlük hayata etkisini gözleme dayalı tahmin edebilme"
+   },
+   {
+    "code": "COĞ.9.3.2",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "İklim sisteminin bileşen ve değişkenlerini çözümleyebilme"
+   },
+   {
+    "code": "COĞ.9.3.3",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Türkiye ve dünyadaki farklı iklim türlerine sahip yerlerin iklim verilerini kullanarak tablo, grafik, şekil ve/veya diyagram hazırlayabilme"
+   },
+   {
+    "code": "COĞ.9.3.4",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "İklim sistemi ve sürecinde meydana gelen değişiklikleri algılayabilme"
+   },
+   {
+    "code": "COĞ.9.4.1",
+    "tema": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+    "cikti": "Nüfusun zaman içerisindeki değişimini tablo ve grafikler aracılığı ile yorumlayabilme"
+   },
+   {
+    "code": "COĞ.9.4.2",
+    "tema": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+    "cikti": "Dünya ve Türkiye’deki nüfusun dağılışı ve hareketlerini etkileyen faktörler hakkında haritalar üzerinden çıkarımda bulunabilme"
+   },
+   {
+    "code": "COĞ.9.4.3",
+    "tema": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+    "cikti": "Türkiye ve farklı ülkelerin nüfus piramitlerinden yararlanarak demografik dönüşüm sürecini yorumlayabilme"
+   },
+   {
+    "code": "COĞ.9.4.4",
+    "tema": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+    "cikti": "Türkiye ve farklı ülkelerdeki nüfusla ilgili fırsat ve sorunların nüfus politikalarının belirlenmesindeki etkisini sorgulayabilme"
+   },
+   {
+    "code": "COĞ.9.5.1",
+    "tema": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+    "cikti": "Doğal ve beşerî faktörlerin ekonomik faaliyetlere etkilerini sorgulayabilme"
+   },
+   {
+    "code": "COĞ.9.6.1",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Tehlike, risk ve afet kavramlarını çözümleyebilme"
+   },
+   {
+    "code": "COĞ.9.6.2",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Afetleri sınıflandırabilme"
+   },
+   {
+    "code": "COĞ.9.6.3",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Bütüncül afet yönetimi uygulamalarını tablo, grafik, şekil ve/veya diyagramlar aracılığıyla yorumlayabilme"
+   },
+   {
+    "code": "COĞ.9.7.1",
+    "tema": "BÖLGELER, ÜLKELER VE KÜRESEL BAĞLANTILAR",
+    "cikti": "Bölgelerin belirlenmesinde kullanılan kriterlere göre bölge hakkında çıkarım yapabilme"
+   }
+  ],
+  "TDE": [
+   {
+    "code": "TDE2.1",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "“Sözün İnceliği” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "“Sözün İnceliği” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Edebî söyleyişin inceliğini yansıtmak için paragraf düzeyindeki bir yazısında süreci yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Edebî söyleyişin inceliğini yansıtan metinlerden edindiği söz varlığını kullanarak yazısına içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Edebî söyleyişin inceliğini yansıttığı yazısında kural uygulayabilme"
+   },
+   {
+    "code": "TDE4.4",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Edebî söyleyişin inceliğini yansıttığı yazısında yazma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "“Sözün İnceliği” temasında ele alınan metinlerde dinlemeyi/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "“Sözün İnceliği” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Söyleyişin inceliğini kullanarak akıcı bir konuşma süreci yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Muhatabını ikna etmek için söyleyiş inceliklerine yer veren bir konuşma içeriği oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Muhatabını ikna etmek için söyleyiş inceliklerine yer veren bir konuşmada kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "SÖZÜN İNCELİĞİ",
+    "cikti": "Söyleyiş inceliğinin konuşmasına etkisiyle ilgili süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE2.1",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "“Anlam Arayışı” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "“Anlam Arayışı” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Konusunu ana düşünce etrafında detaylandırdığı akıcı bir konuşma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Konusunu ana düşünce etrafında detaylandırdığı konuşma içeriğini oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Konusunu ana fikir etrafında detaylandırdığı konuşmasında kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Konuşmasının içeriğinde kullandığı unsurların konuşmasına olan etkisine yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "“Anlam Arayışı” temasında ele alınan metinlerde dinlemeyi/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "“Anlam Arayışı” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Konu zenginliği ve çeşitliliğini sağlayan edebî metinlerde yazma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Yazısını zenginleştirecek içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Konu zenginliği ve çeşitliliğini sağlayan yazısında kural uygulayabilme"
+   },
+   {
+    "code": "TDE4.4",
+    "tema": "ANLAM ARAYIŞI",
+    "cikti": "Beğeni ve eleştirilerini dile getirdiği yazısına yönelik yazma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE2.1",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "“Anlamın Yapı Taşları” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "“Anlamın Yapı Taşları” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE2.3",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "“Anlamın Yapı Taşları” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Edebî metinlerde yapısal inceliklere odaklanan akıcı bir konuşma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Benzetme, karşılaştırma yaparak yapısal özellikleri ortaya koyduğu bir konuşma içeriği oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Benzetme, karşılaştırma yaparak yapısal özellikleri ortaya koyduğu bir konuşmada kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Edebî metinlerdeki yapısal inceliklerin konuşmaya etkisine yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "“Anlamın Yapı Taşları” temasında ele alınan metinlerde dinleme/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "“Anlamın Yapı Taşları” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE1.3",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "“Anlamın Yapı Taşları” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Yapısını incelikle ördüğü bir yazılı anlatım sürecini yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Yapısı incelikle örülmüş edebî metinlerden edindiği söz varlığını kullanarak yazısı için içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Yapısını incelikle ördüğü yazısında kural uygulayabilme"
+   },
+   {
+    "code": "TDE4.4",
+    "tema": "ANLAMIN YAPI TAŞLARI",
+    "cikti": "Yapısını incelikle ördüğü yazısına yönelik yazma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE2.1",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE2.3",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE2.4",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinlere yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Dilin zenginliğini kullandığı akıcı bir konuşma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Konusunu dilin zenginliğinden yararlanarak oluşturduğu konuşma içeriğini oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Konusunu dilin zenginliğinden yararlanarak oluşturduğu konuşmasında kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Kullandığı dil özelliklerinin konuşmasına etkisine yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinlerde dinlemeyi/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE1.3",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE1.4",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "“Dilin Zenginliği” temasında ele alınan metinlerde dinleme/izleme sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Öz yaşam öyküsünü oluşturabilmek için bir yazılı anlatım sürecini yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Öz yaşam öyküsünü aktarmak için kendi üslup özelliklerini yansıtan bir yazılı an latım içeriği oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Öz yaşam öyküsünü aktarmak için kendi üslup özelliklerini yansıtan yazısında kural uygulayabilme"
+   },
+   {
+    "code": "TDE4.4",
+    "tema": "DİLİN ZENGİNLİĞİ",
+    "cikti": "Beğeni ve eleştirilerini dile getirdiği yazısına yönelik yazma sürecini değerlendirebilme"
+   }
   ]
  }
 }
