@@ -21,7 +21,7 @@ test('Turkish texts are really translated (not left in English) except names', (
   const allowedSame = new Set(['lang.groupLabel', 'lang.trLabel', 'lang.enLabel', 'nav.homeAria', 'subject.Other', 'home.cardPreview']);
   const same = (Object.keys(EN) as Array<keyof typeof EN>).filter((k) => EN[k] === TR[k] && !allowedSame.has(k));
   // Names that are identical in both languages:
-  const expectedSame = ['lang.trLabel', 'lang.enLabel', 'quiz.questionTitle', 'quiz.reviewQuestion'];
+  const expectedSame = ['lang.trLabel', 'lang.enLabel', 'quiz.questionTitle', 'quiz.reviewQuestion', 'exam.colTest', 'exam.colNet']; // Stage 22A: “Test” and “Net” are the same words in Turkish
   assert.deepEqual(same.filter((k) => !expectedSame.includes(k)), []);
 });
 
