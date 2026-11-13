@@ -175,7 +175,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   tested on the tablet and approved by the teacher. Review list given to the teacher.
 - Stage 20 (calm design): split by the teacher into 20A (colours + fonts, approved) and 20B (light interface touches, "not all at
   once"; show 2 samples of the home page and one tool page first). Samples shown: A, B, C, then B2, D, E; teacher chose B.
-  20A: built and tested, backup tag `backup/before-stage-20` (local only). Waiting for the teacher's approval to open a PR.
+  20A: done, merged into `main` (PR #15), deployed. Waiting for the teacher's tablet test. 20B: waiting for the teacher's
+  answer on what bothers them most in the current interface; then 2 samples first.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
