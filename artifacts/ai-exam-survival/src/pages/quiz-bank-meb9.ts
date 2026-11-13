@@ -20,6 +20,9 @@ export type Meb9Seed = {
   explanation: string;
 };
 
+/** Any grade's MEB question uses the same shape. */
+export type MebSeed = Meb9Seed;
+
 /** Theme of each learning-outcome group ("9.1" = first theme), from the official frame plans. */
 export const MEB9_THEMES: Record<string, Record<string, string>> = {
   MAT: {
@@ -740,19 +743,3 @@ export const MEB9_SEEDS: Partial<Record<QuizSubject, Meb9Seed[]>> = {
   Geography: GEOGRAPHY,
   Literature: LITERATURE,
 };
-
-const OUTCOME_BY_PROMPT = new Map<string, string>(
-  Object.entries(MEB9_SEEDS).flatMap(([subject, seeds]) =>
-    (seeds ?? []).map((seed) => [`${subject}|${seed.prompt}`, seed.outcome] as const),
-  ),
-);
-
-/** The MEB learning outcome of a question (also of a saved one), or undefined for other questions. */
-export function mebOutcome(question: { subject: string; prompt: string }) {
-  return OUTCOME_BY_PROMPT.get(`${question.subject}|${question.prompt}`);
-}
-
-/** True when grade 9 of this subject uses the MEB questions. */
-export function usesMeb9(grade: string, subject: string) {
-  return grade === '9' && Boolean(MEB9_SEEDS[subject as QuizSubject]);
-}

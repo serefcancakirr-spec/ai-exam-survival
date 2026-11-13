@@ -1,0 +1,904 @@
+{
+ "source": "tymm.meb.gov.tr – 2026-2027 Anadolu Lisesi 10. sınıf taslak çerçeve (yıllık) planları",
+ "subjects": {
+  "MAT": [
+   {
+    "code": "MAT.10.1.1",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Dik üçgende trigonometrik oranlara (sinüs, kosinüs, tanjant, kotanjant) ve trigonometrik özdeşliklere ilişkin çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.1.2",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Üçgenin yardımcı elemanlarının özellikleri ile ilgili çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.1.3",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Üçgenin bir kenarı ve o kenara ait yüksekliğinin değişimine bağlı olarak alanının değişimine ilişkin çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.1.4",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Sinüs ve kosinüs teoremlerini doğrulayabilme veya ispatlayabilme"
+   },
+   {
+    "code": "MAT.10.2.1",
+    "tema": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+    "cikti": "İki kategorik değişkenli veri ile çalışabilme ve iki kategorik değişken arasındaki ilişkililiğe dayalı karar verebilme"
+   },
+   {
+    "code": "MAT.10.2.2",
+    "tema": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+    "cikti": "Başkaları tarafından oluşturulan iki kategorik değişkenli verilerin ilişkililiğine dayalı istatistiksel sonuç veya yorumları tartışabilme"
+   },
+   {
+    "code": "MAT.10.3.1",
+    "tema": "SAYILAR",
+    "cikti": "Bir doğal sayı ile asal çarpanları ve bölenleri arasındaki ilişkilere dair çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.3.2",
+    "tema": "SAYILAR",
+    "cikti": "Birden çok doğal sayının ortak bölenleriyle bunların en büyüğü ve ortak katlarıyla bunların en küçüğü arasındaki ilişkilere dair muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.10.3.3",
+    "tema": "SAYILAR",
+    "cikti": "Bir doğal sayının belirli doğal sayılara bölümünden kalanlarına dair muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.10.4.1",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Gerçek sayılarda fonksiyon olma şartları ile gerçek sayılarda tanımlı fonksiyonların nitel özelliklerini matematiksel temsillerle değerlendirebilme"
+   },
+   {
+    "code": "MAT.10.4.2",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Gerçek sayılarda f(x) = x² şeklinde tanımlı karesel referans fonksiyonun nitel özellikleri ile bu fonksiyondan türetilen (g(x) = a ∙ f(x ± r) ± k (a, r, k ∈ ℝ, a ≠ 0)) karesel fonksiyonların nitel özelliklerine ilişkin matematiksel muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.10.4.3",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Gerçek sayılarda f(x) = √x (x ≥ 0) şeklinde tanımlı karekök referans fonksiyonun nitel özellikleri ile bu fonksiyondan türetilen (g(x) = a ∙ f(x ± r) ± k (a, r, k ∈ ℝ, a ≠ 0)) karekök fonksiyonlarının nitel özelliklerine ilişkin matematiksel muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.10.4.4",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Gerçek sayılarda f(x) = 1/x (x ≠ 0) şeklinde tanımlı rasyonel referans fonksiyonun nitel özellikleri ile bu fonksiyondan türetilen (g(x) = a ∙ f(x ± r) ± k (a, r, k ∈ ℝ, a ≠ 0)) rasyonel fonksiyonların nitel özelliklerine ilişkin matematiksel muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.10.4.5",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Doğrusal, karesel, karekök ve rasyonel referans fonksiyonlar ile bu fonksiyonlardan türetilebilen fonksiyonların ters fonksiyonlarına dair çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.4.6",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Doğrusal, karesel, karekök, rasyonel referans fonksiyonlar ve bunlardan türetilen fonksiyonlarla ifade edilebilen denklem ve eşitsizlikler içeren problemleri çözebilme"
+   },
+   {
+    "code": "MAT.10.5.1",
+    "tema": "SAYMA, ALGORİTMA VE BİLİŞİM",
+    "cikti": "Sayma stratejileri kullanarak problem çözebilme"
+   },
+   {
+    "code": "MAT.10.5.2",
+    "tema": "SAYMA, ALGORİTMA VE BİLİŞİM",
+    "cikti": "Cebirsel ve fonksiyonel işlemleri algoritmik bir dille yapılandırabilme"
+   },
+   {
+    "code": "MAT.10.6.1",
+    "tema": "ANALİTİK İNCELEME",
+    "cikti": "Dik koordinat sisteminde iki nokta arasındaki uzaklık ve bir doğru parçasını belli oranda bölen noktanın koordinatlarıyla ilgili çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.6.2",
+    "tema": "ANALİTİK İNCELEME",
+    "cikti": "Dik koordinat sistemini doğrunun özelliklerini incelemek ve doğru ile ilgili problemleri çözebilmek için uygun bir temsil aracı olarak kullanabilme"
+   },
+   {
+    "code": "MAT.10.7.1",
+    "tema": "VERİDEN OLASILIĞA",
+    "cikti": "Koşullu olasılık ile çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.10.7.2",
+    "tema": "VERİDEN OLASILIĞA",
+    "cikti": "Bir olayın gerçekleşmesinin diğer bir olayın meydana gelmesine bağlı olduğu durumların olasılığını mevcut bilgiye/veriye dayalı tahmin edebilme"
+   }
+  ],
+  "FİZ": [
+   {
+    "code": "FİZ.10.1.1",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Yatay doğrultuda sabit hızlı hareket ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.10.1.2",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "İvme ve hız değişimi arasındaki ilişkiye yönelik tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.10.1.3",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Yatay doğrultuda sabit ivmeyle hareket eden cisimlerin hareket grafiklerinden elde edilen matematiksel modelleri yorumlayabilme"
+   },
+   {
+    "code": "FİZ.10.2.1",
+    "tema": "ENERJİ",
+    "cikti": "Kuvvet-yer değiştirme grafiği kullanılarak iş ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.10.2.2",
+    "tema": "ENERJİ",
+    "cikti": "İş, enerji ve güç kavramlarına ilişkin çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.10.2.3",
+    "tema": "ENERJİ",
+    "cikti": "Enerji biçimlerini karşılaştırabilme"
+   },
+   {
+    "code": "FİZ.10.2.4",
+    "tema": "ENERJİ",
+    "cikti": "Mekanik enerjiyi çözümleyebilme"
+   },
+   {
+    "code": "FİZ.10.2.5",
+    "tema": "ENERJİ",
+    "cikti": "Yenilenebilen ve yenilenemeyen enerji kaynaklarını karşılaştırabilme"
+   },
+   {
+    "code": "FİZ.10.3.1",
+    "tema": "ELEKTRİK",
+    "cikti": "Basit elektrik devresinde potansiyel fark, elektrik akımı ve direnç kavramlarının tanımına ilişkin analojik akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.10.3.2",
+    "tema": "ELEKTRİK",
+    "cikti": "Elektrik yükünün hareketi üzerinden elektrik akımı kavramını çözümleyebilme"
+   },
+   {
+    "code": "FİZ.10.3.3",
+    "tema": "ELEKTRİK",
+    "cikti": "Ohm Yasası ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.10.3.4",
+    "tema": "ELEKTRİK",
+    "cikti": "Dirençlerin bağlanma türüne göre eşdeğer dirence ilişkin bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.10.3.5",
+    "tema": "ELEKTRİK",
+    "cikti": "Üreteçlerin bağlanma türüne göre devreye sağladıkları potansiyel farka ilişkin bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.10.3.6",
+    "tema": "ELEKTRİK",
+    "cikti": "Elektrik akımının oluşturabileceği tehlikelere karşı alınması gereken önlemlerle ilgili bilgi toplayabilme"
+   },
+   {
+    "code": "FİZ.10.3.7",
+    "tema": "ELEKTRİK",
+    "cikti": "Topraklama olayının önemini sorgulayabilme"
+   },
+   {
+    "code": "FİZ.10.4.1",
+    "tema": "DALGALAR",
+    "cikti": "Periyodik hareketlere ilişkin deneyimlerini yansıtabilme"
+   },
+   {
+    "code": "FİZ.10.4.2",
+    "tema": "DALGALAR",
+    "cikti": "Dalgaların temel kavramlarına ilişkin operasyonel tanımlama yapabilme"
+   },
+   {
+    "code": "FİZ.10.4.3",
+    "tema": "DALGALAR",
+    "cikti": "Dalgaları özelliklerine göre sınıflandırabilme"
+   },
+   {
+    "code": "FİZ.10.4.4",
+    "tema": "DALGALAR",
+    "cikti": "Dalgaların yayılma süratini etkileyen etmenlere ilişkin bilimsel gözleme dayalı tahmin yapabilme"
+   },
+   {
+    "code": "FİZ.10.4.5",
+    "tema": "DALGALAR",
+    "cikti": "Su dalgalarında yansıma ve kırılma ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.10.4.6",
+    "tema": "DALGALAR",
+    "cikti": "Rezonans ve depreme ilişkin kavramlar üzerinden depremi sorgulayabilme"
+   },
+   {
+    "code": "FİZ.10.4.7",
+    "tema": "DALGALAR",
+    "cikti": "Depremle ilgili bilimsel model oluşturabilme"
+   }
+  ],
+  "KİM": [
+   {
+    "code": "KİM.10.1.1",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal değişimlere ilişkin kanıtları belirlemeye yönelik bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "KİM.10.1.2",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkimelerin oluşumunu açıklamak için bilimsel model oluşturabilme"
+   },
+   {
+    "code": "KİM.10.1.3",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkime türlerinin oluşum sürecine ilişkin bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "KİM.10.1.4",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Mol kavramına ilişkin operasyonel tanımlama yapabilme"
+   },
+   {
+    "code": "KİM.10.1.5",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Saf maddelerin ölçülebilir özellikleri arasındaki ilişkileri belirlemeye yönelik tümdengelimsel akıl yürütebilme"
+   },
+   {
+    "code": "KİM.10.1.6",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkime denklemlerinde tanecik sayılarının tutarsızlıklarına ilişkin çelişkiyi giderebilme"
+   },
+   {
+    "code": "KİM.10.1.7",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkimelerde stokiyometrik ilişkilere yönelik tümdengelimsel akıl yürütebilme"
+   },
+   {
+    "code": "KİM.10.1.8",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Gazların özelliklerine ilişkin bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "KİM.10.1.9",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Gazların özellikleri arasındaki ilişkileri bilimsel sorgulayabilme"
+   },
+   {
+    "code": "KİM.10.1.10",
+    "tema": "ETKİLEŞİM",
+    "cikti": "İdeal gaz denklemini tümevarımsal akıl yürütme yoluyla oluşturabilme"
+   },
+   {
+    "code": "KİM.10.1.11",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Gazların farklı ortamlarda yayılmasına ilişkin deney yapabilme"
+   },
+   {
+    "code": "KİM.10.2.1",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözünme sürecine ilişkin bilimsel model oluşturabilme"
+   },
+   {
+    "code": "KİM.10.2.2",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Farklı maddelerin birbiri içinde çözünebilirliğini kanıt kullanarak açıklayabilme"
+   },
+   {
+    "code": "KİM.10.2.3",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözünme olayını sınıflandırabilme"
+   },
+   {
+    "code": "KİM.10.2.4",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözünürlük kavramına ilişkin operasyonel tanımlama yapabilme"
+   },
+   {
+    "code": "KİM.10.2.5",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözünürlüğe etki eden faktörleri belirlemeye yönelik kanıt kullanabilme"
+   },
+   {
+    "code": "KİM.10.2.6",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözeltileri sınıflandırabilme"
+   },
+   {
+    "code": "KİM.10.2.7",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözeltilerin molar derişimine ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "KİM.10.2.8",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Çözünen maddenin tanecik sayısının çözeltilerin kaynama ve donma noktasına etkisini belirlemeye yönelik hipotez oluşturabilme"
+   },
+   {
+    "code": "KİM.10.3.1",
+    "tema": "SÜRDÜRÜLEBİLİRLİK",
+    "cikti": "Kimya dersinde mikro ölçekli deney tercih etmenin sonuçlarını ekosistem açısından değerlendirebilme"
+   },
+   {
+    "code": "KİM.10.3.2",
+    "tema": "SÜRDÜRÜLEBİLİRLİK",
+    "cikti": "Kimyasal tepkimeler sonucunda atmosferin doğasındaki değişimin ekosisteme etkilerine yönelik problem çözebilme"
+   }
+  ],
+  "BİY": [
+   {
+    "code": "BİY.10.1.1",
+    "tema": "ENERJİ",
+    "cikti": "Canlıların yaşamına devam edebilmesi için enerjinin gerekliliğini sorgulayabilme"
+   },
+   {
+    "code": "BİY.10.1.2",
+    "tema": "ENERJİ",
+    "cikti": "Fotosentez reaksiyonlarıyla ilgili bilimsel model oluşturabilme"
+   },
+   {
+    "code": "BİY.10.1.3",
+    "tema": "ENERJİ",
+    "cikti": "Fotosentezde kullanılan ve üretilen maddelerle ilgili deney yapabilme"
+   },
+   {
+    "code": "BİY.10.1.4",
+    "tema": "ENERJİ",
+    "cikti": "Kemosentez hakkında bilgi toplayabilme"
+   },
+   {
+    "code": "BİY.10.1.5",
+    "tema": "ENERJİ",
+    "cikti": "Canlılarda sindirim çeşitlerini ve yapılarını sınıflandırabilme"
+   },
+   {
+    "code": "BİY.10.1.6",
+    "tema": "ENERJİ",
+    "cikti": "İnsanda enerji eldesi için sindirim, emilim ve taşıma süreçlerinin gerekliliği ile ilgili bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "BİY.10.1.7",
+    "tema": "ENERJİ",
+    "cikti": "Hücresel solunum reaksiyonlarıyla ilgili bilimsel model oluşturabilme"
+   },
+   {
+    "code": "BİY.10.1.8",
+    "tema": "ENERJİ",
+    "cikti": "Farklı besin gruplarından enerji eldesi süreçlerini karşılaştırabilme"
+   },
+   {
+    "code": "BİY.10.1.9",
+    "tema": "ENERJİ",
+    "cikti": "Fermantasyon ile ilgili deney yapabilme"
+   },
+   {
+    "code": "BİY.10.1.10",
+    "tema": "ENERJİ",
+    "cikti": "Besinlerden elde edilen enerjinin canlının metabolik süreçlerine katkısı ile ilgili bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "BİY.10.2.1",
+    "tema": "EKOLOJİ",
+    "cikti": "Ekosistemin cansız ve canlı bileşenleri arasındaki ilişkileri çözümleyebilme"
+   },
+   {
+    "code": "BİY.10.2.2",
+    "tema": "EKOLOJİ",
+    "cikti": "Komünitelerde ve popülasyonlarda görülen etkileşimleri ve değişimleri sorgulayabilme"
+   },
+   {
+    "code": "BİY.10.2.3",
+    "tema": "EKOLOJİ",
+    "cikti": "Ekosistemdeki enerji akışıyla ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "BİY.10.2.4",
+    "tema": "EKOLOJİ",
+    "cikti": "Madde döngüleri ile ilgili bilimsel model oluşturabilme"
+   },
+   {
+    "code": "BİY.10.2.5",
+    "tema": "EKOLOJİ",
+    "cikti": "Ekolojik sürdürülebilirliğin önemini yorumlayabilme"
+   },
+   {
+    "code": "BİY.10.2.6",
+    "tema": "EKOLOJİ",
+    "cikti": "Çevresinde sürdürülebilirliği kısıtlayan durumlarla ilgili gözleme dayalı tahmin yapabilme"
+   },
+   {
+    "code": "BİY.10.2.7",
+    "tema": "EKOLOJİ",
+    "cikti": "Ekolojik ayak izini küçültebilme yollarını bilimsel olarak sorgulayabilme"
+   },
+   {
+    "code": "BİY.10.2.8",
+    "tema": "EKOLOJİ",
+    "cikti": "Doğal kaynakların ve biyoçeşitliliğin korunması için alınan önlemleri sorgulayabilme"
+   },
+   {
+    "code": "BİY.10.2.9",
+    "tema": "EKOLOJİ",
+    "cikti": "Çevresinde atık yönetimi konusunda yapılan çalışmalarla ilgili bilgi toplayabilme"
+   }
+  ],
+  "TAR": [
+   {
+    "code": "TAR.10.1.1",
+    "tema": "TÜRKİSTAN’DAN TÜRKİYE’YE (1040-1299)",
+    "cikti": "Türkistan’dan Türkiye’ye uzanan süreçte 1040-1299 yılları arasında meydana gelen önemli askerî mücadelelerin Türk tarihinin seyrine etkilerini karşılaştırabilme"
+   },
+   {
+    "code": "TAR.10.1.2",
+    "tema": "TÜRKİSTAN’DAN TÜRKİYE’YE (1040-1299)",
+    "cikti": "Türkistan’dan Türkiye’ye uzanan süreçte Türklerde devlet ve ordu teşkilatında meydana gelen değişim ve sürekliliği yorumlayabilme"
+   },
+   {
+    "code": "TAR.10.1.3",
+    "tema": "TÜRKİSTAN’DAN TÜRKİYE’YE (1040-1299)",
+    "cikti": "Türkistan’dan Türkiye’ye uzanan süreçte Türklerin sosyoekonomik faaliyetleri ile yerleşme ve şehirleşme anlayışları arasındaki ilişkiyi sorgulayabilme"
+   },
+   {
+    "code": "TAR.10.1.4",
+    "tema": "TÜRKİSTAN’DAN TÜRKİYE’YE (1040-1299)",
+    "cikti": "Türkistan’dan Türkiye’ye uzanan süreçte Türk-İslam medeniyetinde bilim, kültür, eğitim ve sanat alanlarında meydana gelen gelişmeleri Anadolu’nun Türkleşme ve İslamlaşma sürecine etkisi açısından değerlendirebilme"
+   },
+   {
+    "code": "TAR.10.2.1",
+    "tema": "BEYLİKTEN DEVLETE OSMANLI (1299-1453)",
+    "cikti": "Osmanlı Devleti’nin kuruluşuna dair farklı görüşleri tartışabilme"
+   },
+   {
+    "code": "TAR.10.2.2",
+    "tema": "BEYLİKTEN DEVLETE OSMANLI (1299-1453)",
+    "cikti": "1299-1453 yılları arasında Osmanlı Devleti’nin Anadolu ve Rumeli’de gerçekleştirdiği siyasi ve askerî mücadeleleri yorumlayabilme"
+   },
+   {
+    "code": "TAR.10.2.3",
+    "tema": "BEYLİKTEN DEVLETE OSMANLI (1299-1453)",
+    "cikti": "Osmanlı Devleti’nin ordu, hukuk ve toprak sistemi ile devletleşme süreci arasındaki ilişkiyi çözümleyebilme"
+   },
+   {
+    "code": "TAR.10.2.4",
+    "tema": "BEYLİKTEN DEVLETE OSMANLI (1299-1453)",
+    "cikti": "Osmanlı Devleti’nin fethettiği topraklarda kalıcı olabilmek için izlediği politikaları sorgulayabilme"
+   },
+   {
+    "code": "TAR.10.2.5",
+    "tema": "BEYLİKTEN DEVLETE OSMANLI (1299-1453)",
+    "cikti": "Osmanlı Devleti’nin ilim ve irfan geleneğinin oluşmasında şehir, kurum ve şahsiyetlerin etkilerine dair fikirler üretebilme"
+   },
+   {
+    "code": "TAR.10.3.1",
+    "tema": "CİHAN DEVLETİ OSMANLI (1453-1683)",
+    "cikti": "1453-1683 yılları arasındaki siyasi ve askerî mücadelelerin Osmanlı Devleti’nin cihan devleti hâline gelmesindeki rolüne ilişkin özgün fikirler üretebilme"
+   },
+   {
+    "code": "TAR.10.3.2",
+    "tema": "CİHAN DEVLETİ OSMANLI (1453-1683)",
+    "cikti": "1453-1683 yılları arasında Osmanlı Devleti’nin yönetim ve ordu yapısında meydana gelen değişim ve sürekliliğe ilişkin kaynakları yorumlayabilme"
+   },
+   {
+    "code": "TAR.10.3.3",
+    "tema": "CİHAN DEVLETİ OSMANLI (1453-1683)",
+    "cikti": "Avrupalıların sömürgeci politikalarının etkilerini tarihsel bağlamı içerisinde değerlendirebilme"
+   },
+   {
+    "code": "TAR.10.3.4",
+    "tema": "CİHAN DEVLETİ OSMANLI (1453-1683)",
+    "cikti": "1453-1683 yılları arasında Osmanlı Devleti’nde gerçekleşen önemli isyanların neden ve sonuçlarını müzakere edebilme"
+   },
+   {
+    "code": "TAR.10.3.5",
+    "tema": "CİHAN DEVLETİ OSMANLI (1453-1683)",
+    "cikti": "1453-1683 yılları arasında Osmanlı Devleti’nde bilim, kültür, eğitim ve sanat alanlarında ortaya çıkan gelişmelere ilişkin oluşturduğu özgün ürünleri paylaşabilme"
+   }
+  ],
+  "COĞ": [
+   {
+    "code": "COĞ.10.1.1",
+    "tema": "COĞRAFYANIN DOĞASI",
+    "cikti": "Örnek olay, olgu ve/veya mekânı coğrafyanın temel kavramları ile ilişkilendirebilme"
+   },
+   {
+    "code": "COĞ.10.2.1",
+    "tema": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+    "cikti": "Örnek uygulamalar üzerinden CBS ve uzaktan algılamanın kullanım alanlarını özetleyebilme"
+   },
+   {
+    "code": "COĞ.10.2.2",
+    "tema": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+    "cikti": "Mekânsal bilgi teknolojilerini kullanarak altlık haritalar üzerinde mekânsal veriler oluşturabilme"
+   },
+   {
+    "code": "COĞ.10.3.1",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Yerkürenin tektonik yapısını çözümleyebilme"
+   },
+   {
+    "code": "COĞ.10.3.2",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Yeryüzü şekillerinin oluşumunda etkili olan aşınma ve çözünme süreçleri ile iklim ve kayaç özellikleri arasındaki ilişkileri yapılandırabilme"
+   },
+   {
+    "code": "COĞ.10.3.3",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Yeryüzü şekillerinin oluşumunu aşınım ve birikim süreçleri açısından çözümleyebilme"
+   },
+   {
+    "code": "COĞ.10.3.4",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Yeryüzü şekillerinin oluşumunda doğal süreçlerin etkilerini saha/sanal saha çalışmalarıyla araştırabilme"
+   },
+   {
+    "code": "COĞ.10.3.5",
+    "tema": "DOĞAL SİSTEMLER VE SÜREÇLER",
+    "cikti": "Yakın çevresindeki yeryüzü şekilleri ile beşerî faaliyetler arasındaki etkileşimi sorgulayabilme"
+   },
+   {
+    "code": "COĞ.10.4.1",
+    "tema": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+    "cikti": "Yerleşme yeri seçiminde ve yerleşmelerin gelişiminde etkili olan coğrafi faktörleri sorgulayabilme"
+   },
+   {
+    "code": "COĞ.10.4.2",
+    "tema": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+    "cikti": "Türkiye ve dünyadaki yerleşmeleri fonksiyonlarına göre sınıflandırabilme"
+   },
+   {
+    "code": "COĞ.10.5.1",
+    "tema": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+    "cikti": "Ekonomik faaliyetleri sektörlere göre sınıflandırabilme"
+   },
+   {
+    "code": "COĞ.10.5.2",
+    "tema": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+    "cikti": "Ekonomik sektörlerin dağılımını gösteren tablo, grafik, şekil ve/veya diyagramlar üzerinden farklı gelişmişlik seviyesine sahip ülkeleri karşılaştırabilme"
+   },
+   {
+    "code": "COĞ.10.5.3",
+    "tema": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+    "cikti": "Ekonomik sektörlerin Türkiye ekonomisindeki yeri ve önemini gösteren tablo, grafik, şekil ve/veya diyagram hazırlayabilme"
+   },
+   {
+    "code": "COĞ.10.6.1",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Afetlerle mücadelede iyi uygulama örneklerini sorgulayabilme"
+   },
+   {
+    "code": "COĞ.10.6.2",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Afete dirençli yaşam alanlarının coğrafi koşullarını çözümleyebilme"
+   },
+   {
+    "code": "COĞ.10.6.3",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Mekânın özelliklerine göre afetlerden korunma uygulamalarına karar verebilme"
+   },
+   {
+    "code": "COĞ.10.6.4",
+    "tema": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+    "cikti": "Afetlerden korunma amacı ile afet bilinci oluşturmanın faydalarını yansıtabilme"
+   },
+   {
+    "code": "COĞ.10.7.1",
+    "tema": "BÖLGELER, ÜLKELER VE KÜRESEL BAĞLANTILAR",
+    "cikti": "Türk dünyasının ortak kültürel özellikleri hakkında analojik çıkarım yapabilme"
+   }
+  ],
+  "TDE": [
+   {
+    "code": "TDE2.1",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE2.3",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE2.4",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinlere yönelik okuma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Belirlenen bir tema çerçevesinde seçtiği şiirlerden oluşan bir şiir dinletisi hazırlama ve sunma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Seçtiği şiirleri etkili ve güzel bir biçimde sunmak için şiir dinletisinin içeriğini oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Seçilen şiirleri etkili ve güzel bir biçimde sunabilmek için kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Gerçekleştirilen şiir dinletisine yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinlerde dinleme/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE1.3",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE1.4",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "“Sözün Ezgisi” temasında ele alınan metinlere yönelik dinleme/izleme sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Dinlediği/izlediği metni film şeridi hâline getireceği yazma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Dinlediği/izlediği metni film şeridi hâline getireceği yazısına içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Film şeridi hâline getirdiği yazısını düzenlerken kural uygulayabilme"
+   },
+   {
+    "code": "TDE4.4",
+    "tema": "SÖZÜN EZGİSİ",
+    "cikti": "Film şeridi hâline getirdiği yazısına yönelik yazma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE2.1",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE2.3",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE2.4",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinlere yönelik okuma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Bilgilendirici bir metni edebî metne dönüştüreceği yazma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Bilgilendirici bir metni edebî metne dönüştüreceği yazısına içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Edebî metne dönüştürdüğü yazısında kural uygulayabilme"
+   },
+   {
+    "code": "TDE4.4",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Edebî metne dönüştürdüğü yazısına yönelik yazma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinlerde dinleme/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE1.3",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE1.4",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "“Kelimelerin Ritmi” temasında ele alınan metinlere yönelik dinleme/izleme sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Dilin ritimle ilişkili estetik yönünü kullanarak edebiyat alanında iz bırakmış şahsiyetlerin edebî yönünü yansıtan bir podcast (sesli blog) hazırlama sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Dilin ritimle ilişkili estetik yönünü kullanarak edebiyat alanında iz bırakmış şahsiyetlerin edebî yönünü yansıtan bir podcast hazırlamak için gerekli içeriği oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Hazırlanan podcastleri sunarken kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "KELİMELERİN RİTMİ",
+    "cikti": "Hazırlanan podcastlere yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE2.1",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE2.3",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE2.4",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlere yönelik okuma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşmasına uygun içerik oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşmasında kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşmasına yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde dinleme/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE1.3",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE1.4",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde dinleme/izleme sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dinleme/izlemede incelediği hikâyeyi şiire dönüştürerek oluşturduğu yazısında yazmayı yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dinleme/izlemede incelediği hikâyeyi şiire dönüştürerek oluşturduğu yazısında içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "DÜNDEN BUGÜNE",
+    "cikti": "Dinleme/izlemede incelediği hikâyeyi şiire dönüştürerek oluşturduğu yazısında kural uygulayabilme"
+   },
+   {
+    "code": "TDE2.1",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde okumayı yönetebilme"
+   },
+   {
+    "code": "TDE2.2",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE2.3",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE2.4",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlere yönelik okuma sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE3.1",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşma sürecini yönetebilme"
+   },
+   {
+    "code": "TDE3.2",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşmasına uygun içerik oluşturabilme"
+   },
+   {
+    "code": "TDE3.3",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşmasında kural uygulayabilme"
+   },
+   {
+    "code": "TDE3.4",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dede Korkut hikâyelerinden birini canlandırdığı konuşmasına yönelik süreci değerlendirebilme"
+   },
+   {
+    "code": "TDE1.1",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde dinleme/izlemeyi yönetebilme"
+   },
+   {
+    "code": "TDE1.2",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde anlam oluşturabilme"
+   },
+   {
+    "code": "TDE1.3",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinleri çözümleyebilme"
+   },
+   {
+    "code": "TDE1.4",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "“Nesillerin Mirası” temasında ele alınan metinlerde dinleme/izleme sürecini değerlendirebilme"
+   },
+   {
+    "code": "TDE4.1",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dinleme/izlemede incelediği hikâyeyi şiire dönüştürerek oluşturduğu yazısında yazmayı yönetebilme"
+   },
+   {
+    "code": "TDE4.2",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dinleme/izlemede incelediği hikâyeyi şiire dönüştürerek oluşturduğu yazısında içerik oluşturabilme"
+   },
+   {
+    "code": "TDE4.3",
+    "tema": "NESİLLERİN MİRASI",
+    "cikti": "Dinleme/izlemede incelediği hikâyeyi şiire dönüştürerek oluşturduğu yazısında kural uygulayabilme"
+   }
+  ]
+ }
+}

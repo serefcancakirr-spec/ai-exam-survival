@@ -10,7 +10,8 @@ import {
   getQuizTopics,
   ALL_QUIZ_TOPICS,
 } from '../../artifacts/ai-exam-survival/src/pages/quiz-question-bank';
-import { MEB9_SEEDS, mebOutcome, usesMeb9 } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
+import { MEB9_SEEDS } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
+import { mebOutcome, usesMeb } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb';
 import { localizeQuestion, topicName } from '../../artifacts/ai-exam-survival/src/i18n/content';
 import OFFICIAL from '../data/meb9-outcomes.json';
 
@@ -95,19 +96,20 @@ test('grade 9 of these subjects uses only the MEB questions; the answer letter m
     });
     const letters = new Set(bank.map((q) => q.correctOptionId));
     assert.equal(letters.size, 4, `${subject}: answers are not spread over A–D`);
-    assert.ok(usesMeb9('9', subject));
+    assert.ok(usesMeb('9', subject));
   }
 });
 
-test('grades 10–12 and English keep exactly the shared sample questions', () => {
+// Stage 16: grade 10 of some subjects has MEB questions too (tested in stage16-model).
+test('grades 11–12, grade 9 English and grade 10 subjects without MEB questions keep exactly the shared sample questions', () => {
   for (const subject of QUIZ_SUBJECTS) {
     for (const grade of QUIZ_GRADES) {
-      if (grade === '9' && (STAGE_15A as readonly string[]).includes(subject)) continue;
+      if (usesMeb(grade, subject)) continue;
       const bank = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === subject);
       assert.deepEqual(bank.map((q) => q.prompt), QUESTION_SEEDS[subject].map((s) => s.prompt), `${grade} ${subject}`);
       assert.ok(bank.every((q) => q.id === `${grade}-${subject.toLowerCase()}-${bank.indexOf(q) + 1}`), `${grade} ${subject}: ids`);
       assert.ok(bank.every((q) => mebOutcome(q) === undefined));
-      assert.equal(usesMeb9(grade, subject), false);
+      assert.ok(grade !== '9' || subject === 'English', `${grade} ${subject} should have MEB questions`);
     }
   }
 });
@@ -119,7 +121,7 @@ test('grade 9 topics are the MEB themes, shown the same in both languages; 20-qu
   assert.equal(getQuizTopics('9', 'Physics').length, 4);
   assert.equal(topicName('Yaşam', 'en'), 'Yaşam');
   assert.equal(topicName('Yaşam', 'tr'), 'Yaşam');
-  assert.ok(getQuizTopics('10', 'Biology').includes('Cells & Genetics'));
+  assert.ok(getQuizTopics('11', 'Biology').includes('Cells & Genetics'));
   for (const subject of STAGE_15A) {
     assert.ok(getQuizQuestionPool('9', subject, ALL_QUIZ_TOPICS, 'medium').length >= 20);
   }
@@ -132,7 +134,7 @@ test('MEB questions are shown as written in both languages (they are Turkish cur
 });
 
 test('a grade 9 result saved before Stage 15 (old English question) still shows in Turkish, with no outcome tag', () => {
-  const oldQuestion = { ...QUIZ_QUESTION_BANK.find((q) => q.grade === '10' && q.subject === 'Mathematics')!, id: '9-mathematics-1', grade: '9' as const };
+  const oldQuestion = { ...QUIZ_QUESTION_BANK.find((q) => q.grade === '11' && q.subject === 'Mathematics')!, id: '9-mathematics-1', grade: '9' as const };
   const saved = JSON.stringify({ review: [{ question: oldQuestion, selectedOptionId: 'A' }] });
   const parsed = JSON.parse(saved);
   const shown = localizeQuestion(parsed.review[0].question, 'tr');

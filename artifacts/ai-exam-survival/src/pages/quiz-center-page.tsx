@@ -30,7 +30,7 @@ import {
 import { Menti } from '@/components/menti';
 import { quizMood } from '@/components/menti-moods';
 import { localizeQuestion, topicName } from '@/i18n/content';
-import { mebOutcome, usesMeb9 } from './quiz-bank-meb9';
+import { mebOutcome, usesMeb } from './quiz-bank-meb';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -423,12 +423,12 @@ function QuizSetupCard({
         </p>
       </fieldset>
 
-      {usesMeb9(setup.grade, setup.subject) && (
+      {usesMeb(setup.grade, setup.subject) && (
         <p
           className="mt-5 rounded-[13px] border border-[#d9ecf0] bg-[#f1fafb] px-4 py-3 text-[11px] leading-relaxed text-[#3f6d76]"
           data-testid="quiz-meb-note"
         >
-          {t('quiz.mebNote')}
+          {t('quiz.mebNote', { grade: setup.grade })}
         </p>
       )}
 

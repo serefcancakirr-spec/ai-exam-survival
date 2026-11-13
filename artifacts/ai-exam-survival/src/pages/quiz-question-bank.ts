@@ -1,4 +1,4 @@
-import { MEB9_SEEDS } from './quiz-bank-meb9';
+import { MEB_SEEDS } from './quiz-bank-meb';
 
 export const QUIZ_GRADES = ['9', '10', '11', '12'] as const;
 
@@ -231,11 +231,11 @@ export const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
 
 const OPTION_IDS: QuizOptionId[] = ['A', 'B', 'C', 'D'];
 
-// The same reviewed sample set is tagged for each high-school grade, except grade 9 of the
-// subjects that have MEB (Maarif Modeli) questions (Stage 15): those use their own collection,
-// with ids like "9-mathematics-meb-1" so they never collide with the shared samples.
+// The same reviewed sample set is tagged for each high-school grade, except the grades and
+// subjects that have MEB (Maarif Modeli) questions (Stages 15–16): those use their own collection,
+// with ids like "9-mathematics-meb-1" or "10-physics-meb-3" so they never collide with the shared samples.
 function seedsFor(grade: QuizGrade, subject: QuizSubject): { seeds: QuestionSeed[]; idPart: string } {
-  const meb = grade === '9' ? MEB9_SEEDS[subject] : undefined;
+  const meb = MEB_SEEDS[grade]?.[subject];
   if (meb) {
     return {
       idPart: '-meb',
