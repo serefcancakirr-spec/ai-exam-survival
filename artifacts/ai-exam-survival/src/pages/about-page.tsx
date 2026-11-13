@@ -51,34 +51,34 @@ export default function AboutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f6f7fb] text-[#1d2547]" data-testid="about-page">
+    <div className="min-h-screen bg-[#f9f8f5] text-[#324150]" data-testid="about-page">
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e2e5ef] bg-white px-4 text-[12px] font-bold text-[#35405e] transition-colors hover:border-[#c8c5eb] hover:text-[#5144c7]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {t('common.returnHome')}
         </Link>
 
-        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#18224d] px-6 py-8 text-white sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#2f4255] px-6 py-8 text-white sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
-          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5944d2]/25" />
+          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5376a0]/25" />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#75dfe0] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#d9bdaa] sm:h-14 sm:w-14">
               <Info size={22} />
             </span>
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#75dfe0] sm:text-[11px]">{t('about.eyebrow')}</p>
-              <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.055em] sm:text-[44px]">{t('about.title')}</h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#c3cbe3] sm:text-[15px]">{t('about.heroText')}</p>
+              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#d9bdaa] sm:text-[11px]">{t('about.eyebrow')}</p>
+              <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">{t('about.title')}</h1>
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#cad3dc] sm:text-[15px]">{t('about.heroText')}</p>
             </div>
           </div>
         </section>
 
         <div className="mt-6 grid gap-5 lg:grid-cols-2">
           <Panel eyebrow={t('about.whatEyebrow')} title={t('about.whatTitle')} testId="about-what">
-            <p className="text-[13px] leading-[1.75] text-[#56607b]">{t('about.whatText')}</p>
+            <p className="text-[13px] leading-[1.75] text-[#5e6973]">{t('about.whatText')}</p>
             <div className="mt-4">
               <Menti pose="wave" size={72} message={t('about.mentiText')} testId="menti-about" />
             </div>
@@ -87,8 +87,8 @@ export default function AboutPage() {
           <Panel eyebrow={t('about.contentEyebrow')} title={t('about.contentTitle')} testId="about-content">
             <ul className="space-y-2.5">
               {contentPoints.map((key) => (
-                <li key={key} className="flex gap-2.5 text-[13px] leading-[1.7] text-[#56607b]">
-                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#5a4bc9]" />
+                <li key={key} className="flex gap-2.5 text-[13px] leading-[1.7] text-[#5e6973]">
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#54759c]" />
                   <span>{t(key)}</span>
                 </li>
               ))}
@@ -100,37 +100,37 @@ export default function AboutPage() {
           <Panel eyebrow={t('about.privacyEyebrow')} title={t('about.privacyTitle')} testId="about-privacy" icon={<ShieldCheck size={18} />}>
             <ul className="space-y-2.5">
               {privacyPoints.map((key) => (
-                <li key={key} className="flex gap-2.5 text-[13px] leading-[1.7] text-[#56607b]">
-                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#22a6b0]" />
+                <li key={key} className="flex gap-2.5 text-[13px] leading-[1.7] text-[#5e6973]">
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#407d6b]" />
                   <span>{t(key)}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-[11px] font-semibold text-[#7e879e]">{t('about.updated')}</p>
+            <p className="mt-4 text-[11px] font-semibold text-[#5f6870]">{t('about.updated')}</p>
           </Panel>
         </div>
 
         <div className="mt-5 grid gap-5 lg:grid-cols-2">
           <Panel eyebrow={t('about.deleteEyebrow')} title={t('about.deleteTitle')} testId="about-delete" icon={<Trash2 size={18} />}>
-            <p className="text-[13px] leading-[1.75] text-[#56607b]">{t('about.deleteText')}</p>
+            <p className="text-[13px] leading-[1.75] text-[#5e6973]">{t('about.deleteText')}</p>
             {deleteState === 'idle' && (
               <button
                 type="button"
                 onClick={() => setDeleteState('confirm')}
-                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-[#f0c9bd] bg-white px-5 text-[12px] font-bold text-[#a6533a] transition-colors hover:bg-[#fff6f3]"
+                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-[#e8cdc5] bg-white px-5 text-[12px] font-bold text-[#8f5847] transition-colors hover:bg-[#fdf7f5]"
                 data-testid="button-delete-data"
               >
                 <Trash2 size={15} /> {t('about.deleteButton')}
               </button>
             )}
             {deleteState === 'confirm' && (
-              <div className="mt-4 rounded-[14px] border border-[#f0c9bd] bg-[#fff6f3] p-4" role="alertdialog" aria-labelledby="delete-question" data-testid="delete-confirm">
-                <p id="delete-question" className="text-[13px] font-bold leading-relaxed text-[#8a3f29]">{t('about.deleteQuestion')}</p>
+              <div className="mt-4 rounded-[14px] border border-[#e8cdc5] bg-[#fdf7f5] p-4" role="alertdialog" aria-labelledby="delete-question" data-testid="delete-confirm">
+                <p id="delete-question" className="text-[13px] font-bold leading-relaxed text-[#7b4738]">{t('about.deleteQuestion')}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <button
                     type="button"
                     onClick={confirmDelete}
-                    className="inline-flex min-h-10 items-center rounded-full bg-[#b5482c] px-4 text-[12px] font-bold text-white hover:bg-[#9b3c23]"
+                    className="inline-flex min-h-10 items-center rounded-full bg-[#a05441] px-4 text-[12px] font-bold text-white hover:bg-[#894635]"
                     data-testid="button-delete-confirm"
                   >
                     {t('about.deleteYes')}
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   <button
                     type="button"
                     onClick={() => setDeleteState('idle')}
-                    className="inline-flex min-h-10 items-center rounded-full border border-[#e2e5ef] bg-white px-4 text-[12px] font-bold text-[#35405e] hover:border-[#c8c5eb]"
+                    className="inline-flex min-h-10 items-center rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] hover:border-[#ced7e2]"
                     data-testid="button-delete-cancel"
                   >
                     {t('about.deleteNo')}
@@ -147,35 +147,35 @@ export default function AboutPage() {
               </div>
             )}
             {deleteState === 'done' && (
-              <p className="mt-4 rounded-[14px] bg-[#eaf7f1] p-4 text-[13px] font-semibold leading-relaxed text-[#26785c]" role="status" data-testid="delete-done">
+              <p className="mt-4 rounded-[14px] bg-[#ecf5f1] p-4 text-[13px] font-semibold leading-relaxed text-[#326c58]" role="status" data-testid="delete-done">
                 {t('about.deleteDone')}
               </p>
             )}
             {deleteState === 'failed' && (
-              <p className="mt-4 rounded-[14px] bg-[#fff0ec] p-4 text-[13px] font-semibold leading-relaxed text-[#a6533a]" role="status" data-testid="delete-failed">
+              <p className="mt-4 rounded-[14px] bg-[#fcf2ef] p-4 text-[13px] font-semibold leading-relaxed text-[#8f5847]" role="status" data-testid="delete-failed">
                 {t('about.deleteFailed')}
               </p>
             )}
           </Panel>
 
           <Panel eyebrow={t('about.contactEyebrow')} title={t('about.contactTitle')} testId="about-contact" icon={<Mail size={18} />}>
-            <p className="text-[13px] leading-[1.75] text-[#56607b]">{t('about.contactText')}</p>
+            <p className="text-[13px] leading-[1.75] text-[#5e6973]">{t('about.contactText')}</p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-4 inline-flex min-h-11 max-w-full items-center gap-2 break-all rounded-full bg-[#5144c7] px-5 text-[12px] font-bold text-white transition-colors hover:bg-[#4337b0]"
+              className="mt-4 inline-flex min-h-11 max-w-full items-center gap-2 break-all rounded-full bg-[#54769d] px-5 text-[12px] font-bold text-white transition-colors hover:bg-[#527195]"
               data-testid="link-contact-email"
             >
               <Mail size={15} className="shrink-0" /> {CONTACT_EMAIL}
             </a>
-            <p className="mt-3 text-[11px] leading-relaxed text-[#7e879e]">{t('about.contactNote')}</p>
+            <p className="mt-3 text-[11px] leading-relaxed text-[#5f6870]">{t('about.contactNote')}</p>
           </Panel>
         </div>
       </main>
 
-      <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
+      <footer className="border-t border-[#e6e9ec] bg-[#f7f5f1]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#7e879e]">{t('about.footer')}</p>
-          <Link href="/" className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]" data-testid="link-footer-home">
+          <p className="text-[11px] text-[#5f6870]">{t('about.footer')}</p>
+          <Link href="/" className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#516986] hover:text-[#3e5977]" data-testid="link-footer-home">
             <ArrowLeft size={13} /> {t('common.returnHome')}
           </Link>
         </div>
@@ -186,12 +186,12 @@ export default function AboutPage() {
 
 function Panel({ eyebrow, title, children, testId, icon }: { eyebrow: string; title: string; children: React.ReactNode; testId: string; icon?: React.ReactNode }) {
   return (
-    <section className="min-w-0 rounded-[21px] border border-[#e5e7f0] bg-white p-5 shadow-[0_8px_28px_rgba(29,42,90,.035)] sm:p-6" data-testid={testId}>
+    <section className="min-w-0 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6" data-testid={testId}>
       <div className="flex items-start gap-3">
-        {icon && <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[12px] bg-[#f0efff] text-[#5a4bc9]">{icon}</span>}
+        {icon && <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[12px] bg-[#f4f7fa] text-[#4b698c]">{icon}</span>}
         <div className="min-w-0">
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#5a4bc9]">{eyebrow}</p>
-          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.04em] text-[#20294d] sm:text-[22px]">{title}</h2>
+          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{eyebrow}</p>
+          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">{title}</h2>
         </div>
       </div>
       <div className="mt-4">{children}</div>
@@ -205,7 +205,7 @@ export function FooterAboutLink() {
   return (
     <>
       {' · '}
-      <Link href="/about" className="font-bold text-[#5045b5] underline-offset-2 hover:underline" data-testid="link-footer-about">
+      <Link href="/about" className="font-bold text-[#516986] underline-offset-2 hover:underline" data-testid="link-footer-about">
         {t('about.footerLink')}
       </Link>
     </>

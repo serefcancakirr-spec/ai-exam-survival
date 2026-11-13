@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -33,77 +33,77 @@
 }
 
 :root {
-  --background: 222 35% 97%;
-  --foreground: 224 43% 14%;
-  --border: 222 21% 88%;
-  --input: 222 21% 88%;
-  --ring: 258 76% 60%;
-  --card: 0 0% 100%;
-  --card-foreground: 224 43% 14%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 224 43% 14%;
-  --primary: 235 69% 54%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 190 83% 43%;
-  --secondary-foreground: 224 43% 14%;
-  --muted: 220 25% 93%;
-  --muted-foreground: 221 17% 47%;
-  --accent: 258 76% 96%;
-  --accent-foreground: 258 62% 42%;
-  --destructive: 0 72% 51%;
-  --destructive-foreground: 0 0% 100%;
-  --chart-1: 235 69% 54%;
-  --chart-2: 190 83% 43%;
-  --chart-3: 258 76% 60%;
-  --chart-4: 37 84% 61%;
-  --chart-5: 331 66% 63%;
-  --sidebar: 222 35% 97%;
-  --sidebar-foreground: 224 43% 14%;
-  --sidebar-border: 222 21% 88%;
-  --sidebar-primary: 235 69% 54%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 258 76% 96%;
-  --sidebar-accent-foreground: 258 62% 42%;
-  --sidebar-ring: 258 76% 60%;
-  --app-font-sans: 'DM Sans', sans-serif;
-  --app-font-serif: 'Manrope', sans-serif;
+  --background: 36 29% 97%;
+  --foreground: 210 24% 20%;
+  --border: 210 12% 88%;
+  --input: 210 12% 88%;
+  --ring: 213 32% 60%;
+  --card: 36 0% 100%;
+  --card-foreground: 210 24% 20%;
+  --popover: 36 0% 100%;
+  --popover-foreground: 210 24% 20%;
+  --primary: 211 32% 54%;
+  --primary-foreground: 36 0% 100%;
+  --secondary: 162 32% 43%;
+  --secondary-foreground: 210 24% 20%;
+  --muted: 210 14% 93%;
+  --muted-foreground: 210 10% 40%;
+  --accent: 213 42% 96%;
+  --accent-foreground: 213 32% 42%;
+  --destructive: 0 50% 51%;
+  --destructive-foreground: 36 0% 100%;
+  --chart-1: 211 32% 54%;
+  --chart-2: 162 32% 43%;
+  --chart-3: 213 32% 60%;
+  --chart-4: 37 59% 61%;
+  --chart-5: 331 46% 63%;
+  --sidebar: 36 29% 97%;
+  --sidebar-foreground: 210 24% 20%;
+  --sidebar-border: 210 12% 88%;
+  --sidebar-primary: 211 32% 54%;
+  --sidebar-primary-foreground: 36 0% 100%;
+  --sidebar-accent: 213 42% 96%;
+  --sidebar-accent-foreground: 213 32% 42%;
+  --sidebar-ring: 213 32% 60%;
+  --app-font-sans: 'Source Sans 3', sans-serif;
+  --app-font-serif: 'Lora', Georgia, serif;
   --app-font-mono: 'SFMono-Regular', Consolas, monospace;
   --radius: 1rem;
 }
 
 .dark {
-  --background: 224 43% 11%;
-  --foreground: 220 25% 94%;
-  --border: 224 25% 24%;
-  --input: 224 25% 24%;
-  --ring: 190 83% 58%;
-  --card: 224 35% 15%;
-  --card-foreground: 220 25% 94%;
-  --popover: 224 35% 15%;
-  --popover-foreground: 220 25% 94%;
-  --primary: 235 78% 67%;
-  --primary-foreground: 224 43% 11%;
-  --secondary: 190 83% 58%;
-  --secondary-foreground: 224 43% 11%;
-  --muted: 224 25% 21%;
-  --muted-foreground: 220 15% 68%;
-  --accent: 258 35% 24%;
-  --accent-foreground: 258 85% 82%;
-  --destructive: 0 62% 48%;
-  --destructive-foreground: 0 0% 100%;
-  --chart-1: 235 78% 67%;
-  --chart-2: 190 83% 58%;
-  --chart-3: 258 76% 72%;
-  --chart-4: 37 84% 67%;
-  --chart-5: 331 66% 72%;
-  --sidebar: 224 43% 11%;
-  --sidebar-foreground: 220 25% 94%;
-  --sidebar-border: 224 25% 24%;
-  --sidebar-primary: 235 78% 67%;
-  --sidebar-primary-foreground: 224 43% 11%;
-  --sidebar-accent: 258 35% 24%;
-  --sidebar-accent-foreground: 258 85% 82%;
-  --sidebar-ring: 190 83% 58%;
+  --background: 210 24% 17%;
+  --foreground: 210 14% 94%;
+  --border: 210 14% 30%;
+  --input: 210 14% 30%;
+  --ring: 162 32% 54%;
+  --card: 210 19% 21%;
+  --card-foreground: 210 14% 94%;
+  --popover: 210 19% 21%;
+  --popover-foreground: 210 14% 94%;
+  --primary: 211 32% 67%;
+  --primary-foreground: 210 24% 17%;
+  --secondary: 162 32% 54%;
+  --secondary-foreground: 210 24% 17%;
+  --muted: 210 14% 27%;
+  --muted-foreground: 210 8% 68%;
+  --accent: 213 19% 30%;
+  --accent-foreground: 213 32% 82%;
+  --destructive: 0 43% 48%;
+  --destructive-foreground: 36 0% 100%;
+  --chart-1: 211 32% 67%;
+  --chart-2: 162 32% 54%;
+  --chart-3: 213 32% 72%;
+  --chart-4: 37 59% 67%;
+  --chart-5: 331 46% 72%;
+  --sidebar: 210 24% 17%;
+  --sidebar-foreground: 210 14% 94%;
+  --sidebar-border: 210 14% 30%;
+  --sidebar-primary: 211 32% 67%;
+  --sidebar-primary-foreground: 210 24% 17%;
+  --sidebar-accent: 213 19% 30%;
+  --sidebar-accent-foreground: 213 32% 82%;
+  --sidebar-ring: 162 32% 54%;
 }
 
 @layer base {
@@ -116,25 +116,21 @@
   }
   button, a { -webkit-tap-highlight-color: transparent; }
   a:focus-visible, button:focus-visible {
-    outline: 3px solid #37d4dc;
+    outline: 3px solid #57a890;
     outline-offset: 4px;
   }
-  ::selection { background: #d9d4ff; color: #182040; }
+  ::selection { background: #e0e9f3; color: #2c3b4a; }
 }
 
 .font-display { font-family: var(--app-font-serif); }
 .page-shell { overflow: clip; }
-.hero-grid {
-  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size: 54px 54px;
-}
+/* Stage 20A: the grid pattern behind the home hero was removed for a calmer look (class kept). */
+.hero-grid { background: none; }
 .rise-in { animation: rise-in .75s cubic-bezier(.2,.75,.25,1) both; }
 .rise-delay-1 { animation-delay: .12s; }
 .rise-delay-2 { animation-delay: .23s; }
-.float-card { animation: float-card 7s ease-in-out infinite; }
-.float-card-late { animation: float-card 8s ease-in-out 1.2s infinite; }
+/* Stage 20A: the home preview cards no longer float up and down (classes kept). */
 @keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes float-card { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }

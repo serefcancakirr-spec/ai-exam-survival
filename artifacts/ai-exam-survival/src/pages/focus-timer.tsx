@@ -44,8 +44,8 @@ const PHASE_LABEL: Record<Timer['phase'], MessageKey> = {
 
 const chip =
   'inline-flex min-h-10 items-center justify-center rounded-full border px-4 text-[11px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50';
-const chipOn = 'border-[#5144c7] bg-[#5144c7] text-white';
-const chipOff = 'border-[#d9d6f3] bg-white text-[#5144c7] hover:bg-[#f6f4ff]';
+const chipOn = 'border-[#6183aa] bg-[#54769d] text-white';
+const chipOff = 'border-[#dde4ec] bg-white text-[#4c6a8c] hover:bg-[#f7f9fc]';
 
 export function FocusTimerCard() {
   const { t } = useI18n();
@@ -156,37 +156,37 @@ export function FocusTimerCard() {
   return (
     <section
       id="focus-timer"
-      className="scroll-mt-24 rounded-[21px] border border-[#e5e7f0] bg-white p-5 shadow-[0_8px_28px_rgba(29,42,90,.035)] sm:p-6"
+      className="scroll-mt-24 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6"
       data-testid="focus-timer"
       data-phase={timer.phase}
       data-status={timer.status}
       data-sound-playing={playing ?? 'none'}
     >
-      <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#5a4bc9]">{t('focus.eyebrow')}</p>
-      <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.04em] text-[#20294d] sm:text-[22px]">
+      <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{t('focus.eyebrow')}</p>
+      <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">
         {t('focus.title')}
       </h2>
 
       {!canSave && (
-        <p role="alert" className="mt-3 rounded-[13px] border border-[#f0d8b8] bg-[#fff9f0] px-4 py-3 text-[11px] text-[#765221]" data-testid="focus-storage-locked">
+        <p role="alert" className="mt-3 rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[11px] text-[#69502e]" data-testid="focus-storage-locked">
           {t('focus.storageLocked')}
         </p>
       )}
 
       <div className="mt-5 grid gap-5 md:grid-cols-[1fr_1.1fr] md:items-center">
         <div className="flex flex-col items-center gap-3 text-center">
-          <p className="text-[11px] font-extrabold uppercase tracking-[.12em] text-[#5a4bc9]" data-testid="focus-phase">
+          <p className="text-[11px] font-extrabold uppercase tracking-[.12em] text-[#4b698c]" data-testid="focus-phase">
             {t(PHASE_LABEL[timer.phase])}
           </p>
-          <div className={`relative grid h-[168px] w-[168px] place-items-center rounded-full ${onBreak ? 'bg-[#e5f7f5]' : 'bg-[#f2f0ff]'}`}>
-            {onBreak && running && <span className="focus-breathe absolute inset-3 rounded-full bg-[#bfece8]" aria-hidden="true" />}
+          <div className={`relative grid h-[168px] w-[168px] place-items-center rounded-full ${onBreak ? 'bg-[#eaf3f0]' : 'bg-[#f4f7fb]'}`}>
+            {onBreak && running && <span className="focus-breathe absolute inset-3 rounded-full bg-[#cae1da]" aria-hidden="true" />}
             <span className="relative">
               <span className="sr-only">{t('focus.timeLeft')}: </span>
-              <span className="font-display block text-[44px] font-extrabold tabular-nums tracking-[-.04em] text-[#20294d]" data-testid="focus-time">
+              <span className="font-display block text-[44px] font-extrabold tabular-nums tracking-[-.015em] text-[#364656]" data-testid="focus-time">
                 {formatClock(left)}
               </span>
               {onBreak && running && (
-                <span className="block text-[12px] font-bold text-[#278c8e]" data-testid="focus-breathe-text">
+                <span className="block text-[12px] font-bold text-[#3f7162]" data-testid="focus-breathe-text">
                   {t(breatheIn ? 'focus.breatheIn' : 'focus.breatheOut')}
                 </span>
               )}
@@ -194,17 +194,17 @@ export function FocusTimerCard() {
           </div>
           <div className="flex items-center gap-1.5" aria-hidden="true">
             {Array.from({ length: WORKS_BEFORE_LONG_BREAK }, (_, i) => (
-              <span key={i} className={`h-2.5 w-2.5 rounded-full ${i < timer.completedWorks ? 'bg-[#5144c7]' : 'bg-[#dedcf2]'}`} />
+              <span key={i} className={`h-2.5 w-2.5 rounded-full ${i < timer.completedWorks ? 'bg-[#54769d]' : 'bg-[#e1e7ed]'}`} />
             ))}
           </div>
-          <p className="text-[10px] font-semibold text-[#7e879e]" data-testid="focus-set-progress">
+          <p className="text-[10px] font-semibold text-[#5f6870]" data-testid="focus-set-progress">
             {t('focus.setProgress', { done: timer.completedWorks })}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
             <button
               type="button"
               onClick={toggleRun}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#5144c7] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#4337b0]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195]"
               data-testid="focus-start"
             >
               {running ? <Pause size={15} /> : <Play size={15} />}
@@ -214,7 +214,7 @@ export function FocusTimerCard() {
               <RotateCcw size={14} /> {t('focus.reset')}
             </button>
           </div>
-          <p role="status" aria-live="polite" className="min-h-[1.2em] text-[12px] font-bold text-[#278c8e]" data-testid="focus-announce">
+          <p role="status" aria-live="polite" className="min-h-[1.2em] text-[12px] font-bold text-[#3f7162]" data-testid="focus-announce">
             {announce}
           </p>
         </div>
@@ -223,7 +223,7 @@ export function FocusTimerCard() {
           <Menti pose={mentiPose} size={82} message={mentiText} testId="menti-focus" />
 
           <div>
-            <p className="text-[11px] font-bold text-[#46516f]">{t('focus.length')}</p>
+            <p className="text-[11px] font-bold text-[#4f5b66]">{t('focus.length')}</p>
             <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={t('focus.length')}>
               {FOCUS_WORK_OPTIONS.map((minutes) => (
                 <button
@@ -239,11 +239,11 @@ export function FocusTimerCard() {
                 </button>
               ))}
             </div>
-            <p className="mt-1.5 text-[10px] text-[#8790a4]">{t('focus.breakInfo')}</p>
+            <p className="mt-1.5 text-[10px] text-[#60686f]">{t('focus.breakInfo')}</p>
           </div>
 
           <div>
-            <p className="text-[11px] font-bold text-[#46516f]">{t('focus.sound')}</p>
+            <p className="text-[11px] font-bold text-[#4f5b66]">{t('focus.sound')}</p>
             <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={t('focus.sound')}>
               {FOCUS_SOUNDS.map((kind) => (
                 <button
@@ -251,7 +251,7 @@ export function FocusTimerCard() {
                   type="button"
                   aria-pressed={playing === kind}
                   onClick={() => chooseSound(kind)}
-                  className={`${chip} ${playing === kind ? chipOn : settings.sound === kind ? `${chipOff} ring-2 ring-[#d9d6f3]` : chipOff}`}
+                  className={`${chip} ${playing === kind ? chipOn : settings.sound === kind ? `${chipOff} ring-2 ring-[#dde4ec]` : chipOff}`}
                   data-testid={`focus-sound-${kind}`}
                 >
                   {t(SOUND_LABEL[kind])}
@@ -262,7 +262,7 @@ export function FocusTimerCard() {
                 {playing ? t('focus.soundStop') : t('focus.soundPlay')}
               </button>
             </div>
-            <label className="mt-3 flex items-center gap-3 text-[11px] font-bold text-[#46516f]">
+            <label className="mt-3 flex items-center gap-3 text-[11px] font-bold text-[#4f5b66]">
               {t('focus.volume')}
               <input
                 type="range"
@@ -271,16 +271,16 @@ export function FocusTimerCard() {
                 step={5}
                 value={settings.volume}
                 onChange={(event) => changeVolume(Number(event.currentTarget.value))}
-                className="min-w-0 flex-1 accent-[#5144c7]"
+                className="min-w-0 flex-1 accent-[#6183aa]"
                 data-testid="focus-volume"
               />
             </label>
-            <label className="mt-3 flex min-h-10 items-center gap-2 text-[11px] font-bold text-[#46516f]">
+            <label className="mt-3 flex min-h-10 items-center gap-2 text-[11px] font-bold text-[#4f5b66]">
               <input
                 type="checkbox"
                 checked={settings.chime}
                 onChange={(event) => save({ ...settings, chime: event.currentTarget.checked })}
-                className="h-4 w-4 accent-[#5144c7]"
+                className="h-4 w-4 accent-[#6183aa]"
                 data-testid="focus-chime"
               />
               {t('focus.chime')}
@@ -289,7 +289,7 @@ export function FocusTimerCard() {
         </div>
       </div>
 
-      <p className="mt-4 text-[10px] leading-relaxed text-[#8790a4]">{t('focus.note')}</p>
+      <p className="mt-4 text-[10px] leading-relaxed text-[#60686f]">{t('focus.note')}</p>
     </section>
   );
 }
