@@ -228,7 +228,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   approved first; the teacher, an English teacher, reviewed all of it): done, merged into `main` (PR #17), deployed,
   tested on the tablet and approved by the teacher. The "öğretmen kontrolü sürüyor" note was removed from all subjects at the teacher's request.
 - Stage 21B (English reading + listening, 105 questions, 15 recorded listening texts; samples shown first, voices chosen
-  with the teacher): built and tested, backup tag `backup/before-stage-21b` (local only). Waiting for approval to open a PR.
+  with the teacher): done, merged into `main` (PR #18), deployed. Waiting for the teacher's tablet test.
+  Next: Stage 22 (grade 12 TYT / AYT / YDT exam mode), plan first.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
