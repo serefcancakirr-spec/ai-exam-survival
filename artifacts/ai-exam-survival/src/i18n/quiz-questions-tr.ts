@@ -9,7 +9,17 @@ export type TrQuestion = [prompt: string, options: [string, string, string, stri
 
 /** Turkish names for quiz topics and starter-deck topics (display only; saved values stay English). */
 export const TOPICS_TR: Record<string, string> = {
-  // Stage 21A: English levels
+  // Stage 21A: English levels (21B: reading and listening)
+  'A1 · Reading': 'A1 · Okuma',
+  'A1 · Listening': 'A1 · Dinleme',
+  'A2 · Reading': 'A2 · Okuma',
+  'A2 · Listening': 'A2 · Dinleme',
+  'B1 · Reading': 'B1 · Okuma',
+  'B1 · Listening': 'B1 · Dinleme',
+  'B2 · Reading': 'B2 · Okuma',
+  'B2 · Listening': 'B2 · Dinleme',
+  'C1 · Reading': 'C1 · Okuma',
+  'C1 · Listening': 'C1 · Dinleme',
   'A1 · Grammar': 'A1 · Dilbilgisi',
   'A1 · Vocabulary': 'A1 · Kelime',
   'A2 · Grammar': 'A2 · Dilbilgisi',

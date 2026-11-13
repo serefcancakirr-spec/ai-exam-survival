@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 174/174; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks).
+  Expected today: logic 182/182; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -152,6 +152,21 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - The teacher (an English teacher) reviewed all 250 questions and the decks and approved them, so the level note no longer
   says "öğretmen kontrolü sürüyor". Never write "MEB onaylı".
 
+## English reading and listening (Stage 21B)
+- `src/pages/english-passages.ts`: per level 3 reading texts (4 questions each) and 3 listening texts (3 questions each),
+  105 questions, original texts; questions in English, explanations in Turkish. Topics `"<level> · Reading"` /
+  `"<level> · Listening"` (Turkish "Okuma" / "Dinleme"). Ids `<grade>-english-<passage id>-<n>` (e.g. `10-english-b1-listen-2-3`):
+  the text is found from the saved question id (`passageOfQuestion`), so the saved data shape is unchanged. All questions of
+  a text share its difficulty (1st easy, 2nd medium, 3rd hard) so they stay together in a quiz.
+- `src/pages/english-passage-view.tsx` (`PassageBlock`): reading text above the question; listening = `<audio>` player with
+  "Normal hız / Yavaş" (0.8×); while answering, the listening text is hidden; the review shows the recording and
+  "Dinleme metnini göster" (with speaker names).
+- Recordings (teacher approved, after the browser's own voices sounded unnatural): `public/audio/en/<passage id>.mp3`
+  (15 files, about 2.3 MB), made once offline with the free open-source Kokoro voice model; no live AI, no paid service,
+  nothing is sent anywhere. Each speaker has an age, a gender and a matching voice (`V` in `english-passages.ts`; no child
+  voices exist, so no young children speak). Speed by level (`LISTENING_SPEED`: A1 0.85 … C1 1.05).
+  Re-record after changing a listening text: `scripts/english-audio/README.md`. `stage21b-model` checks every file exists.
+
 ## About and Privacy (Stage 17)
 - `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link
   (`FooterAboutLink`, test id `link-footer-about`) added inside the footer text, so the footer layout stays the same.
@@ -210,12 +225,15 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   20B: teacher said the site felt "AI-made"; samples A (Sade Defter) and B (Okul Defteri) shown, teacher chose B and asked
   for simpler slogans. Done, merged into `main` (PR #16), deployed, tested on the tablet and approved by the teacher.
 - Stage 21A (English A1–C1 grammar + vocabulary, 250 questions, Turkish explanations, 5 level word decks; samples shown and
-  approved first): built and tested, backup tag `backup/before-stage-21a` (local only). Waiting for approval to open a PR.
-  Next: 21B reading + listening (separate approval).
+  approved first; the teacher, an English teacher, reviewed all of it): done, merged into `main` (PR #17), deployed,
+  tested on the tablet and approved by the teacher. The "öğretmen kontrolü sürüyor" note was removed from all subjects at the teacher's request.
+- Stage 21B (English reading + listening, 105 questions, 15 recorded listening texts; samples shown first, voices chosen
+  with the teacher): built and tested, backup tag `backup/before-stage-21b` (local only). Waiting for approval to open a PR.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
-  21B reading + listening; listening uses the browser's built-in speech, no audio files or paid service; original texts)
+  21B reading + listening; listening was first planned with the browser's built-in speech, the teacher found it unnatural
+  and approved recorded files made once with a free offline voice model; original texts)
   → Stage 22 grade 12 TYT / AYT / YDT exam mode for all subjects (original ÖSYM-style questions, timed mini exams, net =
   correct − wrong ÷ 4; no score or ranking estimates) → Stage 23 PWA. Teacher approved adding Felsefe (philosophy group) and
   Din Kültürü as new subjects (needed for TYT Sosyal / AYT); saved data shape stays the same.

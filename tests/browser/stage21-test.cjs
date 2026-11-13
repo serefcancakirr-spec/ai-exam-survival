@@ -67,11 +67,11 @@ async function finishQuiz(page) {
     await context.close();
   });
 
-  await check('[tr] a level shows only its two topics and 50 questions; "Genel (ileri)" shows the four older topics', async () => {
+  await check('[tr] a level shows only its four topics and 71 questions; "Genel (ileri)" shows the four older topics', async () => {
     const { context, page } = await open(browser);
     await tid(page, 'button-quiz-level-c1').click();
-    assert(JSON.stringify(await topicOptions(page)) === JSON.stringify(['Tüm konular', 'C1 · Dilbilgisi', 'C1 · Kelime']), (await topicOptions(page)).join(','));
-    assert((await page.locator('body').innerText()).includes('50 farklı örnek soru'), 'pool size 50');
+    assert(JSON.stringify(await topicOptions(page)) === JSON.stringify(['Tüm konular', 'C1 · Dilbilgisi', 'C1 · Kelime', 'C1 · Okuma', 'C1 · Dinleme']), (await topicOptions(page)).join(','));
+    assert((await page.locator('body').innerText()).includes('71 farklı örnek soru'), 'pool size 71 (with reading and listening)');
     await tid(page, 'select-quiz-topic').selectOption('C1 · Grammar');
     assert((await page.locator('body').innerText()).includes('25 farklı örnek soru'), 'pool size 25');
     await tid(page, 'button-quiz-level-general').click();

@@ -59,7 +59,8 @@ test('every question is well formed: unique prompt, four different options, a fo
 
 test('every grade gets all 250 level questions with stable ids; the correct answer is the first source option and is spread over A–D', () => {
   for (const grade of QUIZ_GRADES) {
-    const levelQs = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === 'English' && levelOfTopic(q.topic));
+    // Stage 21B: reading and listening questions are checked in stage21b-model.
+    const levelQs = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === 'English' && /· (Grammar|Vocabulary)$/.test(q.topic));
     assert.equal(levelQs.length, 250, `grade ${grade}`);
     for (const q of levelQs) {
       const seed = ENGLISH_LEVEL_SEEDS.find((s) => s.prompt === q.prompt)!;
@@ -89,14 +90,14 @@ test('the older 20 English questions keep their ids and stay under "general"', (
 
 test('a level shows only its own topics and questions; other subjects ignore levels', () => {
   for (const level of ENGLISH_LEVELS) {
-    assert.deepEqual(getQuizTopics('10', 'English', level), [`${level} · Grammar`, `${level} · Vocabulary`]);
+    assert.deepEqual(getQuizTopics('10', 'English', level), [`${level} · Grammar`, `${level} · Vocabulary`, `${level} · Reading`, `${level} · Listening`]);
     const pool = getQuizQuestionPool('10', 'English', ALL_QUIZ_TOPICS, 'hard', level);
-    assert.equal(pool.length, 50);
+    assert.equal(pool.length, 71, '50 grammar/vocabulary + 21 reading/listening (Stage 21B)');
     assert.ok(pool.every((q) => levelOfTopic(q.topic) === level));
     assert.equal(pool[0].difficulty, 'hard', 'target difficulty first');
     assert.equal(getQuizQuestionPool('10', 'English', `${level} · Grammar`, 'easy', level).length, 25);
   }
-  assert.equal(getQuizTopics('10', 'English').length, 14, 'without a level: 4 general + 10 level topics');
+  assert.equal(getQuizTopics('10', 'English').length, 24, 'without a level: 4 general + 20 level topics');
   assert.equal(levelOfTopic('Grammar & Usage'), null);
   assert.equal(levelOfTopic('B1'), null, 'a saved whole-level quiz topic is not a level topic');
 });
