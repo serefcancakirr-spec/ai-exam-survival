@@ -210,7 +210,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   20B: teacher said the site felt "AI-made"; samples A (Sade Defter) and B (Okul Defteri) shown, teacher chose B and asked
   for simpler slogans. Done, merged into `main` (PR #16), deployed, tested on the tablet and approved by the teacher.
 - Stage 21A (English A1–C1 grammar + vocabulary, 250 questions, Turkish explanations, 5 level word decks; samples shown and
-  approved first): built and tested, backup tag `backup/before-stage-21a` (local only). Waiting for approval to open a PR.
+  approved first; the teacher, an English teacher, reviewed all of it): done, merged into `main` (PR #17), deployed.
+  Waiting for the teacher's tablet test. The "öğretmen kontrolü sürüyor" note was removed from all subjects at the teacher's request.
   Next: 21B reading + listening (separate approval).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
