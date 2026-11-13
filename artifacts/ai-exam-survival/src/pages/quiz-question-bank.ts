@@ -1,5 +1,6 @@
 import { MEB_SEEDS } from './quiz-bank-meb';
 import { ENGLISH_LEVEL_SEEDS, englishTopic, levelOfTopic, type EnglishLevel } from './quiz-bank-english';
+import { ENGLISH_PASSAGES } from './english-passages';
 
 export const QUIZ_GRADES = ['9', '10', '11', '12'] as const;
 
@@ -277,6 +278,32 @@ const ENGLISH_LEVEL_BANK: QuizQuestion[] = QUIZ_GRADES.flatMap((grade) => {
   });
 });
 
+// Stage 21B: reading and listening questions (A1–C1) for every grade. Ids like "10-english-b1-listen-2-3":
+// the passage id is part of the question id, so the text and the recording are found from saved results too.
+// All questions of a text share its difficulty (1st text easy, 2nd medium, 3rd hard) so they stay together in a quiz.
+const PASSAGE_DIFFICULTY: QuizDifficulty[] = ['easy', 'medium', 'hard'];
+const ENGLISH_PASSAGE_BANK: QuizQuestion[] = QUIZ_GRADES.flatMap((grade) =>
+  ENGLISH_PASSAGES.flatMap((passage) => {
+    const textNumber = Number(passage.id.split('-').pop());
+    return passage.questions.map((item, index) => {
+      const answerPosition = (textNumber + index * 3) % OPTION_IDS.length;
+      const [correct, ...distractors] = item.options;
+      distractors.splice(answerPosition, 0, correct);
+      return {
+        id: `${grade}-english-${passage.id}-${index + 1}`,
+        grade,
+        subject: 'English' as QuizSubject,
+        topic: `${passage.level} · ${passage.kind === 'reading' ? 'Reading' : 'Listening'}`,
+        difficulty: PASSAGE_DIFFICULTY[textNumber - 1],
+        prompt: item.prompt,
+        options: distractors.map((text, optionIndex) => ({ id: OPTION_IDS[optionIndex], text })),
+        correctOptionId: OPTION_IDS[answerPosition],
+        explanation: item.explanation,
+      };
+    });
+  }),
+);
+
 const SHARED_AND_MEB_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
   (subject, subjectIndex) =>
     QUIZ_GRADES.flatMap((grade) => {
@@ -308,7 +335,7 @@ const SHARED_AND_MEB_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
     }),
 );
 
-export const QUIZ_QUESTION_BANK: QuizQuestion[] = [...SHARED_AND_MEB_BANK, ...ENGLISH_LEVEL_BANK];
+export const QUIZ_QUESTION_BANK: QuizQuestion[] = [...SHARED_AND_MEB_BANK, ...ENGLISH_LEVEL_BANK, ...ENGLISH_PASSAGE_BANK];
 
 export const ALL_QUIZ_TOPICS = '__all_topics__';
 /** English level filter in Quiz Center: a CEFR level, or the older general (advanced) English questions. */

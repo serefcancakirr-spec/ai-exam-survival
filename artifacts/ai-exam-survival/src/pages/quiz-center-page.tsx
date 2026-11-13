@@ -35,6 +35,7 @@ import { quizMood } from '@/components/menti-moods';
 import { localizeQuestion, topicName } from '@/i18n/content';
 import { mebOutcome, usesMeb } from './quiz-bank-meb';
 import { ENGLISH_LEVELS, SUGGESTED_LEVEL, englishFocus } from './quiz-bank-english';
+import { PassageBlock } from './english-passage-view';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -589,6 +590,7 @@ function QuizQuestionCard({
         />
       </div>
 
+      <PassageBlock question={question} mode="quiz" />
       <p className="mt-6 text-[16px] font-bold leading-[1.65] text-[#3f4e5d] sm:text-[18px]" data-content="quiz">
         {question.prompt}
       </p>
@@ -715,6 +717,7 @@ function ReviewList({ items }: { items: QuizAnswerReview[] }) {
                 {isCorrect ? t('quiz.correctBadge') : t('quiz.reviewThis')}
               </span>
             </div>
+            <PassageBlock question={question} mode="review" />
             <p className="mt-3 text-[13px] font-bold leading-relaxed text-[#3f4e5d]" data-content="quiz">
               {question.prompt}
             </p>
