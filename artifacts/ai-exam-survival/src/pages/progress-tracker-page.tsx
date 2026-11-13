@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { AlertTriangle, ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, CheckCircle2, Flame, Minus } from 'lucide-react';
 import { Link } from 'wouter';
+import { FooterAboutLink } from './about-page';
 import { formatExamDate, getCountdown, getTodayKey } from './exam-calendar-model';
 import { ActivityLegend, QuizScoreChart, WeeklyActivityChart } from './progress-charts';
 import {
@@ -103,7 +104,7 @@ function ProgressFrame({ children }: { children: ReactNode }) {
       </main>
       <footer className="border-t border-[#e3e6ef] bg-[#f0f2f8]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · Progress Tracker')}</p>
+          <p className="text-[11px] text-[#7e879e]">{tx('AI Exam Survival · Progress Tracker')}<FooterAboutLink /></p>
           <Link href="/" className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#5045b5] hover:text-[#31278e]" data-testid="link-footer-home">
             <ArrowLeft size={13} /> {tx('Return to the homepage')}
           </Link>
