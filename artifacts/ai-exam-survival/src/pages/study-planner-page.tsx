@@ -68,7 +68,7 @@ type StorageLoadResult = {
 };
 
 const inputClassName =
-  'mt-2 w-full rounded-[12px] border border-[#e6e9ec] bg-white px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
+  'mt-2 w-full rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
 
 function loadStudyPlanner(): StorageLoadResult {
   const emptyPlan = createInitialStudyPlannerData();
@@ -106,27 +106,26 @@ function PlannerFrame({ children, storageUnavailable }: PageFrameProps) {
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {t('common.backHome')}
         </Link>
 
-        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#2f4255] px-6 py-8 text-white sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[10px] border border-[#ddd5c6] border-l-[6px] border-l-[#5376a0] bg-[#fbf8f1] px-6 py-8 text-[#2b3a49] sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
-          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5376a0]/25" />
           <div className="relative flex max-w-[800px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#d9bdaa] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-[#e8eef4] text-[#4b698c] sm:h-14 sm:w-14">
               <NotebookPen size={22} />
             </span>
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#d9bdaa] sm:text-[11px]">
+              <p className="text-[13px] font-semibold text-[#8a5a3c]">
                 {t('planner.heroEyebrow')}
               </p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">
                 {t('planner.title')}
               </h1>
-              <p className="mt-3 max-w-[650px] text-[13px] leading-[1.75] text-[#cad3dc] sm:text-[15px]">
+              <p className="mt-3 max-w-[650px] text-[13px] leading-[1.75] text-[#4f5a64] sm:text-[15px]">
                 {t('planner.heroText')}
               </p>
             </div>
@@ -174,10 +173,10 @@ type PlannerCardProps = {
 
 function PlannerCard({ eyebrow, title, children, trailing }: PlannerCardProps) {
   return (
-    <section className="rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6">
+    <section className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">
+          <p className="text-[13px] font-semibold text-[#4b698c]">
             {eyebrow}
           </p>
           <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">
@@ -497,7 +496,7 @@ export default function StudyPlannerPage() {
             <button
               type="button"
               onClick={loadSampleInputs}
-              className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#dfe5ed] bg-[#f8fafc] px-3.5 text-[11px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f2f5f9]"
+              className="inline-flex min-h-9 items-center gap-2 rounded-[6px] border border-[#dfe5ed] bg-[#f8fafc] px-3.5 text-[11px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f2f5f9]"
               data-testid="button-load-sample"
             >
               <Sparkles size={14} /> {t('planner.useSample')}
@@ -507,7 +506,7 @@ export default function StudyPlannerPage() {
           {storageMessage && (
             <div
               role="alert"
-              className="mb-4 rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
+              className="mb-4 rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
               data-testid="message-storage"
             >
               {storageMessage ? t(storageMessage) : null}
@@ -634,7 +633,7 @@ export default function StudyPlannerPage() {
                   type="button"
                   onClick={addSubject}
                   disabled={availableSubjectNames.length === 0}
-                  className="mt-2 inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-[12px] bg-[#54769d] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#516f91] disabled:cursor-not-allowed disabled:opacity-50 sm:mt-[22px]"
+                  className="mt-2 inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-[8px] bg-[#54769d] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#516f91] disabled:cursor-not-allowed disabled:opacity-50 sm:mt-[22px]"
                   data-testid="button-add-subject"
                 >
                   <Plus size={15} /> {t('planner.addSubject')}
@@ -642,7 +641,7 @@ export default function StudyPlannerPage() {
               </div>
 
               {planner.subjects.length === 0 ? (
-                <div className="mt-4 rounded-[15px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-6 text-center">
+                <div className="mt-4 rounded-[8px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-6 text-center">
                   <p className="text-[12px] font-bold text-[#4f5a64]">
                     {t('planner.firstSubject')}
                   </p>
@@ -655,7 +654,7 @@ export default function StudyPlannerPage() {
                   {planner.subjects.map((subject, index) => (
                     <section
                       key={subject.id}
-                      className="rounded-[16px] border border-[#eaedf0] bg-[#fcfdfd] p-4"
+                      className="rounded-[10px] border border-[#eaedf0] bg-[#fcfdfd] p-4"
                       data-testid={`subject-card-${index}`}
                     >
                       <div className="flex items-center justify-between gap-3">
@@ -742,7 +741,7 @@ export default function StudyPlannerPage() {
               </p>
               <button
                 type="submit"
-                className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#54769d] px-5 text-[11px] font-extrabold text-white shadow-[0_8px_18px_rgba(97,131,170,.18)] transition-colors hover:bg-[#516f91]"
+                className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-5 text-[11px] font-extrabold text-white transition-colors hover:bg-[#516f91]"
                 data-testid="button-generate-plan"
               >
                 <Sparkles size={15} /> {t('planner.generate')}
@@ -754,7 +753,7 @@ export default function StudyPlannerPage() {
         {planInputsChanged && (
           <div
             role="status"
-            className="rounded-[14px] border border-[#dfd5b7] bg-[#fdf9f2] px-4 py-3 text-[11px] leading-relaxed text-[#6a5732]"
+            className="rounded-[8px] border border-[#dfd5b7] bg-[#fdf9f2] px-4 py-3 text-[11px] leading-relaxed text-[#6a5732]"
             data-testid="message-plan-outdated"
           >
             {t('planner.outdated')}
@@ -762,24 +761,24 @@ export default function StudyPlannerPage() {
         )}
 
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-[17px] border border-[#e7eaee] bg-white px-4 py-4">
-            <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#60686f]">
+          <div className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-4 py-4">
+            <p className="text-[13px] font-semibold text-[#60686f]">
               {t('planner.gradeTile')}
             </p>
             <p className="mt-2 text-[15px] font-extrabold text-[#3f4e5d]">
               {planner.grade ? t('common.grade', { grade: planner.grade }) : t('planner.notSelected')}
             </p>
           </div>
-          <div className="rounded-[17px] border border-[#e7eaee] bg-white px-4 py-4">
-            <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#60686f]">
+          <div className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-4 py-4">
+            <p className="text-[13px] font-semibold text-[#60686f]">
               {t('planner.subjectsTile')}
             </p>
             <p className="mt-2 text-[15px] font-extrabold text-[#3f4e5d]">
               {t('planner.subjectsAdded', { count: planner.subjects.length })}
             </p>
           </div>
-          <div className="rounded-[17px] border border-[#e7eaee] bg-white px-4 py-4">
-            <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#60686f]">
+          <div className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-4 py-4">
+            <p className="text-[13px] font-semibold text-[#60686f]">
               {t('planner.weeklyProgress')}
             </p>
             <div className="mt-2 flex items-center justify-between gap-3">
@@ -807,7 +806,7 @@ export default function StudyPlannerPage() {
         </div>
 
         {weekComplete(studyTasks) && (
-          <div className="rounded-[19px] border border-[#dbe4ee] bg-[#f7f9fc] px-5 py-4" data-testid="planner-proud">
+          <div className="rounded-[10px] border border-[#dbe4ee] bg-[#f7f9fc] px-5 py-4" data-testid="planner-proud">
             <Menti pose="proud" size={84} message={t('menti.plannerProud')} testId="menti-planner-proud" />
           </div>
         )}
@@ -835,7 +834,7 @@ export default function StudyPlannerPage() {
         >
           {!planner.weekStart ? (
             <div
-              className="rounded-[16px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-8 text-center"
+              className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-8 text-center"
               data-testid="empty-timetable"
             >
               <Menti pose="point" size={76} message={t('menti.plannerEmpty')} testId="menti-planner" className="mb-1 justify-center" />
@@ -897,12 +896,12 @@ export default function StudyPlannerPage() {
                   return (
                     <section
                       key={date}
-                      className="min-w-0 rounded-[17px] border border-[#e9ecef] bg-[#fcfdfd] p-3.5"
+                      className="min-w-0 rounded-[10px] border border-[#e9ecef] bg-[#fcfdfd] p-3.5"
                       data-testid={`day-${date}`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <p className="text-[10px] font-extrabold uppercase tracking-[.09em] text-[#4c6a8c]">
+                          <p className="text-[13px] font-semibold text-[#4c6a8c]">
                             {dateInfo.weekday}
                           </p>
                           <p className="mt-1 text-[14px] font-extrabold text-[#3f4e5d]">
@@ -916,9 +915,9 @@ export default function StudyPlannerPage() {
                         </span>
                       </div>
 
-                      <div className="mt-3 rounded-[11px] bg-white px-3 py-2.5">
+                      <div className="mt-3 rounded-[11px] bg-[#fffdf8] px-3 py-2.5">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-[9px] font-bold uppercase tracking-[.08em] text-[#60686f]">
+                          <span className="text-[11px] font-bold text-[#60686f]">
                             {t('planner.dailyGoal')}
                           </span>
                           <span className="text-[10px] font-extrabold text-[#4b5966]">
@@ -965,7 +964,7 @@ export default function StudyPlannerPage() {
                                     ? 'border-[#dde9e5] bg-[#f9f7f4]'
                                     : task.kind === 'break'
                                       ? 'border-[#dee9e6] bg-[#f9f7f4]'
-                                      : 'border-[#eef0f2] bg-white'
+                                      : 'border-[#ddd5c6] bg-[#fffdf8]'
                                 }`}
                                 data-testid={`task-${task.id}`}
                               >
@@ -1086,7 +1085,7 @@ export default function StudyPlannerPage() {
                                     <div className="flex gap-2 pt-1">
                                       <button
                                         type="submit"
-                                        className="inline-flex min-h-8 flex-1 items-center justify-center gap-1 rounded-full bg-[#54769d] px-2 text-[9px] font-bold text-white hover:bg-[#516f91]"
+                                        className="inline-flex min-h-8 flex-1 items-center justify-center gap-1 rounded-[6px] bg-[#54769d] px-2 text-[9px] font-bold text-white hover:bg-[#516f91]"
                                         data-testid="button-save-task"
                                       >
                                         <Check size={12} /> {t('planner.save')}
@@ -1094,7 +1093,7 @@ export default function StudyPlannerPage() {
                                       <button
                                         type="button"
                                         onClick={cancelTaskEdit}
-                                        className="inline-flex min-h-8 items-center justify-center rounded-full border border-[#e4e7ea] px-3 text-[9px] font-bold text-[#5e676f] hover:bg-white"
+                                        className="inline-flex min-h-8 items-center justify-center rounded-[6px] border border-[#e4e7ea] px-3 text-[9px] font-bold text-[#5e676f] hover:bg-white"
                                         data-testid="button-cancel-task-edit"
                                       >
                                         {t('planner.cancel')}
@@ -1118,7 +1117,7 @@ export default function StudyPlannerPage() {
                                       <button
                                         type="button"
                                         onClick={() => beginTaskEdit(task)}
-                                        className="inline-flex min-h-7 items-center gap-1 rounded-full px-2 text-[9px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f4f7fa]"
+                                        className="inline-flex min-h-7 items-center gap-1 rounded-[6px] px-2 text-[9px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f4f7fa]"
                                         aria-label={t('planner.editAria', { activity: shown.activity })}
                                         data-testid={`button-edit-task-${task.id}`}
                                       >
@@ -1127,7 +1126,7 @@ export default function StudyPlannerPage() {
                                       <button
                                         type="button"
                                         onClick={() => deleteTask(task.id)}
-                                        className="inline-flex min-h-7 items-center gap-1 rounded-full px-2 text-[9px] font-bold text-[#885a5a] transition-colors hover:bg-[#fdf2f2]"
+                                        className="inline-flex min-h-7 items-center gap-1 rounded-[6px] px-2 text-[9px] font-bold text-[#885a5a] transition-colors hover:bg-[#fdf2f2]"
                                         aria-label={t('planner.deleteAria', { activity: shown.activity })}
                                         data-testid={`button-delete-task-${task.id}`}
                                       >
@@ -1149,7 +1148,7 @@ export default function StudyPlannerPage() {
           )}
         </PlannerCard>
 
-        <div className="rounded-[19px] bg-[#ecf3f1] p-5 sm:flex sm:items-start sm:gap-3">
+        <div className="rounded-[10px] bg-[#ecf3f1] p-5 sm:flex sm:items-start sm:gap-3">
           <Sparkles size={18} className="shrink-0 text-[#396e5e]" />
           <div>
             <p className="text-[12px] font-extrabold text-[#3d685b]">

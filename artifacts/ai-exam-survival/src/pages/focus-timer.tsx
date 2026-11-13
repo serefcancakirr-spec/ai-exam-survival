@@ -43,9 +43,9 @@ const PHASE_LABEL: Record<Timer['phase'], MessageKey> = {
 };
 
 const chip =
-  'inline-flex min-h-10 items-center justify-center rounded-full border px-4 text-[11px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50';
+  'inline-flex min-h-10 items-center justify-center rounded-[6px] border px-4 text-[11px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50';
 const chipOn = 'border-[#6183aa] bg-[#54769d] text-white';
-const chipOff = 'border-[#dde4ec] bg-white text-[#4c6a8c] hover:bg-[#f7f9fc]';
+const chipOff = 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:bg-[#f7f9fc]';
 
 export function FocusTimerCard() {
   const { t } = useI18n();
@@ -156,26 +156,26 @@ export function FocusTimerCard() {
   return (
     <section
       id="focus-timer"
-      className="scroll-mt-24 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6"
+      className="scroll-mt-24 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6"
       data-testid="focus-timer"
       data-phase={timer.phase}
       data-status={timer.status}
       data-sound-playing={playing ?? 'none'}
     >
-      <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{t('focus.eyebrow')}</p>
+      <p className="text-[13px] font-semibold text-[#4b698c]">{t('focus.eyebrow')}</p>
       <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">
         {t('focus.title')}
       </h2>
 
       {!canSave && (
-        <p role="alert" className="mt-3 rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[11px] text-[#69502e]" data-testid="focus-storage-locked">
+        <p role="alert" className="mt-3 rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[11px] text-[#69502e]" data-testid="focus-storage-locked">
           {t('focus.storageLocked')}
         </p>
       )}
 
       <div className="mt-5 grid gap-5 md:grid-cols-[1fr_1.1fr] md:items-center">
         <div className="flex flex-col items-center gap-3 text-center">
-          <p className="text-[11px] font-extrabold uppercase tracking-[.12em] text-[#4b698c]" data-testid="focus-phase">
+          <p className="text-[13px] font-semibold text-[#4b698c]" data-testid="focus-phase">
             {t(PHASE_LABEL[timer.phase])}
           </p>
           <div className={`relative grid h-[168px] w-[168px] place-items-center rounded-full ${onBreak ? 'bg-[#eaf3f0]' : 'bg-[#f4f7fb]'}`}>
@@ -204,7 +204,7 @@ export function FocusTimerCard() {
             <button
               type="button"
               onClick={toggleRun}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-[6px] bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195]"
               data-testid="focus-start"
             >
               {running ? <Pause size={15} /> : <Play size={15} />}

@@ -1,5 +1,5 @@
-// Browser tests for Stage 20A: the calm "Sisli Mavi ve Kum" look (colours, fonts, no grid, no floating cards)
-// and readable text everywhere (WCAG AA contrast). Clock fixed at 5 Nov 2026, Istanbul.
+// Browser tests for Stage 20A + 20B: the calm "Sisli Mavi ve Kum" look (colours, fonts, no grid, no floating cards)
+// and readable text everywhere (WCAG AA contrast). Stage 20B "Okul Defteri": paper look, plain labels, simpler home texts. Clock fixed at 5 Nov 2026, Istanbul.
 // Usage: node stage20-test.cjs <baseUrl>
 const { chromium } = require('playwright');
 const F = require('./fixtures.cjs');
@@ -201,6 +201,56 @@ function lowContrast(page) {
       await context.close();
       assert(found.length === 0, `${path}: ${found.slice(0, 4).join(' | ')}`);
       if (path === '/') assert(menti > 0, 'Menti is still drawn on the home page');
+    }
+  });
+
+  await check('20B: no small CAPITAL letter-spaced labels, no decorative circles, no floating shadows on any page', async () => {
+    for (const path of PAGES) {
+      const { context, page } = await open(browser, { path });
+      const d = await page.evaluate(() => {
+        const caps = [], circles = [], shadows = [];
+        for (const el of document.querySelectorAll('body *')) {
+          if (el.closest('svg, .menti-figure, .menti-bubble, [data-testid="menti-chat-button"]')) continue; // Menti keeps its own look
+          const s = getComputedStyle(el);
+          const r = el.getBoundingClientRect();
+          if (s.textTransform === 'uppercase' && el.textContent.trim()) caps.push(el.textContent.trim().slice(0, 30));
+          if (s.position === 'absolute' && r.width >= 100 && r.height >= 100 && parseFloat(s.borderTopLeftRadius) >= r.width / 2 - 1) circles.push(`${Math.round(r.width)}px`);
+          // invisible shadows and thin selection rings (0 0 0 Npx) are fine; only soft floating shadows count
+          const sh = s.boxShadow.replace(/rgba?\([^)]*\) 0px 0px 0px \d+px,? ?/g, '').trim();
+          if (sh && sh !== 'none' && r.width > 0) shadows.push(`${el.tagName} ${s.boxShadow.slice(0, 40)}`);
+        }
+        return { caps, circles, shadows };
+      });
+      await context.close();
+      assert(d.caps.length === 0, `${path} capitals: ${d.caps.slice(0, 4).join(' | ')}`);
+      assert(d.circles.length === 0, `${path} circles: ${d.circles.join(', ')}`);
+      assert(d.shadows.length === 0, `${path} shadows: ${d.shadows.slice(0, 3).join(' | ')}`);
+    }
+  });
+
+  await check('20B: tool page headers are light paper with a blue margin line; the page background is warm paper', async () => {
+    for (const path of PAGES.filter((x) => !['/', '/not-a-page'].includes(x))) {
+      const { context, page } = await open(browser, { path });
+      const d = await page.evaluate(() => {
+        const h = document.querySelector('h1').closest('section');
+        const s = getComputedStyle(h);
+        return { bg: s.backgroundColor, left: s.borderLeftColor, leftW: s.borderLeftWidth, body: getComputedStyle(document.body).backgroundColor };
+      });
+      await context.close();
+      assert(d.bg === 'rgb(251, 248, 241)' && d.left === 'rgb(83, 118, 160)' && d.leftW === '6px', `${path} ${JSON.stringify(d)}`);
+      assert(d.body === 'rgb(247, 242, 233)', `${path} body ${d.body}`);
+    }
+  });
+
+  await check('20B: home uses the simpler texts (TR and EN) and the tool cards have no 01–06 numbers', async () => {
+    for (const [lang, words] of [['tr', ['Sınavlara', 'adım adım hazırlan.', 'Altı çalışma', 'Hemen bir araç seç.']], ['en', ['Prepare for exams', 'step by step.', 'Six study', 'Pick a tool now.']]]) {
+      const { context, page } = await open(browser, { lang, path: '/' });
+      const text = await page.locator('main, body').first().innerText();
+      const nums = await page.locator('a[data-testid^="link-tool-"]').evaluateAll((els) => els.filter((e) => /\b0[1-6]\b/.test(e.innerText)).length);
+      await context.close();
+      for (const w of words) assert(text.includes(w), `${lang}: missing "${w}"`);
+      assert(!/küçülsün|altı küçük yol|smaller\.|big difference/.test(text), `${lang}: old slogan still shown`);
+      assert(nums === 0, `${lang}: ${nums} tool cards still show a number`);
     }
   });
 

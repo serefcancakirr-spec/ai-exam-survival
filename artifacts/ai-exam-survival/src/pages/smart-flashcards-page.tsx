@@ -54,15 +54,15 @@ import { useI18n } from '@/i18n/i18n';
 // ---------- shared styles (match Study Planner and Quiz Center) ----------
 
 const inputClassName =
-  'mt-2 w-full rounded-[12px] border border-[#e6e9ec] bg-white px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
+  'mt-2 w-full rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
 const primaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195] disabled:cursor-not-allowed disabled:opacity-45';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195] disabled:cursor-not-allowed disabled:opacity-45';
 const secondaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c] disabled:cursor-not-allowed disabled:opacity-45';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c] disabled:cursor-not-allowed disabled:opacity-45';
 const smallButton =
-  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full border border-[#e5e8ec] bg-white px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
+  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
 const dangerSmallButton =
-  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full bg-[#a35b5b] px-3 text-[11px] font-bold text-white transition-colors hover:bg-[#8a4a4a]';
+  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-[6px] bg-[#a35b5b] px-3 text-[11px] font-bold text-white transition-colors hover:bg-[#8a4a4a]';
 
 const STATUS_LABELS: Record<CardStatus, string> = {
   new: 'New',
@@ -179,27 +179,26 @@ function FlashcardsFrame({ children, storageUnavailable }: { children: ReactNode
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {tx('Back to home')}
         </Link>
 
-        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#2f4255] px-6 py-8 text-white sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[10px] border border-[#ddd5c6] border-l-[6px] border-l-[#5376a0] bg-[#fbf8f1] px-6 py-8 text-[#2b3a49] sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
-          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5376a0]/25" />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#d9bdaa] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-[#e8eef4] text-[#4b698c] sm:h-14 sm:w-14">
               <Layers3 size={22} />
             </span>
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#d9bdaa] sm:text-[11px]">
+              <p className="text-[13px] font-semibold text-[#8a5a3c]">
                 {tx('Recall it, remember it')}
               </p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">
                 {tx('Smart Flashcards')}
               </h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#cad3dc] sm:text-[15px]">
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4f5a64] sm:text-[15px]">
                 {tx('Make your own decks for grades 9–12, flip cards to check your recall, and let Review mode bring back the cards you find hardest.')}
               </p>
             </div>
@@ -251,12 +250,12 @@ function Panel({
 }) {
   return (
     <section
-      className="min-w-0 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6"
+      className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6"
       data-testid={testId}
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{eyebrow}</p>
+          <p className="text-[13px] font-semibold text-[#4b698c]">{eyebrow}</p>
           <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">
             {title}
           </h2>
@@ -315,7 +314,7 @@ function StatusChip({ status }: { status: CardStatus }) {
   const { tx } = useI18n();
   return (
     <span
-      className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[.08em] ${STATUS_STYLES[status].chip}`}
+      className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 text-[11px] font-semibold ${STATUS_STYLES[status].chip}`}
     >
       {tx(STATUS_LABELS[status])}
     </span>
@@ -340,7 +339,7 @@ function InlineConfirm({
     <div
       role="alertdialog"
       aria-label={message}
-      className="flex flex-col gap-3 rounded-[14px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+      className="flex flex-col gap-3 rounded-[8px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
       data-testid={testId}
     >
       <p className="text-[12px] font-bold text-[#865454]">{message}</p>
@@ -376,7 +375,7 @@ function DeckForm({
     <form
       onSubmit={onSubmit}
       noValidate
-      className="rounded-[16px] border border-[#eaedf0] bg-[#fcfdfd] p-4"
+      className="rounded-[10px] border border-[#eaedf0] bg-[#fcfdfd] p-4"
       data-testid="form-deck"
     >
       {errors.length > 0 && (
@@ -933,13 +932,13 @@ export default function SmartFlashcardsPage() {
               : tx('Nice progress! Test yourself with Practice to see what has stuck.');
     const canSwitch = advice.suggest !== activeSession.mode && advice.kind !== 'hard-round';
     return (
-      <div className="mt-3 rounded-[16px] border border-[#e6ebf1] bg-[#f9fbfd] px-3 py-3" data-testid="study-guide" data-advice={advice.kind}>
+      <div className="mt-3 rounded-[10px] border border-[#e6ebf1] bg-[#f9fbfd] px-3 py-3" data-testid="study-guide" data-advice={advice.kind}>
         <Menti pose={advice.pose} size={60} message={message} testId="menti-guide">
           {canSwitch && (
             <button
               type="button"
               onClick={() => changeMode(advice.suggest)}
-              className="inline-flex min-h-9 items-center rounded-full bg-[#54769d] px-3.5 text-[11px] font-extrabold text-white hover:bg-[#527195]"
+              className="inline-flex min-h-9 items-center rounded-[6px] bg-[#54769d] px-3.5 text-[11px] font-extrabold text-white hover:bg-[#527195]"
               data-testid="button-guide-switch"
             >
               {tx('Switch to {mode}', { mode: tx(MODE_INFO[advice.suggest].label) })}
@@ -953,7 +952,7 @@ export default function SmartFlashcardsPage() {
   function renderStudyArea() {
     if (!selectedDeck) {
       return (
-        <div className="rounded-[18px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-empty">
+        <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-empty">
           <p className="text-[13px] font-bold text-[#4f5a64]">{tx('Choose a deck to start studying.')}</p>
           <p className="mt-1 text-[11px] text-[#60686f]">{tx('Or create a new deck in your library above.')}</p>
         </div>
@@ -961,7 +960,7 @@ export default function SmartFlashcardsPage() {
     }
     if (deckCards.length === 0) {
       return (
-        <div className="rounded-[18px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-no-cards">
+        <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-no-cards">
           <p className="text-[13px] font-bold text-[#4f5a64]">{tx('This deck has no cards yet.')}</p>
           <p className="mt-1 text-[11px] text-[#60686f]">{tx('Add your first card in “Cards in this deck” below.')}</p>
         </div>
@@ -971,7 +970,7 @@ export default function SmartFlashcardsPage() {
 
     if (activeSession.mode === 'review' && activeSession.order.length === 0) {
       return (
-        <div className="rounded-[18px] border border-[#dee9e6] bg-[#f9f7f4] px-5 py-10 text-center" data-testid="review-nothing">
+        <div className="rounded-[10px] border border-[#dee9e6] bg-[#f9f7f4] px-5 py-10 text-center" data-testid="review-nothing">
           <CheckCircle2 className="mx-auto text-[#396f5f]" size={26} />
           <p className="mt-3 text-[13px] font-bold text-[#3d685b]">{tx('Nothing to review right now.')}</p>
           <p className="mx-auto mt-1 max-w-[380px] text-[11px] leading-relaxed text-[#586a64]">
@@ -986,7 +985,7 @@ export default function SmartFlashcardsPage() {
 
     if (activeSession.order.length === 0) {
       return (
-        <div className="rounded-[18px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-restart">
+        <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-restart">
           <p className="text-[13px] font-bold text-[#4f5a64]">{tx('This round has no cards left.')}</p>
           <button type="button" onClick={() => changeMode(activeSession.mode)} className={`${primaryButton} mt-4`} data-testid="button-restart-round">
             <RotateCcw size={15} /> {tx('Start a new round')}
@@ -998,9 +997,9 @@ export default function SmartFlashcardsPage() {
     if (activeSession.finished) {
       const skipped = activeSession.order.length - sessionMarks.length;
       return (
-        <div className="rounded-[18px] border border-[#e6ebf1] bg-[#f8fafc] px-5 py-8 text-center sm:px-8" data-testid="session-summary">
+        <div className="rounded-[10px] border border-[#e6ebf1] bg-[#f8fafc] px-5 py-8 text-center sm:px-8" data-testid="session-summary">
           <Menti pose="clap" size={80} message={t('menti.flashDone')} testId="menti-flashcards" className="mb-4 justify-center" />
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">
+          <p className="text-[13px] font-semibold text-[#4b698c]">
             {tx('{mode} round complete', { mode: tx(MODE_INFO[activeSession.mode].label) })}
           </p>
           <p className="font-display mt-2 text-[24px] font-extrabold tracking-[-.015em] text-[#364656]">
@@ -1047,7 +1046,7 @@ export default function SmartFlashcardsPage() {
           onClick={flip}
           aria-pressed={activeSession.flipped}
           aria-label={activeSession.flipped ? tx('Show the front of the card') : tx('Flip to see the answer')}
-          className="group mt-4 block w-full rounded-[20px] text-left [perspective:1600px]"
+          className="group mt-4 block w-full rounded-[10px] text-left [perspective:1600px]"
           data-testid="button-flashcard-flip"
         >
           <span
@@ -1056,11 +1055,11 @@ export default function SmartFlashcardsPage() {
             }`}
           >
             <span
-              className="flex min-h-[230px] flex-col items-center justify-center rounded-[20px] border border-[#e6ebf1] bg-[#f8fafc] px-6 py-8 text-center transition-colors [grid-area:1/1] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] group-hover:border-[#ced7e2] sm:min-h-[260px]"
+              className="flex min-h-[230px] flex-col items-center justify-center rounded-[10px] border border-[#e6ebf1] bg-[#f8fafc] px-6 py-8 text-center transition-colors [grid-area:1/1] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] group-hover:border-[#ced7e2] sm:min-h-[260px]"
               aria-hidden={activeSession.flipped}
               data-testid="flashcard-front"
             >
-              <span className="rounded-full bg-white px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[.12em] text-[#506883]">
+              <span className="rounded-full bg-[#fffdf8] px-3 py-1.5 text-[11px] font-semibold text-[#506883]">
                 {tx('Front')}
               </span>
               <span className="font-display mt-5 block max-w-[560px] break-words text-[22px] font-extrabold leading-snug tracking-[-.015em] text-[#364656] sm:text-[27px]" data-content="card">
@@ -1069,11 +1068,11 @@ export default function SmartFlashcardsPage() {
               <span className="mt-5 block text-[10px] font-semibold text-[#5f666d]">{tx('Tap to reveal the answer')}</span>
             </span>
             <span
-              className="flex min-h-[230px] flex-col items-center justify-center rounded-[20px] border border-[#d5e6e1] bg-[#f9f7f4] px-6 py-8 text-center [grid-area:1/1] [transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] sm:min-h-[260px]"
+              className="flex min-h-[230px] flex-col items-center justify-center rounded-[10px] border border-[#d5e6e1] bg-[#f9f7f4] px-6 py-8 text-center [grid-area:1/1] [transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] sm:min-h-[260px]"
               aria-hidden={!activeSession.flipped}
               data-testid="flashcard-back"
             >
-              <span className="rounded-full bg-white px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[.12em] text-[#396e5e]">
+              <span className="rounded-full bg-[#fffdf8] px-3 py-1.5 text-[11px] font-semibold text-[#396e5e]">
                 {tx('Answer')}
               </span>
               <span className="font-display mt-4 block max-w-[560px] break-words text-[19px] font-extrabold leading-snug tracking-[-.015em] text-[#364656] sm:text-[23px]" data-content="card">
@@ -1094,7 +1093,7 @@ export default function SmartFlashcardsPage() {
             type="button"
             onClick={() => mark('again')}
             disabled={needsFlip}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#e9d9cb] bg-[#fcf5f1] px-5 text-[12px] font-extrabold text-[#8f5847] transition-colors hover:bg-[#faebe0] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[6px] border border-[#e9d9cb] bg-[#fcf5f1] px-5 text-[12px] font-extrabold text-[#8f5847] transition-colors hover:bg-[#faebe0] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
             data-testid="button-mark-again"
           >
             <RotateCcw size={16} /> {tx('Review Again')}
@@ -1103,7 +1102,7 @@ export default function SmartFlashcardsPage() {
             type="button"
             onClick={() => mark('know')}
             disabled={needsFlip}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#3b7262] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#316052] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[6px] bg-[#3b7262] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#316052] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
             data-testid="button-mark-know"
           >
             <Check size={16} /> {tx('I Know This')}
@@ -1133,7 +1132,7 @@ export default function SmartFlashcardsPage() {
             type="button"
             onClick={() => move(1)}
             aria-label={activeSession.mode !== 'learn' && activeSession.index >= activeSession.order.length - 1 ? tx('Finish round') : tx('Next card')}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#54769d] px-4 text-[12px] font-bold text-white transition-colors hover:bg-[#527195]"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-4 text-[12px] font-bold text-white transition-colors hover:bg-[#527195]"
             data-testid="button-flashcard-next"
           >
             <span className="hidden sm:inline">
@@ -1160,7 +1159,7 @@ export default function SmartFlashcardsPage() {
       {storageMessage && (
         <div
           role="alert"
-          className="rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
+          className="rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
           data-testid="message-flashcards-storage"
         >
           {phrase(storageMessage)}
@@ -1230,7 +1229,7 @@ export default function SmartFlashcardsPage() {
         )}
 
         {visibleDecks.length === 0 ? (
-          <div className="mt-4 rounded-[15px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-6 text-center" data-testid="decks-empty">
+          <div className="mt-4 rounded-[8px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-6 text-center" data-testid="decks-empty">
             <p className="text-[12px] font-bold text-[#4f5a64]">{tx('No decks match these filters.')}</p>
             <p className="mt-1 text-[11px] text-[#60686f]">{tx('Choose “All grades” and “All subjects”, or create a new deck.')}</p>
           </div>
@@ -1248,8 +1247,8 @@ export default function SmartFlashcardsPage() {
                   aria-pressed={isSelected}
                   className={`flex min-w-0 flex-col rounded-[17px] border p-4 text-left transition-colors ${
                     isSelected
-                      ? 'border-[#98afca] bg-[#f8fafc] shadow-[0_0_0_2px_rgba(132,160,192,.08)]'
-                      : 'border-[#e7eaee] bg-white hover:border-[#d2dce7]'
+                      ? 'border-[#98afca] bg-[#f8fafc]'
+                      : 'border-[#ddd5c6] bg-[#fffdf8] hover:border-[#d2dce7]'
                   }`}
                   data-testid={`deck-${deck.id}`}
                 >
@@ -1262,7 +1261,7 @@ export default function SmartFlashcardsPage() {
                       </span>
                     </span>
                     {deck.starter && (
-                      <span className="shrink-0 rounded-full bg-[#eaf3f0] px-2 py-1 text-[9px] font-extrabold uppercase tracking-[.08em] text-[#3f7162]">
+                      <span className="shrink-0 rounded-full bg-[#eaf3f0] px-2 py-1 text-[11px] font-semibold text-[#3f7162]">
                         {tx('Starter')}
                       </span>
                     )}
@@ -1317,7 +1316,7 @@ export default function SmartFlashcardsPage() {
                       aria-selected={selected}
                       onClick={() => changeMode(mode)}
                       className={`min-h-10 rounded-full px-3 text-[12px] font-extrabold transition-colors ${
-                        selected ? 'bg-white text-[#4c6a8c] shadow-[0_2px_8px_rgba(54,75,96,.08)]' : 'text-[#5e676f] hover:text-[#4c6a8c]'
+                        selected ? 'bg-[#fffdf8] text-[#4c6a8c]' : 'text-[#5e676f] hover:text-[#4c6a8c]'
                       }`}
                       data-testid={`tab-mode-${mode}`}
                     >
@@ -1344,7 +1343,7 @@ export default function SmartFlashcardsPage() {
                 <StatusBar counts={deckCounts} total={deckCards.length} />
                 <dl className="mt-4 grid grid-cols-2 gap-2">
                   {STATUS_ORDER.map((status) => (
-                    <div key={status} className="rounded-[14px] border border-[#eef0f2] px-3 py-2.5" data-testid={`count-${status}`}>
+                    <div key={status} className="rounded-[8px] border border-[#eef0f2] px-3 py-2.5" data-testid={`count-${status}`}>
                       <dt className="flex items-center gap-1.5 text-[10px] font-bold text-[#5f6870]">
                         <span className={`h-2 w-2 rounded-full ${STATUS_STYLES[status].bar}`} />
                         {tx(STATUS_LABELS[status])}
@@ -1385,7 +1384,7 @@ export default function SmartFlashcardsPage() {
           </Panel>
 
           <Panel eyebrow={tx('Review tip')} title={tx('Make recall active')}>
-            <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#f1f5f9] text-[#4a688c]">
+            <div className="grid h-11 w-11 place-items-center rounded-[8px] bg-[#f1f5f9] text-[#4a688c]">
               <Target size={20} />
             </div>
             <p className="mt-4 text-[12px] leading-[1.75] text-[#60676f]">
@@ -1446,7 +1445,7 @@ export default function SmartFlashcardsPage() {
             </div>
           )}
 
-          <div className="rounded-[16px] border border-[#eaedf0] bg-[#fcfdfd] p-4">
+          <div className="rounded-[10px] border border-[#eaedf0] bg-[#fcfdfd] p-4">
             <p className="mb-3 flex items-center gap-2 text-[12px] font-extrabold text-[#3f4e5d]">
               <BookOpen size={15} className="text-[#4a688c]" /> {tx('Add a card')}
             </p>
@@ -1470,7 +1469,7 @@ export default function SmartFlashcardsPage() {
                 const status = getCardStatus(data.progress[card.id]);
                 if (editingCard?.id === card.id) {
                   return (
-                    <li key={card.id} className="rounded-[16px] border border-[#98afca] bg-white p-4" data-testid={`card-item-${card.id}`}>
+                    <li key={card.id} className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-4" data-testid={`card-item-${card.id}`}>
                       <CardForm
                         draft={editingCard.draft}
                         errors={editingCard.errors}
@@ -1484,7 +1483,7 @@ export default function SmartFlashcardsPage() {
                   );
                 }
                 return (
-                  <li key={card.id} className="rounded-[16px] border border-[#eef0f2] p-4" data-testid={`card-item-${card.id}`}>
+                  <li key={card.id} className="rounded-[10px] border border-[#eef0f2] p-4" data-testid={`card-item-${card.id}`}>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="flex min-w-0 gap-3">
                         <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[9px] bg-[#f1f5f9] text-[10px] font-extrabold text-[#4c6a8c]">

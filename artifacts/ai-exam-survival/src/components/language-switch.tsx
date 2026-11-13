@@ -11,7 +11,7 @@ export default function LanguageSwitch() {
     <div
       role="group"
       aria-label={t('lang.groupLabel')}
-      className="flex shrink-0 items-center rounded-full border border-[#e5e8ec] bg-white p-0.5"
+      className="flex shrink-0 items-center rounded-full border border-[#ddd5c6] bg-[#fffdf8] p-0.5"
       data-testid="language-switch"
     >
       {OPTIONS.map((option) => {
