@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 155/155; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 24/24: grade 9 and 10 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat).
+  Expected today: logic 164/164; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 28/28: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -88,7 +88,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Menti study advice under the mode tabs (from real progress): all new → Learn, cards marked "Review again" → Review,
   all mastered or mostly known → Practice, 3+ "Review again" in one round (not in Review) → reassurance. Writes nothing.
 
-## Grade 9 and 10 MEB questions (Stages 15–16)
+## Grade 9, 10 and 11 MEB questions (Stages 15, 16, 19)
 - `src/pages/quiz-bank-meb9.ts`: grade 9 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs
   (Stage 15A: Mathematics 20, Physics 21, Chemistry 24, Biology 23; Stage 15B: History 22, Geography 22, Literature 20).
   Each has its learning outcome code (MAT/FİZ/KİM/BİY/TAR/COĞ.9.x.y; Türk Dili ve Edebiyatı uses the program's skill codes
@@ -97,7 +97,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Geography 23, Literature 20 (16B; 5 per theme: Sözün Ezgisi, Kelimelerin Ritmi, Dünden Bugüne, Nesillerin Mirası) (every outcome covered;
   official list `tests/data/meb10-outcomes.json`). `src/pages/quiz-bank-meb.ts` joins the grades: `MEB_SEEDS[grade][subject]`,
   `mebOutcome(question)` (by grade + subject + question text) and `usesMeb(grade, subject)`.
-- Ids `<grade>-<subject>-meb-<n>`. Grades 11–12 and English keep the shared samples. The note says the grade (`quiz.mebNote` has `{grade}`).
+- Stage 19A: `src/pages/quiz-bank-meb11.ts`, grade 11 Mathematics 30, Physics 38, Chemistry 32, Biology 26 (every outcome covered;
+  official list `tests/data/meb11-outcomes.json`: MAT 15, FİZ 33, KİM 25, BİY 22 outcomes; the Biology plan's typo "HOME0STAZİ"
+  is written HOMEOSTAZİ, Chemistry's code-less "11.3.3." is KİM.11.3.3). Grade 11 History, Geography, Literature: Stage 19B.
+- Ids `<grade>-<subject>-meb-<n>`. Grade 12, English and (until 19B) grade 11 History/Geography/Literature keep the shared samples. The note says the grade (`quiz.mebNote` has `{grade}`).
 - Turkish in both languages. Quiz shows a note (`quiz.mebNote`, "öğretmen kontrolü sürüyor") and "Öğrenme çıktısı: CODE"
   under each question and in the review (found by question text, so nothing new is saved). Never write "MEB onaylı".
 - Official outcome list for the tests: `tests/data/meb9-outcomes.json` (from the 2026-2027 Anadolu Lisesi frame plans on
@@ -152,5 +155,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   and approved by the teacher.
 - Ideas discussed for later (not approved yet): install as an app (PWA); live AI only later, with school approval, a small server
   to hide the key and a spending cap.
-- Next: wait for the teacher to choose the next stage (options: grade 11 questions, PWA). Corrections from the subject
-  teachers whenever they arrive.
+- Stage 19A (grade 11 MEB questions: Mathematics, Physics, Chemistry, Biology): built and tested, backup tag
+  `backup/before-stage-19a` (local only). Waiting for the teacher's approval to open a PR.
+- Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
+  for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
+  keep pages, navigation, modules, saved data and Menti) → Stage 21 PWA. Corrections from the subject teachers whenever they arrive.

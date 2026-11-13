@@ -1,0 +1,489 @@
+{
+ "source": "tymm.meb.gov.tr – 2026-2027 Anadolu Lisesi 11. sınıf taslak çerçeve (yıllık) planları",
+ "note": "Biyoloji planındaki 'HOME0STAZİ' yazımı HOMEOSTAZİ olarak, Kimya'daki kodsuz '11.3.3.' KİM.11.3.3 olarak düzeltildi; Matematik 'NİCELİKLER VE DEĞİŞİMLER (1)/(2)/(3)' tek tema sayıldı.",
+ "subjects": {
+  "MAT": [
+   {
+    "code": "MAT.11.1.1",
+    "tema": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+    "cikti": "İki nicel değişkenli veri ile çalışabilme ve iki nicel değişken arasındaki ilişkililiğe dayalı karar verebilme"
+   },
+   {
+    "code": "MAT.11.1.2",
+    "tema": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+    "cikti": "Başkaları tarafından oluşturulan iki nicel değişkenli verilerin ilişkililiğine dayalı istatistiksel sonuç veya yorumları tartışabilme"
+   },
+   {
+    "code": "MAT.11.2.1",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Üçgenlerde açı, benzerlik ve alan özelliklerinden yola çıkarak dörtgenlerin açı, kenar, köşegen, simetri ve alan özelliklerine ilişkin muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.11.2.2",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Özel dörtgenlerin kenar, açı, köşegen ve simetri özelliklerinden hareketle aralarındaki ilişkileri yapılandırabilme"
+   },
+   {
+    "code": "MAT.11.2.3",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Çokgenleri içbükey veya dışbükey olarak sınıflandırabilme"
+   },
+   {
+    "code": "MAT.11.2.4",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Dışbükey çokgenlerin kenar, açı, köşegen, simetri ve alan özelliklerine dair çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.11.2.5",
+    "tema": "GEOMETRİK ŞEKİLLER",
+    "cikti": "Çokgenlerin kenar, açı, köşegen, simetri ve alan özelliklerini içeren problemler çözebilme"
+   },
+   {
+    "code": "MAT.11.3.1",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "f (x) = sinx (x ∈ ℝ), f (x) = cosx (x ∈ ℝ), f (x) = tanx (x ∈ ℝ, x ≠ π /2 + kπ, k ∈ ℤ ) ve f (x) = cotx (x ∈ ℝ, x ≠ kπ, k ∈ ℤ) şeklinde tanımlı trigonometrik referans fonksiyonların nitel özellikleri ile bu fonksiyonlardan türetilen [g(x) = k ∙ f (mx ± r) ± s (k, m, r, s ∈ ℝ, k ≠ 0, m ≠ 0)] trigonometrik fonksiyonların nitel özelliklerine ilişkin matematiksel muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.11.3.2",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Trigonometrik fonksiyonlarla ifade edilebilen denklemleri içeren problemleri çözebilme"
+   },
+   {
+    "code": "MAT.11.3.3",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Gerçek sayılarda f(x) = a^X (a > 0, a ≠ 1) şeklinde tanımlı üstel referans fonksiyonun nitel özellikleri ile bu fonksiyondan türetilen [g(x) = k ∙ f (mx ± r) ± s (k, m, r, s ∈ ℝ, k ≠ 0, m ≠ 0)] üstel fonksiyonların nitel özelliklerine ilişkin matematiksel muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.11.3.4",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Üstel fonksiyonların ters fonksiyonlarını inceleyerek logaritmik fonksiyona dair çıkarım yapabilme"
+   },
+   {
+    "code": "MAT.11.3.5",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "f (x) = loga x (a > 0, a ≠ 1, x > 0 ) şeklinde tanımlı logaritmik referans fonksiyonun nitel özellikleri ile bu fonksiyondan türetilen [ g(x) = k ∙ f (mx ± r) ± s (k, m, r, s ∈ ℝ, k ≠ 0, m ≠ 0)] logaritmik fonksiyonların nitel özelliklerine ilişkin matematiksel muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.11.3.6",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Gerçek yaşam durumlarında üstel ve logaritmik fonksiyonlarla ifade edilen denklem ve eşitsizlikleri içeren problemler çözebilme"
+   },
+   {
+    "code": "MAT.11.3.7",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Fonksiyonların bileşkelerine ilişkin muhakeme yapabilme"
+   },
+   {
+    "code": "MAT.11.3.8",
+    "tema": "NİCELİKLER VE DEĞİŞİMLER",
+    "cikti": "Fonksiyonlarda dört işlem özelliklerini yorumlayabilme"
+   }
+  ],
+  "FİZ": [
+   {
+    "code": "FİZ.11.1.1",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Serbest düşme hareketi yapan cisimlerin ivmesine yönelik tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.1.2",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Serbest düşme hareketi ile ilgili kanıt kullanabilme"
+   },
+   {
+    "code": "FİZ.11.1.3",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "İki boyutta sabit ivmeli hareket ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.1.4",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Newton'ın Hareket Yasaları ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.1.5",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Newton'ın Hareket Yasalarını serbest cisim diyagramını kullanarak yorumlayabilme"
+   },
+   {
+    "code": "FİZ.11.1.6",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Statik ve kinetik sürtünme kuvvetlerini karşılaştırabilme"
+   },
+   {
+    "code": "FİZ.11.1.7",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Sürtünme kuvvetinin matematiksel modeline ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.1.8",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Limit hızı etkileyen değişkenler ile ilgili bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.11.1.9",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Düzgün çembersel hareket yapan cisimlerin yörüngeleri ve hız vektörleri hakkında anolojik akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.1.10",
+    "tema": "KUVVET VE HAREKET",
+    "cikti": "Düzgün çembersel hareketin değişkenler arasındaki ilişkilerin matematiksel olarak modellemesine ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.1",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Elektrik yükleri arasındaki elektriksel kuvvetin matematiksel modeline yönelik tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.2",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Elektriksel alanın matematiksel modeline yönelik tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.3",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Faraday kafesi ve Faraday kafesinin kullanım alanları ile ilgili bilgi toplayabilme"
+   },
+   {
+    "code": "FİZ.11.2.4",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Mıknatısların birbiriyle etkileşimine yönelik bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "FİZ.11.2.5",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Üzerinden akım geçen düz bir iletken telin oluşturduğu manyetik alana ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.6",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Akım makarasının merkez ekseninde oluşan manyetik alanın matematiksel modeline ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.7",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Elektromıknatısların kullanım alanlarına ilişkin bilgi toplayabilme"
+   },
+   {
+    "code": "FİZ.11.2.8",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Manyetik alanda akım geçen düz bir tele etki eden kuvvete ilişkin matematiksel modele yönelik tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.9",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Manyetik alanda akım geçen düz bir tele etki eden kuvvet ile ilgili deneyimini elektrik motorlarının çalışma prensibine yansıtabilme"
+   },
+   {
+    "code": "FİZ.11.2.10",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Manyetik akıya etki eden etmenleri çözümleyebilme"
+   },
+   {
+    "code": "FİZ.11.2.11",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "İndüksiyon geriliminin matematiksel modeline ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.2.12",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "İndüklenme sonucu oluşan alternatif (değişken) akım hakkında bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.11.2.13",
+    "tema": "ELEKTRİK VE MANYETİZMA",
+    "cikti": "Transformatörün yapısı ve kullanım alanlarına yönelik bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.1",
+    "tema": "OPTİK",
+    "cikti": "Işık şiddeti, ışık akısı ve aydınlanma kavramlarına ilişkin bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.2",
+    "tema": "OPTİK",
+    "cikti": "Düzlem aynaları kullanarak bilimsel mode oluşturabilme"
+   },
+   {
+    "code": "FİZ.11.3.3",
+    "tema": "OPTİK",
+    "cikti": "Küresel aynaların özelliklerine ilişkin karşılaştırma yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.4",
+    "tema": "OPTİK",
+    "cikti": "Küresel aynalarda görüntü oluşumu ile ilgili deney yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.5",
+    "tema": "OPTİK",
+    "cikti": "Işığın saydam ortamlardaki davranışını kullanarak deney yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.6",
+    "tema": "OPTİK",
+    "cikti": "Saydam ortamlarda görünür derinliğin, gerçek derinlik ve ortamların ışığı kırma indislerine bağlı olarak değiştiğine ilişkin bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.7",
+    "tema": "OPTİK",
+    "cikti": "Fiber optik malzemelerin yapısı, çalışma prensibi ve kullanım alanlarına ilişkin bilgi toplayabilme"
+   },
+   {
+    "code": "FİZ.11.3.8",
+    "tema": "OPTİK",
+    "cikti": "Prizmalar ve prizmalar ile kurulan birleşik sistemlerde ışığın izlediği yola ilişkin tümdengelimsel akıl yürütebilme"
+   },
+   {
+    "code": "FİZ.11.3.9",
+    "tema": "OPTİK",
+    "cikti": "Merceklerin özelliklerine ilişkin karşılaştırma yapabilme"
+   },
+   {
+    "code": "FİZ.11.3.10",
+    "tema": "OPTİK",
+    "cikti": "Merceklerde görüntü oluşumu ile ilgili deney yapabilme"
+   }
+  ],
+  "KİM": [
+   {
+    "code": "KİM.11.1.1",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Fiziksel ve kimyasal olaylardaki enerji değişimine ilişkin deney yapabilme"
+   },
+   {
+    "code": "KİM.11.1.2",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Maddelerin enerji kaynağı olma potansiyeline ilişkin hipotezler oluşturabilme"
+   },
+   {
+    "code": "KİM.11.1.3",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Bağ enerjileri temelinde tepkimelerin entalpi değişimine ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "KİM.11.1.4",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkimelerin standart tepkime entalpilerini standart oluşum entalpi verilerini kullanarak tahmin edebilme"
+   },
+   {
+    "code": "KİM.11.1.5",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkimelerin gerçekleşme şartlarını açıklamak için kanıt kullanabilme"
+   },
+   {
+    "code": "KİM.11.1.6",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Tepkime hızının zamanla değişimini bilimsel veriye dayalı tahmin edebilme"
+   },
+   {
+    "code": "KİM.11.1.7",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Tepkime hızına etki eden faktörleri bilimsel sorgulayabilme"
+   },
+   {
+    "code": "KİM.11.1.8",
+    "tema": "ETKİLEŞİM",
+    "cikti": "Kimyasal tepkimelerin hız denklemini bilimsel veriye dayalı tahmin edebilme"
+   },
+   {
+    "code": "KİM.11.2.1",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Tepkimelerin tersinir olabileceğine ilişkin bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "KİM.11.2.2",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Tepkimelerdeki denge sürecine ilişkin bilimsel gözleme dayalı tahminde bulunabilme"
+   },
+   {
+    "code": "KİM.11.2.3",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Denge sabiti ifadesinin oluşturulmasına ilişkin tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "KİM.11.2.4",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Tersinir tepkimelerin dengeye ulaşıp ulaşmadığını bilimsel veriye dayalı tahmin edebilme"
+   },
+   {
+    "code": "KİM.11.2.5",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Dengeye etki eden faktörleri bilimsel sorgulayabilme"
+   },
+   {
+    "code": "KİM.11.2.6",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Saf suyun otoiyonizasyonuna ilişkin bilimsel gözlem yapabilme"
+   },
+   {
+    "code": "KİM.11.2.7",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Asit ve baz teorilerini karşılaştırabilme"
+   },
+   {
+    "code": "KİM.11.2.8",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Asitlerin ve bazların kuvvetlerine ilişkin bilimsel sorgulama yapabilme"
+   },
+   {
+    "code": "KİM.11.2.9",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Kuvvetli asit-zayıf asit ve kuvvetli baz-zayıf baz sulu çözeltilerindeki pH hesaplamalarını karşılaştırabilme"
+   },
+   {
+    "code": "KİM.11.2.10",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Nötralleşme olayını operasyonel tanımlayabilme"
+   },
+   {
+    "code": "KİM.11.2.11",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Kuvvetli asit ve kuvvetli baz çözeltilerinin derişimlerini titrasyon yöntemiyle belirlemeye yönelik deney yapabilme"
+   },
+   {
+    "code": "KİM.11.2.12",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Asidik ya da bazik ürünlerin en uygun olanına karar verebilme"
+   },
+   {
+    "code": "KİM.11.2.13",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Suda az çözünen tuzların çözünürlüğüne ilişkin bilimsel model oluşturabilme"
+   },
+   {
+    "code": "KİM.11.2.14",
+    "tema": "ÇEŞİTLİLİK",
+    "cikti": "Suda az çözünen tuzların çözünürlüğüne etki eden faktörlere ilişkin bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "KİM.11.3.1",
+    "tema": "SÜRDÜRÜLEBİLİRLİK",
+    "cikti": "Evsel atıklardan fermantasyon yöntemi ile yeşil hidrojen enerjisi elde etme sürecine yönelik hipotez oluşturabilme"
+   },
+   {
+    "code": "KİM.11.3.2",
+    "tema": "SÜRDÜRÜLEBİLİRLİK",
+    "cikti": "Nanoteknolojik ürünlerin seçimine yönelik eleştirel düşünebilme"
+   },
+   {
+    "code": "KİM.11.3.3",
+    "tema": "SÜRDÜRÜLEBİLİRLİK",
+    "cikti": "Mikroplastik ve nanoplastiklerin etkilerini sorgulayabilme"
+   }
+  ],
+  "BİY": [
+   {
+    "code": "BİY.11.1.1",
+    "tema": "TEPKİ",
+    "cikti": "Farklı canlıların uyaranlara karşı oluşturduğu tepki mekanizmaları ile ilgili tümevarımsal akıl yürütebilme"
+   },
+   {
+    "code": "BİY.11.1.2",
+    "tema": "TEPKİ",
+    "cikti": "Bitkisel hormonların etkileri hakkında akıl yürütebilme"
+   },
+   {
+    "code": "BİY.11.1.3",
+    "tema": "TEPKİ",
+    "cikti": "Bitkilerdeki tepki mekanizmalarını sınıflandırabilme"
+   },
+   {
+    "code": "BİY.11.1.4",
+    "tema": "TEPKİ",
+    "cikti": "Bitkilerde yönelme hareketlerini gözlemleyebileceği deney yapabilme"
+   },
+   {
+    "code": "BİY.11.1.5",
+    "tema": "TEPKİ",
+    "cikti": "Duyu reseptörlerini ve duyu reseptörlerinin bulunduğu duyu organlarını sınıflandırabilme"
+   },
+   {
+    "code": "BİY.11.1.6",
+    "tema": "TEPKİ",
+    "cikti": "Hayvanlardaki sinir sistemi farklılıkları ile ilgili analojik akıl yürütebilme"
+   },
+   {
+    "code": "BİY.11.1.7",
+    "tema": "TEPKİ",
+    "cikti": "İnsanda sinir sistemi yapısını çözümleyebilme"
+   },
+   {
+    "code": "BİY.11.1.8",
+    "tema": "TEPKİ",
+    "cikti": "Refleks olayını yorumlayabilme"
+   },
+   {
+    "code": "BİY.11.1.9",
+    "tema": "TEPKİ",
+    "cikti": "Harekete dayalı tepkinin oluşmasında iskelet, kas ve eklemlerin eş güdümlü çalışmasıyla ilgili eleştirel düşünebilme"
+   },
+   {
+    "code": "BİY.11.1.10",
+    "tema": "TEPKİ",
+    "cikti": "İskelet kaslarının kasılma ve gevşeme mekanizması ile ilgili bilimsel model oluşturabilme"
+   },
+   {
+    "code": "BİY.11.1.11",
+    "tema": "TEPKİ",
+    "cikti": "Bağışıklığı sınıflandırabilme"
+   },
+   {
+    "code": "BİY.11.1.12",
+    "tema": "TEPKİ",
+    "cikti": "Alerjik tepkilerin oluşumunu sorgulayabilme"
+   },
+   {
+    "code": "BİY.11.2.1",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Homeostazinin canlılar için önemiyle ilgili bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "BİY.11.2.2",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Homeostatik süreçleri sorgulayabilme"
+   },
+   {
+    "code": "BİY.11.2.3",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Pozitif ve negatif geri bildirim mekanizmalarını karşılaştırabilme"
+   },
+   {
+    "code": "BİY.11.2.4",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Homeostazinin sağlanmasında sinir sisteminin etkilerini çözümleyebilme"
+   },
+   {
+    "code": "BİY.11.2.5",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Endokrin sisteminin homeostazi işlevine yönelik bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "BİY.11.2.6",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Dolaşım sistemi ve homeostazi arasındaki ilişki ile ilgili bilimsel model oluşturabilme"
+   },
+   {
+    "code": "BİY.11.2.7",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Solunum sisteminin homeostazinin sağlanmasındaki rolünü kanıtlarla ortaya koyabilme"
+   },
+   {
+    "code": "BİY.11.2.8",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Boşaltım sisteminin homeostazi işlevine yönelik bilimsel çıkarım yapabilme"
+   },
+   {
+    "code": "BİY.11.2.9",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Homeostazinin sağlanmasında sistemlerin eş güdümlü çalışmasıyla ilgili eleştirel düşünebilme"
+   },
+   {
+    "code": "BİY.11.2.10",
+    "tema": "HOMEOSTAZİ",
+    "cikti": "Homeostazinin sağlanamadığı durumlarda oluşabilecek sağlık problemleri hakkında hipotez oluşturabilme"
+   }
+  ]
+ }
+}
