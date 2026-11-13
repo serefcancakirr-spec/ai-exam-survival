@@ -98,9 +98,10 @@ test('grade 10 bank: only MEB questions for these subjects, ids "10-<subject>-me
   assert.equal(getQuizTopics('10', 'Mathematics').length, 7);
 });
 
-test('grades 11 and 12 and grade 10 English are unchanged', () => {
+// Stage 19 gives grade 11 MEB questions too (tested in stage19-model); grade 12 keeps the shared samples.
+test('grade 12 and grade 10 English are unchanged', () => {
   for (const subject of QUIZ_SUBJECTS) {
-    for (const grade of QUIZ_GRADES.filter((g) => g === '11' || g === '12')) {
+    for (const grade of QUIZ_GRADES.filter((g) => g === '12')) {
       const bank = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === subject);
       assert.deepEqual(bank.map((q) => q.prompt), QUESTION_SEEDS[subject].map((s) => s.prompt), `${grade} ${subject}`);
       assert.equal(usesMeb(grade, subject), false);
@@ -111,7 +112,7 @@ test('grades 11 and 12 and grade 10 English are unchanged', () => {
 
 test('the outcome tag needs the grade: the same text in another grade has no tag; saved results keep working', () => {
   const question = QUIZ_QUESTION_BANK.find((q) => q.id === '10-physics-meb-1')!;
-  assert.equal(mebOutcome({ ...question, grade: '11' }), undefined);
+  assert.equal(mebOutcome({ ...question, grade: '12' }), undefined);
   assert.equal(mebOutcome(JSON.parse(JSON.stringify(question))), 'FİZ.10.1.1');
   assert.equal(localizeQuestion(question, 'en'), question);
   assert.equal(localizeQuestion(question, 'tr'), question);

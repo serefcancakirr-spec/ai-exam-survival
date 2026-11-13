@@ -1,7 +1,7 @@
 // Browser tests for Stage 15 (A + B): grade 9 MEB (Maarif Modeli) questions for every subject except English.
 // Clock fixed at 5 Nov 2026, Istanbul. Usage: node stage15-test.cjs <baseUrl>
 const { chromium } = require('playwright');
-const { EN, TR, QUESTIONS_TR, QUESTION_SEEDS, MEB9_SEEDS, MEB10_SEEDS } = require('../out/dict.cjs');
+const { EN, TR, QUESTIONS_TR, QUESTION_SEEDS, MEB9_SEEDS, MEB10_SEEDS, MEB11_SEEDS } = require('../out/dict.cjs');
 
 const BASE = (process.argv[2] || 'http://127.0.0.1:4180').replace(/\/$/, '');
 const LANG_KEY = 'ai-exam-survival:language:v1';
@@ -24,6 +24,7 @@ const SUBJECTS = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', '
 const MEB_BY_PROMPT = new Map(Object.entries(MEB9_SEEDS).flatMap(([subject, list]) => list.map((s) => [s.prompt, { ...s, subject }])));
 // Stage 16: grade 10
 const MEB10_BY_PROMPT = new Map(Object.entries(MEB10_SEEDS).flatMap(([subject, list]) => list.map((s) => [s.prompt, { ...s, subject }])));
+const MEB11_BY_PROMPT = new Map(Object.entries(MEB11_SEEDS).flatMap(([subject, list]) => list.map((s) => [s.prompt, { ...s, subject }])));
 const OLD_PROMPTS = new Set([...Object.values(QUESTION_SEEDS).flat().map((q) => q.prompt), ...Object.values(QUESTIONS_TR).flat().map((q) => q[0])]);
 const fill = (text, vars) => text.replace(/\{(\w+)\}/g, (_, k) => String(vars[k]));
 
@@ -103,9 +104,9 @@ async function finish(page, count = 5) {
     await context.close();
   });
 
-  await check('grades 11–12 and English: unchanged, no note and no outcome tag', async () => {
+  await check('grade 12, grade 11 History and English: unchanged, no note and no outcome tag', async () => {
     const { context, page } = await open(browser);
-    for (const [grade, subject] of [['11', 'Mathematics'], ['12', 'Biology'], ['11', 'History'], ['12', 'Literature'], ['9', 'English'], ['10', 'English']]) {
+    for (const [grade, subject] of [['12', 'Mathematics'], ['12', 'Biology'], ['11', 'History'], ['12', 'Literature'], ['9', 'English'], ['10', 'English']]) {
       await choose(page, grade, subject);
       assert((await tid(page, 'quiz-meb-note').count()) === 0, `${grade} ${subject}: note shown`);
       await tid(page, 'button-start-quiz').click();
@@ -163,9 +164,9 @@ async function finish(page, count = 5) {
     await context.close();
   });
 
-  await check('choosing a grade 11 topic, then grade 9, goes back to “all topics” and the quiz still starts', async () => {
+  await check('choosing a grade 12 topic, then grade 9, goes back to “all topics” and the quiz still starts', async () => {
     const { context, page } = await open(browser);
-    await choose(page, '11', 'Mathematics');
+    await choose(page, '12', 'Mathematics');
     await page.selectOption('#quiz-topic', 'Algebra');
     await page.selectOption('#quiz-grade', '9');
     assert((await tid(page, 'select-quiz-topic').inputValue()) === '__all_topics__', 'topic not reset');
@@ -189,6 +190,22 @@ async function finish(page, count = 5) {
       await tid(page, 'button-start-quiz').click();
       const seed = MEB10_BY_PROMPT.get(await promptText(page));
       assert(seed && seed.subject === subject, 'not a grade 10 MEB question');
+      assert((await tid(page, 'quiz-meb-outcome').innerText()).trim() === `Öğrenme çıktısı: ${seed.outcome}`, 'tag');
+      await context.close();
+    });
+  }
+
+  // Stage 19A: grade 11 Mathematics, Physics, Chemistry, Biology.
+  for (const subject of Object.keys(MEB11_SEEDS)) {
+    await check(`[tr] Stage 19 grade 11 ${subject}: note says grade 11, MEB themes, question with its learning outcome`, async () => {
+      const { context, page } = await open(browser);
+      await choose(page, '11', subject);
+      assert((await tid(page, 'quiz-meb-note').innerText()).trim() === fill(TR['quiz.mebNote'], { grade: 11 }), 'note');
+      const topics = (await tid(page, 'select-quiz-topic').locator('option').allInnerTexts()).slice(1);
+      assert(JSON.stringify(topics) === JSON.stringify([...new Set(MEB11_SEEDS[subject].map((s) => s.theme))]), `topics: ${topics.join(', ')}`);
+      await tid(page, 'button-start-quiz').click();
+      const seed = MEB11_BY_PROMPT.get(await promptText(page));
+      assert(seed && seed.subject === subject, 'not a grade 11 MEB question');
       assert((await tid(page, 'quiz-meb-outcome').innerText()).trim() === `Öğrenme çıktısı: ${seed.outcome}`, 'tag');
       await context.close();
     });

@@ -7,3 +7,4 @@ export { STARTER_CARDS_TR, STARTER_DECK_NAMES_TR } from '../artifacts/ai-exam-su
 export { QUESTION_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-question-bank';
 export { MEB9_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
 export { MEB10_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-meb10';
+export { MEB11_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-meb11';
