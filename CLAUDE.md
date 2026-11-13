@@ -159,8 +159,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   to hide the key and a spending cap.
 - Stage 19A (grade 11 MEB questions: Mathematics, Physics, Chemistry, Biology): done, merged into `main` (PR #13), deployed.
   Review list given to the teacher. Tablet test not yet confirmed.
-- Stage 19B (grade 11 History, Geography, Türk Dili ve Edebiyatı): built and tested, backup tag `backup/before-stage-19b`
-  (local only). Waiting for the teacher's approval to open a PR.
+- Stage 19B (grade 11 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #14), deployed.
+  Review list given to the teacher. Tablet test not yet confirmed.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
