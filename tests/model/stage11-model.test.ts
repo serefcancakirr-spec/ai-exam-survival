@@ -5,7 +5,7 @@ import { QUESTION_SEEDS, QUIZ_QUESTION_BANK, QUIZ_SUBJECTS } from '../../artifac
 import { STARTER_DECKS } from '../../artifacts/ai-exam-survival/src/pages/flashcards-starter-decks';
 import { QUESTIONS_TR, TOPICS_TR } from '../../artifacts/ai-exam-survival/src/i18n/quiz-questions-tr';
 import { STARTER_CARDS_TR, STARTER_DECK_NAMES_TR } from '../../artifacts/ai-exam-survival/src/i18n/flashcards-starter-tr';
-import { mebOutcome } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
+import { mebOutcome } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb';
 import { deckName, deckTopic, learningName, localizeCard, localizeQuestion, topicName } from '../../artifacts/ai-exam-survival/src/i18n/content';
 
 const TRANSLATED = QUIZ_SUBJECTS.filter((s) => s !== 'English');

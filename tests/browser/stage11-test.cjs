@@ -51,9 +51,9 @@ const tid = (page, id) => page.locator(`[data-testid="${id}"]`);
 const read = (page, key) => page.evaluate((k) => JSON.parse(localStorage.getItem(k)), key);
 const promptText = (page) => page.locator('[data-content="quiz"]').first().innerText();
 
-// Stage 15: grade 9 of some subjects now has MEB questions (Turkish only), so these checks use grade 10.
+// Stages 15–16: grades 9 and 10 now have MEB questions (Turkish only), so these checks use grade 11.
 async function startQuiz(page, subject) {
-  await page.selectOption('#quiz-grade', '10');
+  await page.selectOption('#quiz-grade', '11');
   await page.selectOption('#quiz-subject', subject);
   await tid(page, 'button-start-quiz').click();
   await page.waitForTimeout(100);
@@ -98,7 +98,7 @@ async function answerAll(page, pick) {
 
   await check('[tr] topic list is Turkish, but the chosen topic is saved in English', async () => {
     const { context, page } = await open(browser, { path: '/quiz-center' });
-    await page.selectOption('#quiz-grade', '10');
+    await page.selectOption('#quiz-grade', '11');
     await page.selectOption('#quiz-subject', 'Mathematics');
     const labels = await tid(page, 'select-quiz-topic').locator('option').allInnerTexts();
     const values = await tid(page, 'select-quiz-topic').locator('option').evaluateAll((o) => o.map((x) => x.value));
