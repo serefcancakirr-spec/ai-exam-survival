@@ -21,6 +21,8 @@ import {
   QUIZ_GRADES,
   QUIZ_QUESTION_COUNTS,
   QUIZ_SUBJECTS,
+  GENERAL_LEVEL,
+  type QuizLevel,
   type QuizDifficulty,
   type QuizGrade,
   type QuizOptionId,
@@ -32,6 +34,7 @@ import { Menti } from '@/components/menti';
 import { quizMood } from '@/components/menti-moods';
 import { localizeQuestion, topicName } from '@/i18n/content';
 import { mebOutcome, usesMeb } from './quiz-bank-meb';
+import { ENGLISH_LEVELS, SUGGESTED_LEVEL, englishFocus } from './quiz-bank-english';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
 
@@ -49,6 +52,8 @@ const selectClassName =
 type QuizSetup = {
   grade: QuizGrade;
   subject: QuizSubject;
+  /** Stage 21A: English level (A1–C1 or the older general questions). Not saved; only used to pick questions. */
+  level: QuizLevel;
   topic: string;
   difficulty: QuizDifficulty;
   questionCount: QuizQuestionCount;
@@ -91,10 +96,22 @@ type StorageLoadResult = {
 const DEFAULT_SETUP: QuizSetup = {
   grade: '9',
   subject: 'English',
+  level: SUGGESTED_LEVEL['9'],
   topic: ALL_QUIZ_TOPICS,
   difficulty: 'medium',
   questionCount: 5,
 };
+
+/** The English level filter for this setup (other subjects have no levels). */
+function levelFilter(setup: Pick<QuizSetup, 'subject' | 'level'>): QuizLevel | undefined {
+  return setup.subject === 'English' ? setup.level : undefined;
+}
+
+/** The topic saved with a quiz result: a whole English level is saved as its level name (e.g. "B1"). */
+function savedTopic(setup: Pick<QuizSetup, 'subject' | 'level' | 'topic'>) {
+  const level = levelFilter(setup);
+  return setup.topic === ALL_QUIZ_TOPICS && level && level !== GENERAL_LEVEL ? level : setup.topic;
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
@@ -274,11 +291,17 @@ function QuizSetupCard({
     setup.subject,
     setup.topic,
     setup.difficulty,
+    levelFilter(setup),
   );
-  const topics = getQuizTopics(setup.grade, setup.subject);
+  const topics = getQuizTopics(setup.grade, setup.subject, levelFilter(setup));
   const difficultyOptions: QuizDifficulty[] = ['easy', 'medium', 'hard'];
+  const level = levelFilter(setup);
   const topicLabel =
-    setup.topic === ALL_QUIZ_TOPICS ? t('quiz.allTopics') : topicName(setup.topic, lang);
+    setup.topic === ALL_QUIZ_TOPICS
+      ? level && level !== GENERAL_LEVEL
+        ? t('quiz.levelAllTopics', { level })
+        : t('quiz.allTopics')
+      : topicName(setup.topic, lang);
 
   return (
     <SectionCard
@@ -299,7 +322,11 @@ function QuizSetupCard({
             className={selectClassName}
             value={setup.grade}
             onChange={(event) =>
-              onChange({ grade: event.target.value as QuizGrade })
+              onChange({
+                grade: event.target.value as QuizGrade,
+                // Stage 21A: a new grade gets its suggested English level
+                level: SUGGESTED_LEVEL[event.target.value as QuizGrade],
+              })
             }
             data-testid="select-quiz-grade"
           >
@@ -323,6 +350,7 @@ function QuizSetupCard({
             onChange={(event) =>
               onChange({
                 subject: event.target.value as QuizSubject,
+                level: SUGGESTED_LEVEL[setup.grade],
                 topic: ALL_QUIZ_TOPICS,
               })
             }
@@ -378,6 +406,37 @@ function QuizSetupCard({
           </select>
         </label>
       </div>
+
+      {setup.subject === 'English' && (
+        <fieldset className="mt-5" data-testid="quiz-level-picker">
+          <legend className="text-[11px] font-bold text-[#4f5b66]">{t('quiz.level')}</legend>
+          <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-6">
+            {[...ENGLISH_LEVELS, GENERAL_LEVEL].map((option) => {
+              const selected = setup.level === option;
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => onChange({ level: option as QuizLevel, topic: ALL_QUIZ_TOPICS })}
+                  className={`min-h-11 rounded-[8px] border px-2 text-[13px] font-bold transition-colors ${
+                    selected
+                      ? 'border-[#5376a0] bg-[#eef2f6] text-[#2f4c6e]'
+                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4f5b66] hover:border-[#b9c7d6]'
+                  }`}
+                  data-testid={`button-quiz-level-${option.toLowerCase()}`}
+                >
+                  {option === GENERAL_LEVEL ? t('quiz.levelGeneral') : option}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-[11px] leading-relaxed text-[#5f676f]" data-testid="quiz-level-note">
+            {t('quiz.levelSuggested', { grade: setup.grade, level: SUGGESTED_LEVEL[setup.grade] })}{' '}
+            {t('quiz.levelNote')}
+          </p>
+        </fieldset>
+      )}
 
       <fieldset className="mt-5">
         <legend className="text-[11px] font-bold text-[#4f5b66]">
@@ -613,6 +672,14 @@ function QuizQuestionCard({
 function OutcomeTag({ question }: { question: QuizQuestion }) {
   const { t } = useI18n();
   const code = mebOutcome(question);
+  const english = englishFocus(question);
+  if (english) {
+    return (
+      <p className="mt-2 text-[11px] font-bold text-[#4b698c]" data-testid="quiz-english-focus">
+        {t('quiz.englishFocus', { level: english.level, focus: english.focus })}
+      </p>
+    );
+  }
   if (!code) return null;
   return (
     <p className="mt-2 text-[10px] font-bold text-[#4d6860]" data-testid="quiz-meb-outcome">
@@ -1059,7 +1126,7 @@ export default function FunctionalQuizCenterPage() {
     // Stage 15: grade 9 can have other topics (MEB themes); a topic the new grade does not have goes back to all topics.
     if (
       nextSetup.topic !== ALL_QUIZ_TOPICS &&
-      !getQuizTopics(nextSetup.grade, nextSetup.subject).includes(nextSetup.topic)
+      !getQuizTopics(nextSetup.grade, nextSetup.subject, levelFilter(nextSetup)).includes(nextSetup.topic)
     ) {
       nextSetup.topic = ALL_QUIZ_TOPICS;
     }
@@ -1068,6 +1135,7 @@ export default function FunctionalQuizCenterPage() {
       nextSetup.subject,
       nextSetup.topic,
       nextSetup.difficulty,
+      levelFilter(nextSetup),
     ).length;
     let nextNotice: Notice | null = null;
 
@@ -1095,6 +1163,7 @@ export default function FunctionalQuizCenterPage() {
       setup.subject,
       setup.topic,
       setup.difficulty,
+      levelFilter(setup),
     );
     if (pool.length < setup.questionCount) {
       setNotice({
@@ -1165,7 +1234,7 @@ export default function FunctionalQuizCenterPage() {
       id: createAttemptId(),
       grade: activeConfig.grade,
       subject: activeConfig.subject,
-      topic: activeConfig.topic,
+      topic: savedTopic(activeConfig),
       difficulty: activeConfig.difficulty,
       questionCount: activeConfig.questionCount,
       score,

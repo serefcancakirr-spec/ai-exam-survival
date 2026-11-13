@@ -1,4 +1,5 @@
 import { MEB_SEEDS } from './quiz-bank-meb';
+import { ENGLISH_LEVEL_SEEDS, englishTopic, levelOfTopic, type EnglishLevel } from './quiz-bank-english';
 
 export const QUIZ_GRADES = ['9', '10', '11', '12'] as const;
 
@@ -252,7 +253,31 @@ function seedsFor(grade: QuizGrade, subject: QuizSubject): { seeds: QuestionSeed
   return { idPart: '', seeds: QUESTION_SEEDS[subject] };
 }
 
-export const QUIZ_QUESTION_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
+// Stage 21A: English level questions (A1–C1) for every grade, after the older shared English samples
+// so the older ids stay the same. Ids like "10-english-b1-7".
+const ENGLISH_LEVEL_BANK: QuizQuestion[] = QUIZ_GRADES.flatMap((grade) => {
+  const counters = new Map<string, number>();
+  return ENGLISH_LEVEL_SEEDS.map((seed) => {
+    const n = (counters.get(seed.level) ?? 0) + 1;
+    counters.set(seed.level, n);
+    const answerPosition = (n + seed.level.charCodeAt(0) + Number(seed.level[1])) % OPTION_IDS.length;
+    const [correct, ...distractors] = seed.options;
+    distractors.splice(answerPosition, 0, correct);
+    return {
+      id: `${grade}-english-${seed.level.toLowerCase()}-${n}`,
+      grade,
+      subject: 'English' as QuizSubject,
+      topic: englishTopic(seed.level, seed.skill),
+      difficulty: seed.difficulty,
+      prompt: seed.prompt,
+      options: distractors.map((text, optionIndex) => ({ id: OPTION_IDS[optionIndex], text })),
+      correctOptionId: OPTION_IDS[answerPosition],
+      explanation: seed.explanation,
+    };
+  });
+});
+
+const SHARED_AND_MEB_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
   (subject, subjectIndex) =>
     QUIZ_GRADES.flatMap((grade) => {
       const { seeds, idPart } = seedsFor(grade, subject);
@@ -283,15 +308,26 @@ export const QUIZ_QUESTION_BANK: QuizQuestion[] = QUIZ_SUBJECTS.flatMap(
     }),
 );
 
+export const QUIZ_QUESTION_BANK: QuizQuestion[] = [...SHARED_AND_MEB_BANK, ...ENGLISH_LEVEL_BANK];
+
 export const ALL_QUIZ_TOPICS = '__all_topics__';
+/** English level filter in Quiz Center: a CEFR level, or the older general (advanced) English questions. */
+export type QuizLevel = EnglishLevel | 'general';
+export const GENERAL_LEVEL = 'general';
+
+function matchesLevel(topic: string, level: QuizLevel | undefined) {
+  if (!level) return true;
+  const topicLevel = levelOfTopic(topic);
+  return level === GENERAL_LEVEL ? topicLevel === null : topicLevel === level;
+}
 export const QUIZ_QUESTION_COUNTS = [5, 10, 20] as const;
 export type QuizQuestionCount = (typeof QUIZ_QUESTION_COUNTS)[number];
 
-export function getQuizTopics(grade: QuizGrade, subject: QuizSubject) {
+export function getQuizTopics(grade: QuizGrade, subject: QuizSubject, level?: QuizLevel) {
   return Array.from(
     new Set(
       QUIZ_QUESTION_BANK.filter(
-        (item) => item.grade === grade && item.subject === subject,
+        (item) => item.grade === grade && item.subject === subject && matchesLevel(item.topic, level),
       ).map((item) => item.topic),
     ),
   );
@@ -302,6 +338,7 @@ export function getQuizQuestionPool(
   subject: QuizSubject,
   topic: string,
   preferredDifficulty: QuizDifficulty,
+  level?: QuizLevel,
 ) {
   const difficultyOrder: Record<QuizDifficulty, number> = {
     easy: 0,
@@ -314,6 +351,7 @@ export function getQuizQuestionPool(
     (item) =>
       item.grade === grade &&
       item.subject === subject &&
+      matchesLevel(item.topic, level) &&
       (topic === ALL_QUIZ_TOPICS || item.topic === topic),
   ).sort((left, right) => {
     const leftDistance = Math.abs(
