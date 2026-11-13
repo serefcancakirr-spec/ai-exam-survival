@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 140/140; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 21/21: grade 9 and 10 MEB questions).
+  Expected today: logic 141/141; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 24/24: grade 9 and 10 MEB questions).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker.
 
@@ -92,11 +92,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   (Stage 15A: Mathematics 20, Physics 21, Chemistry 24, Biology 23; Stage 15B: History 22, Geography 22, Literature 20).
   Each has its learning outcome code (MAT/FİZ/KİM/BİY/TAR/COĞ.9.x.y; Türk Dili ve Edebiyatı uses the program's skill codes
   TDE2.x reading / TDE4.3 writing rules, 5 questions per theme, original texts written for the app); the topic is the MEB theme. In the source the first option is the correct one; the bank moves it to A–D.
-- Stage 16A: `src/pages/quiz-bank-meb10.ts`, grade 10 Mathematics 25, Physics 25, Chemistry 24, Biology 26 (every outcome covered;
+- Stage 16: `src/pages/quiz-bank-meb10.ts`, grade 10 Mathematics 25, Physics 25, Chemistry 24, Biology 26 (16A) and History 24,
+  Geography 23, Literature 20 (16B; 5 per theme: Sözün Ezgisi, Kelimelerin Ritmi, Dünden Bugüne, Nesillerin Mirası) (every outcome covered;
   official list `tests/data/meb10-outcomes.json`). `src/pages/quiz-bank-meb.ts` joins the grades: `MEB_SEEDS[grade][subject]`,
   `mebOutcome(question)` (by grade + subject + question text) and `usesMeb(grade, subject)`.
-- Ids `<grade>-<subject>-meb-<n>`. Grades 11–12, English, and grade 10 History/Geography/Literature (until Stage 16B)
-  keep the shared samples. The note says the grade (`quiz.mebNote` has `{grade}`).
+- Ids `<grade>-<subject>-meb-<n>`. Grades 11–12 and English keep the shared samples. The note says the grade (`quiz.mebNote` has `{grade}`).
 - Turkish in both languages. Quiz shows a note (`quiz.mebNote`, "öğretmen kontrolü sürüyor") and "Öğrenme çıktısı: CODE"
   under each question and in the review (found by question text, so nothing new is saved). Never write "MEB onaylı".
 - Official outcome list for the tests: `tests/data/meb9-outcomes.json` (from the 2026-2027 Anadolu Lisesi frame plans on
@@ -121,10 +121,14 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   tested on the tablet and approved by the teacher. Review list given to the subject teachers (their check is still going on).
 - Stage 15B (grade 9 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #8), deployed, tested on the
   tablet and approved by the teacher. English and Din Kültürü left out (English plan only as RAR; Din Kültürü plan not on the page).
-- Stage 16A (grade 10 MEB questions: Mathematics, Physics, Chemistry, Biology): built and tested on the work branch, backup tag
-  `backup/before-stage-16` (local only), review list made. Waiting for approval to open a PR.
-- Teacher asked next (in this order): Stage 16B grade 10 History, Geography, Türk Dili ve Edebiyatı; then an About/Privacy page;
-  then a chat with Menti (rule-based, no live AI). Plans for the last two still need the teacher's approval.
+- Stage 16A (grade 10 MEB questions: Mathematics, Physics, Chemistry, Biology): done, merged into `main` (PR #9), deployed.
+  Review list given to the teacher. Tablet test not yet confirmed.
+- Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): built and tested, backup tag `backup/before-stage-16b`
+  (local only), review list made. Waiting for approval to open a PR.
+- Teacher asked next: an About/Privacy page (Stage 17), then a chat with Menti (Stage 18, rule-based, no live AI).
+  Plans were shown; the teacher's answers to the open questions (school/student names, contact e-mail, "delete my data" button,
+  where Menti's chat button goes, whether Menti may read saved data) are still needed before starting.
 - Ideas discussed for later (not approved yet): install as an app (PWA); live AI only later, with school approval, a small server
   to hide the key and a spending cap.
-- Next: PR for Stage 16A after the teacher's approval; then Stage 16B. Corrections from the subject teachers whenever they arrive.
+- Next: PR for Stage 16B after the teacher's approval; then Stages 17–18 once the open questions are answered. Corrections from the
+  subject teachers whenever they arrive.

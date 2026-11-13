@@ -116,3 +116,17 @@ test('the outcome tag needs the grade: the same text in another grade has no tag
   assert.equal(localizeQuestion(question, 'en'), question);
   assert.equal(localizeQuestion(question, 'tr'), question);
 });
+
+test('Stage 16B: grade 10 History, Geography and Türk Dili ve Edebiyatı; 5 Literature questions per theme', () => {
+  for (const subject of ['History', 'Geography', 'Literature'] as const) assert.ok(MEB10_SEEDS[subject]!.length >= 20, subject);
+  assert.deepEqual(getQuizTopics('10', 'History'), ['Türkistan’dan Türkiye’ye (1040-1299)', 'Beylikten Devlete Osmanlı (1299-1453)', 'Cihan Devleti Osmanlı (1453-1683)']);
+  assert.equal(getQuizTopics('10', 'Geography').length, 7);
+  assert.deepEqual(getQuizTopics('10', 'Literature'), ['Sözün Ezgisi', 'Kelimelerin Ritmi', 'Dünden Bugüne', 'Nesillerin Mirası']);
+  for (const theme of getQuizTopics('10', 'Literature')) {
+    const inTheme = MEB10_SEEDS.Literature!.filter((s) => s.theme === theme);
+    assert.equal(inTheme.length, 5, theme);
+    assert.ok(inTheme.some((s) => s.outcome === 'TDE4.3'), `${theme}: writing rules`);
+  }
+  // only English is left on the shared sample bank in grades 9 and 10
+  for (const grade of ['9', '10']) for (const subject of QUIZ_SUBJECTS) assert.equal(usesMeb(grade, subject), subject !== 'English', `${grade} ${subject}`);
+});
