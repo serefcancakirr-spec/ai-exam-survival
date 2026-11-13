@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 165/165; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text).
+  Expected today: logic 174/174; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -127,19 +127,38 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Geography 23 (COĞ 19 outcomes, from the 4-hour plan, which includes all of the 2-hour plan), Literature 20 (5 per theme:
   Bir Diyeceğim Var!, Kültür Yolculuğu, Yaşamın İzinde, Hayatın Aynası; TDE2.x reading and TDE4.3 writing rules).
 - Ids `<grade>-<subject>-meb-<n>`. Grade 12 and English keep the shared samples. The note says the grade (`quiz.mebNote` has `{grade}`).
-- Turkish in both languages. Quiz shows a note (`quiz.mebNote`, "öğretmen kontrolü sürüyor") and "Öğrenme çıktısı: CODE"
+- Turkish in both languages. Quiz shows a note (`quiz.mebNote`; the "öğretmen kontrolü sürüyor" sentence was removed in Stage 21A
+  at the teacher's request after their check: corrections are still welcome) and "Öğrenme çıktısı: CODE"
   under each question and in the review (found by question text, so nothing new is saved). Never write "MEB onaylı".
 - Official outcome list for the tests: `tests/data/meb9-outcomes.json` (from the 2026-2027 Anadolu Lisesi frame plans on
   tymm.meb.gov.tr). Questions follow the MEB "Bağlam Temelli Çoktan Seçmeli Soru Yazım Kılavuzu" (context, misconception
   distractors, no "hepsi/hiçbiri").
 - Network: the personal cloud environment "ai-exam-survival" allows tymm.meb.gov.tr (use curl; WebFetch cannot reach it).
 
+## English A1–C1 (Stage 21A)
+- `src/pages/quiz-bank-english.ts`: 250 original questions, 25 grammar + 25 vocabulary per CEFR level (A1, A2, B1, B2, C1),
+  for every grade. Prompt and options in English, explanation in Turkish (both app languages). First source option is the
+  correct one; difficulty by position in the level (1–8 easy, 9–17 medium, 18–25 hard). Topics `"<level> · Grammar"` /
+  `"<level> · Vocabulary"` (Turkish names in `TOPICS_TR`). Ids `<grade>-english-<level>-<n>`, added after the 20 older
+  English samples (their ids are unchanged; they are the level "Genel (ileri)" / `general`).
+- Quiz Center: when English is chosen, a level picker (`button-quiz-level-a1` … `-c1`, `-general`) filters topics and questions.
+  Suggested level per grade (also on grade/subject change): 9 A2, 10 B1, 11 B1, 12 B2. The level is not saved; a whole-level
+  quiz is saved with the level as its topic (e.g. "B1"), one topic as that topic. Under each question and in the review:
+  "Seviye B1 · focus" (`quiz-english-focus`, found by question text like the MEB outcome).
+- Smart Flashcards: "Seviyelere göre İngilizce kelime desteleri" (`button-add-level-deck-a1` …): 30 words per level in
+  `src/pages/flashcards-english-levels.ts` (front "word — “example”", answer Turkish meaning). A deck is added only on tap,
+  as an ordinary deck (id `english-level-<level>`, not a starter deck), named in the language in use, under the grade in the
+  filter or A1/A2 → 9, B1 → 10, B2 → 11, C1 → 12. Its button shows ✓ while the deck exists.
+- The teacher (an English teacher) reviewed all 250 questions and the decks and approved them, so the level note no longer
+  says "öğretmen kontrolü sürüyor". Never write "MEB onaylı".
+
 ## About and Privacy (Stage 17)
 - `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link
   (`FooterAboutLink`, test id `link-footer-about`) added inside the footer text, so the footer layout stays the same.
 - Says “AI Kulübü” only (no school or student names, teacher's choice). Contact: aiexamsurvival@gmail.com (teacher approved).
 - Privacy text must stay true: no account, no server, data only in this browser, no ads/analytics/cookies; GitHub Pages and
-  Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB.
+  Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB
+  (`about.content1` names grades 9, 10, 11 and English A1–C1; mistakes can be reported by e-mail).
 - “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
   (the 8 saved-data keys above). A model test checks the list matches every key used in the code.
 
@@ -189,7 +208,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   once"; show 2 samples of the home page and one tool page first). Samples shown: A, B, C, then B2, D, E; teacher chose B.
   20A: done, merged into `main` (PR #15), deployed, tested on the tablet and approved by the teacher.
   20B: teacher said the site felt "AI-made"; samples A (Sade Defter) and B (Okul Defteri) shown, teacher chose B and asked
-  for simpler slogans. Built and tested, backup tag `backup/before-stage-20b` (local only). Waiting for approval to open a PR.
+  for simpler slogans. Done, merged into `main` (PR #16), deployed, tested on the tablet and approved by the teacher.
+- Stage 21A (English A1–C1 grammar + vocabulary, 250 questions, Turkish explanations, 5 level word decks; samples shown and
+  approved first): built and tested, backup tag `backup/before-stage-21a` (local only). Waiting for approval to open a PR.
+  Next: 21B reading + listening (separate approval).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,

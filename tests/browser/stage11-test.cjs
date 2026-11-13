@@ -55,6 +55,8 @@ const promptText = (page) => page.locator('[data-content="quiz"]').first().inner
 async function startQuiz(page, subject) {
   await page.selectOption('#quiz-grade', '12');
   await page.selectOption('#quiz-subject', subject);
+  // Stage 21A: the older shared English samples are the level "Genel (ileri)"; A1–C1 are tested in stage21-test.
+  if (subject === 'English') await tid(page, 'button-quiz-level-general').click();
   await tid(page, 'button-start-quiz').click();
   await page.waitForTimeout(100);
 }

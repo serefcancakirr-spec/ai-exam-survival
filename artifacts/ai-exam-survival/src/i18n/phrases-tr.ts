@@ -140,6 +140,11 @@ const FLASHCARDS: Record<string, string> = {
   'Delete this card and its progress?': 'Bu kart ve ilerlemesi silinsin mi?',
   'Delete card': 'Kartı sil',
   // messages
+  'English word decks by level': 'Seviyelere göre İngilizce kelime desteleri',
+  '30 words with an example sentence and the Turkish meaning. A deck is added only when you tap its level.': 'Her destede örnek cümleli 30 kelime ve Türkçe anlamları var. Deste, yalnızca seviyesine dokunduğunda eklenir.',
+  '{level} deck added': '{level} destesi eklendi',
+  'Add the {level} deck': '{level} destesini ekle',
+  '“{name}” was added with {count} words. Start with Learn mode.': '“{name}” {count} kelimeyle eklendi. Öğren modundan başla.',
   '“{name}” was created. Add your first card below.': '“{name}” oluşturuldu. İlk kartını aşağıdan ekle.',
   // Stage 14
   'A deck called “{name}” already exists. Choose a different name, for example add the grade.':

@@ -27,7 +27,7 @@ for f in stage01-test stage02-flashcards-test stage04-calendar-test stage05-test
   NODE_OPTIONS="--require $T/browser/en-wrap.cjs" node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
   echo "$f: $(grep -c '^PASS' "$OUT/$f.log") pass, $(grep -c '^FAIL' "$OUT/$f.log") fail"
 done
-for f in stage08a-test stage08b-test stage10-test stage11-test stage13-test stage14-test stage15-test stage17-test stage18-test stage20-test; do
+for f in stage08a-test stage08b-test stage10-test stage11-test stage13-test stage14-test stage15-test stage17-test stage18-test stage20-test stage21-test; do
   node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
   echo "$f: $(grep -c '^PASS' "$OUT/$f.log") pass, $(grep -c '^FAIL' "$OUT/$f.log") fail"
 done

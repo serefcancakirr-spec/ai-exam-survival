@@ -10,6 +10,7 @@ import {
   getQuizTopics,
   ALL_QUIZ_TOPICS,
 } from '../../artifacts/ai-exam-survival/src/pages/quiz-question-bank';
+import { levelOfTopic } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-english';
 import { MEB9_SEEDS } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
 import { mebOutcome, usesMeb } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb';
 import { localizeQuestion, topicName } from '../../artifacts/ai-exam-survival/src/i18n/content';
@@ -105,7 +106,8 @@ test('grade 12, grade 9 English and grade 10 subjects without MEB questions keep
   for (const subject of QUIZ_SUBJECTS) {
     for (const grade of QUIZ_GRADES) {
       if (usesMeb(grade, subject)) continue;
-      const bank = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === subject);
+      // Stage 21A: the English level questions (A1–C1) are added after these and checked in stage21-model.
+      const bank = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === subject && !levelOfTopic(q.topic));
       assert.deepEqual(bank.map((q) => q.prompt), QUESTION_SEEDS[subject].map((s) => s.prompt), `${grade} ${subject}`);
       assert.ok(bank.every((q) => q.id === `${grade}-${subject.toLowerCase()}-${bank.indexOf(q) + 1}`), `${grade} ${subject}: ids`);
       assert.ok(bank.every((q) => mebOutcome(q) === undefined));

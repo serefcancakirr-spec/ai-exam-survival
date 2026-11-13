@@ -46,6 +46,8 @@ import {
   type MarkResult,
   type StudyMode,
 } from './flashcards-model';
+import { ENGLISH_LEVELS, LEVEL_DECK_GRADE, createLevelDeck, levelDeckId, levelDeckName } from './flashcards-english-levels';
+import type { EnglishLevel } from './quiz-bank-english';
 import { Menti } from '@/components/menti';
 import { deckName, deckTopic, localizeCard } from '@/i18n/content';
 import { findDuplicateDeck, isOwnDeckName, studyAdvice } from './flashcards-guide';
@@ -732,6 +734,21 @@ export default function SmartFlashcardsPage() {
     setNotice({ tone: 'success', message: 'Progress for this deck was reset. Every card is new again.' });
   }
 
+  // Stage 21A: add an English level word deck (only when the student taps its button).
+  function addLevelDeck(level: EnglishLevel) {
+    if (data.decks.some((deck) => deck.id === levelDeckId(level))) return;
+    const grade = filterGrade !== 'all' ? filterGrade : LEVEL_DECK_GRADE[level];
+    let name = levelDeckName(level, lang);
+    if (findDuplicateDeck(name, data.decks, null)) name = `${name} 2`;
+    const { deck, cards } = createLevelDeck(level, lang, grade, name);
+    setData((current) => ({ ...current, decks: [...current.decks, deck], cards: [...current.cards, ...cards], selectedDeckId: deck.id }));
+    setSession(createSession(deck.id, 'learn', cards, data));
+    setDeckForm(null);
+    setConfirm(null);
+    setNotice({ tone: 'success', message: `“${deck.name}” was added with ${cards.length} words. Start with Learn mode.` });
+    window.requestAnimationFrame(() => studyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
+
   function restoreStarters() {
     const { data: next, restored } = restoreStarterDecks(data);
     setData(next);
@@ -1282,6 +1299,35 @@ export default function SmartFlashcardsPage() {
             })}
           </div>
         )}
+
+        <div className="mt-4 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="english-level-decks">
+          <p className="text-[12px] font-bold text-[#384959]">{tx('English word decks by level')}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+            {tx('30 words with an example sentence and the Turkish meaning. A deck is added only when you tap its level.')}
+          </p>
+          <div className="mt-3 grid grid-cols-5 gap-2">
+            {ENGLISH_LEVELS.map((level) => {
+              const added = data.decks.some((deck) => deck.id === levelDeckId(level));
+              return (
+                <button
+                  key={level}
+                  type="button"
+                  onClick={() => addLevelDeck(level)}
+                  disabled={added}
+                  aria-label={added ? tx('{level} deck added', { level }) : tx('Add the {level} deck', { level })}
+                  className={`min-h-11 rounded-[8px] border px-1 text-[13px] font-bold transition-colors ${
+                    added
+                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
+                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                  }`}
+                  data-testid={`button-add-level-deck-${level.toLowerCase()}`}
+                >
+                  {added ? `✓ ${level}` : `+ ${level}`}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#eef0f2] pt-4">
           <p className="text-[10px] leading-relaxed text-[#60686f]">
