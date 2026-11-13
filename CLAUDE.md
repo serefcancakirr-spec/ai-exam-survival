@@ -156,7 +156,12 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Ideas discussed for later (not approved yet): install as an app (PWA); live AI only later, with school approval, a small server
   to hide the key and a spending cap.
 - Stage 19A (grade 11 MEB questions: Mathematics, Physics, Chemistry, Biology): built and tested, backup tag
-  `backup/before-stage-19a` (local only). Waiting for the teacher's approval to open a PR.
+  `backup/before-stage-19a` (local only). PR opened after the teacher's approval.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
-  keep pages, navigation, modules, saved data and Menti) → Stage 21 PWA. Corrections from the subject teachers whenever they arrive.
+  keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
+  21B reading + listening; listening uses the browser's built-in speech, no audio files or paid service; original texts)
+  → Stage 22 grade 12 TYT / AYT / YDT exam mode for all subjects (original ÖSYM-style questions, timed mini exams, net =
+  correct − wrong ÷ 4; no score or ranking estimates) → Stage 23 PWA. Teacher approved adding Felsefe (philosophy group) and
+  Din Kültürü as new subjects (needed for TYT Sosyal / AYT); saved data shape stays the same.
+  Corrections from the subject teachers whenever they arrive.
