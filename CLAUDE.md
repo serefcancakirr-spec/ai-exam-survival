@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 144/144; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 24/24: grade 9 and 10 MEB questions; stage17-test 15/15: About and Privacy).
+  Expected today: logic 155/155; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 24/24: grade 9 and 10 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -68,7 +68,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   otherwise encourage), Flashcards round finished (clap), empty Study Planner / Exam Calendar / Progress Tracker (point/wave),
   page not found (surprised + home button). Texts: `menti.*` keys in translations-en.ts / translations-tr.ts.
 - Tab icon `public/favicon.svg` is Menti's face; rebuild it with `bash scripts/menti/make-favicon.sh`.
-- Menti is decoration only: it never reads or writes saved data.
+- Menti is decoration only: it never reads or writes saved data. Exception (Stage 18, teacher approved): the chat reads
+  saved data to give personal advice; it still never writes.
 
 ## Focus timer and moods (Stage 13)
 - `src/pages/focus-timer.tsx` (card on the Study Planner page, under the three tiles), logic in `src/pages/focus-model.ts`.
@@ -113,6 +114,17 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
   (the 8 saved-data keys above). A model test checks the list matches every key used in the code.
 
+## Chat with Menti (Stage 18)
+- `src/components/menti-chat.tsx` (mounted once in `App.tsx`, so it is on every page): round Menti button bottom-right
+  (`menti-chat-button`), opens a chat window (bottom sheet on phones, small window on tablets). Escape/close button closes it.
+- Rules and texts: `src/components/menti-chat-model.ts` (pure, tested). `intentOf(text)` = keyword stems after `normalize()`
+  (Turkish letters folded); safety words (self-harm, bullying) always win and answer with a trusted adult, rehber öğretmen
+  and 112, without quick buttons. Quick buttons: today, exams, weak topics, cards, how to study, mood, anxiety, app help.
+- Personal facts come from the Progress Tracker readers (`readAllSources`, `buildTopicResults`, `buildExamReadiness`,
+  `buildPlannerWeek`): only real saved numbers, never estimates. Every answer links to a tool (focus link scrolls to
+  `#focus-timer`). Read only (`getItem`); the conversation is kept in memory only and is gone after a refresh.
+- Menti says it is a mascot that works with rules, not a live AI and not a person. Texts in `CHAT_TEXTS` (tr/en, same keys).
+
 ## Where we are
 - Done: Stages 1–8B, all tested on the tablet and approved by the teacher.
 - Stage 9 (website): done, merged into `main` (PR #1), deployed, tested on the tablet and approved by the teacher.
@@ -134,11 +146,9 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Review list given to the teacher. Tablet test not yet confirmed.
 - Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #10), deployed.
   Tablet test of 16A/16B not yet confirmed.
-- Stage 17 (About and Privacy page): built and tested on the work branch, backup tag `backup/before-stage-17` (local only).
-  Waiting for approval to open a PR.
-- Stage 18 (chat with Menti, rule-based, no live AI) – teacher's answers: chat button on every page; Menti MAY read saved data
-  (read-only) to give personal advice, as actively as possible, and point to the right tool. This changes the Stage 10 rule
-  “Menti never reads saved data” for the chat only; Menti still never writes. Plan to be shown before starting.
+- Stage 17 (About and Privacy page): done, merged into `main` (PR #11), deployed. Tablet test not yet confirmed.
+- Stage 18 (chat with Menti, rule-based, no live AI): plan approved by the teacher; built and tested, backup tag
+  `backup/before-stage-18` (local only). Waiting for approval to open a PR.
 - Ideas discussed for later (not approved yet): install as an app (PWA); live AI only later, with school approval, a small server
   to hide the key and a spending cap.
-- Next: PR for Stage 17 after the teacher's approval; then Stage 18. Corrections from the subject teachers whenever they arrive.
+- Next: a PR for Stage 18 after the teacher's approval. Corrections from the subject teachers whenever they arrive.
