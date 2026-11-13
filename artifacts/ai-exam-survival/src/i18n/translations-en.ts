@@ -39,7 +39,7 @@ export const EN = {
   'home.forGrades': 'For grades 9–12. Made for real school weeks.',
   'home.cardWeek': 'Your study week',
   'home.cardWeekSub': 'A little progress, every day',
-  'home.cardPreview': 'Preview',
+  'home.cardPreview': 'Example',
   'home.cardThisWeek': 'THIS WEEK',
   'home.cardDays': 'M,T,W,T,F',
   'home.cardNextUp': 'Next up',

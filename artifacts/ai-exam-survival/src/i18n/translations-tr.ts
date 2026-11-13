@@ -41,7 +41,7 @@ export const TR: Record<MessageKey, string> = {
   'home.forGrades': '9–12. sınıflar için. Gerçek okul haftalarına göre tasarlandı.',
   'home.cardWeek': 'Çalışma haftan',
   'home.cardWeekSub': 'Her gün biraz ilerleme',
-  'home.cardPreview': 'Önizleme',
+  'home.cardPreview': 'Örnek',
   'home.cardThisWeek': 'BU HAFTA',
   'home.cardDays': 'Pt,Sa,Ça,Pe,Cu',
   'home.cardNextUp': 'Sıradaki',
