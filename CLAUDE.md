@@ -127,7 +127,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Geography 23 (COĞ 19 outcomes, from the 4-hour plan, which includes all of the 2-hour plan), Literature 20 (5 per theme:
   Bir Diyeceğim Var!, Kültür Yolculuğu, Yaşamın İzinde, Hayatın Aynası; TDE2.x reading and TDE4.3 writing rules).
 - Ids `<grade>-<subject>-meb-<n>`. Grade 12 and English keep the shared samples. The note says the grade (`quiz.mebNote` has `{grade}`).
-- Turkish in both languages. Quiz shows a note (`quiz.mebNote`, "öğretmen kontrolü sürüyor") and "Öğrenme çıktısı: CODE"
+- Turkish in both languages. Quiz shows a note (`quiz.mebNote`; the "öğretmen kontrolü sürüyor" sentence was removed in Stage 21A
+  at the teacher's request after their check: corrections are still welcome) and "Öğrenme çıktısı: CODE"
   under each question and in the review (found by question text, so nothing new is saved). Never write "MEB onaylı".
 - Official outcome list for the tests: `tests/data/meb9-outcomes.json` (from the 2026-2027 Anadolu Lisesi frame plans on
   tymm.meb.gov.tr). Questions follow the MEB "Bağlam Temelli Çoktan Seçmeli Soru Yazım Kılavuzu" (context, misconception
@@ -156,7 +157,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   (`FooterAboutLink`, test id `link-footer-about`) added inside the footer text, so the footer layout stays the same.
 - Says “AI Kulübü” only (no school or student names, teacher's choice). Contact: aiexamsurvival@gmail.com (teacher approved).
 - Privacy text must stay true: no account, no server, data only in this browser, no ads/analytics/cookies; GitHub Pages and
-  Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB.
+  Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB
+  (`about.content1` names grades 9, 10, 11 and English A1–C1; mistakes can be reported by e-mail).
 - “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
   (the 8 saved-data keys above). A model test checks the list matches every key used in the code.
 
