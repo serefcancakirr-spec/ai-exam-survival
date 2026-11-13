@@ -142,10 +142,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   tested on the tablet and approved by the teacher. Review list given to the subject teachers (their check is still going on).
 - Stage 15B (grade 9 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #8), deployed, tested on the
   tablet and approved by the teacher. English and Din Kültürü left out (English plan only as RAR; Din Kültürü plan not on the page).
-- Stage 16A (grade 10 MEB questions: Mathematics, Physics, Chemistry, Biology): done, merged into `main` (PR #9), deployed.
-  Review list given to the teacher. Tablet test not yet confirmed.
-- Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #10), deployed.
-  Tablet test of 16A/16B not yet confirmed.
+- Stage 16A (grade 10 MEB questions: Mathematics, Physics, Chemistry, Biology): done, merged into `main` (PR #9), deployed,
+  tested on the tablet and approved by the teacher. Review list given to the teacher.
+- Stage 16B (grade 10 History, Geography, Türk Dili ve Edebiyatı): done, merged into `main` (PR #10), deployed,
+  tested on the tablet and approved by the teacher.
 - Stage 17 (About and Privacy page): done, merged into `main` (PR #11), deployed, tested on the tablet and approved
   by the teacher.
 - Stage 18 (chat with Menti, rule-based, no live AI): done, merged into `main` (PR #12), deployed, tested on the tablet
