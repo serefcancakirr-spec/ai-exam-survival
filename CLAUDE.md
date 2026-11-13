@@ -148,7 +148,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   `src/pages/flashcards-english-levels.ts` (front "word — “example”", answer Turkish meaning). A deck is added only on tap,
   as an ordinary deck (id `english-level-<level>`, not a starter deck), named in the language in use, under the grade in the
   filter or A1/A2 → 9, B1 → 10, B2 → 11, C1 → 12. Its button shows ✓ while the deck exists.
-- Review list for the English teacher: never write "MEB onaylı"; the note says a teacher is still reviewing.
+- The teacher (an English teacher) reviewed all 250 questions and the decks and approved them, so the level note no longer
+  says "öğretmen kontrolü sürüyor". Never write "MEB onaylı".
 
 ## About and Privacy (Stage 17)
 - `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link

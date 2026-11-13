@@ -378,7 +378,7 @@ export const TR: Record<MessageKey, string> = {
   'quiz.levelGeneral': 'Genel (ileri)',
   'quiz.levelAllTopics': '{level} · tüm konular',
   'quiz.levelSuggested': '{grade}. sınıf için önerilen seviye: {level}.',
-  'quiz.levelNote': 'İstediğin seviyeyi seçebilirsin. Sorular uygulama için yazıldı, açıklamalar Türkçedir; öğretmen kontrolü sürüyor.',
+  'quiz.levelNote': 'İstediğin seviyeyi seçebilirsin. Sorular uygulama için yazıldı; açıklamalar Türkçedir.',
   'quiz.englishFocus': 'Seviye {level} · {focus}',
   'about.footerLink': "Hakkında · Gizlilik",
   'about.footer': "AI Exam Survival · Hakkında ve gizlilik",

@@ -62,6 +62,7 @@ async function finishQuiz(page) {
       await tid(page, 'select-quiz-grade').selectOption(grade);
       assert((await pressed(page)) === level, `grade ${grade} → ${level}, got ${await pressed(page)}`);
       assert((await tid(page, 'quiz-level-note').innerText()).includes(`${grade}. sınıf için önerilen seviye: ${level}`), 'suggestion text');
+      assert(!(await tid(page, 'quiz-level-note').innerText()).includes('kontrolü sürüyor'), 'English was reviewed by the teacher: no "still reviewing" note');
     }
     await context.close();
   });

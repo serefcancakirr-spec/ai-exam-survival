@@ -379,7 +379,7 @@ export const EN = {
   'quiz.levelGeneral': 'General (advanced)',
   'quiz.levelAllTopics': '{level} · all topics',
   'quiz.levelSuggested': 'Suggested level for grade {grade}: {level}.',
-  'quiz.levelNote': 'You can choose any level. The questions were written for this app and the explanations are in Turkish; a teacher is still reviewing them.',
+  'quiz.levelNote': 'You can choose any level. The questions were written for this app; the explanations are in Turkish.',
   'quiz.englishFocus': 'Level {level} · {focus}',
   'about.footerLink': "About · Privacy",
   'about.footer': "AI Exam Survival · About and privacy",
