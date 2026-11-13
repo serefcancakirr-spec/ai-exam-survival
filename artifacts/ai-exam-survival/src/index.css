@@ -33,7 +33,7 @@
 }
 
 :root {
-  --background: 36 29% 97%;
+  --background: 41 47% 94%;
   --foreground: 210 24% 20%;
   --border: 210 12% 88%;
   --input: 210 12% 88%;
@@ -174,4 +174,13 @@
 @keyframes focus-breathe { 0%, 100% { transform: scale(.72); opacity: .55; } 50% { transform: scale(1); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   .focus-breathe { animation: none !important; transform: none; }
+}
+
+/* Stage 20B "Okul Defteri": section titles get a soft highlighter-pen line under them. */
+h2.font-display:not([class*="text-white"]):not(.no-mark):not(#menti-chat-title) {
+  text-decoration-line: underline;
+  text-decoration-color: #ead9bb;
+  text-decoration-thickness: .28em;
+  text-underline-offset: -.1em;
+  text-decoration-skip-ink: none;
 }

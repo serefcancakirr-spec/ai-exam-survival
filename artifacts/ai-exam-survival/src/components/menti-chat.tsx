@@ -144,7 +144,7 @@ export function MentiChat() {
           role="dialog"
           aria-modal="false"
           aria-labelledby="menti-chat-title"
-          className="fixed inset-x-0 bottom-0 z-[60] flex max-h-[82vh] flex-col overflow-hidden rounded-t-[22px] border border-[#e6e9ec] bg-white shadow-[0_-12px_40px_rgba(54,75,96,.22)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-h-[min(640px,80vh)] sm:w-[390px] sm:rounded-[22px]"
+          className="fixed inset-x-0 bottom-0 z-[60] flex max-h-[82vh] flex-col overflow-hidden rounded-t-[10px] border border-[#ddd5c6] bg-[#fffdf8] shadow-[0_-12px_40px_rgba(54,75,96,.22)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-h-[min(640px,80vh)] sm:w-[390px] sm:rounded-[10px]"
           data-testid="menti-chat"
         >
           <div className="flex items-center gap-3 bg-[#2f4255] px-4 py-3 text-white">
@@ -174,7 +174,7 @@ export function MentiChat() {
             {messages.map((m) =>
               m.from === 'me' ? (
                 <div key={m.id} className="flex justify-end">
-                  <p className="max-w-[85%] break-words rounded-[16px] rounded-br-[5px] bg-[#54769d] px-3.5 py-2.5 text-[13px] leading-relaxed text-white" data-testid="menti-chat-me">
+                  <p className="max-w-[85%] break-words rounded-[10px] rounded-br-[5px] bg-[#54769d] px-3.5 py-2.5 text-[13px] leading-relaxed text-white" data-testid="menti-chat-me">
                     <span className="sr-only">{ui.you}: </span>
                     {m.text}
                   </p>
@@ -193,7 +193,7 @@ export function MentiChat() {
                       key={intent}
                       type="button"
                       onClick={() => ask(intent, chipLabel(intent, lang))}
-                      className="min-h-9 rounded-full border border-[#dee7f1] bg-white px-3 text-[11px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f4f7fb]"
+                      className="min-h-9 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3 text-[11px] font-bold text-[#4c6a8c] transition-colors hover:bg-[#f4f7fb]"
                       data-testid={`menti-chip-${intent}`}
                     >
                       {chipLabel(intent, lang)}
@@ -204,7 +204,7 @@ export function MentiChat() {
             })()}
           </div>
 
-          <form onSubmit={submit} className="flex items-center gap-2 border-t border-[#eaecef] bg-white p-3">
+          <form onSubmit={submit} className="flex items-center gap-2 border-t border-[#ddd5c6] bg-[#fffdf8] p-3">
             <label htmlFor="menti-chat-input" className="sr-only">{ui.placeholder}</label>
             <input
               id="menti-chat-input"
@@ -213,7 +213,7 @@ export function MentiChat() {
               maxLength={300}
               autoComplete="off"
               placeholder={ui.placeholder}
-              className="min-h-11 min-w-0 flex-1 rounded-full border border-[#e5e8ec] bg-[#fbf9f7] px-4 text-[13px] text-[#364656] outline-none focus:border-[#98afca] focus:bg-white"
+              className="min-h-11 min-w-0 flex-1 rounded-[6px] border border-[#e5e8ec] bg-[#fbf9f7] px-4 text-[13px] text-[#364656] outline-none focus:border-[#98afca] focus:bg-white"
               data-testid="menti-chat-input"
             />
             <button
@@ -252,7 +252,7 @@ function MentiMessage({
           <MentiArt pose={reply.pose} faceOnly />
         </span>
       </span>
-      <div className="max-w-[88%] rounded-[16px] rounded-bl-[5px] border border-[#e7eaee] bg-white px-3.5 py-2.5 text-[13px] leading-relaxed text-[#4b5966] shadow-[0_4px_14px_rgba(54,75,96,.05)]">
+      <div className="max-w-[88%] rounded-[10px] rounded-bl-[5px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-2.5 text-[13px] leading-relaxed text-[#4b5966] shadow-[0_4px_14px_rgba(54,75,96,.05)]">
         <span className="sr-only">Menti: </span>
         {reply.lines.map((line, i) => (
           <p key={i} className={i > 0 ? 'mt-1.5' : ''}>
@@ -266,7 +266,7 @@ function MentiMessage({
                 key={link.href + (link.section ?? '')}
                 type="button"
                 onClick={() => onFollow(link)}
-                className="min-h-9 rounded-full bg-[#2f4255] px-3 text-[11px] font-bold text-white hover:bg-[#394d62]"
+                className="min-h-9 rounded-[6px] bg-[#2f4255] px-3 text-[11px] font-bold text-white hover:bg-[#394d62]"
                 data-testid="menti-chat-link"
                 data-href={link.href}
               >

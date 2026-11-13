@@ -9,7 +9,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - Before editing: make a backup (a git branch or tag such as `backup/before-stage-09`).
 - After a stage: typecheck, build, run all tests (new and previous), compare untouched pages, give a preview link and tablet testing steps.
 - Never start the next stage without the teacher's approval.
-- Do not redesign. Keep the design (Stage 20A "Sisli Mavi ve Kum" look), navigation, all modules and all saved student data.
+- Do not redesign. Keep the design (Stage 20A "Sisli Mavi ve Kum" colours + Stage 20B "Okul Defteri" touches), navigation, all modules and all saved student data.
 - No live AI, paid APIs, API keys, authentication or database unless the teacher approves.
 - Do not change unrelated modules. Never invent statistics or readiness percentages.
 
@@ -20,7 +20,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
   Expected today: logic 165/165; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 27/27: calm design and readable text).
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -100,6 +100,18 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   pages on tablet and phone, empty pages, a quiz and the Menti chat. New colours must keep this test green.
 - Weekly chart series: planner blue, quiz sage, flashcards clay, exam prep sand.
 
+## "Okul Defteri" touches (Stage 20B, teacher's choice B: "less AI-looking, more natural")
+- Labels in normal case (no small CAPITAL letter-spaced labels), no decorative circles/blobs, no soft floating shadows
+  (thin selection rings stay; Menti, its speech bubble and the chat button keep their own look), smaller corners
+  (cards 10px, small boxes 8px, buttons 6px), white boxes are warm paper `#fffdf8` with pencil-grey borders `#ddd5c6`,
+  page background `#f7f3ea`, "how it works" band `#efe9dc`.
+- Tool page headers: light paper `#fbf8f1` with a 6px blue left margin line `#5376a0` (the home hero and the dark
+  summary/CTA blocks stay deep blue). Section titles (`h2.font-display`) get a soft highlighter line in `index.css`
+  (`.no-mark` turns it off, used on dark blocks).
+- Home tool cards have no 01–06 numbers. Home texts simplified by the teacher's wish (plain, teacher's voice, TR and EN):
+  e.g. "Sınavlara adım adım hazırlan.", "Altı çalışma aracı.", "Hemen bir araç seç."
+- `tests/browser/stage20-test.cjs` also checks these touches; new code must keep it green.
+
 ## Grade 9, 10 and 11 MEB questions (Stages 15, 16, 19)
 - `src/pages/quiz-bank-meb9.ts`: grade 9 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs
   (Stage 15A: Mathematics 20, Physics 21, Chemistry 24, Biology 23; Stage 15B: History 22, Geography 22, Literature 20).
@@ -175,7 +187,9 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   tested on the tablet and approved by the teacher. Review list given to the teacher.
 - Stage 20 (calm design): split by the teacher into 20A (colours + fonts, approved) and 20B (light interface touches, "not all at
   once"; show 2 samples of the home page and one tool page first). Samples shown: A, B, C, then B2, D, E; teacher chose B.
-  20A: built and tested, backup tag `backup/before-stage-20` (local only). Waiting for the teacher's approval to open a PR.
+  20A: done, merged into `main` (PR #15), deployed, tested on the tablet and approved by the teacher.
+  20B: teacher said the site felt "AI-made"; samples A (Sade Defter) and B (Okul Defteri) shown, teacher chose B and asked
+  for simpler slogans. Built and tested, backup tag `backup/before-stage-20b` (local only). Waiting for approval to open a PR.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,

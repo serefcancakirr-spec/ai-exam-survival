@@ -32,11 +32,11 @@ import { useI18n } from '@/i18n/i18n';
 // ---------- shared styles (match the other tools) ----------
 
 const inputClassName =
-  'mt-2 w-full rounded-[12px] border border-[#e6e9ec] bg-white px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
+  'mt-2 w-full rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
 const primaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195]';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195]';
 const secondaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
 
 const blankRequest: CoachRequest = { grade: '9', subject: 'English', topic: '', difficulty: 'somewhat-hard', problem: 'none', examDate: '' };
 
@@ -101,15 +101,14 @@ function CoachFrame({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {tx('Back to home')}
         </Link>
 
-        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#2f4255] px-6 py-8 text-white sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[10px] border border-[#ddd5c6] border-l-[6px] border-l-[#5376a0] bg-[#fbf8f1] px-6 py-8 text-[#2b3a49] sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
-          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5376a0]/25" />
           <Menti
             pose="think"
             size={128}
@@ -119,17 +118,17 @@ function CoachFrame({ children }: { children: ReactNode }) {
             className="absolute bottom-6 right-8 z-10 hidden lg:flex"
           />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[15px] bg-white/10 p-1 sm:h-14 sm:w-14 lg:hidden" data-testid="menti-coach-face">
+            <span className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[8px] bg-[#e8eef4] p-1 sm:h-14 sm:w-14 lg:hidden" data-testid="menti-coach-face">
               <MentiArt pose="think" faceOnly title={t('menti.label')} />
             </span>
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#d9bdaa] sm:text-[11px]">
+              <p className="text-[13px] font-semibold text-[#8a5a3c]">
                 {tx('A supportive place to get unstuck')}
               </p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">
                 {tx('AI Study Coach')}
               </h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#cad3dc] sm:text-[15px]">
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4f5a64] sm:text-[15px]">
                 {tx('Tell the coach your grade, subject, topic and exam date. You get a short, practical study plan with strategies that fit how hard the topic feels.')}
               </p>
             </div>
@@ -177,12 +176,12 @@ function Panel({
 }) {
   return (
     <section
-      className="min-w-0 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6"
+      className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6"
       data-testid={testId}
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{eyebrow}</p>
+          <p className="text-[13px] font-semibold text-[#4b698c]">{eyebrow}</p>
           <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">{title}</h2>
         </div>
         {trailing}
@@ -289,12 +288,12 @@ export default function AiStudyCoachPage() {
   return (
     <CoachFrame>
       {storageMessage && (
-        <div role="alert" className="rounded-[13px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]" data-testid="message-coach-storage">
+        <div role="alert" className="rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]" data-testid="message-coach-storage">
           {phrase(storageMessage)}
         </div>
       )}
       {notice && (
-        <div role="status" className="rounded-[13px] border border-[#dbe4ee] bg-[#f7f9fc] px-4 py-3 text-[12px] font-bold text-[#506986]" data-testid="coach-notice">
+        <div role="status" className="rounded-[8px] border border-[#dbe4ee] bg-[#f7f9fc] px-4 py-3 text-[12px] font-bold text-[#506986]" data-testid="coach-notice">
           {phrase(notice)}
         </div>
       )}
@@ -304,7 +303,7 @@ export default function AiStudyCoachPage() {
         <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
         <Panel eyebrow={tx('Tell the coach')} title={tx('What are you studying?')} testId="panel-coach-form">
           {calendarExams.length > 0 && (
-            <label className="mb-4 block rounded-[14px] bg-[#f8fafc] p-3 text-[11px] font-bold text-[#4b5966]" htmlFor="coach-from-exam">
+            <label className="mb-4 block rounded-[8px] bg-[#f8fafc] p-3 text-[11px] font-bold text-[#4b5966]" htmlFor="coach-from-exam">
               {tx('Start from one of my exams')}
               <select
                 id="coach-from-exam"
@@ -325,7 +324,7 @@ export default function AiStudyCoachPage() {
 
           <form onSubmit={submit} noValidate data-testid="form-coach">
             {errors.length > 0 && (
-              <div role="alert" className="mb-4 rounded-[13px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 text-[12px] leading-relaxed text-[#865454]" data-testid="coach-errors">
+              <div role="alert" className="mb-4 rounded-[8px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 text-[12px] leading-relaxed text-[#865454]" data-testid="coach-errors">
                 <p className="font-bold">{tx('Check these details:')}</p>
                 <ul className="mt-1.5 list-disc space-y-1 pl-5">
                   {errors.map((error) => (
@@ -377,14 +376,14 @@ export default function AiStudyCoachPage() {
 
             <fieldset className="mt-4">
               <legend className="text-[11px] font-bold text-[#4b5966]">{tx('How hard does it feel?')}</legend>
-              <div className="mt-2 grid grid-cols-3 gap-1 rounded-[14px] bg-[#f8f5f1] p-1">
+              <div className="mt-2 grid grid-cols-3 gap-1 rounded-[8px] bg-[#f8f5f1] p-1">
                 {COACH_DIFFICULTIES.map((difficulty) => {
                   const selected = form.difficulty === difficulty;
                   return (
                     <label
                       key={difficulty}
                       className={`flex min-h-11 cursor-pointer items-center justify-center rounded-[11px] px-2 text-center text-[11px] font-extrabold transition-colors ${
-                        selected ? 'bg-white text-[#4c6a8c] shadow-[0_2px_8px_rgba(54,75,96,.08)]' : 'text-[#5e676f] hover:text-[#4c6a8c]'
+                        selected ? 'bg-[#fffdf8] text-[#4c6a8c]' : 'text-[#5e676f] hover:text-[#4c6a8c]'
                       }`}
                     >
                       <input
@@ -455,15 +454,15 @@ export default function AiStudyCoachPage() {
             </ul>
 
             <dl className="mt-4 grid grid-cols-3 gap-2">
-              <div className="rounded-[14px] border border-[#eef0f2] px-3 py-2.5" data-testid="stat-days-left">
+              <div className="rounded-[8px] border border-[#eef0f2] px-3 py-2.5" data-testid="stat-days-left">
                 <dt className="text-[10px] font-bold text-[#5f6870]">{tx('Days left')}</dt>
                 <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.015em] text-[#364656] tabular-nums">{plan.daysLeft === null ? '—' : plan.daysLeft}</dd>
               </div>
-              <div className="rounded-[14px] border border-[#eef0f2] px-3 py-2.5" data-testid="stat-minutes">
+              <div className="rounded-[8px] border border-[#eef0f2] px-3 py-2.5" data-testid="stat-minutes">
                 <dt className="text-[10px] font-bold text-[#5f6870]">{tx('Minutes a day')}</dt>
                 <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.015em] text-[#364656] tabular-nums">{plan.minutesPerDay}</dd>
               </div>
-              <div className="rounded-[14px] border border-[#eef0f2] px-3 py-2.5" data-testid="stat-sessions">
+              <div className="rounded-[8px] border border-[#eef0f2] px-3 py-2.5" data-testid="stat-sessions">
                 <dt className="text-[10px] font-bold text-[#5f6870]">{tx('Sessions a day')}</dt>
                 <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.015em] text-[#364656] tabular-nums">{plan.sessionsPerDay}</dd>
               </div>
@@ -481,7 +480,7 @@ export default function AiStudyCoachPage() {
             <h3 className="mt-5 text-[12px] font-extrabold text-[#3f4e5d]">{tx('Do these next')}</h3>
             <ol className="mt-2 space-y-2" data-testid="plan-actions">
               {plan.actions.map((action, index) => (
-                <li key={`${index}-${action.text}`} className="flex gap-3 rounded-[14px] border border-[#eef0f2] p-3" data-testid="plan-action">
+                <li key={`${index}-${action.text}`} className="flex gap-3 rounded-[8px] border border-[#eef0f2] p-3" data-testid="plan-action">
                   <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[9px] bg-[#f1f5f9] text-[10px] font-extrabold text-[#4c6a8c]">{index + 1}</span>
                   <div className="min-w-0">
                     <p className="break-words text-[12px] leading-relaxed text-[#4b5966]">{phrase(action.text)}</p>
@@ -503,8 +502,8 @@ export default function AiStudyCoachPage() {
           <Panel eyebrow={tx('{subject} strategies', { subject: subjectLabel(request.subject) })} title={tx('Strategies that fit')} testId="panel-strategies">
             <ul className="grid gap-3 md:grid-cols-3" data-testid="plan-strategies">
               {plan.strategies.map((strategy) => (
-                <li key={strategy.id} className="flex flex-col rounded-[16px] border border-[#e6ebf1] bg-[#fbfcfe] p-4" data-testid="plan-strategy">
-                  <span className="grid h-9 w-9 place-items-center rounded-[12px] bg-[#f1f5f9] text-[#4a688c]">
+                <li key={strategy.id} className="flex flex-col rounded-[10px] border border-[#e6ebf1] bg-[#fbfcfe] p-4" data-testid="plan-strategy">
+                  <span className="grid h-9 w-9 place-items-center rounded-[8px] bg-[#f1f5f9] text-[#4a688c]">
                     <Target size={17} />
                   </span>
                   <p className="mt-3 text-[13px] font-extrabold text-[#3f4e5d]">{phrase(strategy.title)}</p>

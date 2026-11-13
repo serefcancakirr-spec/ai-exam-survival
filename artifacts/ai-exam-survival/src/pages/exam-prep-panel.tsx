@@ -17,11 +17,11 @@ import {
 import { englishFromTurkish, translatePhrase, useI18n } from '@/i18n/i18n';
 
 const inputClassName =
-  'mt-1.5 w-full rounded-[12px] border border-[#e6e9ec] bg-white px-3.5 py-2.5 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
+  'mt-1.5 w-full rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-2.5 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
 const smallButton =
-  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-[#e5e8ec] bg-white px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c] disabled:cursor-not-allowed disabled:opacity-50';
+  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c] disabled:cursor-not-allowed disabled:opacity-50';
 const primarySmall =
-  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full bg-[#54769d] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#527195]';
+  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[6px] bg-[#54769d] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#527195]';
 
 type Props = {
   exam: Exam;
@@ -119,7 +119,7 @@ export default function ExamPrepPanel({
   }
 
   return (
-    <div className="mt-3 rounded-[16px] border border-[#e6ebf1] bg-[#fbfcfe] p-4" data-testid={`prep-panel-${exam.id}`}>
+    <div className="mt-3 rounded-[10px] border border-[#e6ebf1] bg-[#fbfcfe] p-4" data-testid={`prep-panel-${exam.id}`}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-[12px] font-extrabold text-[#3f4e5d]">{tx('Preparation steps')}</p>
         <p className="text-[11px] font-bold text-[#4c6a8c]" data-testid="prep-progress-text">
@@ -141,7 +141,7 @@ export default function ExamPrepPanel({
           {steps.map((step) => {
             if (editing?.id === step.id) {
               return (
-                <li key={step.id} className="rounded-[13px] border border-[#98afca] bg-white p-3" data-testid="prep-step">
+                <li key={step.id} className="rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] p-3" data-testid="prep-step">
                   <form onSubmit={submitEdit} noValidate data-testid="form-edit-step">
                     {editing.errors.length > 0 && (
                       <p role="alert" className="mb-2 text-[11px] font-bold text-[#865454]">
@@ -185,7 +185,7 @@ export default function ExamPrepPanel({
             const due = getDueLabel(step, today);
             const overdue = due.startsWith('Overdue');
             return (
-              <li key={step.id} className="rounded-[13px] border border-[#eef0f2] bg-white p-3" data-testid="prep-step">
+              <li key={step.id} className="rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] p-3" data-testid="prep-step">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <label className="flex min-w-0 cursor-pointer items-start gap-2.5">
                     <input
@@ -302,7 +302,7 @@ export default function ExamPrepPanel({
               {suggestions.map((suggestion) => {
                 const added = !notAdded.includes(suggestion);
                 return (
-                  <li key={suggestion.text} className="flex items-center justify-between gap-2 rounded-[11px] bg-white px-3 py-2" data-testid="suggestion">
+                  <li key={suggestion.text} className="flex items-center justify-between gap-2 rounded-[11px] bg-[#fffdf8] px-3 py-2" data-testid="suggestion">
                     <span className="min-w-0">
                       <span className="block break-words text-[11px] font-semibold text-[#4f5a64]" data-testid="suggestion-text">
                         {phrase(suggestion.text)}
@@ -327,7 +327,7 @@ export default function ExamPrepPanel({
         )}
       </div>
 
-      <div className="mt-4 flex flex-col gap-2 rounded-[13px] bg-[#f9f7f4] px-3.5 py-3 sm:flex-row sm:items-center sm:justify-between" data-testid="prep-planner">
+      <div className="mt-4 flex flex-col gap-2 rounded-[8px] bg-[#f9f7f4] px-3.5 py-3 sm:flex-row sm:items-center sm:justify-between" data-testid="prep-planner">
         <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#3d685b]">
           <NotebookPen size={14} className="mt-0.5 shrink-0" />
           <span data-testid="prep-planner-text">
@@ -344,7 +344,7 @@ export default function ExamPrepPanel({
         </p>
         <Link
           href="/study-planner"
-          className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-full border border-[#d5e6e1] bg-white px-3.5 text-[11px] font-bold text-[#396e5e] transition-colors hover:border-[#94baae]"
+          className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 text-[11px] font-bold text-[#396e5e] transition-colors hover:border-[#94baae]"
           data-testid="link-open-planner"
         >
           {tx('Open Study Planner')}

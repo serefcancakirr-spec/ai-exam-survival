@@ -73,22 +73,21 @@ function ProgressFrame({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5e8ec] bg-white px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {tx('Back to home')}
         </Link>
-        <section className="relative mt-6 overflow-hidden rounded-[26px] bg-[#2f4255] px-6 py-8 text-white sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[10px] border border-[#ddd5c6] border-l-[6px] border-l-[#5376a0] bg-[#fbf8f1] px-6 py-8 text-[#2b3a49] sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
-          <div className="absolute -right-16 -top-32 h-72 w-72 rounded-full bg-[#5376a0]/25" />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] bg-white/10 text-[#d9bdaa] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-[#e8eef4] text-[#4b698c] sm:h-14 sm:w-14">
               <BarChart3 size={22} />
             </span>
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#d9bdaa] sm:text-[11px]">{tx('Notice the work you have done')}</p>
+              <p className="text-[13px] font-semibold text-[#8a5a3c]">{tx('Notice the work you have done')}</p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">{tx('Progress Tracker')}</h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#cad3dc] sm:text-[15px]">
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4f5a64] sm:text-[15px]">
                 {tx('Real numbers from your quizzes, flashcards, study plan and exams on this device. Nothing here is estimated: when there is not enough data, the tracker says so.')}
               </p>
             </div>
@@ -116,10 +115,10 @@ function ProgressFrame({ children }: { children: ReactNode }) {
 
 function Panel({ eyebrow, title, children, trailing, testId }: { eyebrow: string; title: string; children: ReactNode; trailing?: ReactNode; testId?: string }) {
   return (
-    <section className="min-w-0 rounded-[21px] border border-[#e7eaee] bg-white p-5 shadow-[0_8px_28px_rgba(54,75,96,.035)] sm:p-6" data-testid={testId}>
+    <section className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6" data-testid={testId}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#4b698c]">{eyebrow}</p>
+          <p className="text-[13px] font-semibold text-[#4b698c]">{eyebrow}</p>
           <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">{title}</h2>
         </div>
         {trailing}
@@ -131,9 +130,9 @@ function Panel({ eyebrow, title, children, trailing, testId }: { eyebrow: string
 
 function EmptyState({ text, href, label, testId }: { text: string; href: string; label: string; testId?: string }) {
   return (
-    <div className="rounded-[16px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-6 text-center" data-testid={testId}>
+    <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-6 text-center" data-testid={testId}>
       <p className="text-[12px] leading-relaxed text-[#5e676f]">{text}</p>
-      <Link href={href} className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-full bg-[#f1f5f9] px-4 text-[11px] font-extrabold text-[#4c6a8c] hover:bg-[#e8eef6]">
+      <Link href={href} className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-[6px] bg-[#f1f5f9] px-4 text-[11px] font-extrabold text-[#4c6a8c] hover:bg-[#e8eef6]">
         {label} <ArrowRight size={13} />
       </Link>
     </div>
@@ -142,8 +141,8 @@ function EmptyState({ text, href, label, testId }: { text: string; href: string;
 
 function Tile({ label, value, note, testId }: { label: string; value: string; note: string; testId: string }) {
   return (
-    <div className="min-w-0 rounded-[18px] border border-[#e7eaee] bg-white p-4" data-testid={testId}>
-      <p className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#5f6870]">{label}</p>
+    <div className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-4" data-testid={testId}>
+      <p className="text-[13px] font-semibold text-[#5f6870]">{label}</p>
       <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] text-[#364656] tabular-nums" data-testid={`${testId}-value`}>
         {value}
       </p>
@@ -219,17 +218,17 @@ function SubjectRowView({ row }: { row: SubjectRow }) {
   const { t, tx, phrase, subject: subjectLabel, locale } = useI18n();
   const cell = (label: string, content: ReactNode, testId: string) => (
     <div className="min-w-0" data-testid={testId}>
-      <p className="text-[9px] font-extrabold uppercase tracking-[.08em] text-[#616870] md:hidden">{label}</p>
+      <p className="text-[11px] font-semibold text-[#616870] md:hidden">{label}</p>
       <div className="mt-0.5 text-[12px] font-bold text-[#4b5966] md:mt-0">{content}</div>
     </div>
   );
   return (
-    <li className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[16px] border border-[#eef0f2] p-4 md:grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] md:items-center md:gap-3 md:rounded-none md:border-0 md:border-t md:px-1 md:py-3.5" data-testid={`subject-row-${row.key}`}>
+    <li className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[10px] border border-[#eef0f2] p-4 md:grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] md:items-center md:gap-3 md:rounded-none md:border-0 md:border-t md:px-1 md:py-3.5" data-testid={`subject-row-${row.key}`}>
       <div className="col-span-2 min-w-0 md:col-span-1">
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-[13px] font-extrabold text-[#364656]">{subjectLabel(row.label)}</p>
           {row.classification && (
-            <span className={`rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-[.06em] ${CLASS_STYLES[row.classification].chip}`} data-testid="subject-class">
+            <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${CLASS_STYLES[row.classification].chip}`} data-testid="subject-class">
               {tx(CLASS_STYLES[row.classification].label)}
             </span>
           )}
@@ -303,7 +302,7 @@ function SubjectRowView({ row }: { row: SubjectRow }) {
 function TopicItem({ topic }: { topic: TopicResult }) {
   const { t, tx, phrase, lang, subject: subjectLabel, locale } = useI18n();
   return (
-    <li className="rounded-[14px] border border-[#eef0f2] p-3.5" data-testid={`topic-${topic.source}`}>
+    <li className="rounded-[8px] border border-[#eef0f2] p-3.5" data-testid={`topic-${topic.source}`}>
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div className="min-w-0">
           <p className="break-words text-[12px] font-extrabold text-[#3f4e5d]" data-testid="topic-name" data-content="topic">
@@ -390,8 +389,8 @@ export default function ProgressTrackerPage() {
   return (
     <ProgressFrame>
       {/* ---------- where the numbers come from ---------- */}
-      <section className="rounded-[18px] border border-[#e7eaee] bg-white px-4 py-3.5" data-testid="panel-sources">
-        <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#5f6870]">{tx('Reading from')}</p>
+      <section className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-4 py-3.5" data-testid="panel-sources">
+        <p className="text-[13px] font-semibold text-[#5f6870]">{tx('Reading from')}</p>
         <ul className="mt-2 flex flex-wrap gap-2">
           {(Object.keys(SOURCE_LABELS) as SourceName[]).map((name) => {
             const status = sources[name].status;
@@ -411,7 +410,7 @@ export default function ProgressTrackerPage() {
           })}
         </ul>
         {damaged.length > 0 && (
-          <p role="alert" className="mt-3 rounded-[12px] bg-[#fdf9f2] px-3 py-2 text-[11px] leading-relaxed text-[#69502e]" data-testid="message-damaged">
+          <p role="alert" className="mt-3 rounded-[8px] bg-[#fdf9f2] px-3 py-2 text-[11px] leading-relaxed text-[#69502e]" data-testid="message-damaged">
             {tx('Some saved data could not be read ({names}). It was left untouched and is not counted below. Everything else is shown normally.', {
               names: damaged.map((n) => tx(SOURCE_LABELS[n].name)).join(', '),
             })}
@@ -420,7 +419,7 @@ export default function ProgressTrackerPage() {
       </section>
 
       {nothingYet && (
-        <div className="rounded-[18px] border border-[#dbe4ee] bg-[#f7f9fc] px-5 py-4" data-testid="getting-started">
+        <div className="rounded-[10px] border border-[#dbe4ee] bg-[#f7f9fc] px-5 py-4" data-testid="getting-started">
           <Menti pose="wave" size={72} message={t('menti.progressEmpty')} testId="menti-progress" className="mb-3" />
           <p className="text-[13px] font-extrabold text-[#4b5966]">{tx('Your dashboard fills up as you study.')}</p>
           <p className="mt-1 text-[12px] leading-relaxed text-[#5e6973]">
@@ -428,7 +427,7 @@ export default function ProgressTrackerPage() {
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {(['quiz', 'flashcards', 'planner', 'calendar'] as SourceName[]).map((name) => (
-              <Link key={name} href={SOURCE_LABELS[name].href} className="inline-flex min-h-10 items-center gap-1 rounded-full bg-white px-3.5 text-[11px] font-extrabold text-[#4c6a8c] hover:text-[#3e5977]">
+              <Link key={name} href={SOURCE_LABELS[name].href} className="inline-flex min-h-10 items-center gap-1 rounded-[6px] bg-[#fffdf8] px-3.5 text-[11px] font-extrabold text-[#4c6a8c] hover:text-[#3e5977]">
                 {tx(SOURCE_LABELS[name].name)} <ArrowRight size={12} />
               </Link>
             ))}
@@ -456,16 +455,16 @@ export default function ProgressTrackerPage() {
 
         <Panel eyebrow={tx('Study consistency')} title={tx('Keep the rhythm')} testId="panel-consistency">
           <div className="grid grid-cols-2 gap-2">
-            <div className="rounded-[16px] bg-[#394f65] p-4 text-white" data-testid="streak-current">
-              <p className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-[.1em] text-[#d9bdaa]">
+            <div className="rounded-[10px] bg-[#394f65] p-4 text-white" data-testid="streak-current">
+              <p className="flex items-center gap-1 text-[13px] font-semibold text-[#d9bdaa]">
                 <Flame size={12} /> {tx('Current streak')}
               </p>
               <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] tabular-nums" data-testid="streak-current-value">
                 {tx(activity.currentStreak === 1 ? '{count} day' : '{count} days', { count: activity.currentStreak })}
               </p>
             </div>
-            <div className="rounded-[16px] border border-[#eef0f2] p-4" data-testid="streak-best">
-              <p className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#5f6870]">{tx('Best streak')}</p>
+            <div className="rounded-[10px] border border-[#eef0f2] p-4" data-testid="streak-best">
+              <p className="text-[13px] font-semibold text-[#5f6870]">{tx('Best streak')}</p>
               <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] text-[#364656] tabular-nums" data-testid="streak-best-value">
                 {tx(activity.bestStreak === 1 ? '{count} day' : '{count} days', { count: activity.bestStreak })}
               </p>
@@ -530,14 +529,14 @@ export default function ProgressTrackerPage() {
         ) : (
           <>
             <div className="grid gap-3 md:grid-cols-2" data-testid="subject-callouts">
-              <div className="rounded-[16px] bg-[#f9f7f4] p-4" data-testid="callout-strong">
-                <p className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#396e5e]">{tx('Strongest')}</p>
+              <div className="rounded-[10px] bg-[#f9f7f4] p-4" data-testid="callout-strong">
+                <p className="text-[13px] font-semibold text-[#396e5e]">{tx('Strongest')}</p>
                 <p className="mt-1 text-[13px] font-extrabold text-[#364656]">
                   {strongSubjects.length > 0 ? strongSubjects.map((r) => subjectLabel(r.label)).join(', ') : classified.length > 0 ? tx('None at 80% yet') : tx('Not enough data yet')}
                 </p>
               </div>
-              <div className="rounded-[16px] bg-[#fdf7f4] p-4" data-testid="callout-weak">
-                <p className="text-[10px] font-extrabold uppercase tracking-[.1em] text-[#8f5847]">{tx('Needs work')}</p>
+              <div className="rounded-[10px] bg-[#fdf7f4] p-4" data-testid="callout-weak">
+                <p className="text-[13px] font-semibold text-[#8f5847]">{tx('Needs work')}</p>
                 <p className="mt-1 text-[13px] font-extrabold text-[#364656]">
                   {weakSubjects.length > 0 ? weakSubjects.map((r) => subjectLabel(r.label)).join(', ') : classified.length > 0 ? tx('None below 60%') : tx('Not enough data yet')}
                 </p>
@@ -552,7 +551,7 @@ export default function ProgressTrackerPage() {
               })}
             </p>
 
-            <div className="mt-4 hidden grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] gap-3 px-1 text-[9px] font-extrabold uppercase tracking-[.08em] text-[#616870] md:grid" aria-hidden="true">
+            <div className="mt-4 hidden grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] gap-3 px-1 text-[11px] font-semibold text-[#616870] md:grid" aria-hidden="true">
               <span>{tx('Subject')}</span>
               <span>{tx('Quiz average')}</span>
               <span>{tx('Answers correct')}</span>
@@ -563,7 +562,7 @@ export default function ProgressTrackerPage() {
               {grouped.map(({ group, rows }) => (
                 <div key={`${group ?? 'single'}-${rows[0].key}`} data-testid={group ? `subject-group-${group.toLowerCase()}` : undefined}>
                   {group && (
-                    <p className="mb-2 mt-1 text-[10px] font-extrabold uppercase tracking-[.12em] text-[#4b698c] md:mb-0 md:px-1" data-testid="subject-group-title">
+                    <p className="mb-2 mt-1 text-[13px] font-semibold text-[#4b698c] md:mb-0 md:px-1" data-testid="subject-group-title">
                       {subjectLabel(group)}
                     </p>
                   )}
@@ -629,7 +628,7 @@ export default function ProgressTrackerPage() {
           <>
             <ul className="grid gap-3 md:grid-cols-2" data-testid="exam-list">
               {exams.map((facts) => (
-                <li key={facts.exam.id} className="rounded-[16px] border border-[#eef0f2] p-4" data-testid={`exam-facts-${facts.exam.id}`}>
+                <li key={facts.exam.id} className="rounded-[10px] border border-[#eef0f2] p-4" data-testid={`exam-facts-${facts.exam.id}`}>
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="break-words text-[13px] font-extrabold text-[#3f4e5d]">{facts.exam.title}</p>

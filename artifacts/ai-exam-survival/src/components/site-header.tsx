@@ -51,7 +51,7 @@ export default function SiteHeader() {
           className="flex items-center gap-3"
           data-testid="link-home"
         >
-          <span className="grid h-10 w-10 place-items-center rounded-[14px] bg-[#3b536c] text-white shadow-[0_6px_16px_rgba(58,82,107,.18)]">
+          <span className="grid h-10 w-10 place-items-center rounded-[8px] bg-[#3b536c] text-white">
             <GraduationCap size={22} strokeWidth={1.8} />
           </span>
           <span className="font-display text-[17px] font-extrabold tracking-[-.015em] text-[#314253]">
@@ -88,7 +88,7 @@ export default function SiteHeader() {
           <Link
             href="/#all-tools"
             onClick={goToAllTools}
-            className="hidden items-center gap-2 rounded-full bg-[#54769d] px-5 py-3 text-[13px] font-bold text-white shadow-[0_8px_18px_rgba(97,131,170,.2)] transition-all hover:-translate-y-0.5 hover:bg-[#527195] sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-[#54769d] px-5 py-3 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#527195] sm:inline-flex"
             data-testid="link-explore-tools"
           >
             {t('nav.exploreTools')} <ArrowRight size={15} />
@@ -99,7 +99,7 @@ export default function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
-            className="grid h-11 w-11 place-items-center rounded-xl border border-[#e5e8ec] bg-white text-[#384a5d] lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] text-[#384a5d] lg:hidden"
             data-testid="button-mobile-menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -135,7 +135,7 @@ export default function SiteHeader() {
           <Link
             href="/#all-tools"
             onClick={goToAllTools}
-            className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#54769d] text-sm font-bold text-white"
+            className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-[8px] bg-[#54769d] text-sm font-bold text-white"
             data-testid="link-mobile-explore"
           >
             {t('nav.browseAll')} <ArrowRight size={16} />

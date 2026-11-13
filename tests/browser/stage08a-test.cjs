@@ -98,7 +98,7 @@ async function noOverflow(page) {
     assert((await tid(page, 'button-lang-en').getAttribute('aria-pressed')) === 'false', 'EN pressed');
     assert((await page.evaluate(() => document.documentElement.lang)) === 'tr', 'html lang not tr');
     const text = await bodyText(page);
-    assert(text.includes('Bir sonraki sınav gözünde') && text.includes('Araçları keşfet'), 'Turkish homepage text missing');
+    assert(text.includes('Sınavlara adım adım hazırlan') && text.includes('Araçları keşfet'), 'Turkish homepage text missing');
     await context.close();
   });
 
@@ -114,12 +114,12 @@ async function noOverflow(page) {
     const { context, page } = await open(browser);
     await tid(page, 'button-lang-en').click();
     let text = await bodyText(page);
-    assert(text.includes('Make the next exam feel') && !text.includes('Bir sonraki sınav'), 'not English after tap');
+    assert(text.includes('Prepare for exams step by step') && !text.includes('Sınavlara adım adım'), 'not English after tap');
     assert((await page.evaluate(() => document.documentElement.lang)) === 'en', 'html lang not en');
     assert((await page.evaluate((k) => localStorage.getItem(k), LANG_KEY)) === 'en', 'not saved');
     await page.reload();
     text = await bodyText(page);
-    assert(text.includes('Make the next exam feel'), 'English lost after refresh');
+    assert(text.includes('Prepare for exams step by step'), 'English lost after refresh');
     assert((await tid(page, 'button-lang-en').getAttribute('aria-pressed')) === 'true', 'EN not pressed after refresh');
     await context.close();
   });

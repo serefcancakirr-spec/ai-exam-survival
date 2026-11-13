@@ -76,7 +76,7 @@ export default function ExamMonthView({
             <button
               type="button"
               onClick={() => onChangeMonth(-1)}
-              className="grid h-10 w-10 place-items-center rounded-full border border-[#e5e8ec] bg-white text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[#ddd5c6] bg-[#fffdf8] text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
               aria-label={tx('Previous month')}
               data-testid="button-prev-month"
             >
@@ -85,7 +85,7 @@ export default function ExamMonthView({
             <button
               type="button"
               onClick={() => onChangeMonth('today')}
-              className="inline-flex min-h-10 items-center rounded-full border border-[#e5e8ec] bg-white px-3.5 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+              className="inline-flex min-h-10 items-center rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
               data-testid="button-month-today"
             >
               {tx('Today')}
@@ -93,7 +93,7 @@ export default function ExamMonthView({
             <button
               type="button"
               onClick={() => onChangeMonth(1)}
-              className="grid h-10 w-10 place-items-center rounded-full border border-[#e5e8ec] bg-white text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[#ddd5c6] bg-[#fffdf8] text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
               aria-label={tx('Next month')}
               data-testid="button-next-month"
             >
@@ -105,7 +105,7 @@ export default function ExamMonthView({
         <div className="mt-4" data-testid="month-grid">
           <div className="grid grid-cols-7 gap-1 sm:gap-1.5" aria-hidden="true">
             {(lang === 'tr' ? WEEKDAY_LABELS_TR : WEEKDAY_LABELS).map((label) => (
-              <span key={label} className="pb-1 text-center text-[9px] font-extrabold uppercase tracking-[.1em] text-[#60686f] sm:text-[10px]">
+              <span key={label} className="pb-1 text-center text-[11px] font-semibold text-[#60686f]">
                 {label}
               </span>
             ))}
@@ -131,9 +131,9 @@ export default function ExamMonthView({
                       }`}
                       className={`flex min-h-[46px] min-w-0 flex-col items-center gap-1 rounded-[11px] border px-0.5 py-1.5 text-left transition-colors sm:min-h-[58px] md:min-h-[84px] md:items-stretch md:px-1.5 ${
                         isSelected
-                          ? 'border-[#98afca] bg-[#f8fafc] shadow-[0_0_0_2px_rgba(132,160,192,.12)]'
+                          ? 'border-[#98afca] bg-[#f8fafc]'
                           : day.inMonth
-                            ? 'border-[#eef0f2] bg-white hover:border-[#d2dce7]'
+                            ? 'border-[#ddd5c6] bg-[#fffdf8] hover:border-[#d2dce7]'
                             : 'border-transparent bg-[#fbf9f7] hover:border-[#eef0f2]'
                       }`}
                       data-testid={`day-${day.dateKey}`}
@@ -178,8 +178,8 @@ export default function ExamMonthView({
         </div>
       </div>
 
-      <div className="min-w-0 rounded-[16px] border border-[#eef0f2] bg-[#fcfdfd] p-4" data-testid="day-details" aria-live="polite">
-        <p className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#4b698c]">
+      <div className="min-w-0 rounded-[10px] border border-[#eef0f2] bg-[#fcfdfd] p-4" data-testid="day-details" aria-live="polite">
+        <p className="text-[13px] font-semibold text-[#4b698c]">
           {phrase(selectedCountdown.label)}
         </p>
         <h3 className="font-display mt-1 text-[16px] font-extrabold tracking-[-.015em] text-[#364656]" data-testid="text-selected-date">
@@ -194,7 +194,7 @@ export default function ExamMonthView({
             {selectedExams.map((exam) => {
               const progress = progressFor(exam.id);
               return (
-                <li key={exam.id} className="rounded-[13px] border border-[#eaedf0] bg-white p-3" data-testid="day-exam">
+                <li key={exam.id} className="rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] p-3" data-testid="day-exam">
                   <p className="break-words text-[12px] font-extrabold text-[#3f4e5d]">{exam.title}</p>
                   <p className="mt-0.5 text-[10px] font-semibold text-[#5d676f]">
                     {subjectLabel(exam.subject)} · {t('common.grade', { grade: exam.grade })}
@@ -207,7 +207,7 @@ export default function ExamMonthView({
                   <button
                     type="button"
                     onClick={() => onOpenPrep(exam)}
-                    className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full bg-[#f1f5f9] px-3 text-[11px] font-extrabold text-[#4c6a8c] transition-colors hover:bg-[#e8eef6]"
+                    className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-[6px] bg-[#f1f5f9] px-3 text-[11px] font-extrabold text-[#4c6a8c] transition-colors hover:bg-[#e8eef6]"
                     data-testid={`button-day-prepare-${exam.id}`}
                   >
                     <ListChecks size={14} /> {tx('Preparation')} {progress.total > 0 ? `· ${progress.done}/${progress.total}` : ''}
@@ -220,7 +220,7 @@ export default function ExamMonthView({
         <button
           type="button"
           onClick={() => onAddOnDate(selectedDate)}
-          className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full border border-[#e5e8ec] bg-white px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
           data-testid="button-add-on-date"
         >
           <Plus size={14} /> {tx('Add an exam on this day')}

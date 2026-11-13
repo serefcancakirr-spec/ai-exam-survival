@@ -65,7 +65,7 @@ const settle = (page) => page.waitForTimeout(900); // lets smooth scrolling fini
     const { context, page } = await newPage(browser, vp);
     await check(`[${vpName}] homepage loads with 6 tool cards`, async () => {
       await page.goto(BASE + '/');
-      assert((await h1(page)).includes('Make the next exam feel'), 'homepage heading missing');
+      assert((await h1(page)).includes('Prepare for exams step by step'), 'homepage heading missing');
       const cards = await page.locator('[data-testid^="link-tool-"]').count();
       assert(cards === 6, `expected 6 tool cards, found ${cards}`);
     });
@@ -97,7 +97,7 @@ const settle = (page) => page.waitForTimeout(900); // lets smooth scrolling fini
         await page.goto(BASE + tool.path);
         await page.locator('[data-testid="link-back-home"]').click();
         await settle(page);
-        assert((await h1(page)).includes('Make the next exam feel'), `back home failed from ${tool.path}`);
+        assert((await h1(page)).includes('Prepare for exams step by step'), `back home failed from ${tool.path}`);
       }
     });
     await context.close();
@@ -124,7 +124,7 @@ const settle = (page) => page.waitForTimeout(900); // lets smooth scrolling fini
       await settle(page);
       await page.goBack();
       await settle(page);
-      assert((await h1(page)).includes('Make the next exam feel'), 'back did not return home');
+      assert((await h1(page)).includes('Prepare for exams step by step'), 'back did not return home');
     });
     await context.close();
   }

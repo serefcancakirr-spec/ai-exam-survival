@@ -8,7 +8,7 @@ export default function NotFound() {
   const { t } = useI18n();
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
+      <Card className="mx-4 w-full max-w-md rounded-[10px] bg-[#fffdf8] shadow-none">
         <CardContent className="pt-6">
           <Menti pose="surprised" size={96} message={t('menti.notFound')} testId="menti-not-found" className="mb-5" />
           <div className="flex mb-4 gap-2">
@@ -22,7 +22,7 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-full bg-[#54769d] px-4 text-[12px] font-bold text-white hover:bg-[#527195]"
+            className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-[6px] bg-[#54769d] px-4 text-[12px] font-bold text-white hover:bg-[#527195]"
             data-testid="link-not-found-home"
           >
             <ArrowLeft size={14} /> {t('menti.goHome')}
