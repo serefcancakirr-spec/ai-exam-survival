@@ -1,4 +1,5 @@
-// Stage 19: grade 11 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs (19A: sciences and mathematics).
+// Stage 19: grade 11 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs
+// (19A: mathematics and sciences, 19B: history, geography, Türk Dili ve Edebiyatı).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -33,25 +34,25 @@ test('the official grade 11 list has the outcomes of the frame plans (MAT 15, F�
     Object.fromEntries(['MAT', 'FİZ', 'KİM', 'BİY'].map((p) => [p, official[p].length])),
     { MAT: 15, FİZ: 33, KİM: 25, BİY: 22 },
   );
-  for (const list of Object.values(official)) for (const o of list) assert.ok(o.cikti.length > 20 && /^[A-ZÇĞİÖŞÜ]+\.11\.\d+\.\d+$/.test(o.code), o.code);
+  for (const list of Object.values(official)) for (const o of list) assert.ok(o.cikti.length > 20 && /^([A-ZÇĞİÖŞÜ]+\.11\.\d+\.\d+|TDE\d\.\d)$/.test(o.code), o.code);
 });
 
 test('every grade 11 question measures a real learning outcome of the official program, under its own theme', () => {
   for (const subject of SUBJECTS) {
     const list = official[PREFIX[subject]];
     for (const seed of MEB11_SEEDS[subject]!) {
-      const found = list.find((o) => o.code === seed.outcome);
+      const found = list.find((o) => o.code === seed.outcome && (subject !== 'Literature' || o.tema === upper(seed.theme)));
       assert.ok(found, `${subject}: ${seed.outcome} is not in the official grade 11 program`);
       assert.equal(upper(seed.theme), found.tema, `${seed.outcome}: theme "${seed.theme}" vs "${found.tema}"`);
     }
   }
 });
 
-test('every grade 11 outcome and every theme has at least one question', () => {
+test('every grade 11 outcome (except Türk Dili ve Edebiyatı skills) and every theme has at least one question', () => {
   for (const subject of SUBJECTS) {
     const list = official[PREFIX[subject]];
     const used = new Set(MEB11_SEEDS[subject]!.map((s) => s.outcome));
-    assert.deepEqual(list.filter((o) => !used.has(o.code)).map((o) => o.code), [], `${subject}: outcomes without a question`);
+    if (subject !== 'Literature') assert.deepEqual(list.filter((o) => !used.has(o.code)).map((o) => o.code), [], `${subject}: outcomes without a question`);
     for (const theme of new Set(list.map((o) => o.tema))) {
       assert.ok(MEB11_SEEDS[subject]!.some((s) => upper(s.theme) === theme), `${subject}: no question for ${theme}`);
     }
@@ -105,10 +106,10 @@ test('grade 11 bank: only MEB questions for these subjects, ids "11-<subject>-me
   assert.deepEqual(getQuizTopics('11', 'Biology'), ['Tepki', 'Homeostazi']);
 });
 
-test('grade 11 History, Geography, Literature and English (not in 19A) and all of grade 12 are unchanged', () => {
+test('grade 11 English and all of grade 12 are unchanged (shared sample questions)', () => {
   for (const subject of QUIZ_SUBJECTS) {
     for (const grade of ['11', '12']) {
-      if (grade === '11' && (STAGE_19A as readonly string[]).includes(subject)) continue;
+      if (grade === '11' && subject !== 'English') continue;
       const bank = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === subject);
       assert.deepEqual(bank.map((q) => q.prompt), QUESTION_SEEDS[subject].map((s) => s.prompt), `${grade} ${subject}`);
       assert.equal(usesMeb(grade, subject), false, `${grade} ${subject}`);
@@ -122,4 +123,23 @@ test('grade 11 questions are shown as written in both languages; the tag needs t
   assert.equal(localizeQuestion(question, 'tr'), question);
   assert.equal(mebOutcome(JSON.parse(JSON.stringify(question))), 'KİM.11.1.1');
   assert.equal(mebOutcome({ ...question, grade: '12' }), undefined);
+});
+
+test('Stage 19B: grade 11 History, Geography and Türk Dili ve Edebiyatı; 5 Literature questions per theme', () => {
+  for (const subject of ['History', 'Geography', 'Literature'] as const) assert.ok(MEB11_SEEDS[subject]!.length >= 20, subject);
+  assert.deepEqual(
+    Object.fromEntries(['TAR', 'COĞ'].map((p) => [p, official[p].length])),
+    { TAR: 11, COĞ: 19 },
+  );
+  assert.deepEqual(getQuizTopics('11', 'History'), ['Değişen Dünyada Osmanlı (1683-1789)', 'Dönüşüm Sürecinde Osmanlı (1789-1908)', 'Savaşlar Sarmalında Osmanlı (1908-1918)']);
+  assert.equal(getQuizTopics('11', 'Geography').length, 7);
+  assert.deepEqual(getQuizTopics('11', 'Literature'), ['Bir Diyeceğim Var!', 'Kültür Yolculuğu', 'Yaşamın İzinde', 'Hayatın Aynası']);
+  for (const theme of getQuizTopics('11', 'Literature')) {
+    const inTheme = MEB11_SEEDS.Literature!.filter((s) => s.theme === theme);
+    assert.equal(inTheme.length, 5, theme);
+    assert.ok(inTheme.some((s) => s.outcome === 'TDE4.3'), `${theme}: writing rules`);
+    assert.ok(inTheme.every((s) => /^TDE(2\.[1-4]|4\.3)$/.test(s.outcome)), `${theme}: only reading and writing-rule skills`);
+  }
+  // grades 9, 10 and 11: only English is left on the shared sample bank
+  for (const grade of ['9', '10', '11']) for (const subject of QUIZ_SUBJECTS) assert.equal(usesMeb(grade, subject), subject !== 'English', `${grade} ${subject}`);
 });

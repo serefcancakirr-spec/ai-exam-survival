@@ -104,9 +104,9 @@ async function finish(page, count = 5) {
     await context.close();
   });
 
-  await check('grade 12, grade 11 History and English: unchanged, no note and no outcome tag', async () => {
+  await check('grade 12 and English: unchanged, no note and no outcome tag', async () => {
     const { context, page } = await open(browser);
-    for (const [grade, subject] of [['12', 'Mathematics'], ['12', 'Biology'], ['11', 'History'], ['12', 'Literature'], ['9', 'English'], ['10', 'English']]) {
+    for (const [grade, subject] of [['12', 'Mathematics'], ['12', 'Biology'], ['12', 'History'], ['12', 'Literature'], ['9', 'English'], ['10', 'English']]) {
       await choose(page, grade, subject);
       assert((await tid(page, 'quiz-meb-note').count()) === 0, `${grade} ${subject}: note shown`);
       await tid(page, 'button-start-quiz').click();
@@ -195,7 +195,7 @@ async function finish(page, count = 5) {
     });
   }
 
-  // Stage 19A: grade 11 Mathematics, Physics, Chemistry, Biology.
+  // Stage 19: grade 11, every subject except English (19A sciences and mathematics, 19B the others).
   for (const subject of Object.keys(MEB11_SEEDS)) {
     await check(`[tr] Stage 19 grade 11 ${subject}: note says grade 11, MEB themes, question with its learning outcome`, async () => {
       const { context, page } = await open(browser);
