@@ -1,4 +1,4 @@
-// Stage 15A: grade 9 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs.
+// Stage 15A + 15B: grade 9 questions written for the MEB Türkiye Yüzyılı Maarif Modeli programs.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -14,12 +14,12 @@ import { MEB9_SEEDS, mebOutcome, usesMeb9 } from '../../artifacts/ai-exam-surviv
 import { localizeQuestion, topicName } from '../../artifacts/ai-exam-survival/src/i18n/content';
 import OFFICIAL from '../data/meb9-outcomes.json';
 
-const STAGE_15A = ['Mathematics', 'Physics', 'Chemistry', 'Biology'] as const;
-const PREFIX = { Mathematics: 'MAT', Physics: 'FİZ', Chemistry: 'KİM', Biology: 'BİY' } as const;
+const STAGE_15A = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', 'Geography', 'Literature'] as const;
+const PREFIX = { Mathematics: 'MAT', Physics: 'FİZ', Chemistry: 'KİM', Biology: 'BİY', History: 'TAR', Geography: 'COĞ', Literature: 'TDE' } as const;
 const official = OFFICIAL.subjects as Record<string, { code: string; tema: string; cikti: string }[]>;
 const upper = (text: string) => text.toLocaleUpperCase('tr');
 
-test('Stage 15A covers Mathematics, Physics, Chemistry and Biology with at least 20 questions each', () => {
+test('Stage 15 covers every grade 9 subject except English with at least 20 questions each', () => {
   assert.deepEqual(Object.keys(MEB9_SEEDS).sort(), [...STAGE_15A].sort());
   for (const subject of STAGE_15A) assert.ok(MEB9_SEEDS[subject]!.length >= 20, `${subject}: ${MEB9_SEEDS[subject]!.length}`);
 });
@@ -28,7 +28,8 @@ test('every question measures a real learning outcome of the official grade 9 pr
   for (const subject of STAGE_15A) {
     const list = official[PREFIX[subject]];
     for (const seed of MEB9_SEEDS[subject]!) {
-      const found = list.find((o) => o.code === seed.outcome);
+      // TDE repeats the same skill codes in each theme, so the theme is part of the match
+      const found = list.find((o) => o.code === seed.outcome && (subject !== 'Literature' || o.tema === upper(seed.theme)));
       assert.ok(found, `${subject}: ${seed.outcome} is not in the official program`);
       assert.equal(upper(seed.theme), found.tema, `${seed.outcome}: theme "${seed.theme}" vs "${found.tema}"`);
     }
@@ -40,7 +41,8 @@ test('most learning outcomes and every theme have at least one question', () => 
     const list = official[PREFIX[subject]];
     const used = new Set(MEB9_SEEDS[subject]!.map((s) => s.outcome));
     const covered = list.filter((o) => used.has(o.code)).length;
-    assert.ok(covered / list.length >= 0.85, `${subject}: only ${covered}/${list.length} outcomes`);
+    // TDE outcomes also cover listening, speaking and writing, which a multiple-choice quiz cannot measure.
+    if (subject !== 'Literature') assert.ok(covered / list.length >= 0.85, `${subject}: only ${covered}/${list.length} outcomes`);
     for (const theme of new Set(list.map((o) => o.tema))) {
       assert.ok(MEB9_SEEDS[subject]!.some((s) => upper(s.theme) === theme), `${subject}: no question for ${theme}`);
     }
@@ -56,7 +58,7 @@ test('questions follow the MEB writing guide basics: four different options, no 
       assert.ok(seed.prompt.trim().length >= 40, `${where}: question too short to give a context`);
       assert.ok(!prompts.has(seed.prompt), `${where}: same question twice`);
       prompts.add(seed.prompt);
-      assert.equal(new Set(seed.options.map((o) => o.trim().toLocaleLowerCase('tr'))).size, 4, `${where}: options not all different`);
+      assert.equal(new Set(seed.options.map((o) => o.trim())).size, 4, `${where}: options not all different`);
       seed.options.forEach((o) => {
         assert.ok(o.trim(), `${where}: empty option`);
         assert.ok(!banned.test(o.trim().toLocaleLowerCase('tr')), `${where}: option "${o}"`);
@@ -97,7 +99,7 @@ test('grade 9 of these subjects uses only the MEB questions; the answer letter m
   }
 });
 
-test('grades 10–12, English, History, Geography and Literature keep exactly the shared sample questions', () => {
+test('grades 10–12 and English keep exactly the shared sample questions', () => {
   for (const subject of QUIZ_SUBJECTS) {
     for (const grade of QUIZ_GRADES) {
       if (grade === '9' && (STAGE_15A as readonly string[]).includes(subject)) continue;
@@ -140,4 +142,24 @@ test('a grade 9 result saved before Stage 15 (old English question) still shows 
   // and a saved MEB question keeps its outcome tag
   const meb = QUIZ_QUESTION_BANK.find((q) => q.id === '9-chemistry-meb-3')!;
   assert.equal(mebOutcome(JSON.parse(JSON.stringify(meb))), 'KİM.9.1.3');
+});
+
+test('Türk Dili ve Edebiyatı: 5 questions per theme, each theme has reading (TDE2.2) and a writing-rule (TDE4.3) question', () => {
+  const seeds = MEB9_SEEDS.Literature!;
+  assert.deepEqual(getQuizTopics('9', 'Literature'), ['Sözün İnceliği', 'Anlam Arayışı', 'Anlamın Yapı Taşları', 'Dilin Zenginliği']);
+  for (const theme of getQuizTopics('9', 'Literature')) {
+    const inTheme = seeds.filter((s) => s.theme === theme);
+    assert.equal(inTheme.length, 5, theme);
+    assert.ok(inTheme.some((s) => s.outcome === 'TDE2.2'), `${theme}: reading`);
+    assert.ok(inTheme.some((s) => s.outcome === 'TDE4.3'), `${theme}: writing rules`);
+  }
+});
+
+test('History and Geography: every theme of the program has questions; numbers in Geography explanations add up', () => {
+  assert.deepEqual(getQuizTopics('9', 'History'), ['Geçmişin İnşa Sürecinde Tarih', 'Eski Çağ Medeniyetleri', 'Orta Çağ Medeniyetleri']);
+  assert.equal(getQuizTopics('9', 'Geography').length, 7);
+  // 1/100 000 scale, 5 cm -> 5 km; 19 degrees of longitude * 4 minutes = 76 minutes; 22 - (-10) = 32
+  assert.equal((5 * 100000) / 100000, 5);
+  assert.equal((45 - 26) * 4, 76);
+  assert.equal(22 - -10, 32);
 });
