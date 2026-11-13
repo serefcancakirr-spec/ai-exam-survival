@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import AboutPage, { FooterAboutLink } from '@/pages/about-page';
+import { MentiChat } from '@/components/menti-chat';
 import SiteHeader from '@/components/site-header';
 import ScrollManager from '@/components/scroll-manager';
 import { Menti } from '@/components/menti';
@@ -318,6 +319,7 @@ function App() {
           <ScrollManager />
           <SiteHeader />
           <Router />
+          <MentiChat />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

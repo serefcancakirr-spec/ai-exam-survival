@@ -155,7 +155,8 @@ export function FocusTimerCard() {
 
   return (
     <section
-      className="rounded-[21px] border border-[#e5e7f0] bg-white p-5 shadow-[0_8px_28px_rgba(29,42,90,.035)] sm:p-6"
+      id="focus-timer"
+      className="scroll-mt-24 rounded-[21px] border border-[#e5e7f0] bg-white p-5 shadow-[0_8px_28px_rgba(29,42,90,.035)] sm:p-6"
       data-testid="focus-timer"
       data-phase={timer.phase}
       data-status={timer.status}
