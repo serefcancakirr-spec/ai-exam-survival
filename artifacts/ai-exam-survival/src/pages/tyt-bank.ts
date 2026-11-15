@@ -13,14 +13,17 @@ export const AYT_SUBJECTS = [
   // Stage 22B-2a: AYT Sözel
   'aytedebiyat', 'ayttarih1', 'aytcografya1', 'ayttarih2', 'aytcografya2', 'aytfelsefe', 'aytmantik', 'aytpsikoloji', 'aytsosyoloji', 'aytdin',
 ] as const;
-export type TytSubject = (typeof TYT_SUBJECTS)[number] | (typeof AYT_SUBJECTS)[number];
-export type TytSection = 'turkce' | 'sosyal' | 'matematik' | 'fen' | 'aytmatematik' | 'aytfen' | 'ayttde' | 'aytsos2';
+/** Stage 22C: YDT (English) uses the same question format (src/pages/ydt-bank.ts). */
+export const YDT_SUBJECTS = ['ydt'] as const;
+export type TytSubject = (typeof TYT_SUBJECTS)[number] | (typeof AYT_SUBJECTS)[number] | (typeof YDT_SUBJECTS)[number];
+export type TytSection = 'turkce' | 'sosyal' | 'matematik' | 'fen' | 'aytmatematik' | 'aytfen' | 'ayttde' | 'aytsos2' | 'ydt';
 export const SECTION_OF: Record<TytSubject, TytSection> = {
   turkce: 'turkce', tarih: 'sosyal', cografya: 'sosyal', felsefe: 'sosyal', din: 'sosyal',
   matematik: 'matematik', fizik: 'fen', kimya: 'fen', biyoloji: 'fen',
   aytmatematik: 'aytmatematik', aytfizik: 'aytfen', aytkimya: 'aytfen', aytbiyoloji: 'aytfen',
   aytedebiyat: 'ayttde', ayttarih1: 'ayttde', aytcografya1: 'ayttde',
   ayttarih2: 'aytsos2', aytcografya2: 'aytsos2', aytfelsefe: 'aytsos2', aytmantik: 'aytsos2', aytpsikoloji: 'aytsos2', aytsosyoloji: 'aytsos2', aytdin: 'aytsos2',
+  ydt: 'ydt',
 };
 export type TytLetter = 'A' | 'B' | 'C' | 'D' | 'E';
 export const TYT_LETTERS: TytLetter[] = ['A', 'B', 'C', 'D', 'E'];
@@ -393,7 +396,7 @@ function numericValue(text: string): number | null {
   return null;
 }
 
-function placeOptions(seed: Seed, index: number) {
+export function placeOptions(seed: Seed, index: number) {
   const correct = seed.options[0];
   const values = seed.options.map(numericValue);
   let options: string[];

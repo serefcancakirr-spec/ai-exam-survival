@@ -4,19 +4,21 @@
 
 import { SECTION_OF, TYT_LETTERS, type TytLetter, type TytQuestion, type TytSection, type TytSubject } from './tyt-bank';
 import { EXAM_BY_ID, EXAM_QUESTIONS } from './exam-bank';
+import { ydtHalfIds, ydtSetIds } from './ydt-bank';
 
 export const EXAM_STORAGE_KEY = 'ai-exam-survival:exam-mode:v1';
 export const MAX_SAVED_EXAMS = 20;
 
-export const EXAM_KINDS = ['tyt-mini', 'tyt-full', 'ayt-say-mini', 'ayt-mat', 'ayt-fen', 'ayt-soz-mini', 'ayt-ea-mini', 'ayt-tde', 'ayt-sos2', 'ayt-full'] as const;
+export const EXAM_KINDS = ['tyt-mini', 'tyt-full', 'ayt-say-mini', 'ayt-mat', 'ayt-fen', 'ayt-soz-mini', 'ayt-ea-mini', 'ayt-tde', 'ayt-sos2', 'ayt-full', 'ydt-mini', 'ydt-full'] as const;
 export type ExamKind = (typeof EXAM_KINDS)[number];
 // AYT booklet order: Türk Dili ve Edebiyatı–Sosyal Bilimler-1, Sosyal Bilimler-2, Matematik, Fen Bilimleri.
-export const SECTION_ORDER: TytSection[] = ['turkce', 'sosyal', 'matematik', 'fen', 'ayttde', 'aytsos2', 'aytmatematik', 'aytfen'];
+export const SECTION_ORDER: TytSection[] = ['turkce', 'sosyal', 'matematik', 'fen', 'ayttde', 'aytsos2', 'aytmatematik', 'aytfen', 'ydt'];
 const SUBJECT_ORDER: TytSubject[] = [
   'turkce', 'tarih', 'cografya', 'felsefe', 'din', 'matematik', 'fizik', 'kimya', 'biyoloji',
   'aytedebiyat', 'ayttarih1', 'aytcografya1',
   'ayttarih2', 'aytcografya2', 'aytfelsefe', 'aytmantik', 'aytpsikoloji', 'aytsosyoloji', 'aytdin',
   'aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji',
+  'ydt',
 ];
 
 /** Real TYT: 120 questions, 165 minutes. The mini exam keeps the proportions and the time per question. */
@@ -68,6 +70,9 @@ export const EXAM_PLAN: Record<ExamKind, { questions: number; minutes: number; p
       aytmatematik: 40, aytfizik: 14, aytkimya: 13, aytbiyoloji: 13,
     },
   },
+  // Stage 22C: YDT (English), 80 questions in 180 minutes; the mini is one half of a set (40 questions, 90 minutes).
+  'ydt-mini': { questions: 40, minutes: 90, perSubject: { ydt: 40 } },
+  'ydt-full': { questions: 80, minutes: 180, perSubject: { ydt: 80 } },
 };
 
 export type RunningExam = {
@@ -110,6 +115,10 @@ const POOL: Record<TytSubject, TytQuestion[]> = Object.fromEntries(
  * so a student sees every question before any repeats.
  */
 export function buildExam(kind: ExamKind, round: number): string[] {
+  // Stage 22C: YDT exams come from three full sets: full exams take turns (set 1, 2, 3), minis take the halves in turn
+  // (set 1 first half, set 1 second half, set 2 first half …), so six minis or three full exams show all 240 questions.
+  if (kind === 'ydt-full') return ydtSetIds(round % 3);
+  if (kind === 'ydt-mini') return ydtHalfIds(Math.floor((round % 6) / 2), round % 2);
   const counts = { ...EXAM_PLAN[kind].perSubject };
   if (kind === 'tyt-mini') {
     // Sosyal 5 = 1 each + 1 extra; Fen 5 = 2 + 2 + 1, the single one taking turns

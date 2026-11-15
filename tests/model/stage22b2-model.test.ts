@@ -16,7 +16,7 @@ test('80 AYT Sözel questions in the real distribution', () => {
   const by = (s: string) => AYT_SOZEL_QUESTIONS.filter((q) => q.subject === s).length;
   assert.deepEqual(['aytedebiyat', 'ayttarih1', 'aytcografya1'].map(by), [24, 10, 6], 'Edebiyat–Sosyal-1');
   assert.deepEqual(['ayttarih2', 'aytcografya2', 'aytfelsefe', 'aytmantik', 'aytpsikoloji', 'aytsosyoloji', 'aytdin'].map(by), [11, 11, 3, 3, 3, 3, 6], 'Sosyal-2');
-  assert.equal(new Set(EXAM_QUESTIONS.map((q) => q.id)).size, 280, 'TYT 120 + AYT 160, all ids different');
+  assert.equal(new Set(EXAM_QUESTIONS.filter((q) => q.subject !== 'ydt').map((q) => q.id)).size, 280, 'TYT 120 + AYT 160, all ids different (YDT: stage22c-model)');
 });
 
 test('five different options, a Turkish explanation, answers spread over A–E, no “all/none” options', () => {
