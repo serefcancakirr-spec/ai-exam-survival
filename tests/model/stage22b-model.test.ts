@@ -14,7 +14,7 @@ test('80 AYT Sayısal questions: Matematik 40, Fizik 14, Kimya 13, Biyoloji 13 (
   assert.equal(AYT_QUESTIONS.length, 80);
   assert.deepEqual(['aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji'].map((s) => AYT_QUESTIONS.filter((q) => q.subject === s).length), [40, 14, 13, 13]);
   assert.ok(AYT_QUESTIONS.every((q) => /^ayt-(matematik|fizik|kimya|biyoloji)-\d+$/.test(q.id)), 'ids');
-  assert.equal(new Set(EXAM_QUESTIONS.map((q) => q.id)).size, 200, 'TYT and AYT ids never clash');
+  assert.equal(new Set(EXAM_QUESTIONS.map((q) => q.id)).size, EXAM_QUESTIONS.length, 'TYT and AYT ids never clash');
   assert.ok(AYT_QUESTIONS.every((q) => ['aytmatematik', 'aytfen'].includes(SECTION_OF[q.subject])));
 });
 

@@ -8,13 +8,19 @@
 
 export const TYT_SUBJECTS = ['turkce', 'tarih', 'cografya', 'felsefe', 'din', 'matematik', 'fizik', 'kimya', 'biyoloji'] as const;
 /** Stage 22B: AYT subjects share the same question format (src/pages/ayt-bank.ts). */
-export const AYT_SUBJECTS = ['aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji'] as const;
+export const AYT_SUBJECTS = [
+  'aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji',
+  // Stage 22B-2a: AYT Sözel
+  'aytedebiyat', 'ayttarih1', 'aytcografya1', 'ayttarih2', 'aytcografya2', 'aytfelsefe', 'aytmantik', 'aytpsikoloji', 'aytsosyoloji', 'aytdin',
+] as const;
 export type TytSubject = (typeof TYT_SUBJECTS)[number] | (typeof AYT_SUBJECTS)[number];
-export type TytSection = 'turkce' | 'sosyal' | 'matematik' | 'fen' | 'aytmatematik' | 'aytfen';
+export type TytSection = 'turkce' | 'sosyal' | 'matematik' | 'fen' | 'aytmatematik' | 'aytfen' | 'ayttde' | 'aytsos2';
 export const SECTION_OF: Record<TytSubject, TytSection> = {
   turkce: 'turkce', tarih: 'sosyal', cografya: 'sosyal', felsefe: 'sosyal', din: 'sosyal',
   matematik: 'matematik', fizik: 'fen', kimya: 'fen', biyoloji: 'fen',
   aytmatematik: 'aytmatematik', aytfizik: 'aytfen', aytkimya: 'aytfen', aytbiyoloji: 'aytfen',
+  aytedebiyat: 'ayttde', ayttarih1: 'ayttde', aytcografya1: 'ayttde',
+  ayttarih2: 'aytsos2', aytcografya2: 'aytsos2', aytfelsefe: 'aytsos2', aytmantik: 'aytsos2', aytpsikoloji: 'aytsos2', aytsosyoloji: 'aytsos2', aytdin: 'aytsos2',
 };
 export type TytLetter = 'A' | 'B' | 'C' | 'D' | 'E';
 export const TYT_LETTERS: TytLetter[] = ['A', 'B', 'C', 'D', 'E'];
