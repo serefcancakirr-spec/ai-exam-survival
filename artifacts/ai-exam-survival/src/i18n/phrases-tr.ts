@@ -144,6 +144,8 @@ const FLASHCARDS: Record<string, string> = {
   '30 words with an example sentence and the Turkish meaning. A deck is added only when you tap its level.': 'Her destede örnek cümleli 30 kelime ve Türkçe anlamları var. Deste, yalnızca seviyesine dokunduğunda eklenir.',
   '{level} deck added': '{level} destesi eklendi',
   'Add the {level} deck': '{level} destesini ekle',
+  'YDT word decks': 'YDT kelime desteleri',
+  '30 words each, chosen by counting the words in the ÖSYM YDT English booklets 2018–2026. Each card shows in how many booklets the word appears. A deck is added only when you tap it.': 'Her destede 30 kelime var. Kelimeler, ÖSYM’nin 2018–2026 YDT İngilizce kitapçıklarındaki kelimeler sayılarak seçildi. Her kartta kelimenin kaç kitapçıkta geçtiği yazar. Deste, yalnızca dokunduğunda eklenir.',
   '“{name}” was added with {count} words. Start with Learn mode.': '“{name}” {count} kelimeyle eklendi. Öğren modundan başla.',
   '“{name}” was created. Add your first card below.': '“{name}” oluşturuldu. İlk kartını aşağıdan ekle.',
   // Stage 14
