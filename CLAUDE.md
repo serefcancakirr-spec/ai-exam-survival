@@ -321,7 +321,15 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only); merged into `main` (PR #25), deployed,
   tested on the tablet and approved by the teacher.
 - 22D (YDT word decks, 300 words from the real booklet word count; teacher asked for frequent words from a reliable source;
-  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only); merged into `main` (PR #26), deployed. Tablet test pending.
+  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only); merged into `main` (PR #26), deployed, tested on the tablet and approved by the teacher.
+- 22D tablet test approved by the teacher. Next, planned with the teacher (plan shown; teacher chose 25 cards per deck, all subjects,
+  keep grade 12; teacher stopped for the day before approving the split/order): grade decks from the MEB Maarif programs on tymm.meb.gov.tr
+  (PDFs at `https://tymm.meb.gov.tr/assets/pdf/<pdf name from /Ders/GetDerslerBySinif>`). English: one deck per theme from the theme's
+  official "Target Vocabulary" (grade 9: 8, 10: 8, 11: 8, 12: 6 themes; program `ingilizce_9_12_ogretim_programi.pdf`). Other subjects:
+  one deck per subject per grade from the units' "Anahtar Kavramlar" (filled up to 25 with terms from the outcomes, marked as such);
+  front = concept, back = short Turkish definition; grade 12 History = T.C. İnkılap Tarihi ve Atatürkçülük. 64 decks, 1,600 cards.
+  Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
+  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. Ask the teacher to confirm, then start 22E.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
