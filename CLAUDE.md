@@ -249,7 +249,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   with the teacher): done, merged into `main` (PR #18), deployed, tested on the tablet and approved by the teacher.
 - Stage 22 split by the teacher into 22A TYT, 22B AYT, 22C YDT. Results saved (last 20, new key approved); open to everyone
   with a "12. sınıf · YKS" label. 22A (120 TYT questions, mini and full timed exams; samples shown and approved first):
-  built and tested, backup tag `backup/before-stage-22a` (local only). Waiting for approval to open a PR.
+  done, merged into `main` (PR #19), deployed. Waiting for the teacher's tablet test. Next: 22B AYT (plan first).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
