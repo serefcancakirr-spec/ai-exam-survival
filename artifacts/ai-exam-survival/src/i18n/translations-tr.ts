@@ -172,6 +172,8 @@ export const TR: Record<MessageKey, string> = {
   'subject.History': 'Tarih',
   'subject.Geography': 'Coğrafya',
   'subject.Literature': 'Edebiyat',
+  'subject.Philosophy': 'Felsefe',
+  'subject.Religion': 'Din Kültürü ve Ahlak Bilgisi',
   'subject.Foreign Language': 'Yabancı Dil',
 
   'difficulty.easy': 'Kolay',
@@ -489,7 +491,7 @@ export const TR: Record<MessageKey, string> = {
   'about.mentiText': "Merhaba, ben Menti! Çalışırken sana eşlik edeceğim.",
   'about.contentEyebrow': "Sorular ve içerik",
   'about.contentTitle': "Sorular nereden geliyor?",
-  'about.content1': "9, 10 ve 11. sınıf soruları, MEB Türkiye Yüzyılı Maarif Modeli öğretim programlarındaki öğrenme çıktılarına göre hazırlandı. İngilizce A1–C1 soruları uygulama için yazıldı. Bu sorular MEB tarafından onaylanmış değildir; bir hata görürsen bize yazabilirsin.",
+  'about.content1': "9, 10 ve 11. sınıf soruları ile Felsefe (10–11) ve Din Kültürü ve Ahlak Bilgisi (9–12) soruları, MEB Türkiye Yüzyılı Maarif Modeli öğretim programlarındaki öğrenme çıktılarına göre hazırlandı. İngilizce A1–C1 soruları uygulama için yazıldı. Bu sorular MEB tarafından onaylanmış değildir; bir hata görürsen bize yazabilirsin.",
   'about.content2': "11. ve 12. sınıf soruları ile İngilizce dersinin soruları örnek alıştırmalardır.",
   'about.content3': "Uygulamada canlı yapay zekâ kullanılmaz. AI Çalışma Koçu ve Menti önceden hazırlanmış kurallarla çalışır.",
   'about.privacyEyebrow': "Gizlilik",

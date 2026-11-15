@@ -204,6 +204,8 @@ export const SUBJECT_ROWS: SubjectRowDef[] = [
   { key: 'world-history', label: 'World History', group: 'History', plannerName: 'World History', sourcesNote: 'Study Planner & Exam Calendar' },
   { key: 'geography', label: 'Geography', group: null, quizName: 'Geography', sourcesNote: 'Quiz Center & Flashcards' },
   { key: 'literature', label: 'Literature', group: null, quizName: 'Literature', sourcesNote: 'Quiz Center & Flashcards' },
+  { key: 'philosophy', label: 'Philosophy', group: null, quizName: 'Philosophy', sourcesNote: 'Quiz Center & Flashcards' },
+  { key: 'religion', label: 'Religion', group: null, quizName: 'Religion', sourcesNote: 'Quiz Center & Flashcards' },
   { key: 'spanish', label: 'Spanish', group: null, plannerName: 'Spanish', sourcesNote: 'Study Planner & Exam Calendar' },
   { key: 'other', label: 'Other', group: null, plannerName: 'Other', sourcesNote: 'Study Planner & Exam Calendar' },
 ];

@@ -44,7 +44,8 @@ test('subject names: Turkish display, English unchanged, unknown names untouched
   const tr = makeTranslator('tr');
   const en = makeTranslator('en');
   for (const s of [...NewPlanner.PLANNER_SUBJECT_OPTIONS, ...QUIZ_SUBJECTS]) {
-    assert.equal(en.subject(s), s);
+    // Stage 22B-2b: the saved value 'Religion' is shown as 'Religious Culture and Ethics' in English.
+    assert.equal(en.subject(s), s === 'Religion' ? 'Religious Culture and Ethics' : s);
     assert.notEqual(tr.subject(s), s === 'Other' ? 'x' : s, s);
   }
   assert.equal(tr.subject('Algebra I'), 'Cebir I');
