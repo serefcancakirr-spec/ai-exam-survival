@@ -13,6 +13,9 @@ export const QUIZ_SUBJECTS = [
   'History',
   'Geography',
   'Literature',
+  // Stage 22B-2b (MEB questions only; Felsefe in grades 10–11, Din Kültürü in grades 9–12)
+  'Philosophy',
+  'Religion',
 ] as const;
 
 export type QuizGrade = (typeof QUIZ_GRADES)[number];
@@ -229,6 +232,9 @@ export const QUESTION_SEEDS: Record<QuizSubject, QuestionSeed[]> = {
     question('World Literature', 'hard', 'A character’s understanding of their community’s values changes. What is a strong focus for literary analysis?', ['How the character’s changing perspective develops the work’s theme', 'How many pages the book has', 'The color of the book cover', 'The order of the publisher’s advertisements'], 'A', 'Tracing a character’s changing perspective connects characterization to the work’s central meaning.'),
     question('World Literature', 'easy', 'What is a folktale?', ['A traditional story shared within a culture, often across generations', 'A laboratory procedure', 'A list of geographic coordinates', 'A stage lighting cue'], 'A', 'Folktales are traditional narratives passed down within communities, often orally.'),
   ],
+  // Stage 22B-2b: no shared samples; these subjects have MEB questions only.
+  Philosophy: [],
+  Religion: [],
 };
 
 const OPTION_IDS: QuizOptionId[] = ['A', 'B', 'C', 'D'];
@@ -346,6 +352,10 @@ function matchesLevel(topic: string, level: QuizLevel | undefined) {
   if (!level) return true;
   const topicLevel = levelOfTopic(topic);
   return level === GENERAL_LEVEL ? topicLevel === null : topicLevel === level;
+}
+/** Subjects with questions for this grade (Felsefe only in grades 10–11). */
+export function getQuizSubjects(grade: QuizGrade): QuizSubject[] {
+  return QUIZ_SUBJECTS.filter((subject) => QUIZ_QUESTION_BANK.some((item) => item.grade === grade && item.subject === subject));
 }
 export const QUIZ_QUESTION_COUNTS = [5, 10, 20] as const;
 export type QuizQuestionCount = (typeof QUIZ_QUESTION_COUNTS)[number];

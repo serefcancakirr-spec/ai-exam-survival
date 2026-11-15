@@ -1,0 +1,580 @@
+{
+ "source": "tymm.meb.gov.tr/ogretim-programlari – Felsefe Dersi (felsefe-dersi_20260819_142831_736.pdf) ve Din Kültürü ve Ahlak Bilgisi Dersi (Ortaöğretim) (din-kulturu-ve-ahlak-bilgisi-dersi_20260819_142709_568.pdf) öğretim programları",
+ "note": "Felsefe 10. ve 11. sınıfta, Din Kültürü ve Ahlak Bilgisi 9–12. sınıflarda okutulur. Satır sonunda bölünen çıktı metinleri birleştirildi.",
+ "subjects": {
+  "DKAB": [
+   {
+    "code": "DKAB.9.1.1",
+    "grade": "9",
+    "tema": "ALLAH-İNSAN İLİŞKİSİ",
+    "cikti": "İnsanın yaratılışını ve özelliklerini ayetlerden hareketle müşahede edebilme"
+   },
+   {
+    "code": "DKAB.9.1.2",
+    "grade": "9",
+    "tema": "ALLAH-İNSAN İLİŞKİSİ",
+    "cikti": "İnsanın doğruyu arayan bir varlık olarak bilgiye ulaşma yolları hakkında bilgi toplayabilme"
+   },
+   {
+    "code": "DKAB.9.1.3",
+    "grade": "9",
+    "tema": "ALLAH-İNSAN İLİŞKİSİ",
+    "cikti": "Allah (cc) ile iletişimin ibadet ve dua ile sağlandığını yansıtabilme"
+   },
+   {
+    "code": "DKAB.9.1.4",
+    "grade": "9",
+    "tema": "ALLAH-İNSAN İLİŞKİSİ",
+    "cikti": "Rum suresinin 17-27. ayetlerinin mesajlarını anlamada temel kaynakları kullanabilme"
+   },
+   {
+    "code": "DKAB.9.2.1",
+    "grade": "9",
+    "tema": "İSLAM’DA İNANÇ ESASLARI",
+    "cikti": "İmanın mahiyetini müşahede edebilme"
+   },
+   {
+    "code": "DKAB.9.2.2",
+    "grade": "9",
+    "tema": "İSLAM’DA İNANÇ ESASLARI",
+    "cikti": "İslam’ın iman esaslarını ayet ve hadisler bağlamında özetleyebilme"
+   },
+   {
+    "code": "DKAB.9.2.3",
+    "grade": "9",
+    "tema": "İSLAM’DA İNANÇ ESASLARI",
+    "cikti": "İmanın bireye ve topluma kazandırdıklarını idrak edebilme"
+   },
+   {
+    "code": "DKAB.9.2.4",
+    "grade": "9",
+    "tema": "İSLAM’DA İNANÇ ESASLARI",
+    "cikti": "Bakara suresinin 177. ayetindeki mesajları anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.9.3.1",
+    "grade": "9",
+    "tema": "İSLAM’DA İBADETLER",
+    "cikti": "İslam’da ibadet ve ibadetin temel ilkeleri hakkında bilgi toplayabilme"
+   },
+   {
+    "code": "DKAB.9.3.2",
+    "grade": "9",
+    "tema": "İSLAM’DA İBADETLER",
+    "cikti": "İslam’da temel ibadetleri sınıflandırabilme"
+   },
+   {
+    "code": "DKAB.9.3.3",
+    "grade": "9",
+    "tema": "İSLAM’DA İBADETLER",
+    "cikti": "İnsan ve ibadet ilişkisini yorumlayabilme"
+   },
+   {
+    "code": "DKAB.9.3.4",
+    "grade": "9",
+    "tema": "İSLAM’DA İBADETLER",
+    "cikti": "Bakara suresinin 21, Zariyat suresinin 56 ve Hicr suresinin 99. ayetlerinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.9.4.1",
+    "grade": "9",
+    "tema": "İSLAM’DA AHLAK İLKELERİ",
+    "cikti": "İslam’da ahlakın mahiyetini müşahede edebilme"
+   },
+   {
+    "code": "DKAB.9.4.2",
+    "grade": "9",
+    "tema": "İSLAM’DA AHLAK İLKELERİ",
+    "cikti": "Ahlakın temel unsurlarını sentezleyebilme"
+   },
+   {
+    "code": "DKAB.9.4.3",
+    "grade": "9",
+    "tema": "İSLAM’DA AHLAK İLKELERİ",
+    "cikti": "Ahlaki tutum ve davranışları idrak edebilme"
+   },
+   {
+    "code": "DKAB.9.4.4",
+    "grade": "9",
+    "tema": "İSLAM’DA AHLAK İLKELERİ",
+    "cikti": "İsra suresinin 23-29. ayetlerinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.9.5.1",
+    "grade": "9",
+    "tema": "KUR’AN’A GÖRE HZ. MUHAMMED",
+    "cikti": "Hz. Muhammed’in (sav) beşerî ve peygamberlik yönünü özetleyebilme"
+   },
+   {
+    "code": "DKAB.9.5.2",
+    "grade": "9",
+    "tema": "KUR’AN’A GÖRE HZ. MUHAMMED",
+    "cikti": "Hz. Muhammed’in (sav) örnekliğini esas alarak kendi bakış açısını yapılandırabilme"
+   },
+   {
+    "code": "DKAB.9.5.3",
+    "grade": "9",
+    "tema": "KUR’AN’A GÖRE HZ. MUHAMMED",
+    "cikti": "Kültürümüzde Hz. Muhammed (sav) ve Ehlibeyt sevgisini yorumlayabilme"
+   },
+   {
+    "code": "DKAB.9.5.4",
+    "grade": "9",
+    "tema": "KUR’AN’A GÖRE HZ. MUHAMMED",
+    "cikti": "Ahzab suresinin 45-46 ve Nahl suresinin 43-44. ayetlerinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.10.1.1",
+    "grade": "10",
+    "tema": "İSLAM’DA VARLIK VE BİLGİ",
+    "cikti": "İslam’da bilginin yerini ve kaynaklarını çözümleyebilme"
+   },
+   {
+    "code": "DKAB.10.1.2",
+    "grade": "10",
+    "tema": "İSLAM’DA VARLIK VE BİLGİ",
+    "cikti": "Allah-âlem ilişkisini müşahede edebilme"
+   },
+   {
+    "code": "DKAB.10.1.3",
+    "grade": "10",
+    "tema": "İSLAM’DA VARLIK VE BİLGİ",
+    "cikti": "İsra suresinin 36 ve Mülk suresinin 23. ayetlerinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.10.2.1",
+    "grade": "10",
+    "tema": "ALLAH’I TANIMAK",
+    "cikti": "Allah’ın (cc) varlığının delillerini müşahede edebilme"
+   },
+   {
+    "code": "DKAB.10.2.2",
+    "grade": "10",
+    "tema": "ALLAH’I TANIMAK",
+    "cikti": "Allah’ı (cc) gereği gibi tanıyabilmek için O’nun isim ve sıfatlarını bağlamına uygun kullanabilme"
+   },
+   {
+    "code": "DKAB.10.2.3",
+    "grade": "10",
+    "tema": "ALLAH’I TANIMAK",
+    "cikti": "Haşr suresinin 22-24. ayetlerindeki mesajları anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.10.3.1",
+    "grade": "10",
+    "tema": "İSLAM’IN EVRENSEL MESAJLARI",
+    "cikti": "İslam’ın evrensel mesajlarından biri olan tevhit ilkesi hakkında bilgi toplayabilme"
+   },
+   {
+    "code": "DKAB.10.3.2",
+    "grade": "10",
+    "tema": "İSLAM’IN EVRENSEL MESAJLARI",
+    "cikti": "İslam’da adalet ve eşitlik kavramlarını bağlamına uygun kullanabilme"
+   },
+   {
+    "code": "DKAB.10.3.3",
+    "grade": "10",
+    "tema": "İSLAM’IN EVRENSEL MESAJLARI",
+    "cikti": "İslam ve barış ilişkisini yorumlayabilme"
+   },
+   {
+    "code": "DKAB.10.3.4",
+    "grade": "10",
+    "tema": "İSLAM’IN EVRENSEL MESAJLARI",
+    "cikti": "Nahl suresinin 90, Nisa suresinin 58 ve Bakara suresinin 208. ayetlerinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.10.4.1",
+    "grade": "10",
+    "tema": "DİN, ÇEVRE VE TEKNOLOJİ",
+    "cikti": "İnsan, çevre ve ahlak arasındaki ilişkiyi yorumlayabilme"
+   },
+   {
+    "code": "DKAB.10.4.2",
+    "grade": "10",
+    "tema": "DİN, ÇEVRE VE TEKNOLOJİ",
+    "cikti": "Teknoloji ve ahlak ilişkisini çözümleyebilme"
+   },
+   {
+    "code": "DKAB.10.4.3",
+    "grade": "10",
+    "tema": "DİN, ÇEVRE VE TEKNOLOJİ",
+    "cikti": "Çevre ve teknoloji ilişkisini özetleyebilme"
+   },
+   {
+    "code": "DKAB.10.4.4",
+    "grade": "10",
+    "tema": "DİN, ÇEVRE VE TEKNOLOJİ",
+    "cikti": "Rum suresinin 41. ayetinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.10.5.1",
+    "grade": "10",
+    "tema": "İSLAM DÜŞÜNCESİNDE İTİKADİ-SİYASİ VE FIKHİ YORUMLAR",
+    "cikti": "Dinî yorum farklılıklarının ortaya çıkış sebeplerini sentezleyebilme"
+   },
+   {
+    "code": "DKAB.10.5.2",
+    "grade": "10",
+    "tema": "İSLAM DÜŞÜNCESİNDE İTİKADİ-SİYASİ VE FIKHİ YORUMLAR",
+    "cikti": "İslam düşüncesindeki itikadi-siyasi ve fıkhi yorumları irdeleyebilme"
+   },
+   {
+    "code": "DKAB.10.5.3",
+    "grade": "10",
+    "tema": "İSLAM DÜŞÜNCESİNDE İTİKADİ-SİYASİ VE FIKHİ YORUMLAR",
+    "cikti": "Hucurat suresinin 13. ayetinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.11.1.1",
+    "grade": "11",
+    "tema": "KADER, İRADE VE SORUMLULUK",
+    "cikti": "Kader ve kaderle ilgili kavramları yapılandırabilme"
+   },
+   {
+    "code": "DKAB.11.1.2",
+    "grade": "11",
+    "tema": "KADER, İRADE VE SORUMLULUK",
+    "cikti": "İnsan, akıl, irade ve sorumluluk kavramları arasındaki ilişki hakkında eleştirel düşünebilme"
+   },
+   {
+    "code": "DKAB.11.1.3",
+    "grade": "11",
+    "tema": "KADER, İRADE VE SORUMLULUK",
+    "cikti": "Bakara suresinin 286. ayetinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.11.2.1",
+    "grade": "11",
+    "tema": "DİN, FELSEFE, BİLİM VE SANAT",
+    "cikti": "Din tanımlarını ve farklı disiplinlerin dine yaklaşımları arasında mukayese yapabilme"
+   },
+   {
+    "code": "DKAB.11.2.2",
+    "grade": "11",
+    "tema": "DİN, FELSEFE, BİLİM VE SANAT",
+    "cikti": "Dinin felsefe ve bilimle ilişkisini sorgulayabilme"
+   },
+   {
+    "code": "DKAB.11.2.3",
+    "grade": "11",
+    "tema": "DİN, FELSEFE, BİLİM VE SANAT",
+    "cikti": "Din ve sanat arasındaki ilişkiyi çözümleyebilme"
+   },
+   {
+    "code": "DKAB.11.2.4",
+    "grade": "11",
+    "tema": "DİN, FELSEFE, BİLİM VE SANAT",
+    "cikti": "Al-i İmran suresinin 190-191. ayetlerindeki mesajları anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.11.3.1",
+    "grade": "11",
+    "tema": "İSLAM MEDENİYETİ VE GÖNÜL COĞRAFYAMIZ",
+    "cikti": "Medeniyetin oluşumuna etki eden unsurları çözümleyebilme"
+   },
+   {
+    "code": "DKAB.11.3.2",
+    "grade": "11",
+    "tema": "İSLAM MEDENİYETİ VE GÖNÜL COĞRAFYAMIZ",
+    "cikti": "İslam medeniyetinin izlerini özetleyebilme"
+   },
+   {
+    "code": "DKAB.11.3.3",
+    "grade": "11",
+    "tema": "İSLAM MEDENİYETİ VE GÖNÜL COĞRAFYAMIZ",
+    "cikti": "İslam medeniyetinin bugünü ve geleceği hakkında akıl yürütebilme"
+   },
+   {
+    "code": "DKAB.11.3.4",
+    "grade": "11",
+    "tema": "İSLAM MEDENİYETİ VE GÖNÜL COĞRAFYAMIZ",
+    "cikti": "Rum suresinin 9. ayetinin mesajlarını yorumlayabilme"
+   },
+   {
+    "code": "DKAB.11.4.1",
+    "grade": "11",
+    "tema": "İNANÇLA İLGİLİ MESELELER",
+    "cikti": "İnançla ilgili felsefi yaklaşımları sorgulayabilme"
+   },
+   {
+    "code": "DKAB.11.4.2",
+    "grade": "11",
+    "tema": "İNANÇLA İLGİLİ MESELELER",
+    "cikti": "Kötülük problemi hakkında eleştirel düşünebilme"
+   },
+   {
+    "code": "DKAB.11.4.3",
+    "grade": "11",
+    "tema": "İNANÇLA İLGİLİ MESELELER",
+    "cikti": "Din istismarının ve yeni dinî hareketlerin ortaya çıkış sebeplerini sorgulayabilme"
+   },
+   {
+    "code": "DKAB.11.4.4",
+    "grade": "11",
+    "tema": "İNANÇLA İLGİLİ MESELELER",
+    "cikti": "Hadid suresi 1-5. ayetlerin mesajlarını tahlil edebilme"
+   },
+   {
+    "code": "DKAB.11.5.1",
+    "grade": "11",
+    "tema": "YAHUDİLİK VE HRİSTİYANLIK",
+    "cikti": "Yahudilik ve Hristiyanlık dinlerinin tarihini ve temel özelliklerini özetleyebilme"
+   },
+   {
+    "code": "DKAB.12.1.1",
+    "grade": "12",
+    "tema": "KUR’AN-I KERİM",
+    "cikti": "Kur’an-ı Kerim’in tarihî süreci hakkında bilgi toplayabilme"
+   },
+   {
+    "code": "DKAB.12.1.2",
+    "grade": "12",
+    "tema": "KUR’AN-I KERİM",
+    "cikti": "Kur’an-ı Kerim’in ana konularını ve temel özelliklerini sentezleyebilme"
+   },
+   {
+    "code": "DKAB.12.1.3",
+    "grade": "12",
+    "tema": "KUR’AN-I KERİM",
+    "cikti": "Kur’an-ı Kerim’in anlaşılmasında temel ilkeleri özetleyebilme"
+   },
+   {
+    "code": "DKAB.12.1.4",
+    "grade": "12",
+    "tema": "KUR’AN-I KERİM",
+    "cikti": "Kur’an-ı Kerim’in kültürümüze etkisini yorumlayabilme"
+   },
+   {
+    "code": "DKAB.12.1.5",
+    "grade": "12",
+    "tema": "KUR’AN-I KERİM",
+    "cikti": "İsra suresinin 9. ayetinin mesajlarını anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.12.2.1",
+    "grade": "12",
+    "tema": "DİN VE AİLE",
+    "cikti": "İslam’ın aile kurumuna verdiği önemi yorumlayabilme"
+   },
+   {
+    "code": "DKAB.12.2.2",
+    "grade": "12",
+    "tema": "DİN VE AİLE",
+    "cikti": "Aile içi iletişim ve etkileşim sürecini çözümleyebilme"
+   },
+   {
+    "code": "DKAB.12.2.3",
+    "grade": "12",
+    "tema": "DİN VE AİLE",
+    "cikti": "Aile hayatında dikkat edilmesi gereken ahlaki değerleri özetleyebilme"
+   },
+   {
+    "code": "DKAB.12.2.4",
+    "grade": "12",
+    "tema": "DİN VE AİLE",
+    "cikti": "Ahkaf suresinin 15. ayetindeki mesajları anlamak için Kur’an-ı Kerim meallerine başvurabilme"
+   },
+   {
+    "code": "DKAB.12.3.1",
+    "grade": "12",
+    "tema": "GÜNCEL DİNÎ MESELELER",
+    "cikti": "Güncel dinî meselelerin çözümünde temel ilke ve yöntemleri özetleyebilme"
+   },
+   {
+    "code": "DKAB.12.3.2",
+    "grade": "12",
+    "tema": "GÜNCEL DİNÎ MESELELER",
+    "cikti": "Gıda maddeleriyle ilgili meseleleri yorumlayabilme"
+   },
+   {
+    "code": "DKAB.12.3.3",
+    "grade": "12",
+    "tema": "GÜNCEL DİNÎ MESELELER",
+    "cikti": "Bağımlılıkla ilgili meseleleri sorgulayabilme"
+   },
+   {
+    "code": "DKAB.12.3.4",
+    "grade": "12",
+    "tema": "GÜNCEL DİNÎ MESELELER",
+    "cikti": "Günlük hayatla ilgili meseleleri sorgulayabilme"
+   },
+   {
+    "code": "DKAB.12.3.5",
+    "grade": "12",
+    "tema": "GÜNCEL DİNÎ MESELELER",
+    "cikti": "Enam suresinin 151-152. ayetlerinin mesajlarını yorumlayabilme"
+   },
+   {
+    "code": "DKAB.12.4.1",
+    "grade": "12",
+    "tema": "İSLAM DÜŞÜNCESİNDE TASAVVUFİ YORUMLAR",
+    "cikti": "Tasavvufi düşüncenin oluşum sürecini çözümleyebilme"
+   },
+   {
+    "code": "DKAB.12.4.2",
+    "grade": "12",
+    "tema": "İSLAM DÜŞÜNCESİNDE TASAVVUFİ YORUMLAR",
+    "cikti": "Tasavvufi düşüncenin ahlaki boyutunu özetleyebilme"
+   },
+   {
+    "code": "DKAB.12.4.3",
+    "grade": "12",
+    "tema": "İSLAM DÜŞÜNCESİNDE TASAVVUFİ YORUMLAR",
+    "cikti": "Kültürümüzde etkin olan tasavvufi görüşleri irdeleyebilme"
+   },
+   {
+    "code": "DKAB.12.4.4",
+    "grade": "12",
+    "tema": "İSLAM DÜŞÜNCESİNDE TASAVVUFİ YORUMLAR",
+    "cikti": "Alevilik Bektaşilikte temel kavramlar ve cem erkânını sentezleyebilme"
+   },
+   {
+    "code": "DKAB.12.4.5",
+    "grade": "12",
+    "tema": "İSLAM DÜŞÜNCESİNDE TASAVVUFİ YORUMLAR",
+    "cikti": "Hucurat suresinin 10. ayetinin mesajlarını tahlil edebilme"
+   },
+   {
+    "code": "DKAB.12.5.1",
+    "grade": "12",
+    "tema": "HİNT VE ÇİN DİNLERİ",
+    "cikti": "Hinduizm, Budizm, Sihizm, Konfüçyanizm, Taoizm dinlerinin tarihini ve temel özelliklerini özetleyebilme"
+   }
+  ],
+  "FEL": [
+   {
+    "code": "FEL.10.1.1",
+    "grade": "10",
+    "tema": "FELSEFENİN DOĞASI",
+    "cikti": "Felsefenin anlamını, gelişim sürecini ve işlevini sorgulayabilme"
+   },
+   {
+    "code": "FEL.10.2.1",
+    "grade": "10",
+    "tema": "FELSEFE, MANTIK VE ARGÜMANTASYON",
+    "cikti": "Düşünme ve dil ilişkisini yapılandırabilme"
+   },
+   {
+    "code": "FEL.10.2.2",
+    "grade": "10",
+    "tema": "FELSEFE, MANTIK VE ARGÜMANTASYON",
+    "cikti": "Mantığın temel kavramlarını ve argümantasyon sürecini yorumlayabilme"
+   },
+   {
+    "code": "FEL.10.3.1",
+    "grade": "10",
+    "tema": "VARLIK FELSEFESİ",
+    "cikti": "Varlık felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.10.4.1",
+    "grade": "10",
+    "tema": "BİLGİ FELSEFESİ",
+    "cikti": "Bilgi felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.10.5.1",
+    "grade": "10",
+    "tema": "AHLAK FELSEFESİ",
+    "cikti": "Ahlak felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.10.6.1",
+    "grade": "10",
+    "tema": "ESTETİK VE SANAT FELSEFESİ",
+    "cikti": "Estetik ve sanat felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.10.7.1",
+    "grade": "10",
+    "tema": "SİYASET FELSEFESİ",
+    "cikti": "Siyaset felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.10.8.1",
+    "grade": "10",
+    "tema": "DİN FELSEFESİ",
+    "cikti": "Din felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.10.9.1",
+    "grade": "10",
+    "tema": "BİLİM FELSEFESİ",
+    "cikti": "Bilim felsefesinin konusunu, kavramlarını ve problemlerini muhakeme edebilme"
+   },
+   {
+    "code": "FEL.11.1.1",
+    "grade": "11",
+    "tema": "ÇEVRE SORUNLARI VE FELSEFE",
+    "cikti": "Çevre ile ilgili felsefi soru ve problemleri anlayabilme"
+   },
+   {
+    "code": "FEL.11.1.2",
+    "grade": "11",
+    "tema": "ÇEVRE SORUNLARI VE FELSEFE",
+    "cikti": "Çevre sorunlarıyla ilgili felsefi düşünce ortaya koyabilme"
+   },
+   {
+    "code": "FEL.11.2.1",
+    "grade": "11",
+    "tema": "TEKNOLOJİ VE HAYAT",
+    "cikti": "Teknoloji ile ilgili felsefi soru ve problemleri anlayabilme"
+   },
+   {
+    "code": "FEL.11.2.2",
+    "grade": "11",
+    "tema": "TEKNOLOJİ VE HAYAT",
+    "cikti": "Teknoloji ve hayat ilişkisiyle ilgili felsefi düşünce ortaya koyabilme"
+   },
+   {
+    "code": "FEL.11.3.1",
+    "grade": "11",
+    "tema": "AKIL VE İNANÇ",
+    "cikti": "Akıl-inanç ilişkisiyle ilgili felsefi soru ve problemleri anlayabilme"
+   },
+   {
+    "code": "FEL.11.3.2",
+    "grade": "11",
+    "tema": "AKIL VE İNANÇ",
+    "cikti": "Akıl-inanç ilişkisiyle ilgili felsefi düşünce ortaya koyabilme"
+   },
+   {
+    "code": "FEL.11.4.1",
+    "grade": "11",
+    "tema": "EDEBİYAT VE FELSEFE",
+    "cikti": "Edebiyat felsefe ilişkisi ile ilgili soru ve problemleri anlayabilme"
+   },
+   {
+    "code": "FEL.11.4.2",
+    "grade": "11",
+    "tema": "EDEBİYAT VE FELSEFE",
+    "cikti": "Edebiyat felsefe ilişkisi ile ilgili felsefi düşünce ortaya koyabilme"
+   },
+   {
+    "code": "FEL.11.5.1",
+    "grade": "11",
+    "tema": "HAYATIN ANLAMI",
+    "cikti": "Hayatın anlamına ilişkin felsefi soru ve problemleri anlayabilme"
+   },
+   {
+    "code": "FEL.11.5.2",
+    "grade": "11",
+    "tema": "HAYATIN ANLAMI",
+    "cikti": "Hayatın anlamına ilişkin felsefi düşünce ortaya koyabilme"
+   },
+   {
+    "code": "FEL.11.6.1",
+    "grade": "11",
+    "tema": "HUKUK VE FELSEFE",
+    "cikti": "Hukukun doğasına yönelik soru ve felsefi problemleri anlayabilme"
+   },
+   {
+    "code": "FEL.11.6.2",
+    "grade": "11",
+    "tema": "HUKUK VE FELSEFE",
+    "cikti": "Hukuk sorunları üzerine felsefi düşünce ortaya koyabilme"
+   }
+  ]
+ }
+}

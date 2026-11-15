@@ -17,6 +17,7 @@ import { FooterAboutLink } from './about-page';
 import {
   ALL_QUIZ_TOPICS,
   getQuizQuestionPool,
+  getQuizSubjects,
   getQuizTopics,
   QUIZ_GRADES,
   QUIZ_QUESTION_COUNTS,
@@ -358,7 +359,7 @@ function QuizSetupCard({
             }
             data-testid="select-quiz-subject"
           >
-            {QUIZ_SUBJECTS.map((subject) => (
+            {getQuizSubjects(setup.grade).map((subject) => (
               <option key={subject} value={subject}>
                 {subjectLabel(subject)}
               </option>
@@ -1128,6 +1129,12 @@ export default function FunctionalQuizCenterPage() {
 
   function changeSetup(patch: Partial<QuizSetup>) {
     const nextSetup = { ...setup, ...patch };
+    // Stage 22B-2b: Felsefe has questions only in grades 10–11; another grade goes back to the first subject.
+    if (!getQuizSubjects(nextSetup.grade).includes(nextSetup.subject)) {
+      nextSetup.subject = DEFAULT_SETUP.subject;
+      nextSetup.level = SUGGESTED_LEVEL[nextSetup.grade];
+      nextSetup.topic = ALL_QUIZ_TOPICS;
+    }
     // Stage 15: grade 9 can have other topics (MEB themes); a topic the new grade does not have goes back to all topics.
     if (
       nextSetup.topic !== ALL_QUIZ_TOPICS &&

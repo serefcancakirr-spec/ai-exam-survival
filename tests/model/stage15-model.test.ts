@@ -111,7 +111,8 @@ test('grade 12, grade 9 English and grade 10 subjects without MEB questions keep
       assert.deepEqual(bank.map((q) => q.prompt), QUESTION_SEEDS[subject].map((s) => s.prompt), `${grade} ${subject}`);
       assert.ok(bank.every((q) => q.id === `${grade}-${subject.toLowerCase()}-${bank.indexOf(q) + 1}`), `${grade} ${subject}: ids`);
       assert.ok(bank.every((q) => mebOutcome(q) === undefined));
-      assert.ok(grade !== '9' || subject === 'English', `${grade} ${subject} should have MEB questions`);
+      // Stage 22B-2b: Felsefe has no grade 9 questions (taught in grades 10–11).
+      assert.ok(grade !== '9' || subject === 'English' || subject === 'Philosophy', `${grade} ${subject} should have MEB questions`);
     }
   }
 });

@@ -170,6 +170,8 @@ export const EN = {
   'subject.History': 'History',
   'subject.Geography': 'Geography',
   'subject.Literature': 'Literature',
+  'subject.Philosophy': 'Philosophy',
+  'subject.Religion': 'Religious Culture and Ethics',
   'subject.Foreign Language': 'Foreign Language',
 
   'difficulty.easy': 'Easy',
@@ -490,7 +492,7 @@ export const EN = {
   'about.mentiText': "Hi, I’m Menti! I’ll keep you company while you study.",
   'about.contentEyebrow': "Questions and content",
   'about.contentTitle': "Where do the questions come from?",
-  'about.content1': "Grade 9, 10 and 11 questions were written for the learning outcomes of the MEB Türkiye Yüzyılı Maarif Modeli curriculum. The English A1–C1 questions were written for this app. They are not approved by MEB; if you find a mistake, please write to us.",
+  'about.content1': "Grade 9, 10 and 11 questions and the Philosophy (grades 10–11) and Religious Culture and Ethics (grades 9–12) questions were written for the learning outcomes of the MEB Türkiye Yüzyılı Maarif Modeli curriculum. The English A1–C1 questions were written for this app. They are not approved by MEB; if you find a mistake, please write to us.",
   'about.content2': "Grade 11 and 12 questions and the English questions are practice examples.",
   'about.content3': "The app does not use live AI. The AI Study Coach and Menti work with rules prepared in advance.",
   'about.privacyEyebrow': "Privacy",

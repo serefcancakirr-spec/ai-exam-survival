@@ -111,6 +111,7 @@ test('grade 11 English and all of grade 12 are unchanged (shared sample question
   for (const subject of QUIZ_SUBJECTS) {
     for (const grade of ['11', '12']) {
       if (grade === '11' && subject !== 'English') continue;
+      if (subject === 'Religion') continue; // Stage 22B-2b: MEB questions in every grade (stage22b2b-model)
       // Stage 21A: the English level questions (A1–C1) are added after these and checked in stage21-model.
       const bank = QUIZ_QUESTION_BANK.filter((q) => q.grade === grade && q.subject === subject && !levelOfTopic(q.topic));
       assert.deepEqual(bank.map((q) => q.prompt), QUESTION_SEEDS[subject].map((s) => s.prompt), `${grade} ${subject}`);
@@ -143,5 +144,5 @@ test('Stage 19B: grade 11 History, Geography and Türk Dili ve Edebiyatı; 5 Lit
     assert.ok(inTheme.every((s) => /^TDE(2\.[1-4]|4\.3)$/.test(s.outcome)), `${theme}: only reading and writing-rule skills`);
   }
   // grades 9, 10 and 11: only English is left on the shared sample bank
-  for (const grade of ['9', '10', '11']) for (const subject of QUIZ_SUBJECTS) assert.equal(usesMeb(grade, subject), subject !== 'English', `${grade} ${subject}`);
+  for (const grade of ['9', '10', '11']) for (const subject of QUIZ_SUBJECTS) assert.equal(usesMeb(grade, subject), subject !== 'English' && !(grade === '9' && subject === 'Philosophy'), `${grade} ${subject}`);
 });

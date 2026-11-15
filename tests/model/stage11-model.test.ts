@@ -8,7 +8,8 @@ import { STARTER_CARDS_TR, STARTER_DECK_NAMES_TR } from '../../artifacts/ai-exam
 import { mebOutcome } from '../../artifacts/ai-exam-survival/src/pages/quiz-bank-meb';
 import { deckName, deckTopic, learningName, localizeCard, localizeQuestion, topicName } from '../../artifacts/ai-exam-survival/src/i18n/content';
 
-const TRANSLATED = QUIZ_SUBJECTS.filter((s) => s !== 'English');
+// Stage 22B-2b: Felsefe and Din Kültürü have only Turkish MEB questions (stage22b2b-model).
+const TRANSLATED = QUIZ_SUBJECTS.filter((s) => s !== 'English' && s !== 'Philosophy' && s !== 'Religion');
 // Numbers (with decimal point or comma) in a text, so a translation cannot change a value by mistake.
 const numbers = (text: string) => (text.match(/\d+(?:[.,]\d+)?/g) ?? []).map((n) => n.replace('.', ',')).sort();
 

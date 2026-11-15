@@ -8,3 +8,4 @@ export { QUESTION_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-que
 export { MEB9_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-meb9';
 export { MEB10_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-meb10';
 export { MEB11_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-meb11';
+export { FEL_DKAB_SEEDS } from '../artifacts/ai-exam-survival/src/pages/quiz-bank-felsefe-din';

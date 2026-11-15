@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 203/203; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT).
+  Expected today: logic 211/211; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -196,8 +196,21 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   `ayt-ea-mini` (Edebiyat–Sosyal-1 20 + Matematik 20), `ayt-tde`, `ayt-sos2` (40 / 45 each) and `ayt-full` (all 160 in the
   booklet order Edebiyat–Sosyal-1, Sosyal-2, Matematik, Fen; 180 min; unanswered tests count as blank).
   Start screen groups: TYT, AYT · Sayısal, AYT · Sözel ve Eşit Ağırlık, AYT · Tam deneme.
-- Next: 22B-2b Felsefe and Din Kültürü as normal Quiz Center subjects, grade-specific from the MEB programs (teacher chose (b):
-  Felsefe 10–11, Din Kültürü 9–12); then 22C YDT. Separate approvals.
+- Next: 22C YDT. Separate approval.
+
+## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
+- New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
+  appended at the END of `QUIZ_SUBJECTS` (the answer letters of the older questions depend on the subject order). English
+  labels "Philosophy" / "Religious Culture and Ethics"; saved values stay `Philosophy` / `Religion`. No shared samples
+  (`QUESTION_SEEDS` empty): `getQuizSubjects(grade)` lists only subjects with questions; changing to a grade without the
+  chosen subject goes back to the first subject. Smart Flashcards (shared subject list) and Progress Tracker rows include them;
+  Study Coach and Exam Calendar are unchanged.
+- `src/pages/quiz-bank-felsefe-din.ts`: 124 original questions (Felsefe 10: 20, 11: 24; Din Kültürü 20 per grade), every outcome
+  covered; joined in `quiz-bank-meb.ts` (grade 12 now has MEB questions for Din Kültürü only). Ids `<grade>-philosophy-meb-<n>`,
+  `<grade>-religion-meb-<n>`. Programs: tymm.meb.gov.tr/ogretim-programlari (the Din Kültürü program is not on the frame-plan
+  page; found with `/Ders/GetDerslerBySinif?sinifId=11..14&kademe=3`, sinifId 11 = grade 9). Official list for the tests:
+  `tests/data/meb-fel-dkab-outcomes.json` (FEL 10 + 12, DKAB 20 + 17 + 16 + 20 outcomes). Verse questions use short meal wording:
+  the Din Kültürü teacher's check is welcome. Never write "MEB onaylı".
 
 ## About and Privacy (Stage 17)
 - `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link
@@ -205,7 +218,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Says “AI Kulübü” only (no school or student names, teacher's choice). Contact: aiexamsurvival@gmail.com (teacher approved).
 - Privacy text must stay true: no account, no server, data only in this browser, no ads/analytics/cookies; GitHub Pages and
   Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB
-  (`about.content1` names grades 9, 10, 11 and English A1–C1; mistakes can be reported by e-mail).
+  (`about.content1` names grades 9, 10, 11, Felsefe (10–11), Din Kültürü (9–12) and English A1–C1; mistakes can be reported by e-mail).
 - “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
   (the 9 saved-data keys above). A model test checks the list matches every key used in the code.
 
@@ -270,7 +283,9 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   teacher (one explanation/option mismatch found and fixed in PR #21).
 - 22B-2 split by the teacher into 22B-2a (80 AYT Sözel questions, Sözel and EA minis, full AYT) and 22B-2b (Felsefe and
   Din Kültürü in Quiz Center, grade-specific MEB questions). 22B-2a (samples shown and approved first): built and tested,
-  backup tag `backup/before-stage-22b2a` (local only); merged into `main` (PR #22), deployed, tested on the tablet and approved by the teacher. 22B-2b: MEB programs found (Felsefe FEL.10 10 + FEL.11 12 outcomes; Din Kültürü DKAB.9–12: 20, 17, 16, 20 outcomes, program PDF on tymm.meb.gov.tr/ogretim-programlari); plan and samples shown, waiting for approval.
+  backup tag `backup/before-stage-22b2a` (local only); merged into `main` (PR #22), deployed, tested on the tablet and approved by the teacher.
+  22B-2b (124 Felsefe and Din Kültürü questions; samples shown and approved first, teacher chose one stage): built and tested,
+  backup tag `backup/before-stage-22b2b` (local only). Waiting for approval to open a PR.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
