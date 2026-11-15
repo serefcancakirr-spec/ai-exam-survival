@@ -49,7 +49,7 @@ const saved = (page) => page.evaluate((k) => JSON.parse(localStorage.getItem(k) 
     const { context, page } = await open(browser);
     const box = tid(page, 'exam-mode');
     const text = await box.innerText();
-    assert(text.includes('Deneme sınavı · TYT') && text.includes('12. sınıf · YKS'), 'title and badge');
+    assert(text.includes('Deneme sınavı · YKS') && text.includes('12. sınıf · YKS'), 'title and badge');
     assert((await tid(page, 'button-exam-start-mini').innerText()).includes('30 soru · 41 dakika'), 'mini');
     assert((await tid(page, 'button-exam-start-full').innerText()).includes('120 soru · 165 dakika'), 'full');
     const note = await tid(page, 'exam-note').innerText();
@@ -185,7 +185,7 @@ const saved = (page) => page.evaluate((k) => JSON.parse(localStorage.getItem(k) 
 
   await check('[en] English mode: labels in English, the questions stay Turkish (it is a Turkish exam)', async () => {
     const { context, page } = await open(browser, { lang: 'en' });
-    assert((await tid(page, 'exam-mode').innerText()).includes('Practice exam · TYT'), 'title');
+    assert((await tid(page, 'exam-mode').innerText()).includes('Practice exam · YKS'), 'title');
     await tid(page, 'button-exam-start-full').click();
     assert((await tid(page, 'exam-timer').innerText()).includes('2:45:00'), 'full timer');
     assert((await tid(page, 'exam-tab-turkce').innerText()).includes('Turkish 0/40'), await tid(page, 'exam-tab-turkce').innerText());

@@ -1,18 +1,24 @@
-// Stage 22A: YKS exam mode (TYT) – rules without screen code, so they can be tested on their own.
+// Stage 22A: YKS exam mode (TYT; Stage 22B-1 adds AYT Sayısal) – rules without screen code, so they can be tested on their own.
 // Net = correct − wrong ÷ 4. No scores, rankings or university estimates (teacher's rule).
 // Saved in this browser only, under one key (teacher approved): the last 20 results and the exam in progress.
 
-import { SECTION_OF, TYT_BY_ID, TYT_LETTERS, TYT_QUESTIONS, type TytLetter, type TytQuestion, type TytSection, type TytSubject } from './tyt-bank';
+import { SECTION_OF, TYT_LETTERS, type TytLetter, type TytQuestion, type TytSection, type TytSubject } from './tyt-bank';
+import { EXAM_BY_ID, EXAM_QUESTIONS } from './exam-bank';
 
 export const EXAM_STORAGE_KEY = 'ai-exam-survival:exam-mode:v1';
 export const MAX_SAVED_EXAMS = 20;
 
-export type ExamKind = 'tyt-mini' | 'tyt-full';
-export const SECTION_ORDER: TytSection[] = ['turkce', 'sosyal', 'matematik', 'fen'];
-const SUBJECT_ORDER: TytSubject[] = ['turkce', 'tarih', 'cografya', 'felsefe', 'din', 'matematik', 'fizik', 'kimya', 'biyoloji'];
+export const EXAM_KINDS = ['tyt-mini', 'tyt-full', 'ayt-say-mini', 'ayt-mat', 'ayt-fen'] as const;
+export type ExamKind = (typeof EXAM_KINDS)[number];
+export const SECTION_ORDER: TytSection[] = ['turkce', 'sosyal', 'matematik', 'fen', 'aytmatematik', 'aytfen'];
+const SUBJECT_ORDER: TytSubject[] = [
+  'turkce', 'tarih', 'cografya', 'felsefe', 'din', 'matematik', 'fizik', 'kimya', 'biyoloji',
+  'aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji',
+];
 
 /** Real TYT: 120 questions, 165 minutes. The mini exam keeps the proportions and the time per question. */
-export const EXAM_PLAN: Record<ExamKind, { questions: number; minutes: number; perSubject: Record<TytSubject, number> }> = {
+/** Real AYT: 160 questions, 180 minutes (1,125 min per question); each 40-question test gets 45 minutes. */
+export const EXAM_PLAN: Record<ExamKind, { questions: number; minutes: number; perSubject: Partial<Record<TytSubject, number>> }> = {
   'tyt-full': {
     questions: 120,
     minutes: 165,
@@ -24,6 +30,14 @@ export const EXAM_PLAN: Record<ExamKind, { questions: number; minutes: number; p
     // Sosyal 5 and Fen 5: one subject gets the extra question, taking turns from exam to exam (see buildExam)
     perSubject: { turkce: 10, tarih: 1, cografya: 1, felsefe: 1, din: 1, matematik: 10, fizik: 2, kimya: 2, biyoloji: 1 },
   },
+  // Stage 22B-1: AYT Sayısal. Mini = Matematik 20 + Fen 20 (Fizik, Kimya, Biyoloji 7/7/6, the 6 taking turns).
+  'ayt-say-mini': {
+    questions: 40,
+    minutes: 45,
+    perSubject: { aytmatematik: 20, aytfizik: 7, aytkimya: 7, aytbiyoloji: 6 },
+  },
+  'ayt-mat': { questions: 40, minutes: 45, perSubject: { aytmatematik: 40 } },
+  'ayt-fen': { questions: 40, minutes: 45, perSubject: { aytfizik: 14, aytkimya: 13, aytbiyoloji: 13 } },
 };
 
 export type RunningExam = {
@@ -57,7 +71,7 @@ export const emptyExamData = (): ExamData => ({ version: 1, results: [], current
 // ---------- building an exam ----------
 
 const POOL: Record<TytSubject, TytQuestion[]> = Object.fromEntries(
-  SUBJECT_ORDER.map((subject) => [subject, TYT_QUESTIONS.filter((q) => q.subject === subject)]),
+  SUBJECT_ORDER.map((subject) => [subject, EXAM_QUESTIONS.filter((q) => q.subject === subject)]),
 ) as Record<TytSubject, TytQuestion[]>;
 
 /**
@@ -69,7 +83,8 @@ export function buildExam(kind: ExamKind, round: number): string[] {
   const counts = { ...EXAM_PLAN[kind].perSubject };
   if (kind === 'tyt-mini') {
     // Sosyal 5 = 1 each + 1 extra; Fen 5 = 2 + 2 + 1, the single one taking turns
-    counts[(['tarih', 'cografya', 'felsefe', 'din'] as const)[round % 4]] += 1;
+    const extra = (['tarih', 'cografya', 'felsefe', 'din'] as const)[round % 4];
+    counts[extra] = (counts[extra] ?? 0) + 1;
     const fen = [
       { fizik: 2, kimya: 2, biyoloji: 1 },
       { fizik: 2, kimya: 1, biyoloji: 2 },
@@ -77,10 +92,18 @@ export function buildExam(kind: ExamKind, round: number): string[] {
     ][round % 3];
     Object.assign(counts, fen);
   }
+  if (kind === 'ayt-say-mini') {
+    Object.assign(counts, [
+      { aytfizik: 7, aytkimya: 7, aytbiyoloji: 6 },
+      { aytfizik: 7, aytkimya: 6, aytbiyoloji: 7 },
+      { aytfizik: 6, aytkimya: 7, aytbiyoloji: 7 },
+    ][round % 3]);
+  }
   const ids: string[] = [];
   for (const subject of SUBJECT_ORDER) {
     const pool = POOL[subject];
-    const need = counts[subject];
+    const need = counts[subject] ?? 0;
+    if (need === 0) continue;
     if (need >= pool.length) {
       ids.push(...pool.map((q) => q.id));
       continue;
@@ -123,7 +146,7 @@ export const net = (correct: number, wrong: number) => Math.round((correct - wro
 export function scoreExam(exam: RunningExam, now = new Date(), timedOut = false): ExamResult {
   const sections: SectionResult[] = SECTION_ORDER.map((section) => ({ section, total: 0, correct: 0, wrong: 0, blank: 0, net: 0 }));
   for (const id of exam.questionIds) {
-    const question = TYT_BY_ID.get(id);
+    const question = EXAM_BY_ID.get(id);
     if (!question) continue;
     const row = sections.find((s) => s.section === SECTION_OF[question.subject])!;
     row.total += 1;
@@ -159,7 +182,7 @@ export function roundFor(data: ExamData, kind: ExamKind) {
 // ---------- reading saved data (never trust it blindly) ----------
 
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
-const isKind = (v: unknown): v is ExamKind => v === 'tyt-mini' || v === 'tyt-full';
+const isKind = (v: unknown): v is ExamKind => (EXAM_KINDS as readonly unknown[]).includes(v);
 const isDate = (v: unknown) => typeof v === 'string' && !Number.isNaN(Date.parse(v));
 const isIds = (v: unknown): v is string[] => Array.isArray(v) && v.length > 0 && v.every((x) => typeof x === 'string');
 const isAnswers = (v: unknown): v is Record<string, TytLetter> =>

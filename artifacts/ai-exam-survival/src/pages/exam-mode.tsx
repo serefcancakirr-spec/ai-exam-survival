@@ -5,7 +5,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, CheckCircle2, Clock3, Eraser, Flag, GraduationCap } from 'lucide-react';
 import { useI18n } from '@/i18n/i18n';
 import type { MessageKey } from '@/i18n/translations-en';
-import { SECTION_OF, TYT_BY_ID, TYT_LETTERS, type TytLetter, type TytQuestion, type TytSection, type TytSubject } from './tyt-bank';
+import { SECTION_OF, TYT_LETTERS, type TytLetter, type TytQuestion, type TytSection, type TytSubject } from './tyt-bank';
+import { EXAM_BY_ID } from './exam-bank';
 import {
   EXAM_PLAN,
   EXAM_STORAGE_KEY,
@@ -28,6 +29,8 @@ const SECTION_KEY: Record<TytSection, MessageKey> = {
   sosyal: 'exam.section.sosyal',
   matematik: 'exam.section.matematik',
   fen: 'exam.section.fen',
+  aytmatematik: 'exam.section.aytmatematik',
+  aytfen: 'exam.section.aytfen',
 };
 const SUBJECT_KEY: Record<TytSubject, MessageKey> = {
   turkce: 'exam.subject.turkce',
@@ -39,8 +42,18 @@ const SUBJECT_KEY: Record<TytSubject, MessageKey> = {
   fizik: 'exam.subject.fizik',
   kimya: 'exam.subject.kimya',
   biyoloji: 'exam.subject.biyoloji',
+  aytmatematik: 'exam.subject.aytmatematik',
+  aytfizik: 'exam.subject.fizik',
+  aytkimya: 'exam.subject.kimya',
+  aytbiyoloji: 'exam.subject.biyoloji',
 };
-const KIND_KEY: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full' };
+const KIND_KEY: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full', 'ayt-say-mini': 'exam.kind.aytSayMini', 'ayt-mat': 'exam.kind.aytMat', 'ayt-fen': 'exam.kind.aytFen' };
+/** Stage 22B-1: exams grouped on the start screen. Test ids of the TYT buttons stay as in Stage 22A. */
+const GROUPS: { title: MessageKey; kinds: ExamKind[] }[] = [
+  { title: 'exam.groupTyt', kinds: ['tyt-mini', 'tyt-full'] },
+  { title: 'exam.groupAytSay', kinds: ['ayt-say-mini', 'ayt-mat', 'ayt-fen'] },
+];
+const START_TEST_ID: Record<ExamKind, string> = { 'tyt-mini': 'mini', 'tyt-full': 'full', 'ayt-say-mini': 'ayt-say-mini', 'ayt-mat': 'ayt-mat', 'ayt-fen': 'ayt-fen' };
 
 const button =
   'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[13px] font-bold text-[#4c6a8c] transition-colors hover:border-[#b9c7d6] disabled:cursor-not-allowed disabled:opacity-45';
@@ -165,14 +178,17 @@ function ExamHome({ results, onStart, onOpen }: { results: ExamResult[]; onStart
       </div>
       <p className="mt-3 max-w-[680px] text-[13px] leading-[1.7] text-[#4f5a64]">{t('exam.intro')}</p>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        {(['tyt-mini', 'tyt-full'] as const).map((kind) => (
+      {GROUPS.map((group) => (
+      <div key={group.title} className="mt-4">
+      <h3 className="text-[14px] font-bold text-[#2b3a49]">{t(group.title)}</h3>
+      <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-testid={`exam-group-${group.title === 'exam.groupTyt' ? 'tyt' : 'ayt-say'}`}>
+        {group.kinds.map((kind) => (
           <button
             key={kind}
             type="button"
             onClick={() => onStart(kind)}
             className="flex min-h-[88px] flex-col items-start justify-center rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3 text-left transition-colors hover:border-[#5376a0]"
-            data-testid={`button-exam-start-${kind === 'tyt-mini' ? 'mini' : 'full'}`}
+            data-testid={`button-exam-start-${START_TEST_ID[kind]}`}
           >
             <span className="text-[15px] font-bold text-[#2b3a49]">{t(KIND_KEY[kind])}</span>
             <span className="mt-1 text-[12px] text-[#4f5a64]">
@@ -184,6 +200,8 @@ function ExamHome({ results, onStart, onOpen }: { results: ExamResult[]; onStart
           </button>
         ))}
       </div>
+      </div>
+      ))}
       <p className="mt-3 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-note">{t('exam.note')}</p>
 
       <h3 className="font-display mt-6 text-[17px] font-bold text-[#2b3a49]">{t('exam.historyTitle')}</h3>
@@ -230,7 +248,7 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
     }
   }, [left, onFinish]);
 
-  const questions = useMemo(() => exam.questionIds.map((id) => TYT_BY_ID.get(id)).filter((q): q is TytQuestion => Boolean(q)), [exam.questionIds]);
+  const questions = useMemo(() => exam.questionIds.map((id) => EXAM_BY_ID.get(id)).filter((q): q is TytQuestion => Boolean(q)), [exam.questionIds]);
   const index = Math.min(exam.currentIndex, questions.length - 1);
   const question = questions[index];
   const section = SECTION_OF[question.subject];
@@ -379,7 +397,7 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
   );
 }
 
-const EXAM_KIND_TITLE: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full' };
+const EXAM_KIND_TITLE: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full', 'ayt-say-mini': 'exam.kind.aytSayMini', 'ayt-mat': 'exam.kind.aytMat', 'ayt-fen': 'exam.kind.aytFen' };
 
 // ---------- results and review ----------
 
@@ -395,7 +413,7 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
   );
   const items = result.questionIds
     .flatMap((id, i) => {
-      const q = TYT_BY_ID.get(id);
+      const q = EXAM_BY_ID.get(id);
       const chosen: TytLetter | undefined = result.answers[id];
       return q ? [{ q, i, chosen }] : [];
     })
