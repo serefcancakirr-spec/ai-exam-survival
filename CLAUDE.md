@@ -258,7 +258,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   done, merged into `main` (PR #19), deployed, tested on the tablet and approved by the teacher.
 - 22B split by the teacher into 22B-1 Sayısal and 22B-2 Sözel; Felsefe and Din Kültürü join the normal Quiz Center subjects
   with 22B-2. 22B-1 (80 AYT Sayısal questions; samples shown and approved first): built and tested, backup tag
-  `backup/before-stage-22b1` (local only). Waiting for approval to open a PR.
+  `backup/before-stage-22b1` (local only); merged into `main` (PR #20), deployed. Waiting for the teacher's tablet test.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
