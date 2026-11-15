@@ -321,7 +321,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only); merged into `main` (PR #25), deployed,
   tested on the tablet and approved by the teacher.
 - 22D (YDT word decks, 300 words from the real booklet word count; teacher asked for frequent words from a reliable source;
-  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only). Not merged yet.
+  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only); merged into `main` (PR #26), deployed. Tablet test pending.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
