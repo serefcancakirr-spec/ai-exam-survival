@@ -398,7 +398,7 @@ export const TR: Record<MessageKey, string> = {
   'exam.kind.ydtFull': 'Tam YDT',
   'exam.section.ydt': 'Yabancı Dil Testi (İngilizce)',
   'exam.subject.ydt': 'İngilizce',
-  'exam.ydtNote': 'Sorular İngilizce, açıklamalar Türkçe. Üç farklı tam YDT var; her yeni deneme sıradaki soruları getirir (mini denemeler her tam denemenin yarısıdır).',
+  'exam.ydtNote': 'Sorular İngilizce, açıklamalar Türkçe. Üç farklı tam YDT var; her yeni deneme sıradaki soruları getirir (mini denemeler her tam denemenin yarısıdır). Soru türleri ve sayıları gerçek YDT kitapçıklarındaki gibidir.',
   'exam.kind.aytSozMini': 'AYT Sözel mini deneme',
   'exam.kind.aytEaMini': 'AYT Eşit Ağırlık mini deneme',
   'exam.kind.aytTde': 'Türk Dili ve Edebiyatı–Sosyal Bilimler-1 testi',

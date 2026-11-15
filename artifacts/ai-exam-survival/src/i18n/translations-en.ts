@@ -399,7 +399,7 @@ export const EN = {
   'exam.kind.ydtFull': 'Full YDT',
   'exam.section.ydt': 'Foreign Language Test (English)',
   'exam.subject.ydt': 'English',
-  'exam.ydtNote': 'Questions in English, explanations in Turkish. There are three different full YDTs; each new exam brings the next questions (a mini exam is half of a full one).',
+  'exam.ydtNote': 'Questions in English, explanations in Turkish. There are three different full YDTs; each new exam brings the next questions (a mini exam is half of a full one). Question types and numbers follow the real YDT booklets.',
   'exam.kind.aytSozMini': 'AYT Sözel mini exam',
   'exam.kind.aytEaMini': 'AYT Equal Weight mini exam',
   'exam.kind.aytTde': 'Turkish Literature–Social Sciences-1 test',
