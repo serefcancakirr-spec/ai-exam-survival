@@ -19,7 +19,7 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 197/197; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  Expected today: logic 198/198; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
   (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
@@ -174,6 +174,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Din Kültürü 5 each; Temel Matematik 40; Fizik 7, Kimya 7, Biyoloji 6), five options A–E, Turkish in both languages.
   First source option = correct; number answers (and I–V) are shown in increasing order like ÖSYM, others rotated.
   Ids `tyt-<subject>-<n>`. Never write "ÖSYM onaylı" / "MEB onaylı": they are original questions in the ÖSYM style.
+  Explanations never name an option by its letter (options move; the teacher found a mismatch): quote the option instead.
+  `stage22b-model` checks this for every exam question.
 - `src/pages/exam-mode-model.ts` (pure, tested): mini exam 30 questions / 41 min (Türkçe 10, Sosyal 5, Matematik 10, Fen 5,
   same proportions and time per question as the real 120 / 165 min), full exam 120 / 165 min; real TYT order; each new
   mini continues where the last one stopped (`round`). Time from `endsAt` (keeps running if the page closes; an exam whose

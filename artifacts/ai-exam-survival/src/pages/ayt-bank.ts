@@ -155,7 +155,7 @@ const SEEDS: Seed[] = [
   // ======================= AYT BİYOLOJİ (13) =======================
   q('aytbiyoloji', 'Protein sentezi (transkripsiyon)', '', 'Bir DNA molekülünün kalıp zincirindeki baz dizisi 3′–TAC GGA TTC–5′ şeklindedir. Bu zincirden sentezlenen mRNA’nın baz dizisi aşağıdakilerden hangisidir?',
     ['5′–AUG CCU AAG–3′', '5′–ATG CCT AAG–3′', '5′–UAC GGA UUC–3′', '3′–AUG CCU AAG–5′', '5′–GAA UCC GUA–3′'],
-    'mRNA kalıp zincire tamamlayıcı ve ters yönlü (5′→3′) sentezlenir; RNA’da T yerine U bulunur: T→A, A→U, C→G, G→C. Sonuç 5′–AUG CCU AAG–3′. B’de T kullanılmış, D’de yön ters yazılmıştır.'),
+    'mRNA kalıp zincire tamamlayıcı ve ters yönlü (5′→3′) sentezlenir; RNA’da T yerine U bulunur: T→A, A→U, C→G, G→C. Sonuç 5′–AUG CCU AAG–3′. “5′–ATG CCT AAG–3′” seçeneğinde RNA’da bulunmayan T kullanılmış, “3′–AUG CCU AAG–5′” seçeneğinde ise yön ters yazılmıştır.'),
   q('aytbiyoloji', 'Sinir sistemi', '', 'Bir nörondan diğerine impulsun aktarıldığı bölgeye ne ad verilir?', ['Sinaps', 'Akson', 'Dendrit', 'Miyelin kılıf', 'Ranvier boğumu'],
     'İki nöron arasındaki iletim bölgesi sinapstır; impuls burada nörotransmitterlerle aktarılır. Akson ve dendrit nöronun kendi uzantılarıdır.'),
   q('aytbiyoloji', 'Endokrin sistem', '', 'Kandaki glikoz düzeyi yükseldiğinde pankreastan salgılanarak glikoz düzeyini düşüren hormon aşağıdakilerden hangisidir?', ['İnsülin', 'Glukagon', 'Adrenalin', 'Tiroksin', 'Büyüme hormonu'],
