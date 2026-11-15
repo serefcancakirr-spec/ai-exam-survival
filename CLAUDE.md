@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 223/223; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout).
+  Expected today: logic 228/228; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -213,8 +213,19 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   `YDT_ALL_QUESTIONS` / `EXAM_BY_ID` so exams saved before can be reviewed; old ids keep their question and option order.
   `ydt-bank.ts` builds the sets in the booklet order from `YDT_TOPIC` order. Minis: first half has the cloze text and
   2 reading texts, second half 3 reading texts (no cloze). Never copy ÖSYM questions (their booklets forbid it).
-- Next: Stage 22D YDT word decks (approved: 10 decks × 30 words from a word count of the 2018–2026 ÖSYM YDT booklets +
-  the Academic Word List; each card says in how many of the 9 booklets the word appears; then grade decks as a later stage), then Stage 23 PWA.
+- Next: grade word decks for MEB English themes (approved as a later stage, plan first), then Stage 23 PWA. Separate approvals.
+
+## YDT word decks (Stage 22D)
+- `src/pages/flashcards-ydt-words.ts`: 10 decks × 30 words (`YDT_DECK_KEYS`: verbs1, verbs2, adjectives, nouns, adverbs,
+  phrasal, prepositions, connectors, science, society), chosen by counting the words (all forms) of the nine ÖSYM YDT English
+  booklets 2018–2026 and checked against the Academic Word List (Victoria University of Wellington). Each word:
+  `[word, Turkish, original example, years (of 9 booklets), synonym, tested]` where `tested` = years it was an option of a
+  vocabulary (1–8) or grammar (9–15) question. These are real counts: never edit them by hand; recount from the booklets
+  (scripts were one-off in the session scratchpad; the booklets are not stored in the repo, ÖSYM forbids copying).
+- Smart Flashcards box "YDT kelime desteleri" (`ydt-word-decks`, buttons `button-add-ydt-deck-<key>`) under the level decks:
+  a deck is added only on tap, like the level decks (id `ydt-words-<key>`, grade 12 or the grade in the filter, subject English,
+  name "YDT – …" in the language in use). Card front "word — “example”", answer Turkish meaning, explanation = synonym +
+  booklet count + option years (`ydtWordNote`, TR/EN, Turkish number endings 9’unda, 6’sında …).
 
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
@@ -307,7 +318,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - 22C (YDT English; plan and 5 samples shown and approved; teacher asked for more questions and chose 240 = 3 full YDTs):
   built and tested, backup tag `backup/before-stage-22c` (local only); merged into `main` (PR #24), deployed.
 - 22C-2 (YDT sets in the real ÖSYM booklet layout, 45 new questions incl. the missing "Durumda söylenecek söz" type;
-  samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only); merged into `main` (PR #25), deployed. Waiting for the teacher's tablet test.
+  samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only); merged into `main` (PR #25), deployed,
+  tested on the tablet and approved by the teacher.
+- 22D (YDT word decks, 300 words from the real booklet word count; teacher asked for frequent words from a reliable source;
+  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only). Not merged yet.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked

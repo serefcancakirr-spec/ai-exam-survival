@@ -47,6 +47,7 @@ import {
   type StudyMode,
 } from './flashcards-model';
 import { ENGLISH_LEVELS, LEVEL_DECK_GRADE, createLevelDeck, levelDeckId, levelDeckName } from './flashcards-english-levels';
+import { YDT_DECK_KEYS, YDT_DECK_NAMES, createYdtDeck, ydtDeckId, ydtDeckName, type YdtDeckKey } from './flashcards-ydt-words';
 import type { EnglishLevel } from './quiz-bank-english';
 import { Menti } from '@/components/menti';
 import { deckName, deckTopic, localizeCard } from '@/i18n/content';
@@ -749,6 +750,21 @@ export default function SmartFlashcardsPage() {
     window.requestAnimationFrame(() => studyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   }
 
+  // Stage 22D: add a YDT word deck (only when the student taps its button); grade 12 unless a grade filter is chosen.
+  function addYdtDeck(key: YdtDeckKey) {
+    if (data.decks.some((deck) => deck.id === ydtDeckId(key))) return;
+    const grade = filterGrade !== 'all' ? filterGrade : '12';
+    let name = ydtDeckName(key, lang);
+    if (findDuplicateDeck(name, data.decks, null)) name = `${name} 2`;
+    const { deck, cards } = createYdtDeck(key, lang, grade, name);
+    setData((current) => ({ ...current, decks: [...current.decks, deck], cards: [...current.cards, ...cards], selectedDeckId: deck.id }));
+    setSession(createSession(deck.id, 'learn', cards, data));
+    setDeckForm(null);
+    setConfirm(null);
+    setNotice({ tone: 'success', message: `“${deck.name}” was added with ${cards.length} words. Start with Learn mode.` });
+    window.requestAnimationFrame(() => studyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
+
   function restoreStarters() {
     const { data: next, restored } = restoreStarterDecks(data);
     setData(next);
@@ -1323,6 +1339,36 @@ export default function SmartFlashcardsPage() {
                   data-testid={`button-add-level-deck-${level.toLowerCase()}`}
                 >
                   {added ? `✓ ${level}` : `+ ${level}`}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-3 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="ydt-word-decks">
+          <p className="text-[12px] font-bold text-[#384959]">{tx('YDT word decks')}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+            {tx('30 words each, chosen by counting the words in the ÖSYM YDT English booklets 2018–2026. Each card shows in how many booklets the word appears. A deck is added only when you tap it.')}
+          </p>
+          <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {YDT_DECK_KEYS.map((key) => {
+              const added = data.decks.some((deck) => deck.id === ydtDeckId(key));
+              const label = YDT_DECK_NAMES[key][lang];
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => addYdtDeck(key)}
+                  disabled={added}
+                  aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
+                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                    added
+                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
+                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                  }`}
+                  data-testid={`button-add-ydt-deck-${key}`}
+                >
+                  {added ? `✓ ${label}` : `+ ${label}`}
                 </button>
               );
             })}
