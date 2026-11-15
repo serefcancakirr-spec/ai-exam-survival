@@ -295,7 +295,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   22B-2b (124 Felsefe and Din Kültürü questions; samples shown and approved first, teacher chose one stage): built and tested,
   backup tag `backup/before-stage-22b2b` (local only); merged into `main` (PR #23), deployed, tested on the tablet and approved by the teacher.
 - 22C (YDT English; plan and 5 samples shown and approved; teacher asked for more questions and chose 240 = 3 full YDTs):
-  built and tested, backup tag `backup/before-stage-22c` (local only). Waiting for approval to open a PR.
+  built and tested, backup tag `backup/before-stage-22c` (local only); merged into `main` (PR #24), deployed. Waiting for the teacher's tablet test.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
