@@ -83,3 +83,8 @@ test('AYT results are scored per test and saved in the same shape; older TYT-onl
   const old = readExamData(JSON.stringify({ version: 1, results: [], current: startExam('tyt-mini', 0) }));
   assert.equal(old.canSave, true);
 });
+
+test('explanations never name an option by its letter (the options move, so a letter would point to the wrong one)', () => {
+  const letterRef = /(?<![°A-Za-zÇĞİÖŞÜçğıöşü|(])[A-E](’|')(de|da|deki|daki)\b|\b[A-E] seçene|\b[A-E], [A-E] ve [A-E]\b/;
+  for (const q of EXAM_QUESTIONS) assert.ok(!letterRef.test(q.explanation), `${q.id}: ${q.explanation.slice(0, 80)}`);
+});
