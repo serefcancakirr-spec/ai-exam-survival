@@ -307,7 +307,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - 22C (YDT English; plan and 5 samples shown and approved; teacher asked for more questions and chose 240 = 3 full YDTs):
   built and tested, backup tag `backup/before-stage-22c` (local only); merged into `main` (PR #24), deployed.
 - 22C-2 (YDT sets in the real ÖSYM booklet layout, 45 new questions incl. the missing "Durumda söylenecek söz" type;
-  samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only). Not merged yet.
+  samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only); merged into `main` (PR #25), deployed. Waiting for the teacher's tablet test.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
