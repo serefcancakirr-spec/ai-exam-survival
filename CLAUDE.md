@@ -285,7 +285,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Din Kültürü in Quiz Center, grade-specific MEB questions). 22B-2a (samples shown and approved first): built and tested,
   backup tag `backup/before-stage-22b2a` (local only); merged into `main` (PR #22), deployed, tested on the tablet and approved by the teacher.
   22B-2b (124 Felsefe and Din Kültürü questions; samples shown and approved first, teacher chose one stage): built and tested,
-  backup tag `backup/before-stage-22b2b` (local only); merged into `main` (PR #23), deployed. Waiting for the teacher's tablet test.
+  backup tag `backup/before-stage-22b2b` (local only); merged into `main` (PR #23), deployed, tested on the tablet and approved by the teacher.
+- 22C (YDT English): plan and 5 samples shown (80 questions in the YDT question types, mini ~40 / full 80 in 180 min, passages above questions); waiting for approval.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,
