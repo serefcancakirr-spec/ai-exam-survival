@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 218/218; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT).
+  Expected today: logic 223/223; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -204,7 +204,17 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   (instructions Turkish), explanations Turkish; texts in `passage` (dialogues with line breaks). Kinds `ydt-mini` (half of a set,
   40 / 90 min; a text never split) and `ydt-full` (80 / 180 min): full exams take sets 1→2→3, minis the six halves in turn.
   Start screen group "YDT · İngilizce" (`exam-group-ydt`, note `exam-ydt-note`).
-- Next: Stage 23 PWA. Separate approval.
+- Stage 22C-2 (teacher approved): the 22C counts were wrong. The real layout, the same in all ÖSYM YDT English booklets
+  2018–2026 (dokuman.osym.gov.tr, read in Stage 22D research): 1–8 Kelime, 9–15 Dil bilgisi, 16–20 Cloze (1 text),
+  21–28 Cümle tamamlama, 29–43 Okuma (5 texts × 3), 44–48 Diyalog, 49–53 Anlamca en yakın, 54–58 Durumda söylenecek söz
+  (situation in English ending with "----"), 59–63 Paragraf tamamlama, 64–69 Çeviri İng→Tr, 70–75 Tr→İng, 76–80 Anlam bütünlüğü.
+  `ydt-extra.ts`: 15 new questions per set (`YDT_EXTRA`, ids `ydt-<set>-81…95`) and 15 retired per set (`YDT_RETIRED`:
+  3 grammar, 2 sentence, the second cloze text, the 4th question of each reading text). Retired questions stay in
+  `YDT_ALL_QUESTIONS` / `EXAM_BY_ID` so exams saved before can be reviewed; old ids keep their question and option order.
+  `ydt-bank.ts` builds the sets in the booklet order from `YDT_TOPIC` order. Minis: first half has the cloze text and
+  2 reading texts, second half 3 reading texts (no cloze). Never copy ÖSYM questions (their booklets forbid it).
+- Next: Stage 22D YDT word decks (approved: 10 decks × 30 words from a word count of the 2018–2026 ÖSYM YDT booklets +
+  the Academic Word List; each card says in how many of the 9 booklets the word appears; then grade decks as a later stage), then Stage 23 PWA.
 
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
@@ -295,7 +305,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   22B-2b (124 Felsefe and Din Kültürü questions; samples shown and approved first, teacher chose one stage): built and tested,
   backup tag `backup/before-stage-22b2b` (local only); merged into `main` (PR #23), deployed, tested on the tablet and approved by the teacher.
 - 22C (YDT English; plan and 5 samples shown and approved; teacher asked for more questions and chose 240 = 3 full YDTs):
-  built and tested, backup tag `backup/before-stage-22c` (local only). Waiting for approval to open a PR.
+  built and tested, backup tag `backup/before-stage-22c` (local only); merged into `main` (PR #24), deployed.
+- 22C-2 (YDT sets in the real ÖSYM booklet layout, 45 new questions incl. the missing "Durumda söylenecek söz" type;
+  samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only). Not merged yet.
+- Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
+  (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,

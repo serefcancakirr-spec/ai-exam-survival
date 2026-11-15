@@ -1,7 +1,8 @@
 // Stage 22C: YDT (English) in the exam mode – three full sets of 80 questions (240), mini (40 / 90 min) and full (80 / 180 min).
+// Stage 22C-2: the sets follow the real ÖSYM booklet layout (checked in detail in stage22c2-model.test.ts).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { YDT_QUESTIONS, YDT_SETS, ydtHalfIds, ydtSetIds } from '../../artifacts/ai-exam-survival/src/pages/ydt-bank';
+import { YDT_ALL_QUESTIONS, YDT_QUESTIONS, YDT_SETS, ydtHalfIds, ydtSetIds } from '../../artifacts/ai-exam-survival/src/pages/ydt-bank';
 import { YDT_PLAN, YDT_TOPIC } from '../../artifacts/ai-exam-survival/src/pages/ydt-common';
 import { EXAM_BY_ID, EXAM_QUESTIONS } from '../../artifacts/ai-exam-survival/src/pages/exam-bank';
 import { TYT_LETTERS } from '../../artifacts/ai-exam-survival/src/pages/tyt-bank';
@@ -13,7 +14,8 @@ const answer = (id: string) => { const q = EXAM_BY_ID.get(id)!; return q.options
 
 test('240 YDT questions: three sets of 80 in the YDT question types, in the booklet order', () => {
   assert.equal(YDT_QUESTIONS.length, 240);
-  assert.equal(new Set(EXAM_QUESTIONS.map((q) => q.id)).size, 520, 'TYT 120 + AYT 160 + YDT 240, all ids different');
+  assert.equal(new Set(EXAM_QUESTIONS.map((q) => q.id)).size, 565, 'TYT 120 + AYT 160 + YDT 285 (240 used + 45 retired, kept for saved exams), all ids different');
+  assert.equal(YDT_ALL_QUESTIONS.length, 285);
   assert.equal(Object.values(YDT_PLAN).reduce((n, p) => n + p.full, 0), 80);
   assert.equal(Object.values(YDT_PLAN).reduce((n, p) => n + p.firstHalf, 0), 40);
   YDT_SETS.forEach((set, s) => {
@@ -22,13 +24,14 @@ test('240 YDT questions: three sets of 80 in the YDT question types, in the book
     const positions = set.map((q) => ORDER.indexOf(q.topic as never));
     assert.deepEqual(positions, [...positions].sort((a, b) => a - b), `set ${s + 1}: types not in the booklet order`);
     assert.ok(set.every((q) => q.subject === 'ydt'));
-    assert.deepEqual(ydtSetIds(s), Array.from({ length: 80 }, (_, i) => `ydt-${s + 1}-${i + 1}`));
+    assert.deepEqual(ydtSetIds(s), set.map((q) => q.id));
+    assert.ok(ydtSetIds(s).every((id) => id.startsWith(`ydt-${s + 1}-`)));
   });
 });
 
-test('texts: 2 cloze texts with 5 blanks and 5 reading texts with 4 questions in every set; a text’s questions follow each other', () => {
+test('texts: 1 cloze text with 5 blanks and 5 reading texts with 3 questions in every set; a text’s questions follow each other', () => {
   for (const set of YDT_SETS) {
-    for (const [topic, texts, each] of [[YDT_TOPIC.cloze, 2, 5], [YDT_TOPIC.reading, 5, 4]] as const) {
+    for (const [topic, texts, each] of [[YDT_TOPIC.cloze, 1, 5], [YDT_TOPIC.reading, 5, 3]] as const) {
       const qs = set.filter((q) => q.topic === topic);
       const passages = [...new Set(qs.map((q) => q.passage))];
       assert.equal(passages.length, texts, topic);
@@ -43,7 +46,7 @@ test('texts: 2 cloze texts with 5 blanks and 5 reading texts with 4 questions in
       for (const r of ['(I)', '(II)', '(III)', '(IV)', '(V)']) assert.ok(q.passage.includes(r), 'five numbered sentences');
       assert.deepEqual([...q.options].sort(), ['I', 'II', 'III', 'IV', 'V']);
     }
-    for (const q of set.filter((x) => x.topic === YDT_TOPIC.dialogue || x.topic === YDT_TOPIC.paragraph)) assert.ok(q.passage.includes('----'), 'gap in the text');
+    for (const q of set.filter((x) => x.topic === YDT_TOPIC.dialogue || x.topic === YDT_TOPIC.paragraph || x.topic === YDT_TOPIC.situation)) assert.ok(q.passage.includes('----'), 'gap in the text');
     for (const q of set.filter((x) => [YDT_TOPIC.vocab, YDT_TOPIC.grammar, YDT_TOPIC.sentence].includes(x.topic as never))) {
       assert.ok(q.prompt.includes('----') && !q.passage, `${q.topic}: sentence with a gap`);
     }
@@ -104,10 +107,11 @@ test('full exams take the three sets in turn; six minis are the six halves and s
     assert.deepEqual([...a, ...b].sort(), ydtSetIds(s).sort());
     // each half keeps the booklet order and has every question type
     for (const half of [a, b]) {
-      const nums = half.map((id) => Number(id.split('-')[2]));
+      const nums = half.map((id) => ydtSetIds(s).indexOf(id));
       assert.deepEqual(nums, [...nums].sort((x, y) => x - y));
       const topics = new Set(half.map((id) => EXAM_BY_ID.get(id)!.topic));
-      assert.equal(topics.size, ORDER.length, 'every question type in each mini');
+      // the one cloze text is in the first mini of a set; every other question type is in both minis
+      assert.equal(topics.size, half === a ? ORDER.length : ORDER.length - 1, 'every question type in each mini');
       // no reading or cloze text is split between the two halves
       for (const id of half) {
         const q = EXAM_BY_ID.get(id)!;
