@@ -17,6 +17,7 @@ export const APP_STORAGE_KEYS = [
   'ai-exam-survival:study-coach:v1',
   'ai-exam-survival:focus:v1',
   'ai-exam-survival:language:v1',
+  'ai-exam-survival:exam-mode:v1',
 ] as const;
 
 export const CONTACT_EMAIL = 'aiexamsurvival@gmail.com';
