@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 198/198; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams).
+  Expected today: logic 203/203; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -190,8 +190,14 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   `src/pages/exam-bank.ts` joins TYT and AYT (`EXAM_BY_ID`). New kinds: `ayt-say-mini` (Matematik 20 + Fen 20, 45 min;
   Fen 7/7/6 with the 6 taking turns), `ayt-mat` and `ayt-fen` (40 questions, 45 min each; real AYT gives 180 min for
   160 questions). Start screen groups: TYT and AYT · Sayısal; title "Deneme sınavı · YKS". Answers spread over A–E.
-- Next: 22B-2 AYT Sözel (Edebiyat–Sosyal-1 40, Sosyal-2 40; then EA mini and the full AYT) and, with it, Felsefe and
-  Din Kültürü as normal Quiz Center subjects (teacher chose 2b); then 22C YDT. Separate approvals.
+- Stage 22B-2a (AYT Sözel): `src/pages/ayt-sozel-bank.ts`, 80 questions: Edebiyat–Sosyal Bilimler-1 (Edebiyat 24, Tarih-1 10,
+  Coğrafya-1 6; section `ayttde`) and Sosyal Bilimler-2 (Tarih-2 11, Coğrafya-2 11, Felsefe/Mantık/Psikoloji/Sosyoloji 3 each,
+  Din 6; section `aytsos2`). New kinds: `ayt-soz-mini` (20 + 20, 45 min, every subject present, turns by `round`),
+  `ayt-ea-mini` (Edebiyat–Sosyal-1 20 + Matematik 20), `ayt-tde`, `ayt-sos2` (40 / 45 each) and `ayt-full` (all 160 in the
+  booklet order Edebiyat–Sosyal-1, Sosyal-2, Matematik, Fen; 180 min; unanswered tests count as blank).
+  Start screen groups: TYT, AYT · Sayısal, AYT · Sözel ve Eşit Ağırlık, AYT · Tam deneme.
+- Next: 22B-2b Felsefe and Din Kültürü as normal Quiz Center subjects, grade-specific from the MEB programs (teacher chose (b):
+  Felsefe 10–11, Din Kültürü 9–12); then 22C YDT. Separate approvals.
 
 ## About and Privacy (Stage 17)
 - `src/pages/about-page.tsx` at `/about`; texts are `about.*` keys. Every page footer has a small “Hakkında · Gizlilik” link
@@ -260,7 +266,11 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   done, merged into `main` (PR #19), deployed, tested on the tablet and approved by the teacher.
 - 22B split by the teacher into 22B-1 Sayısal and 22B-2 Sözel; Felsefe and Din Kültürü join the normal Quiz Center subjects
   with 22B-2. 22B-1 (80 AYT Sayısal questions; samples shown and approved first): built and tested, backup tag
-  `backup/before-stage-22b1` (local only); merged into `main` (PR #20), deployed. Waiting for the teacher's tablet test.
+  `backup/before-stage-22b1` (local only); merged into `main` (PR #20), deployed, tested on the tablet and approved by the
+  teacher (one explanation/option mismatch found and fixed in PR #21).
+- 22B-2 split by the teacher into 22B-2a (80 AYT Sözel questions, Sözel and EA minis, full AYT) and 22B-2b (Felsefe and
+  Din Kültürü in Quiz Center, grade-specific MEB questions). 22B-2a (samples shown and approved first): built and tested,
+  backup tag `backup/before-stage-22b2a` (local only). Waiting for approval to open a PR.
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
   for a softer, calmer, less "AI-looking" look; show 2–3 samples first; the "do not redesign" rule is lifted for that stage only,
   keep pages, navigation, modules, saved data and Menti) → Stage 21 English A1–C1 for every grade (21A grammar + vocabulary,

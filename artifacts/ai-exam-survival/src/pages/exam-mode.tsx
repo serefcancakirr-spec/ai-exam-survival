@@ -31,6 +31,8 @@ const SECTION_KEY: Record<TytSection, MessageKey> = {
   fen: 'exam.section.fen',
   aytmatematik: 'exam.section.aytmatematik',
   aytfen: 'exam.section.aytfen',
+  ayttde: 'exam.section.ayttde',
+  aytsos2: 'exam.section.aytsos2',
 };
 const SUBJECT_KEY: Record<TytSubject, MessageKey> = {
   turkce: 'exam.subject.turkce',
@@ -46,14 +48,27 @@ const SUBJECT_KEY: Record<TytSubject, MessageKey> = {
   aytfizik: 'exam.subject.fizik',
   aytkimya: 'exam.subject.kimya',
   aytbiyoloji: 'exam.subject.biyoloji',
+  aytedebiyat: 'exam.subject.edebiyat',
+  ayttarih1: 'exam.subject.tarih',
+  aytcografya1: 'exam.subject.cografya',
+  ayttarih2: 'exam.subject.tarih',
+  aytcografya2: 'exam.subject.cografya',
+  aytfelsefe: 'exam.subject.felsefe',
+  aytmantik: 'exam.subject.mantik',
+  aytpsikoloji: 'exam.subject.psikoloji',
+  aytsosyoloji: 'exam.subject.sosyoloji',
+  aytdin: 'exam.subject.din',
 };
-const KIND_KEY: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full', 'ayt-say-mini': 'exam.kind.aytSayMini', 'ayt-mat': 'exam.kind.aytMat', 'ayt-fen': 'exam.kind.aytFen' };
+const KIND_KEY: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full', 'ayt-say-mini': 'exam.kind.aytSayMini', 'ayt-mat': 'exam.kind.aytMat', 'ayt-fen': 'exam.kind.aytFen', 'ayt-soz-mini': 'exam.kind.aytSozMini', 'ayt-ea-mini': 'exam.kind.aytEaMini', 'ayt-tde': 'exam.kind.aytTde', 'ayt-sos2': 'exam.kind.aytSos2', 'ayt-full': 'exam.kind.aytFull' };
 /** Stage 22B-1: exams grouped on the start screen. Test ids of the TYT buttons stay as in Stage 22A. */
 const GROUPS: { title: MessageKey; kinds: ExamKind[] }[] = [
   { title: 'exam.groupTyt', kinds: ['tyt-mini', 'tyt-full'] },
   { title: 'exam.groupAytSay', kinds: ['ayt-say-mini', 'ayt-mat', 'ayt-fen'] },
+  { title: 'exam.groupAytSoz', kinds: ['ayt-soz-mini', 'ayt-ea-mini', 'ayt-tde', 'ayt-sos2'] },
+  { title: 'exam.groupAytFull', kinds: ['ayt-full'] },
 ];
-const START_TEST_ID: Record<ExamKind, string> = { 'tyt-mini': 'mini', 'tyt-full': 'full', 'ayt-say-mini': 'ayt-say-mini', 'ayt-mat': 'ayt-mat', 'ayt-fen': 'ayt-fen' };
+const GROUP_TEST_ID: Record<string, string> = { 'exam.groupTyt': 'tyt', 'exam.groupAytSay': 'ayt-say', 'exam.groupAytSoz': 'ayt-soz', 'exam.groupAytFull': 'ayt-full' };
+const START_TEST_ID: Record<ExamKind, string> = { 'tyt-mini': 'mini', 'tyt-full': 'full', 'ayt-say-mini': 'ayt-say-mini', 'ayt-mat': 'ayt-mat', 'ayt-fen': 'ayt-fen', 'ayt-soz-mini': 'ayt-soz-mini', 'ayt-ea-mini': 'ayt-ea-mini', 'ayt-tde': 'ayt-tde', 'ayt-sos2': 'ayt-sos2', 'ayt-full': 'ayt-full' };
 
 const button =
   'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[13px] font-bold text-[#4c6a8c] transition-colors hover:border-[#b9c7d6] disabled:cursor-not-allowed disabled:opacity-45';
@@ -181,7 +196,7 @@ function ExamHome({ results, onStart, onOpen }: { results: ExamResult[]; onStart
       {GROUPS.map((group) => (
       <div key={group.title} className="mt-4">
       <h3 className="text-[14px] font-bold text-[#2b3a49]">{t(group.title)}</h3>
-      <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-testid={`exam-group-${group.title === 'exam.groupTyt' ? 'tyt' : 'ayt-say'}`}>
+      <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-testid={`exam-group-${GROUP_TEST_ID[group.title]}`}>
         {group.kinds.map((kind) => (
           <button
             key={kind}
@@ -200,6 +215,7 @@ function ExamHome({ results, onStart, onOpen }: { results: ExamResult[]; onStart
           </button>
         ))}
       </div>
+      {group.title === 'exam.groupAytFull' && <p className="mt-2 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-full-note">{t('exam.fullNote')}</p>}
       </div>
       ))}
       <p className="mt-3 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-note">{t('exam.note')}</p>
@@ -397,7 +413,7 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
   );
 }
 
-const EXAM_KIND_TITLE: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full', 'ayt-say-mini': 'exam.kind.aytSayMini', 'ayt-mat': 'exam.kind.aytMat', 'ayt-fen': 'exam.kind.aytFen' };
+const EXAM_KIND_TITLE: Record<ExamKind, MessageKey> = { 'tyt-mini': 'exam.kind.mini', 'tyt-full': 'exam.kind.full', 'ayt-say-mini': 'exam.kind.aytSayMini', 'ayt-mat': 'exam.kind.aytMat', 'ayt-fen': 'exam.kind.aytFen', 'ayt-soz-mini': 'exam.kind.aytSozMini', 'ayt-ea-mini': 'exam.kind.aytEaMini', 'ayt-tde': 'exam.kind.aytTde', 'ayt-sos2': 'exam.kind.aytSos2', 'ayt-full': 'exam.kind.aytFull' };
 
 // ---------- results and review ----------
 

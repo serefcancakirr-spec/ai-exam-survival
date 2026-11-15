@@ -8,11 +8,14 @@ import { EXAM_BY_ID, EXAM_QUESTIONS } from './exam-bank';
 export const EXAM_STORAGE_KEY = 'ai-exam-survival:exam-mode:v1';
 export const MAX_SAVED_EXAMS = 20;
 
-export const EXAM_KINDS = ['tyt-mini', 'tyt-full', 'ayt-say-mini', 'ayt-mat', 'ayt-fen'] as const;
+export const EXAM_KINDS = ['tyt-mini', 'tyt-full', 'ayt-say-mini', 'ayt-mat', 'ayt-fen', 'ayt-soz-mini', 'ayt-ea-mini', 'ayt-tde', 'ayt-sos2', 'ayt-full'] as const;
 export type ExamKind = (typeof EXAM_KINDS)[number];
-export const SECTION_ORDER: TytSection[] = ['turkce', 'sosyal', 'matematik', 'fen', 'aytmatematik', 'aytfen'];
+// AYT booklet order: Türk Dili ve Edebiyatı–Sosyal Bilimler-1, Sosyal Bilimler-2, Matematik, Fen Bilimleri.
+export const SECTION_ORDER: TytSection[] = ['turkce', 'sosyal', 'matematik', 'fen', 'ayttde', 'aytsos2', 'aytmatematik', 'aytfen'];
 const SUBJECT_ORDER: TytSubject[] = [
   'turkce', 'tarih', 'cografya', 'felsefe', 'din', 'matematik', 'fizik', 'kimya', 'biyoloji',
+  'aytedebiyat', 'ayttarih1', 'aytcografya1',
+  'ayttarih2', 'aytcografya2', 'aytfelsefe', 'aytmantik', 'aytpsikoloji', 'aytsosyoloji', 'aytdin',
   'aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji',
 ];
 
@@ -38,6 +41,33 @@ export const EXAM_PLAN: Record<ExamKind, { questions: number; minutes: number; p
   },
   'ayt-mat': { questions: 40, minutes: 45, perSubject: { aytmatematik: 40 } },
   'ayt-fen': { questions: 40, minutes: 45, perSubject: { aytfizik: 14, aytkimya: 13, aytbiyoloji: 13 } },
+  // Stage 22B-2a: AYT Sözel and Eşit Ağırlık, the two Sözel tests alone, and the full AYT (all four tests, 160 / 180 min).
+  'ayt-soz-mini': {
+    questions: 40,
+    minutes: 45,
+    // TDE–Sos1 20 (Edebiyat 12, Tarih-1 5, Coğrafya-1 3) + Sos2 20 (Tarih-2 + Coğrafya-2 11 in turns, Felsefe grubu 6, Din 3)
+    perSubject: { aytedebiyat: 12, ayttarih1: 5, aytcografya1: 3, ayttarih2: 6, aytcografya2: 5, aytfelsefe: 2, aytmantik: 2, aytpsikoloji: 1, aytsosyoloji: 1, aytdin: 3 },
+  },
+  'ayt-ea-mini': {
+    questions: 40,
+    minutes: 45,
+    perSubject: { aytedebiyat: 12, ayttarih1: 5, aytcografya1: 3, aytmatematik: 20 },
+  },
+  'ayt-tde': { questions: 40, minutes: 45, perSubject: { aytedebiyat: 24, ayttarih1: 10, aytcografya1: 6 } },
+  'ayt-sos2': {
+    questions: 40,
+    minutes: 45,
+    perSubject: { ayttarih2: 11, aytcografya2: 11, aytfelsefe: 3, aytmantik: 3, aytpsikoloji: 3, aytsosyoloji: 3, aytdin: 6 },
+  },
+  'ayt-full': {
+    questions: 160,
+    minutes: 180,
+    perSubject: {
+      aytedebiyat: 24, ayttarih1: 10, aytcografya1: 6,
+      ayttarih2: 11, aytcografya2: 11, aytfelsefe: 3, aytmantik: 3, aytpsikoloji: 3, aytsosyoloji: 3, aytdin: 6,
+      aytmatematik: 40, aytfizik: 14, aytkimya: 13, aytbiyoloji: 13,
+    },
+  },
 };
 
 export type RunningExam = {
@@ -91,6 +121,12 @@ export function buildExam(kind: ExamKind, round: number): string[] {
       { fizik: 1, kimya: 2, biyoloji: 2 },
     ][round % 3];
     Object.assign(counts, fen);
+  }
+  if (kind === 'ayt-soz-mini') {
+    // Tarih-2 and Coğrafya-2 take turns with 6; two of the four philosophy-group subjects get 2, in turns
+    Object.assign(counts, round % 2 === 0 ? { ayttarih2: 6, aytcografya2: 5 } : { ayttarih2: 5, aytcografya2: 6 });
+    const group = ['aytfelsefe', 'aytmantik', 'aytpsikoloji', 'aytsosyoloji'] as const;
+    group.forEach((subject, i) => { counts[subject] = (i - round + 8) % 4 < 2 ? 2 : 1; });
   }
   if (kind === 'ayt-say-mini') {
     Object.assign(counts, [
