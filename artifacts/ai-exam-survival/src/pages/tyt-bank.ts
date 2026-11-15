@@ -7,19 +7,22 @@
 // Turkish in both app languages (it is a Turkish exam).
 
 export const TYT_SUBJECTS = ['turkce', 'tarih', 'cografya', 'felsefe', 'din', 'matematik', 'fizik', 'kimya', 'biyoloji'] as const;
-export type TytSubject = (typeof TYT_SUBJECTS)[number];
-export type TytSection = 'turkce' | 'sosyal' | 'matematik' | 'fen';
+/** Stage 22B: AYT subjects share the same question format (src/pages/ayt-bank.ts). */
+export const AYT_SUBJECTS = ['aytmatematik', 'aytfizik', 'aytkimya', 'aytbiyoloji'] as const;
+export type TytSubject = (typeof TYT_SUBJECTS)[number] | (typeof AYT_SUBJECTS)[number];
+export type TytSection = 'turkce' | 'sosyal' | 'matematik' | 'fen' | 'aytmatematik' | 'aytfen';
 export const SECTION_OF: Record<TytSubject, TytSection> = {
   turkce: 'turkce', tarih: 'sosyal', cografya: 'sosyal', felsefe: 'sosyal', din: 'sosyal',
   matematik: 'matematik', fizik: 'fen', kimya: 'fen', biyoloji: 'fen',
+  aytmatematik: 'aytmatematik', aytfizik: 'aytfen', aytkimya: 'aytfen', aytbiyoloji: 'aytfen',
 };
 export type TytLetter = 'A' | 'B' | 'C' | 'D' | 'E';
 export const TYT_LETTERS: TytLetter[] = ['A', 'B', 'C', 'D', 'E'];
 
-type Seed = { subject: TytSubject; topic: string; passage: string; prompt: string; options: [string, string, string, string, string]; explanation: string };
+export type Seed = { subject: TytSubject; topic: string; passage: string; prompt: string; options: [string, string, string, string, string]; explanation: string };
 export type TytQuestion = Omit<Seed, 'options'> & { id: string; options: string[]; answer: TytLetter };
 
-const q = (subject: TytSubject, topic: string, passage: string, prompt: string, options: Seed['options'], explanation: string): Seed =>
+export const q = (subject: TytSubject, topic: string, passage: string, prompt: string, options: Seed['options'], explanation: string): Seed =>
   ({ subject, topic, passage, prompt, options, explanation });
 
 const SEEDS: Seed[] = [
@@ -400,11 +403,16 @@ function placeOptions(seed: Seed, index: number) {
   return { options, answer: TYT_LETTERS[options.indexOf(correct)] };
 }
 
-const counters: Record<string, number> = {};
-export const TYT_QUESTIONS: TytQuestion[] = SEEDS.map((seed, index) => {
-  counters[seed.subject] = (counters[seed.subject] ?? 0) + 1;
-  const { options, answer } = placeOptions(seed, index);
-  return { ...seed, id: `tyt-${seed.subject}-${counters[seed.subject]}`, options, answer };
-});
+/** Ids like "tyt-matematik-3" or "ayt-fizik-2" (the "ayt" prefix of AYT subject keys is not repeated). */
+export function buildQuestions(prefix: 'tyt' | 'ayt', seeds: Seed[]): TytQuestion[] {
+  const counters: Record<string, number> = {};
+  return seeds.map((seed, index) => {
+    counters[seed.subject] = (counters[seed.subject] ?? 0) + 1;
+    const { options, answer } = placeOptions(seed, index);
+    return { ...seed, id: `${prefix}-${seed.subject.replace(/^ayt/, '')}-${counters[seed.subject]}`, options, answer };
+  });
+}
+
+export const TYT_QUESTIONS: TytQuestion[] = buildQuestions('tyt', SEEDS);
 
 export const TYT_BY_ID = new Map(TYT_QUESTIONS.map((question) => [question.id, question]));
