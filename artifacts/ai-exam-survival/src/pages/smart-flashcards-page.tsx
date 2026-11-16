@@ -56,6 +56,14 @@ import {
   englishGradeThemeLabel,
   type GradeDeckGrade,
 } from './flashcards-grade-english';
+import {
+  PROGRAM_NAMES,
+  SCIENCE_SUBJECTS,
+  createScienceGradeDeck,
+  scienceGradeDeckId,
+  scienceGradeDeckName,
+  type ScienceSubject,
+} from './flashcards-grade-science';
 import { YDT_DECK_KEYS, YDT_DECK_NAMES, createYdtDeck, ydtDeckId, ydtDeckName, type YdtDeckKey } from './flashcards-ydt-words';
 import type { EnglishLevel } from './quiz-bank-english';
 import { Menti } from '@/components/menti';
@@ -778,6 +786,20 @@ export default function SmartFlashcardsPage() {
     window.requestAnimationFrame(() => studyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   }
 
+  // Stage 22F: add a key-concepts deck of a science subject for a grade (only when the student taps its button).
+  function addScienceGradeDeck(grade: GradeDeckGrade, subject: ScienceSubject) {
+    if (data.decks.some((deck) => deck.id === scienceGradeDeckId(grade, subject))) return;
+    let name = scienceGradeDeckName(grade, subject, lang);
+    if (findDuplicateDeck(name, data.decks, null)) name = `${name} 2`;
+    const { deck, cards } = createScienceGradeDeck(grade, subject, lang, name);
+    setData((current) => ({ ...current, decks: [...current.decks, deck], cards: [...current.cards, ...cards], selectedDeckId: deck.id }));
+    setSession(createSession(deck.id, 'learn', cards, data));
+    setDeckForm(null);
+    setConfirm(null);
+    setNotice({ tone: 'success', message: `“${deck.name}” was added with ${cards.length} cards. Start with Learn mode.` });
+    window.requestAnimationFrame(() => studyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
+
   // Stage 22D: add a YDT word deck (only when the student taps its button); grade 12 unless a grade filter is chosen.
   function addYdtDeck(key: YdtDeckKey) {
     if (data.decks.some((deck) => deck.id === ydtDeckId(key))) return;
@@ -1349,6 +1371,9 @@ export default function SmartFlashcardsPage() {
           <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
             {tx('English: one deck of 25 words for each theme of the MEB English curriculum, from the theme\'s target vocabulary. A deck is added only when you tap it.')}
           </p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+            {tx('Mathematics, Physics, Chemistry and Biology: 25 key concepts from the units of the grade\'s MEB curriculum, each with a short definition.')}
+          </p>
           <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label={tx('Grade')}>
             {GRADE_DECK_GRADES.map((grade) => (
               <button
@@ -1385,6 +1410,30 @@ export default function SmartFlashcardsPage() {
                       : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
                   }`}
                   data-testid={`button-add-grade-deck-english-${gradeDeckGrade}-${theme}`}
+                >
+                  {added ? `✓ ${label}` : `+ ${label}`}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-3 text-[12px] font-bold text-[#384959]">{tx('Mathematics and science: key concepts')}</p>
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {SCIENCE_SUBJECTS.map((subject) => {
+              const added = data.decks.some((deck) => deck.id === scienceGradeDeckId(gradeDeckGrade, subject));
+              const label = PROGRAM_NAMES[subject][lang];
+              return (
+                <button
+                  key={subject}
+                  type="button"
+                  onClick={() => addScienceGradeDeck(gradeDeckGrade, subject)}
+                  disabled={added}
+                  aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
+                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                    added
+                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
+                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                  }`}
+                  data-testid={`button-add-grade-deck-${subject.toLowerCase()}-${gradeDeckGrade}`}
                 >
                   {added ? `✓ ${label}` : `+ ${label}`}
                 </button>

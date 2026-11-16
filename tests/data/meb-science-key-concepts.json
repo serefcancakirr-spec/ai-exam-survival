@@ -1,0 +1,1257 @@
+{
+ "source": "MEB Türkiye Yüzyılı Maarif Modeli ortaöğretim öğretim programları, tymm.meb.gov.tr/assets/pdf/<pdf>: each unit/theme's \"Anahtar Kavramlar\" (concepts) and \"İçerik Çerçevesi\" (content), text as printed (symbol lists left out).",
+ "pdf": {
+  "Mathematics": "matematik-dersi_20260819_143102_154.pdf",
+  "Physics": "fizik-dersi_20260819_142915_270.pdf",
+  "Chemistry": "kimya-dersi_20260819_143012_862.pdf",
+  "Biology": "biyoloji-dersi_20260819_142444_074.pdf"
+ },
+ "units": [
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 1,
+   "title": "SAYILAR",
+   "concepts": [
+    "alt küme",
+    "ancak ve ancak",
+    "aralık",
+    "bazı",
+    "bilimsel gösterim",
+    "birleşim işlemi",
+    "boş küme",
+    "eşitsizlik",
+    "eşlenik",
+    "evrensel küme",
+    "fark işlemi",
+    "her",
+    "ise",
+    "ispat",
+    "kapalılık",
+    "kesişim işlemi",
+    "köklü gösterim",
+    "küme",
+    "kümenin elemanı",
+    "mutlak değer",
+    "önerme",
+    "önermenin değili",
+    "özdeşlik",
+    "sayı kümesi",
+    "tümleme",
+    "üslü gösterim",
+    "ve",
+    "veya",
+    "ya da n",
+    "s(A)",
+    "xn"
+   ],
+   "content": "İK ÇERÇEVESİ • Gerçek Sayıların Üslü ve Köklü Gösterimleri ile Yapılan İşlemler • Gerçek Sayı Aralıklarının Gösterimi ve Aralıklarla İlgili İşlemlerde Küme Sembollerinin Kullanımı • Sayı Kümeleri ve İşlem Özellikleri • Gerçek Sayıların İşlem Özelliklerini Cebirsel Olarak İfade Etme ATEMATİK DERSİ ÖĞRETİM PROGRAMI Genellemeler • Gerçek sayılar ve gerçek sayı aralıkları, sayı doğrusu ile temsil edilebilir. • Bir gerçek sayıya karşılık gelen nicelik, farklı şekillerde (ondalık, üslü, köklü gibi) gösterilebilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 2,
+   "title": "NİCELİKLER VE DEĞİŞİMLER",
+   "concepts": [
+    "artanlık-azalanlık",
+    "bağımlı-bağımsız değişken",
+    "bire birlik",
+    "doğrusal denklem ve eşitsizlik",
+    "doğrusal fonksiyon",
+    "doğrusal ilişki",
+    "eğim",
+    "fonksiyonların parçalı gösterimi",
+    "fonksiyonun işareti",
+    "fonksiyonun sıfırı",
+    "katsayı",
+    "kök",
+    "maksimum-minimum noktaları",
+    "mutlak değer fonksiyonu",
+    "sabit fonksiyon",
+    "sabit terim"
+   ],
+   "content": "İK ÇERÇEVESİ • Doğrusal Fonksiyonlar ve Nitel Özellikleri • Mutlak Değer Fonksiyonu ve Nitel Özellikleri • Doğrusal Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler Genellemeler • Fonksiyonlar, niceliklerin birbirine bağlı değişimlerini temsil eder. • Doğrusal değişim, doğrusal fonksiyonlarla temsil edilebilir. • Doğrusal fonksiyonlar, doğrusal referans fonksiyondan türetilebilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 3,
+   "title": "GEOMETRİK ŞEKİLLER",
+   "concepts": [
+    "açı",
+    "dış açı",
+    "iç açı",
+    "kenar",
+    "üçgen",
+    "üçgen eşitsizliği"
+   ],
+   "content": "İK ÇERÇEVESİ Üçgende Açı ve Kenarla İlgili Özellikler ve Bu Özellikler Arasındaki İlişkiler Genellemeler • Üçgende en uzun kenarın karşısındaki açının ölçüsü en büyüktür. • Öklid geometrisinin aksiyomatik yapısı, geometrideki bağıntıların ve ilişkilerin ispatlanmasının temelini oluşturur. • Üçgenin temel özellikleri ve geometrik yapısının anlaşılması sayesinde üçgen oluşturabilme koşulları belirlenir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 4,
+   "title": "EŞLİK VE BENZERLİK",
+   "concepts": [
+    "benzerlik",
+    "dönme dönüşümü",
+    "eşlik",
+    "Öklid teoremi",
+    "Pisagor teoremi",
+    "Tales teoremi"
+   ],
+   "content": "İK ÇERÇEVESİ • Geometrik Dönüşümler • Eşlik ve Benzerlik Koşulları • Benzer Üçgenler Oluşturma • Tales, Öklid ve Pisagor Teoremleri • Eşlik ve Benzerlik Problemleri Genellemeler • Tüm kenar uzunlukları belli olan sadece bir üçgen vardır. Geometrik dönüşümlerle (öteleme, yansıma, dönme) bu üçgene eş üçgenler üretilebilir. • Öteleme, yansıma ve dönme dönüşümleri sonucunda başlangıçtaki şekil ile dönüşüm sonrası oluşan şeklin görüntüsü eştir. • Benzer üçgenlerde karşılıklı açıların ölçüleri eşittir ve bu açıların karşısındaki kenarlar orantılıdır. • Eş üçgenlerde benzerlik oranı 1’dir. • Birbirine paralel en az üç doğrunun kendilerini kesen doğrular üzerinde oluşan karşılıklı doğru parçalarının uzunlukları orantılıdır. • Bir dik üçgende hipotenüse ait yükseklik çizildiğinde oluşan dik üçgenler birbirine ve başlangıçtaki üçgene benzerdir. • Öklid ve Tales teoremleri, bir üçgenden hareketle o üçgene benzer üçgenler oluşturma yoluyla elde edilebilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 5,
+   "title": "ALGORİTMA VE BİLİŞİM",
+   "concepts": [
+    "akış şeması",
+    "algoritma",
+    "çizge",
+    "mantık bağlaçları",
+    "niceleyiciler",
+    "sözde kod",
+    "şifreleme"
+   ],
+   "content": "İK ÇERÇEVESİ • Algoritma Temelli Problemler • Mantık Bağlaçları ve Niceleyiciler • Mantık Bağlaçları ve Niceleyicilerin Algoritmik Problemlerde Kullanımı Genellemeler • Çizge ve diyagramlar, etkin problem çözme araçlarıdır. • Şifrelemede ve şifre çözmede algoritmalar kullanılır. • Mantık bağlaçları ve niceleyiciler, algoritmaların temel ögelerindendir. • Matematiksel doğrulama ve ispat süreçleri, algoritmik bir yaklaşımla gerçekleştirilebilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 6,
+   "title": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+   "concepts": [
+    "çeyrekler açıklığı",
+    "değişebilirlik",
+    "evren",
+    "histogram",
+    "kutu grafiği",
+    "nicel veri dağılımı",
+    "örneklem",
+    "standart sapma"
+   ],
+   "content": "İK ÇERÇEVESİ • Tek Nicel Değişkenli Veri Dağılımları • Başkaları Tarafından Oluşturulan Tek Nicel Değişkenli Veri Dağılımlarını İnceleme Genellemeler • Nicel veri dağılımları, verilerdeki değişebilirliğin nasıl olduğuna ilişkin bilgi verir. • Nicel verilerin dağılımlarını tanımlamada kullanılacak sayısal özetler, ilgili dağılımın merkezinin nereye eğilim gösterdiğini ve nasıl yayıldığını belirlemede kullanılır. • Örneklemin dağılımı, evrenin dağılımına ilişkin fikir verir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "9",
+   "unit": 7,
+   "title": "VERİDEN OLASILIĞA",
+   "concepts": [
+    "ayrık olay",
+    "ayrık olmayan olay",
+    "çıktı",
+    "deney",
+    "deneysel olasılık",
+    "olay",
+    "örnek uzay",
+    "teorik olasılık"
+   ],
+   "content": "İK ÇERÇEVESİ • Deneysel Olasılık • Teorik Olasılık Genellemeler • Deneye ait tekrar sayısı arttıkça elde edilen göreli sıklıkların değişebilirliği azalır. • Deneye ait tekrar sayısı arttıkça deneysel olasılık değeri, teorik olasılık değerine yaklaşır."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 1,
+   "title": "GEOMETRİK ŞEKİLLER",
+   "concepts": [
+    "ağırlık merkezi",
+    "alan",
+    "birim çember",
+    "çevrel çember",
+    "dış açıortay",
+    "dış teğet çember",
+    "iç açıortay",
+    "iç teğet çember",
+    "kenar orta dikme",
+    "kosinüs teoremi",
+    "sinüs teoremi",
+    "trigonometrik oranlar",
+    "yönlü açı",
+    "yükseklik"
+   ],
+   "content": "İK ÇERÇEVESİ • Dik Üçgende Trigonometrik Oranlar ve Trigonometrik Özdeşlikler • Üçgende Yardımcı Elemanlar • Üçgenin Alanı • Sinüs ve Kosinüs Teoremleri Genellemeler • Trigonometrik oranlar, bir açının benzer üçgenlerde korunan oran yapısını temsil eder. • Benzer üçgenlerin alanları orantılıdır."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 2,
+   "title": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+   "concepts": [
+    "iki kategorik değişken",
+    "iki yönlü tablo",
+    "ilişkililik",
+    "koşullu göreli sıklıklar",
+    "kümeli sütun grafikleri",
+    "veri dağılımları"
+   ],
+   "content": "İK ÇERÇEVESİ • İki Kategorik Değişkenli Veriler • Başkaları Tarafından Oluşturulan İki Kategorik Değişkenli Verileri İnceleme Genellemeler • Aynı gözlem birimlerinden elde edilen/toplanan verilerden hareketle oluşturulan iki kategorik değişkenli dağılımlar, verilerin birlikte değişebilirliğindeki eğilimine ilişkin bilgi verir. • İki kategorik değişkenin ilişkili olması, bu iki değişken arasında bir neden-sonuç ilişkisi olduğu anlamına gelmez."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 3,
+   "title": "SAYILAR",
+   "concepts": [
+    "aralarında asal",
+    "asal sayı",
+    "bölen",
+    "bölme",
+    "bölüm",
+    "bölünebilme",
+    "çarpan",
+    "en büyük ortak bölen",
+    "en küçük ortak kat",
+    "kalan",
+    "kat",
+    "ortak bölen",
+    "ortak kat"
+   ],
+   "content": "İK ÇERÇEVESİ • Bir Doğal Sayının Asal Çarpanları, Bölenleri • En Büyük Ortak Bölen, En Küçük Ortak Kat • Bölünebilme Genellemeler • 1’den büyük her doğal sayı, asal sayıların çarpımı şeklinde tek türlü yazılır. • Bölünebilme kuralları, bölünen çözümlenerek elde edilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 4,
+   "title": "NİCELİKLER VE DEĞİŞİMLER",
+   "concepts": [
+    "artanlık-azalanlık",
+    "bire birlik",
+    "fonksiyon",
+    "fonksiyonun işareti",
+    "fonksiyonun sıfırı",
+    "karekök fonksiyonu",
+    "karesel fonksiyon",
+    "kök",
+    "maksimum-minimum değer",
+    "maksimum-minimum nokta",
+    "örtenlik",
+    "parabol",
+    "rasyonel fonksiyon",
+    "simetri doğrusu",
+    "teklik-çiftlik",
+    "ters fonksiyon"
+   ],
+   "content": "İK ÇERÇEVESİ • Gerçek Sayılarda Fonksiyon Olma Şartları • Karesel Fonksiyon ve Nitel Özellikleri • Karekök Fonksiyonu ve Nitel Özellikleri • Rasyonel Fonksiyon ve Nitel Özellikleri • Doğrusal, Karesel, Karekök ve Rasyonel Fonksiyonların Ters Fonksiyonları • Gerçek Sayılarda Tanımlı Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler Genellemeler • Fonksiyonlar, niceliklerin birbirine bağlı değişimlerini temsil eder. • Gerçek yaşam durumları, fonksiyonlarla modellenebilir. • Fonksiyonlar, nitel özelliklerine göre sınıflandırılabilir. • Referans fonksiyonlar, bir fonksiyon grubunun üretecidir. • Fonksiyon grafikleri, cebirsel denklem ile eşitsizliklerin incelemesinin ve yorumlanmasının temel araçlarından biridir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 5,
+   "title": "SAYMA, ALGORİTMA VE BİLİŞİM",
+   "concepts": [
+    "algoritma",
+    "faktöriyel",
+    "sayma",
+    "seçme sayısı",
+    "sıralama sayısı"
+   ],
+   "content": "İK ÇERÇEVESİ • Sayma Stratejileri • Cebirsel ve Fonksiyonel İşlemlerin Algoritmik Yapısı Genellemeler • Sonlu sayıda nesnenin belirli bir durumdaki sayısı ile ilgili problemler, sayma stratejileri kullanılarak çözülebilir. • Cebirsel ve fonksiyonel işlemler, algoritmik bir dille temsil edilebilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 6,
+   "title": "ANALİTİK İNCELEME",
+   "concepts": [
+    "çakışma",
+    "dik koordinat sistemi",
+    "doğru",
+    "eğim",
+    "eğim açısı",
+    "iki nokta arasındaki uzaklık",
+    "kesişme",
+    "paralellik"
+   ],
+   "content": "İK ÇERÇEVESİ • Dik Koordinat Sisteminde Noktanın Analitik İncelenmesi • Dik Koordinat Sisteminde Doğrunun Analitik İncelenmesi Genellemeler • Dik koordinat sistemi, geometrik özelliklerin cebirsel ve grafiksel bir yaklaşımla incelenmesini sağlar. • İki doğrunun dik koordinat sisteminde birbirine göre konumlarını belirlemede bu doğruların eğimlerinden yararlanılır."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "10",
+   "unit": 7,
+   "title": "VERİDEN OLASILIĞA",
+   "concepts": [
+    "bağımlı olay",
+    "bağımsız olay",
+    "Bayes teoremi",
+    "koşullu olasılık"
+   ],
+   "content": "İK ÇERÇEVESİ • Koşullu Olasılık • Bayes Teoremi Genellemeler • Bir olay, başka olaylara bağlı olarak gerçekleşebilir. • Bir olayın olasılık değeri, bağımlı olduğu olaylara göre değişebilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "11",
+   "unit": 1,
+   "title": "İSTATİSTİKSEL ARAŞTIRMA SÜRECİ",
+   "concepts": [
+    "bölgelere göre sayım oranı",
+    "iki nicel değişkenli veri dağılımları",
+    "ilişkililik",
+    "korelasyon katsayısı",
+    "serpme diyagramı (saçılım grafiği)",
+    "tablo"
+   ],
+   "content": "İK ÇERÇEVESİ • İki Nicel Değişkenli Veriler • Başkaları Tarafından Oluşturulan İki Nicel Değişkenli Verileri İnceleme Genellemeler • Aynı gözlem birimlerinden elde edilen/toplanan verilerden hareketle oluşturulan iki nicel değişkenli dağılımlar, verilerin birlikte değişebilirliğindeki eğilimine ilişkin bilgi verir. • İki nicel değişken arasındaki ilişkililik, bu iki değişken arasındaki ilişkili olma durumunu ifade eder. • İki nicel değişken arasındaki doğrusal ilişkinin yönü ve gücü, sayısal bir değer olan korelasyon katsayısı olarak ifade edilir. • İki nicel değişkenin ilişkili olması, bu iki değişken arasında bir neden-sonuç ilişkisi olduğu anlamına gelmez."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "11",
+   "unit": 2,
+   "title": "GEOMETRİK ŞEKİLLER",
+   "concepts": [
+    "alan",
+    "deltoid",
+    "dışbükey çokgen",
+    "dikdörtgen",
+    "düzgün çokgen",
+    "eşkenar dörtgen",
+    "içbükey çokgen",
+    "kare",
+    "köşegen",
+    "paralelkenar",
+    "simetri",
+    "yamuk"
+   ],
+   "content": "İK ÇERÇEVESİ • Dörtgenlerin Özellikleri • Özel Dörtgenler Arasındaki İlişkiler • Çokgenlerin Sınıflandırılması • Dışbükey Çokgenlerin Özellikleri • Çokgenlerle İlgili Problemler Genellemeler • Çokgenlerin özellikleri ve çokgenlere ilişkin bağıntılar, çokgenlerin üçgenlere parçalanarak incelenmesi ile elde edilebilir. • Dörtgenler arasındaki ilişkiler, dörtgenlerin temel elemanları ya da köşegen ve simetri gibi özellikleri kullanılarak oluşturulur."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "11",
+   "unit": 3,
+   "title": "NİCELİKLER VE DEĞİŞİMLER (1)",
+   "concepts": [
+    "artanlık-azalanlık",
+    "birim çember",
+    "derece",
+    "esas ölçü",
+    "maksimum-minimum değer",
+    "maksimum-minimum nokta",
+    "periyot",
+    "radyan",
+    "trigonometrik fonksiyon",
+    "yönlü açı"
+   ],
+   "content": "İK ÇERÇEVESİ • Trigonometrik Fonksiyonlar ve Nitel Özellikleri • Trigonometrik Fonksiyonlarla İfade Edilebilen Denklemler İçeren Problemler Genellemeler • Fonksiyonlar, nitel özelliklerine göre sınıflandırılabilir. • Referans fonksiyonlar, bir fonksiyon grubunun üretecidir. • Fonksiyon grafikleri, cebirsel denklem ve eşitsizlikleri inceleme ve yorumlamanın temel araçlarından biridir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "11",
+   "unit": 3,
+   "title": "NİCELİKLER VE DEĞİŞİMLER (2)",
+   "concepts": [
+    "artanlık-azalanlık",
+    "bire birlik",
+    "doğal logaritmik fonksiyon",
+    "e sayısı",
+    "fonksiyonun işareti",
+    "fonksiyonun sıfırı",
+    "logaritmik fonksiyon",
+    "örtenlik",
+    "teklik-çiftlik",
+    "üstel fonksiyon",
+    "logx",
+    "logax",
+    "lnx"
+   ],
+   "content": "İK ÇERÇEVESİ • Üstel Fonksiyonlar ve Nitel Özellikleri • Üstel Fonksiyonların Ters Fonksiyonları • Logaritmik Fonksiyonlar ve Nitel Özellikleri • Üstel ve Logaritmik Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler Genellemeler • Fonksiyonlar nitel özelliklerine göre sınıflandırılabilir. • Referans fonksiyonlar, bir fonksiyon grubunun üretecidir. • Fonksiyon grafikleri, cebirsel denklem ve eşitsizlikleri inceleme ve yorumlamanın temel araçlarından biridir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "11",
+   "unit": 3,
+   "title": "NİCELİKLER VE DEĞİŞİMLER (3)",
+   "concepts": [
+    "artanlık-azalanlık",
+    "bileşke fonksiyon",
+    "bire birlik",
+    "fonksiyonun işareti",
+    "fonksiyonun sıfırı",
+    "maksimum-minimum değer",
+    "maksimum-minimum nokta",
+    "örtenlik",
+    "teklik-çiftlik",
+    "ters fonksiyon"
+   ],
+   "content": "İK ÇERÇEVESİ • Fonksiyonların Bileşkesi • Fonksiyonlarda Dört İşlem Genellemeler • Fonksiyonlar, nitel özelliklerine göre sınıflandırılabilir. • Fonksiyon grafikleri, cebirsel denklem ve eşitsizlikleri inceleme ve yorumlamanın temel araçlarından biridir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 1,
+   "title": "NİCELİKLER VE DEĞİŞİMLER (1)",
+   "concepts": [
+    "aritmetik dizi",
+    "dizi",
+    "genel terim",
+    "geometrik dizi",
+    "monoton artan",
+    "monoton azalan",
+    "ortak fark",
+    "ortak oran (çarpan)",
+    "terim"
+   ],
+   "content": "İK ÇERÇEVESİ • Aritmetik ve Geometrik Diziler • Gerçek Sayı Dizileri Genellemeler • Aritmetik ve geometrik diziler, örüntü belirten fonksiyonlardır. • Dizi, örüntüleri incelemenin matematiksel araçlarından biridir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 1,
+   "title": "NİCELİKLER VE DEĞİŞİMLER (2)",
+   "concepts": [
+    "artanlık-azalanlık",
+    "başkatsayı",
+    "bire birlik",
+    "derece",
+    "fonksiyonun işareti",
+    "fonksiyonun sıfırı",
+    "kök",
+    "örtenlik",
+    "polinom fonksiyon",
+    "rasyonel fonksiyon",
+    "sabit terim",
+    "teklik-çiftlik"
+   ],
+   "content": "İK ÇERÇEVESİ • Doğrusal ve Karesel Fonksiyonlar ile Polinom Fonksiyonlar Arasındaki İlişki • Polinom Fonksiyonlar ve Nitel Özellikleri • Polinom ve Rasyonel Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler Genellemeler • Polinom fonksiyonlar, cebirsel ifadesi polinom olan fonksiyonlardır. • Doğrusal ve karesel fonksiyonlarla polinom fonksiyonlar aynı fonksiyon ailesindendir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 2,
+   "title": "GEOMETRİK ŞEKİLLER",
+   "concepts": [
+    "çap",
+    "çember",
+    "çevre açı",
+    "daire",
+    "daire dilimi",
+    "dairenin alanı",
+    "dış açı",
+    "iç açı",
+    "kesen",
+    "kiriş",
+    "kirişler dörtgeni",
+    "merkez açı",
+    "teğet",
+    "teğetler dörtgeni",
+    "teğet-kiriş açı",
+    "yay",
+    "yay uzunluğu",
+    "AB",
+    "\\ ABC",
+    "m ^ AB h"
+   ],
+   "content": "İK ÇERÇEVESİ • Çemberin Elemanları • Çemberin Açı, Kiriş ve Teğet Özellikleri • Çember ve Daire ile İlgili Problemler Genellemeler • Yarıçap, teğet doğrusuna teğetin çembere değme noktasında diktir. • Çapı gören çevre açının ölçüsü 90odir. • Merkezden kirişe indirilen dikme, kirişi iki eş parçaya ayırır. • Teğet çemberlerin birbirine değme noktası ve merkezleri doğrusaldır."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 3,
+   "title": "GEOMETRİK CİSİMLER",
+   "concepts": [
+    "ana doğru",
+    "ayrıt",
+    "cisim köşegeni",
+    "cisim yüksekliği",
+    "dik dairesel koni",
+    "dik dairesel silindir",
+    "dik piramit",
+    "dik prizma",
+    "hacim",
+    "küre",
+    "yan yüz yüksekliği",
+    "yarıçap",
+    "yüzey alanı",
+    "yüzey köşegeni"
+   ],
+   "content": "İK ÇERÇEVESİ • Dik Prizma ve Dik Dairesel Silindir • Dik Piramit, Dik Dairesel Koni ve Küre • Geometrik Cisimlerle İlgili Problemler Genellemeler • Tabanları ve yükseklikleri eş olan dik prizma ile dik piramidin hacim bağıntıları ilişkilidir. • Tabanları ve yükseklikleri eş olan dik dairesel silindir ile dik dairesel koninin hacim bağıntıları ilişkilidir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 4,
+   "title": "DEĞİŞİMİN MATEMATİĞİ (1)",
+   "concepts": [
+    "belirsizlik",
+    "dikey-düşey asimptot",
+    "limit",
+    "sağdan limit",
+    "soldan limit",
+    "sonsuzluk",
+    "süreklilik",
+    "tanımsızlık",
+    "yatay asimptot"
+   ],
+   "content": "İK ÇERÇEVESİ • Grafik Temsili Verilen Fonksiyonların Limiti • Cebirsel Temsili Verilen Fonksiyonların Limiti • Fonksiyonların Limitinde Belirsizlik Durumları • Fonksiyonların Sürekliliği Genellemeler • Limit ve süreklilik, fonksiyonların belirli bir nokta civarındaki veya sonsuzdaki değişimlerini inceleme araçlarıdır."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 4,
+   "title": "DEĞİŞİMİN MATEMATİĞİ (2)",
+   "concepts": [
+    "anlık değişim oranı",
+    "değişim oranı",
+    "diferansiyel",
+    "eğim",
+    "kesen doğrusu",
+    "limit",
+    "ortalama değişim oranı",
+    "sağdan türev",
+    "soldan türev",
+    "süreklilik",
+    "teğet doğrusu",
+    "türev",
+    "türev alma operatörü",
+    "f '' (x)",
+    "dy",
+    "d y",
+    "dy = f ' (x) . dx",
+    "f ' (a⁺)",
+    "f ' (a )"
+   ],
+   "content": "İK ÇERÇEVESİ • Fonksiyonların Türevi • Fonksiyonun Türevinin Olmadığı Noktalar • Fonksiyonel İşlemlerin Türevi Genellemeler • Türev kavramı ve türevin özellikleri yardımıyla gerçek sayılarda tanımlı ve değerli fonksiyonların nitel özellikleri incelenebilir/yorumlanabilir. • Türev, niceliklerdeki değişimleri modellemek için kullanılan matematiksel bir araçtır. • Gerçek sayılarda tanımlı ve değerli fonksiyonlarda bağımlı ve bağımsız değişkenlerdeki değişim oranlarının yaklaştığı değerler diferansiyel kavramı yardımıyla açıklanabilir."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 4,
+   "title": "DEĞİŞİMİN MATEMATİĞİ (3)",
+   "concepts": [
+    "artanlık",
+    "azalanlık",
+    "eğim",
+    "ekstremum değer",
+    "mutlak maksimum-minimum değer",
+    "mutlak maksimum-minimum nokta",
+    "polinom fonksiyon",
+    "teğet doğrusu",
+    "türev",
+    "yerel ekstremum değer",
+    "yerel ekstremum nokta"
+   ],
+   "content": "İK ÇERÇEVESİ • Türevin Geometrik Yorumu • Türev Uygulamaları Genellemeler • Türev, gerçek yaşam problemlerinde karşılaşılan niceliklerdeki (eğim, hız, alan, hacim gibi) değişimleri modellemek için kullanılabilen matematiksel bir araçtır."
+  },
+  {
+   "subject": "Mathematics",
+   "grade": "12",
+   "unit": 5,
+   "title": "HAZIR VERİLER ÜZERİNDE ÇALIŞMA",
+   "concepts": [
+    "istatistiksel araştırma tasarımları"
+   ],
+   "content": "İK ÇERÇEVESİ Toplumsal ve Bilimsel Durumlara İlişkin Hazır Veriler Genellemeler • Veri dağılımları, verilerin değişebilirliği hakkında bilgi verir. • Örneklemin dağılımı, evrenin dağılımına ilişkin fikir verir. • Tek değişkenli verilerin dağılımlarını tanımlamada kullanılacak görsel ve özetler, ilgili dağılımın merkezinin nereye eğilim gösterdiğini ve nasıl yayıldığını belirlemede kullanılır. • Aynı gözlem birimlerinden elde edilen verilerden hareketle oluşturulan iki değişkenli (kategorik-kategorik, nicel-nicel) dağılımlar, verilerin birlikte değişebilirliğindeki eğilime ilişkin bilgi verir. • İki değişkenin ilişkili olması, bu iki değişken arasında bir neden-sonuç ilişkisi olduğu anlamına gelmez."
+  },
+  {
+   "subject": "Physics",
+   "grade": "9",
+   "unit": 1,
+   "title": "FİZİK BİLİMİ VE KARİYER KEŞFİ",
+   "concepts": [
+    "fizik bilimi",
+    "bilimsel araştırma merkezi"
+   ],
+   "content": "İK ÇERÇEVESİ Fizik Bilimi Fizik Biliminin Alt Dalları Fizik Bilimine Yön Verenler Fizik Bilimi İle İlgili Kariyer Keşfi"
+  },
+  {
+   "subject": "Physics",
+   "grade": "9",
+   "unit": 2,
+   "title": "KUVVET VE HAREKET",
+   "concepts": [
+    "temel nicelik",
+    "türetilmiş nicelik",
+    "skaler nicelik",
+    "vektörel nicelik",
+    "bileşke vektör",
+    "kuvvet",
+    "referans noktası",
+    "konum",
+    "alınan yol",
+    "yer değiştirme",
+    "sürat",
+    "anlık sürat",
+    "ortalama sürat",
+    "hız",
+    "anlık hız",
+    "ortalama hız",
+    "ivme",
+    "öteleme hareketi",
+    "dönme hareketi",
+    "titreşim hareketi"
+   ],
+   "content": "İK ÇERÇEVESİ Temel ve Türetilmiş Nicelikler Skaler ve Vektörel Nicelikler Vektörler Doğadaki Temel Kuvvetler Hareket ve Hareket Türleri RETİM PROGRAMI"
+  },
+  {
+   "subject": "Physics",
+   "grade": "9",
+   "unit": 3,
+   "title": "AKIŞKANLAR",
+   "concepts": [
+    "basınç",
+    "kaldırma kuvveti"
+   ],
+   "content": "İK ÇERÇEVESİ Basınç Sıvılarda Basınç Açık Hava Basıncı Kaldırma Kuvveti Bernoulli İlkesi İlkeler Bernoulli İlkesi"
+  },
+  {
+   "subject": "Physics",
+   "grade": "9",
+   "unit": 4,
+   "title": "ENERJİ",
+   "concepts": [
+    "ısı",
+    "sıcaklık",
+    "iç enerji",
+    "öz ısı",
+    "ısı sığası",
+    "hâl değişimi",
+    "ısıl denge",
+    "ısı aktarımı"
+   ],
+   "content": "İK ÇERÇEVESİ İç Enerji, Isı ve Sıcaklık Arasındaki İlişki Isı, Öz Isı, Isı Sığası ve Sıcaklık Farkı Arasındaki İlişki Hâl Değişimi Isıl Denge Isı Aktarım Yolları Isı İletim Hızı"
+  },
+  {
+   "subject": "Physics",
+   "grade": "10",
+   "unit": 1,
+   "title": "KUVVET VE HAREKET",
+   "concepts": [],
+   "content": "İK ÇERÇEVESİ Sabit Hızlı Hareket Bir Boyutta Sabit İvmeli Hareket"
+  },
+  {
+   "subject": "Physics",
+   "grade": "10",
+   "unit": 2,
+   "title": "ENERJİ",
+   "concepts": [
+    "iş",
+    "enerji",
+    "güç",
+    "enerji biçimi",
+    "mekanik enerji",
+    "mekanik enerjinin korunumu",
+    "yenilenebilen enerji",
+    "yenilenemeyen enerji"
+   ],
+   "content": "İK ÇERÇEVESİ İş, Enerji ve Güç Enerji Biçimleri Mekanik Enerji Enerji Kaynakları"
+  },
+  {
+   "subject": "Physics",
+   "grade": "10",
+   "unit": 3,
+   "title": "ELEKTRİK",
+   "concepts": [
+    "elektrik akımı",
+    "potansiyel fark",
+    "direnç",
+    "Ohm Yasası",
+    "kısa devre",
+    "eşdeğer direnç",
+    "topraklama"
+   ],
+   "content": "İK ÇERÇEVESİ Basit Elektrik Devreleri Elektrik Akımı Ohm Yasası ĞRETİM PROGRAMI Dirençlerin Bağlanması Üreteçlerin Bağlanması Elektrik Akımının Oluşturabileceği Tehlikelere Karşı Alınması Gereken Önlemler Topraklamanın Önemi"
+  },
+  {
+   "subject": "Physics",
+   "grade": "10",
+   "unit": 4,
+   "title": "DALGALAR",
+   "concepts": [
+    "periyodik hareket",
+    "salınım hareketi",
+    "dalga tepesi",
+    "dalga çukuru",
+    "dalga boyu",
+    "frekans",
+    "periyot",
+    "genlik",
+    "dalgaların yayılma sürati",
+    "mekanik dalga",
+    "elektromanyetik dalga",
+    "titreşim doğrultusu",
+    "doğal titreşim frekansı",
+    "yansıma",
+    "kırılma",
+    "deprem",
+    "rezonans",
+    "odak noktası",
+    "merkez üssü",
+    "depremin şiddeti",
+    "depremin büyüklüğü"
+   ],
+   "content": "İK ÇERÇEVESİ Periyodik Hareketler Dalgaların Temel Kavramları Dalgaların Sınıflandırılması Dalgaların Yayılma Süratini Etkileyen Etmenler Su Dalgalarında Yansıma ve Kırılma Rezonans ve Deprem"
+  },
+  {
+   "subject": "Physics",
+   "grade": "11",
+   "unit": 1,
+   "title": "KUVVET VE HAREKET",
+   "concepts": [
+    "serbest düşme",
+    "eylemsizlik",
+    "etki-tepki kuvvetleri",
+    "serbest cisim diyagramı",
+    "sürtünme kuvveti",
+    "statik sürtünme kuvveti",
+    "kinetik sürtünme kuvveti",
+    "limit hız",
+    "düzgün çembersel hareket",
+    "çizgisel sürat",
+    "açısal hız",
+    "çizgisel hız",
+    "merkezcil ivme",
+    "açısal ivme",
+    "merkezcil kuvvet"
+   ],
+   "content": "İK ÇERÇEVESİ Serbest Düşme İki Boyutta Sabit İvmeli Hareket Newton'ın Hareket Yasaları Sürtünme Kuvveti Limit Hız Düzgün Çembersel Hareket"
+  },
+  {
+   "subject": "Physics",
+   "grade": "11",
+   "unit": 2,
+   "title": "ELEKTRİK VE MANYETİZMA",
+   "concepts": [
+    "elektriksel kuvvet",
+    "elektriksel alan",
+    "manyetik alan",
+    "manyetik kuvvet",
+    "manyetik akı",
+    "indüksiyon akımı",
+    "indüksiyon gerilimi",
+    "alternatif akım",
+    "transformatör"
+   ],
+   "content": "İK ÇERÇEVESİ Elektriksel Kuvvet ve Elektriksel Alan Manyetik Alan ve Manyetik Kuvvet İndüksiyon Akımı Transformatörler"
+  },
+  {
+   "subject": "Physics",
+   "grade": "11",
+   "unit": 3,
+   "title": "OPTİK",
+   "concepts": [
+    "ışık şiddeti",
+    "ışık akısı",
+    "aydınlanma",
+    "merkez",
+    "tepe noktası",
+    "asal eksen",
+    "ortamın ışığı kırma indisi",
+    "Snell Yasası",
+    "tam yansıma",
+    "sınır açısı",
+    "görünür derinlik",
+    "fiber optik"
+   ],
+   "content": "İK ÇERÇEVESİ Işık Şiddeti, Işık Akısı ve Aydınlanma Düzlem Aynalar Küresel Aynalar Kırılma Görünür Derinlik Fiber Optik Prizmalar Mercekler"
+  },
+  {
+   "subject": "Physics",
+   "grade": "12",
+   "unit": 1,
+   "title": "KUVVET VE HAREKET",
+   "concepts": [
+    "tork",
+    "denge",
+    "kütle merkezi",
+    "ağırlık merkezi",
+    "itme",
+    "momentum",
+    "eylemsizlik momenti",
+    "açısal momentum"
+   ],
+   "content": "İK ÇERÇEVESİ Tork Denge İtme (İmpuls) ve Momentum Momentumun Korunumu Eylemsizlik Momenti Açısal Momentum"
+  },
+  {
+   "subject": "Physics",
+   "grade": "12",
+   "unit": 2,
+   "title": "ENERJİ",
+   "concepts": [
+    "yay sabiti",
+    "uzanım",
+    "yayın esneklik potansiyel enerjisi",
+    "sürtünme kuvvetinin yaptığı iş",
+    "enerjinin korunumu",
+    "verim"
+   ],
+   "content": "İK ÇERÇEVESİ Yay Sabiti Yayın Esneklik Potansiyel Enerjisi Sürtünme Kuvvetinin Yaptığı İş Enerjinin Korunumu Verim"
+  },
+  {
+   "subject": "Physics",
+   "grade": "12",
+   "unit": 3,
+   "title": "DALGALAR",
+   "concepts": [
+    "kırınım",
+    "girişim",
+    "yarıklar arası uzaklık",
+    "yarık genişliği",
+    "girişim deseni",
+    "elektromanyetik dalga spektrumu",
+    "elektromanyetik dalga enerjisi"
+   ],
+   "content": "İK ÇERÇEVESİ Su Dalgalarında Kırınım Işıkta Kırınım Su Dalgalarında Girişim Işıkta Girişim Elektromanyetik Dalgalar Işık Renkleri Mekanik veya Elektromanyetik Dalgaların Kullanıldığı Cihazlar 91 FİZİK DERSİ ÖĞRETİM PROGRAMI"
+  },
+  {
+   "subject": "Physics",
+   "grade": "12",
+   "unit": 4,
+   "title": "MADDE VE DOĞASI",
+   "concepts": [
+    "fotoelektrik etki",
+    "foton",
+    "eşik enerjisi",
+    "yarı iletken",
+    "süper iletken",
+    "kuark",
+    "anti madde",
+    "büyük patlama",
+    "temel kuvvetler",
+    "atom",
+    "nükleon",
+    "fisyon",
+    "füzyon",
+    "iyonize radyasyon",
+    "iyonize olmayan radyasyon"
+   ],
+   "content": "İK ÇERÇEVESİ Siyah Cisim Işıması Fotoelektrik Etki Yarı İletkenlik Süper İletkenlik Standart Model Modern Atom Teorisi Nükleer Enerji"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "9",
+   "unit": 1,
+   "title": "ETKİLEŞİM",
+   "concepts": [
+    "atom yarıçapı",
+    "absorbsiyon",
+    "Aufbau ilkesi",
+    "elektronegatiflik",
+    "emisyon",
+    "Hund kuralı",
+    "iyonlaşma enerjisi",
+    "izoelektronik",
+    "kimya bilimi",
+    "kimyasal madde",
+    "küresel simetri",
+    "orbital",
+    "Pauli dışlama ilkesi",
+    "valans elektron"
+   ],
+   "content": "İK ÇERÇEVESİ Kimya Hayattır: Günlük Hayatta Kimya, Kimyasal Maddelerin Kullanımı ve Güvenlik, Kimyanın Alt Disiplinleri, Kimya Alanında Kariyer Olanakları Atomdan Periyodik Tabloya: Atom Teorileri (Bohr Atom Teorisi, Modern Atom Teorisi) ve Atomun Yapısı, Atom Orbitalleri ve Elektron Dizilimi, Periyodik Tabloda Yer Bulma, Periyodik Özellikler (Atom Yarıçapı, İyonlaşma Enerjisi ve Elektronegatiflik)"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "9",
+   "unit": 2,
+   "title": "ÇEŞİTLİLİK",
+   "concepts": [
+    "adezyon kuvveti",
+    "akışkanlık",
+    "amorf katı",
+    "apolar kovalent",
+    "apolar molekül",
+    "buhar basıncı",
+    "dipol",
+    "dipol-dipol etkileşimi",
+    "dipol moment",
+    "hidrojen bağı",
+    "indüklenmiş dipol",
+    "iyonik bağ",
+    "iyonik katı",
+    "kaynama noktası",
+    "kılcallık (kapiler etki)",
+    "kohezyon kuvveti",
+    "kovalent bağ",
+    "kristal katı",
+    "London kuvveti",
+    "metalik bağ",
+    "metalik katı",
+    "moleküler katı",
+    "polar kovalent",
+    "polar molekül",
+    "van der Waals etkileşimi",
+    "viskozite",
+    "yüzey gerilimi"
+   ],
+   "content": "İK ÇERÇEVESİ Etkileşimler: Metalik Bağ, İyonik Bağ, Kovalent Bağ, Lewis Nokta Yapısı, Molekül Polarlığı ve Apolarlığı, Bileşiklerin Adlandırılması Etkileşimden Maddeye: Moleküller Arası Etkileşimler, Katılar ve Özellikleri (Amorf ve Kristal Katılar), Sıvılar ve Özellikleri (Kaynama Sıcaklığı ve Buhar Basıncı, Viskozite, Adezyon ve Kohezyon Kuvvetleri, Yüzey Gerilimi)"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "9",
+   "unit": 3,
+   "title": "SÜRDÜRÜLEBİLİRLİK",
+   "concepts": [
+    "ağır metal",
+    "atık önleme",
+    "ekolojik ayak izi",
+    "kimyasal ayak izi",
+    "metal nanoparçacık"
+   ],
+   "content": "İK ÇERÇEVESİ Nanoparçacıklar ve Ekolojik Sürdürülebilirlik: Metal Nanoparçacıklar, Metal, Alaşım ve Metal Nanoparçacıkların Çevresel Etkileri, Yeşil Kimyanın Atık Önleme İlkesi"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "10",
+   "unit": 1,
+   "title": "ETKİLEŞİM",
+   "concepts": [
+    "asit-baz tepkimesi",
+    "çökelme tepkimesi",
+    "difüzyon",
+    "efüzyon",
+    "gaz basıncı",
+    "hacim",
+    "ideal gaz",
+    "indirgenme-yükseltgenme tepkimesi (redoks)",
+    "kimyasal tepkime",
+    "mol",
+    "mutlak sıcaklık",
+    "sınırlayıcı bileşen",
+    "standart-normal şartlar",
+    "tepkime denklemleri",
+    "yüzde verim"
+   ],
+   "content": "İK ÇERÇEVESİ Kimyasal Tepkimeler: Kimyasal Değişimin Göstergeleri, Kimyasal Tepkimelerin Oluşumu, Kimyasal Tepkime Türleri, Mol Kavramı, Kimyasal Tepkime Denklemlerinin Denkleştirilmesi, Kimyasal (Stokiyometrik) Hesaplamalar Gazlar: Gazların Özellikleri ve Kinetik Moleküler Teori, Gaz Yasaları, İdeal Gaz Yasası, Graham Difüzyon ve Efüzyon Yasası"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "10",
+   "unit": 2,
+   "title": "ÇEŞİTLİLİK",
+   "concepts": [
+    "aşırı doymuş çözelti",
+    "çözelti",
+    "çözücü",
+    "çözünen",
+    "çözünme",
+    "çözünürlük",
+    "derişik çözelti",
+    "doymuş çözelti",
+    "doymamış çözelti",
+    "elektrolit çözelti",
+    "elektrolit olmayan çözelti",
+    "iyonik çözünme",
+    "koligatif özellik",
+    "milyonda bir derişim (ppm)",
+    "molar derişim",
+    "moleküler çözünme",
+    "seyreltik çözelti"
+   ],
+   "content": "İK ÇERÇEVESİ Çözeltiler: Çözünme Süreci, Maddelerin Birbiri İçindeki Çözünebilirliği, Çözünme Olayının Sınıflandırılması, Çözünürlük, Çözünürlüğe Etki Eden Faktörler (Sıcaklık, Basınç ve Madde Cinsi), Çözeltilerin Sınıflandırılması, Derişim Birimleri (Molarite ve ppm), Koligatif Özellikler (Kaynama Noktası Yükselmesi ve Donma Noktası Düşmesi)"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "10",
+   "unit": 3,
+   "title": "SÜRDÜRÜLEBİLİRLİK",
+   "concepts": [
+    "asit yağmurları",
+    "atom ekonomisi",
+    "emisyon ayak izi",
+    "hava kirliliği",
+    "küresel ısınma",
+    "makro ölçekli deney",
+    "mikro ölçekli deney",
+    "ozon azalımı",
+    "sera etkisi",
+    "sera gazı",
+    "su ayak izi"
+   ],
+   "content": "İK ÇERÇEVESİ Yeşil Kimya, Çevresel ve Ekolojik Sürdürülebilirlik: Makro ve Mikro Ölçekli Deneyler, Atmosferdeki Tepkimeler ve Küresel Sorunlar"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "11",
+   "unit": 1,
+   "title": "ETKİLEŞİM",
+   "concepts": [
+    "aktivasyon enerjisi",
+    "bağ enerjisi",
+    "çarpışma teorisi",
+    "ekzotermik tepkime",
+    "endotermik tepkime",
+    "enerji",
+    "entalpi",
+    "hız sabiti",
+    "katalizör",
+    "ortalama tepkime hızı",
+    "standart oluşum entalpisi",
+    "tepkime derecesi",
+    "tepkime entalpisi",
+    "tepkime hızı"
+   ],
+   "content": "İK ÇERÇEVESİ Enerji: Tepkimelerde Meydana Gelen Enerji Değişimi, Maddelerin Enerji Kaynağı Olma Potansiyeli, Bağ Enerjileriyle Tepkime Entalpisinin Hesaplanması, Standart Oluşum Entalpileriyle Tepkime Entalpisinin Hesaplanması Kimyasal Tepkimelerde Hız: Kimyasal Tepkimelerin Gerçekleşmesi İçin Gerekli Şartlar, Tepken ve Ürün Derişimleriyle Ortalama Tepkime Hızlarının Hesaplanması, Tepkime Hızına Etki Eden Faktörler (Tepken Cinsi, Maddelerin Fiziksel Hâlleri, Derişim, Sıcaklık, Katı Tepkenin Temas Yüzeyi ve Katalizör), Tek Basamaklı Kimyasal Tepkimelerin Hız Denkleminin Deneysel Veriler Yardımıyla Belirlenmesi"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "11",
+   "unit": 2,
+   "title": "ÇEŞİTLİLİK",
+   "concepts": [
+    "asit-baz çifti",
+    "asitlik/bazlık sabiti",
+    "Arrhenius asidi/bazı",
+    "Brønsted-Lowry asidi/bazı",
+    "çözünürlük çarpımı",
+    "denge sabiti",
+    "eş değerlik noktası",
+    "fiziksel denge",
+    "indikatör",
+    "kimyasal denge",
+    "kuvvetli asit/baz",
+    "Le Chatelier ilkesi",
+    "nötralleşme",
+    "otoiyonizasyon",
+    "pH/pOH",
+    "titrasyon",
+    "zayıf asit/baz"
+   ],
+   "content": "İK ÇERÇEVESİ Denge: Tersinir Tepkimelerin Özellikleri, Fiziksel ve Kimyasal Değişimlerde Denge, Denge Sabiti İfadesinin Yazılması, Tepkime Oranı, Dengeyi Etkileyen Faktörler (Derişim, Hacim, Basınç, Sıcaklık ve Katalizör) Asit ve Baz Çözeltilerinde Denge: Suyun Otoiyonizasyonu, Asit Baz Teorilerinin Karşılaştırılması, Asitlerin ve Bazların Kuvveti, Kuvvetli Asit-Zayıf Asit ve Kuvvetli Baz-Zayıf Baz Sulu Çözeltilerindeki pH Hesaplamaları, Kuvvetli Asit ve Kuvvetli Bazların Nötralleşme Tepkimeleri, Kuvvetli Asit-Kuvvetli Baz Titrasyonları, Asidik ve Bazik Ürünlerin Seçiminde Dikkat Edilmesi Gerekenler Çözünürlük Dengesi: Suda Az Çözünen Tuzların Molar Çözünürlükleri, Çözünürlük Çarpımı (Kçç), Tuzların Çözünürlüğüne Etki Eden Faktörler (Sıcaklık ve Ortak İyon)"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "11",
+   "unit": 3,
+   "title": "SÜRDÜRÜLEBİLİRLİK",
+   "concepts": [
+    "mikroplastik",
+    "nanoplastik",
+    "nanoteknoloji",
+    "yeşil hidrojen enerjisi"
+   ],
+   "content": "İK ÇERÇEVESİ Nanoteknoloji ve Sürdürülebilirlik: Fermantasyon Yöntemi ile Yeşil Hidrojen Enerjisi ve Hidrojen Gazı Miktarına Etki Eden Faktörler, Nanoteknolojik Ürünlerin Potansiyel Faydaları ve Olası Zararları, Mikroplastik ve Nanoplastiklerin Etkileri"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "12",
+   "unit": 1,
+   "title": "ETKİLEŞİM",
+   "concepts": [
+    "aktiflik",
+    "anot",
+    "elektrolit",
+    "elektrot",
+    "elektroliz",
+    "elektrolitik hücre",
+    "elektrokimyasal hücre",
+    "Faraday yasaları",
+    "galvanik hücre",
+    "indirgen",
+    "indirgenme",
+    "katodik koruma",
+    "katot",
+    "korozyon",
+    "redoks",
+    "tuz köprüsü",
+    "yarı hücre",
+    "yükseltgen",
+    "yükseltgenme",
+    "standart elektrot potansiyeli"
+   ],
+   "content": "İK ÇERÇEVESİ İndirgenme-Yükseltgenme Tepkimeleri: Redoks Tepkimeleri ve Yarı Tepkimeler, Metalik Aktiflik Elektrokimyasal Hücreler: Galvanik Hücreler, Standart Hidrojen Elektrot, Standart İndirgenme Potansiyeli, Standart Hücre Potansiyeline Etki Eden Faktörler (Elektrotların Aktifliği, Elektrolit Derişimi ve Sıcaklık), Elektrolitik Hücreler, Madde-Elektrik İlişkisi, Elektrolizle Kaplama, Korozyon ve Korozyonu Önleme Yöntemleri"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "12",
+   "unit": 2,
+   "title": "ÇEŞİTLİLİK",
+   "concepts": [
+    "aldehit",
+    "alifatik bileşik",
+    "alkan",
+    "alken",
+    "alkin",
+    "alkol",
+    "aromatik bileşik",
+    "basit formül",
+    "ester",
+    "eter",
+    "fonksiyonel grup",
+    "halkalı yapı",
+    "hidrokarbon",
+    "izomerlik",
+    "karboksilik asit",
+    "keton",
+    "molekül formülü",
+    "molekül geometrisi",
+    "pi bağı",
+    "sigma bağı",
+    "yapı formülü",
+    "yapısal izomerlik",
+    "yarı açık formül"
+   ],
+   "content": "İK ÇERÇEVESİ Organik Kimyaya Giriş: Sigma ve Pi Bağları, Hibritleşme, Molekül Geometrisi ve VSEPR Kuramı Organik Bileşikler: Organik Bileşiklerin Yapı Formülleri, Alifatik ve Aromatik Hidrokarbonlar, Alifatik Hidrokarbonların Sınıflandırılması, Alifatik Hidrokarbonların Sistematik Adlandırılması, Alifatik Hidrokarbonların İzomerlikleri, Alifatik Hidrokarbonların Fiziksel ve Kimyasal Özellikleri, Organik Bileşikleri Fonksiyonel Gruplarına Göre Sınıflandırma, Fonksiyonel Gruba Sahip Organik Bileşiklerin Sistematik Adlandırılması, Fonksiyonel Grup İzomerliği, Karbon Temelli Enerji Kaynakları"
+  },
+  {
+   "subject": "Chemistry",
+   "grade": "12",
+   "unit": 3,
+   "title": "SÜRDÜRÜLEBİLİRLİK",
+   "concepts": [
+    "biyobozunur polimer",
+    "biyopolimer",
+    "boyaya duyarlı güneş pili",
+    "fotosentez",
+    "güneş hücresi",
+    "nanoparçacıklı güneş pili",
+    "nanopolimer",
+    "yapay zekâ"
+   ],
+   "content": "İK ÇERÇEVESİ Nanobilim, Yeşil Kimya ve Sürdürülebilirlik: Boyaya Duyarlı Güneş Pili, Biyobozunur Polimer, Yapay Zekâ ve Sürdürülebilirlik"
+  },
+  {
+   "subject": "Biology",
+   "grade": "9",
+   "unit": 1,
+   "title": "YAŞAM",
+   "concepts": [
+    "bilimsel yöntem",
+    "bilim etiği",
+    "prokaryot",
+    "ökaryot",
+    "beslenme çeşitleri",
+    "adezyon",
+    "kohezyon",
+    "çözücülük",
+    "polimerizasyon",
+    "dehidrasyon",
+    "hidroliz",
+    "denatürasyon",
+    "indüklenmiş uyum",
+    "yüzey gerilimi"
+   ],
+   "content": "İK ÇERÇEVESİ Yaşam Bilimi: Biyoloji Biyolojinin Önemi, Biyoloji Biliminin Gelişimindeki Dönüm Noktaları, Bilimin Doğası, Bilimsel Araştırma Süreçleri, Bilim Etiği, Canlıların Ortak Özellikleri (Hücresel Yapı, Organizasyon, Beslenme, Enerji Üretimi ve Tüketimi, Boşaltım, Büyüme ve Gelişme, Metabolizma, Uyarılara Tepki, Homeostazi, Üreme, Varyasyon ve Adaptasyon) Temel Bileşenler İnorganik Moleküller (Su, Mineraller), Organik Moleküller (Karbohidratlar [Monosakkaritler (Riboz, Deoksiriboz, Fruktoz, Glikoz, Galaktoz)], Disakkaritler (Sükroz, Maltoz, Laktoz), Polisakkaritler (Glikojen, Nişasta, Selüloz, Kitin), Lipitler (Yağ Asitleri, Trigliseritler, Fosfolipitler, Steroitler), Proteinler (Amino Asitlerin Yapısı, Enzimler (Basit ve Bileşik Enzimler, Aktivasyon Enerjisi, Enzim-Substrat İlişkisi, Enzimatik Reaksiyonlara Etki Eden Faktörler), Nükleik Asitler (DNA ve RNA’nın Yapısı), Vitaminler (Yağda Çözünen Vitaminler, Suda Çözünen Vitaminler)"
+  },
+  {
+   "subject": "Biology",
+   "grade": "9",
+   "unit": 2,
+   "title": "ORGANİZASYON",
+   "concepts": [
+    "endositoz",
+    "ekzositoz",
+    "aktif taşıma",
+    "pasif taşıma",
+    "organeller",
+    "sitoplazmik yapılar",
+    "sınıflandırma kategorileri",
+    "ikili adlandırma",
+    "domain",
+    "tür",
+    "arke",
+    "bakteri",
+    "protista",
+    "bitki",
+    "mantar",
+    "hayvan",
+    "endemik tür"
+   ],
+   "content": "İK ÇERÇEVESİ Hücrenin Organizasyonu Prokaryot ve Ökaryot Hücre, Hücre Zarı, Sitoplazma, Sitoplazmik Yapılar, Organeller ve Çekirdek, Hücre Zarından Madde Geçişleri (Pasif Taşıma, Basit Difüzyon, Kolaylaştırılmış Difüzyon, Ozmoz, Aktif Taşıma, Endositoz, Ekzositoz) İ ÖĞRETİM PROGRAMI Sınıflandırma ve Biyoçeşitlilik Sınıflandırmada Temel Yaklaşımlar ve Modern Sınıflandırma (Linne ve İkili Adlandırma, Sınıflandırma Kategorileri), Üç Üst Âlem (Domain) Sisteminde Yer Alan Canlılar ve Genel Özellikleri [Bakteriler, Arkeler, Ökaryotlar (Protistler, Bitkiler, Mantarlar, Hayvanlar)], Biyoçeşitlilik"
+  },
+  {
+   "subject": "Biology",
+   "grade": "10",
+   "unit": 1,
+   "title": "ENERJİ",
+   "concepts": [
+    "ışık enerjisi",
+    "kimyasal enerji",
+    "pigment",
+    "fotoliz",
+    "Calvin döngüsü",
+    "sindirim",
+    "sindirim sistemi",
+    "emilim",
+    "hücresel solunum",
+    "fermantasyon",
+    "elektron taşıma sistemi",
+    "ATP sentezi"
+   ],
+   "content": "İK ÇERÇEVESİ Güneşten Besinlere Canlılık İçin Enerjinin Önemi (ATP’nin Yapısı ve Enerji Aktarımında ATP’nin Rolü), Işık Enerjisi Kullanılarak Besin Sentezi: Fotosentez (Işığın Kullanıldığı Tepkimeler, Işığın Kullanılmadığı Tepkimeler, Fotosentez Hızına Etki Eden Çevresel Faktörler), Işık Enerjisi Kullanılmadan Besin Sentezi: Kemosentez Besinlerden Enerjiye Sindirim (Hücre İçi Sindirim ve Hücre Dışı Sindirim), Canlılarda Sindirim Yapıları, İnsanda Sindirim, Emilim ve Taşınma, Hücresel Solunum (Glikoliz, Sitrik Asit Döngüsü, Elektron Taşıma Sistemi), Besinlerin Solunuma Katılma Yolları, Fermantasyon (Laktik Asit Fermantasyonu, Etil Alkol Fermantasyonu), Enerji-Metabolizma İlişkisi"
+  },
+  {
+   "subject": "Biology",
+   "grade": "10",
+   "unit": 2,
+   "title": "EKOLOJİ",
+   "concepts": [
+    "rekabet",
+    "süksesyon",
+    "erozyon",
+    "endemik",
+    "iklim değişikliği",
+    "ötrofikasyon",
+    "çevre direnci",
+    "taşıma kapasitesi"
+   ],
+   "content": "İK ÇERÇEVESİ Ekosistemler Ekosistemin Bileşenleri (Cansız ve Canlı Bileşenler, Popülasyon, Komünite, Ekosistem), Tür İçi ve Türler Arası Etkileşimler, Süksesyon, Popülasyon Dinamikleri, Ekosistemde Madde ve Enerji Akışı (Besin Zinciri, Besin Ağı, Ekolojik Piramitler, Biyolojik Birikim ve Etkileri), Madde Döngüleri (Su, Karbon, Azot Döngüsü) Ekolojik Sürdürülebilirlik Ekolojik Sürdürülebilirliğin Önemi, Ekolojik Sürdürülebilirliği Kısıtlayan/Engelleyen Durumlar (Habitat Kaybı/Parçalanması, Kirlilik ve Çevre Sorunları, Biyoçeşitlilik Kaybı), Ekolojik Sürdürülebilirliğin Sağlanması (Ekolojik Ayak İzinin Küçültülmesi, Doğal Kaynakların ve Biyoçeşitliliğin Korunması, Atık Yönetimi)"
+  },
+  {
+   "subject": "Biology",
+   "grade": "11",
+   "unit": 1,
+   "title": "TEPKİ",
+   "concepts": [
+    "yönelme",
+    "irkilme",
+    "duyu",
+    "aksiyon potansiyeli",
+    "bütünleştirme",
+    "tepki",
+    "kasılma",
+    "hareket",
+    "bağışıklık"
+   ],
+   "content": "İK ÇERÇEVESİ Canlılık ve Tepki Farklı Canlıların Uyaranlara Karşı Oluşturduğu Tepkiler Bitkilerde Tepki Bitkisel Hormonlar, Bitkilerde Tepki Mekanizmaları (Tropizma, Nasti) Hayvanlarda Tepki Uyartıların Alınması (Reseptörler, Uyaran Çeşitleri), Nöronların Yapısı, Nöronlarda Sinyal İletimi ve Sinaps, Duyu Organları, Uyarıların Yorumlanması, Hayvanlarda Sinir Sistemi Farklılıkları, İnsan Sinir Sisteminin Yapısı, Refleksler Uyartıya Mekanik Tepki Kemik, Eklem ve Kasların Hareketteki Rolü, Kemik ve Kasların Birlikte Çalışma İlişkisi, Kaslarda Kasılmanın Kontrolü, Kasların Kasılma Mekanizması Bağışıklık Doğal Bağışıklık, Kazanılmış Bağışıklık (Aktif ve Pasif Bağışıklık), Alerji"
+  },
+  {
+   "subject": "Biology",
+   "grade": "11",
+   "unit": 2,
+   "title": "HOMEOSTAZİ",
+   "concepts": [
+    "elektrolit dengesi",
+    "geri bildirim",
+    "enerji dengesi",
+    "ısı dengesi",
+    "kan basıncı dengesi",
+    "pH dengesi",
+    "su dengesi"
+   ],
+   "content": "İK ÇERÇEVESİ Homeostazi ve Canlılar İçin Önemi Farklı Canlı Türlerindeki Homeostatik Yapı ve Sistemler, Homeostatik Süreçler, Pozitif ve Negatif Geri Bildirim, Sinir Sistemi ve Homeostazi, Endokrin Sistem ve Homeostazi, Dolaşım Sistemi ve Homeostazi, Solunum Sistemi ve Homeostazi, Boşaltım Sistemi ve Homeostazi, Sistemlerin Es Güdümlü Çalışması Homeostatik Süreçlerin Bozulması Homeostazinin Sağlanamadığı Durumlarda Oluşabilecek Sağlık Problemleri (Diabetes Mellitus, Diabetes İnsipidus, Kan Basıncı Anormallikleri, Obezite)"
+  },
+  {
+   "subject": "Biology",
+   "grade": "12",
+   "unit": 1,
+   "title": "ÜREME",
+   "concepts": [
+    "eşeysiz üreme",
+    "eşeyli üreme",
+    "gametogenez",
+    "oogenez",
+    "spermatogenez",
+    "döllenme",
+    "çimlenme",
+    "dormansi"
+   ],
+   "content": "İK ÇERÇEVESİ Hücre Bölünmeleri ve Üreme Hücre Bölünmesinin Canlılar İçin Önemi, Kromozom Yapısı ve Özellikleri, Hücre Döngüsü (İnterfaz, Mitoz ve Sitokinez, Mayoz), Kromozomlarda Ayrılmama Üreme Çeşitleri Eşeysiz Üreme (İkiye Bölünme, Tomurcuklanma, Sporla Üreme, Rejenerasyon, Partenogenez, Vejetatif Üreme), Eşeyli Üreme (Gametogenez, Döllenme), Eşeysiz ve Eşeyli Üreme Arasındaki Farklar Üreme ve Gelişme İnsanda Üreme ve Gelişme (Dişi ve Erkek Üreme Sistemlerinin Yapısı, Menstrual Döngü, Döllenme, Kısırlık ve Tedavi Teknikleri, Embriyonik Gelişim), Bitkilerde Eşeyli Üreme ve Gelişme (Çiçeğin Kısımları ve Görevleri, Çiçekli Bitkilerde Tozlaşma, Döllenme, Tohum ve Meyvenin Oluşumu, Çimlenme)"
+  },
+  {
+   "subject": "Biology",
+   "grade": "12",
+   "unit": 2,
+   "title": "GEN",
+   "concepts": [
+    "DNA replikasyonu",
+    "gen ifadesi",
+    "fenotip",
+    "genotip",
+    "rekombinant DNA teknolojisi"
+   ],
+   "content": "İK ÇERÇEVESİ Nükleik Asitler ve Gen İfadesi Nükleik Asitlerin Canlılıktaki Rolü, DNA ve RNA’nın Moleküler Yapısı, DNA Replikasyonu, Gen İfadesi (Gen, Genetik Kod, Transkripsiyon, Translasyon), Genetik Yapıdaki Değişiklikler Kalıtım Kalıtımın Temel İlkeleri (Monohibrit Çaprazlama, Dihibrit Çaprazlama, Kontrol (Geri) Çaprazlama), Mendel Kalıtımından Farklılıklar (Eş Baskınlık, Çok Alellilik), Eşeye Bağlı Kalıtım (Eşeyin Kromozomal Temeli, X Bağlı Kalıtım, Y Bağlı Kalıtım), Soyağacı Analizi, Genetik Testler ve Genetik Danışmanlık Biyoteknoloji Biyoteknolojinin Tıp Alanındaki Uygulamaları (İlaç Üretimi, Hücre Kültürü, Kök Hücre, Rekombinant Aşılar, Protein ve Hormon Üretimi), Biyoteknolojinin Tarım Alanındaki Uygulamaları, Bitki Doku Kültürü, Ökaryotik Hücrelere Gen Aktarımı, Biyoteknolojinin Endüstri, Çevre ve Adli Tıp Alanlarındaki Uygulamaları, Biyoteknoloji ve Etik"
+  }
+ ]
+}
