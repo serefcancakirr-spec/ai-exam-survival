@@ -378,6 +378,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed, tested on the tablet and approved by the teacher. 22F: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22f` (local only); merged into `main` (PR #28), deployed, tested on the tablet and approved by the teacher. 22G: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22g` (local only); merged into `main` (PR #29), deployed, tested on the tablet and approved by the teacher. All 64 grade decks (1,600 cards) are done.
 - Stage 23 (install as an app, PWA; plan and samples shown, teacher chose icon A and the button place): built and tested,
   backup tag `backup/before-stage-23` (local only); merged into `main` (PR #30), deployed, tested on the tablet and approved by the teacher. All planned stages (1–23) are done.
+- After Stage 23 (teacher agreed): a 1–2 week pause while students use the site; only corrections from students and subject
+  teachers in that time. Then, proposed as the next stage (plan and samples first, not approved yet): grade 12 in Quiz Center
+  using the existing TYT/AYT/YDT questions per subject (the Maarif program reaches grade 12 only next year, so no new grade 12
+  Maarif questions this year). Live AI not recommended for now.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
