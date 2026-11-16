@@ -44,7 +44,7 @@ async function open(browser, { lang = 'tr', viewport = { width: 800, height: 128
     const { context, page } = await open(browser);
     const box = await tid(page, 'grade-decks').innerText();
     assert(box.includes('Matematik ve fen: anahtar kavramlar') && box.includes('o sınıfın MEB programındaki ünitelerden 25 anahtar kavram'), box);
-    const labels = await page.locator('[data-testid^="button-add-grade-deck-"][data-testid$="-9"]:not([data-testid*="english"])').allInnerTexts();
+    const labels = await page.locator(['mathematics', 'physics', 'chemistry', 'biology'].map((x) => `[data-testid="button-add-grade-deck-${x}-9"]`).join(', ')).allInnerTexts();
     assert(labels.join(',') === '+ Matematik,+ Fizik,+ Kimya,+ Biyoloji', labels.join(','));
     const s = await saved(page);
     assert(!s || !s.decks.some((d) => /-grade-\d+$/.test(d.id)), 'nothing added on a visit');
