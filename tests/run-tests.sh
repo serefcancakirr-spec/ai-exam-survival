@@ -47,5 +47,7 @@ for MODE in subfolder domain; do
   SITE="http://127.0.0.1:$PAGES_PORT${PREFIX%/}"
   node "$T/browser/stage09-test.cjs" "$SITE" > "$OUT/stage09-test-$MODE.log" 2>&1
   echo "stage09-test ($MODE): $(grep -c '^PASS' "$OUT/stage09-test-$MODE.log") pass, $(grep -c '^FAIL' "$OUT/stage09-test-$MODE.log") fail"
+  node "$T/browser/stage23-test.cjs" "$SITE" "$OUT/pages-$MODE" > "$OUT/stage23-test-$MODE.log" 2>&1
+  echo "stage23-test ($MODE): $(grep -c '^PASS' "$OUT/stage23-test-$MODE.log") pass, $(grep -c '^FAIL' "$OUT/stage23-test-$MODE.log") fail"
   { kill "$PAGES_PID"; wait "$PAGES_PID"; } 2>/dev/null || true
 done

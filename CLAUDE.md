@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 246/246; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks).
+  Expected today: logic 252/252; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -259,6 +259,20 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   literature, philosophy, religion). Id `<subject>-grade-<grade>`, name "9. sınıf Tarih – anahtar kavramlar" / "History 9 – key concepts".
   The box's second line now covers all non-English subjects. Definitions: subject teachers' check welcome (Din Kültürü especially).
 
+## Install as an app (PWA, Stage 23)
+- `public/manifest.webmanifest` (name "AI Exam Survival", short name "Exam Survival", standalone, theme `#2f4255`, background `#f7f3ea`,
+  relative addresses so it works at `/` and `/ai-exam-survival/`). Icons in `public/icons/` (teacher's choice A: Menti's face on the
+  deep blue of the home hero; maskable versions with a smaller face): rebuild with `node scripts/menti/make-app-icons.cjs`.
+- Service worker: source `pwa/service-worker.js`; `pwa/vite-plugin.ts` (in vite.config.ts) writes `sw.js` into the build with every
+  built file + public file (not `audio/`, not robots.txt) and a VERSION hash of all of them. Pages = the saved `index.html` (sub-pages
+  open offline), listening recordings are saved when first played (Range requests are cut from the saved file), Google Fonts are kept
+  too. Caches start with `ai-exam-survival-`; only old ones of these are removed. It never touches localStorage. An update waits until
+  the student taps "Yenile" in the notice "Yeni sürüm hazır. Kayıtların yerinde kalır." (`UpdateNotice`, bottom left, every page).
+- `src/pwa/pwa.ts` registers sw.js only in the built site; `src/pwa/pwa-state.ts` (pure, tested); `src/pwa/pwa-ui.tsx`: install button
+  under "Sıradaki adımını bul" on the home hero (`button-install-app`) and on About (`about-install` panel, `button-install-app-about`,
+  with Android and iPad/iPhone steps). Shown only when the browser offers installing (`beforeinstallprompt`) and not inside the app.
+- Privacy: `about.privacy6` says the site's files, fonts and played recordings are kept in the browser cache. No new storage key.
+
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
   appended at the END of `QUIZ_SUBJECTS` (the answer letters of the older questions depend on the subject order). English
@@ -361,7 +375,9 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   one deck per subject per grade from the units' "Anahtar Kavramlar" (filled up to 25 with terms from the outcomes, marked as such);
   front = concept, back = short Turkish definition; grade 12 History = T.C. İnkılap Tarihi ve Atatürkçülük. 64 decks, 1,600 cards.
   Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
-  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed, tested on the tablet and approved by the teacher. 22F: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22f` (local only); merged into `main` (PR #28), deployed, tested on the tablet and approved by the teacher. 22G: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22g` (local only); merged into `main` (PR #29), deployed, tested on the tablet and approved by the teacher. All 64 grade decks (1,600 cards) are done. Next: Stage 23 PWA (needs its own plan and approval).
+  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed, tested on the tablet and approved by the teacher. 22F: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22f` (local only); merged into `main` (PR #28), deployed, tested on the tablet and approved by the teacher. 22G: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22g` (local only); merged into `main` (PR #29), deployed, tested on the tablet and approved by the teacher. All 64 grade decks (1,600 cards) are done.
+- Stage 23 (install as an app, PWA; plan and samples shown, teacher chose icon A and the button place): built and tested,
+  backup tag `backup/before-stage-23` (local only). Not merged yet.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked

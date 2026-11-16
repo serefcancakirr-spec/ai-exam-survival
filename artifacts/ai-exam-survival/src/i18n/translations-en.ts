@@ -522,6 +522,19 @@ export const EN = {
   'about.contactTitle': "Write to us",
   'about.contactText': "Questions, ideas or a mistake in a question? The AI Club would love to hear from you.",
   'about.contactNote': "Please do not share personal information such as your full name, phone number or address in your e-mail.",
+
+  // ---------- Stage 23: install as an app ----------
+  'about.privacy6': "So that the site opens without internet, its own files (and the fonts and listening recordings you have used) are kept in this browser’s cache. They are the same for everyone and contain none of your answers.",
+  'pwa.install': "Install as an app",
+  'pwa.installEyebrow': "App",
+  'pwa.installTitle': "Install as an app",
+  'pwa.installText': "You can add AI Exam Survival to the home screen of your tablet or phone. It opens full screen, and once you have opened it, it also works without internet. Your saved work stays the same: the app and the website share it.",
+  'pwa.installAndroid': "Android tablet or phone: tap the button below. If there is no button, open the browser menu (⋮) and choose “Add to Home screen” or “Install app”.",
+  'pwa.installApple': "iPad or iPhone: open the site in Safari, tap Share (the square with an arrow) and choose “Add to Home Screen”.",
+  'pwa.installed': "You are using the app now.",
+  'pwa.updateReady': "A new version is ready.",
+  'pwa.updateNote': "Your saved work stays.",
+  'pwa.updateButton': "Refresh",
   'quiz.footer': 'AI Exam Survival · Quiz Center sample practice',
 } as const;
 

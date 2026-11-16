@@ -9,7 +9,7 @@ const path = require('path');
 const DIR = path.resolve(process.argv[2]);
 const PORT = Number(process.argv[3] || 4190);
 const PREFIX = (process.argv[4] ?? '/ai-exam-survival').replace(/\/$/, '');
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.txt': 'text/plain', '.png': 'image/png', '.ico': 'image/x-icon', '.json': 'application/json', '.woff2': 'font/woff2' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.txt': 'text/plain', '.png': 'image/png', '.ico': 'image/x-icon', '.json': 'application/json', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.mp3': 'audio/mpeg' };
 
 function send(res, status, file) {
   res.writeHead(status, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
