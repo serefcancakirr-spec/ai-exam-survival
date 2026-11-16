@@ -340,7 +340,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   one deck per subject per grade from the units' "Anahtar Kavramlar" (filled up to 25 with terms from the outcomes, marked as such);
   front = concept, back = short Turkish definition; grade 12 History = T.C. İnkılap Tarihi ve Atatürkçülük. 64 decks, 1,600 cards.
   Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
-  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only). Not merged yet.
+  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed. Tablet test pending. Next: 22F (Mat/Fiz/Kim/Biy grade decks), plan and samples first.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
