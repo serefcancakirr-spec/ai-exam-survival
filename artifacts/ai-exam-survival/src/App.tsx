@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import AboutPage, { FooterAboutLink } from '@/pages/about-page';
 import { MentiChat } from '@/components/menti-chat';
+import { InstallAppButton, UpdateNotice } from '@/pwa/pwa-ui';
 import SiteHeader from '@/components/site-header';
 import ScrollManager from '@/components/scroll-manager';
 import { Menti } from '@/components/menti';
@@ -83,6 +84,9 @@ function Home() {
                 <a href="#how-it-works" className="inline-flex min-h-12 items-center gap-2 rounded-[6px] px-4 text-[14px] font-bold text-white/85 transition-colors hover:text-[#8c5d3d]" data-testid="link-how-it-works">
                   {t('home.ctaHow')} <ArrowDownRight size={16} />
                 </a>
+              </div>
+              <div className="mt-4 empty:hidden">
+                <InstallAppButton variant="hero" testId="button-install-app" />
               </div>
               <div className="mt-10 flex items-center gap-3 text-[12px] font-medium text-[#bbc4cd]">
                 <div className="flex -space-x-2">
@@ -314,6 +318,7 @@ function App() {
           <SiteHeader />
           <Router />
           <MentiChat />
+          <UpdateNotice />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

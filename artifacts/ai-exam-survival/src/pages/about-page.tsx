@@ -1,10 +1,11 @@
 // Stage 17: About and Privacy page (/about). Texts are `about.*` keys in translations-en.ts / translations-tr.ts.
 // The only thing this page can change is deleting this app's saved data, and only after the student confirms.
 import { useState } from 'react';
-import { ArrowLeft, Info, Mail, ShieldCheck, Trash2 } from 'lucide-react';
+import { ArrowLeft, Info, Mail, ShieldCheck, Smartphone, Trash2 } from 'lucide-react';
 import { Link } from 'wouter';
 import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
+import { InstallAppHelp } from '@/pwa/pwa-ui';
 import type { MessageKey } from '@/i18n/translations-en';
 
 /** Every key this app saves in the browser (see CLAUDE.md "Saved data"). */
@@ -38,7 +39,7 @@ export default function AboutPage() {
   const { t } = useI18n();
   const [deleteState, setDeleteState] = useState<DeleteState>('idle');
 
-  const privacyPoints: MessageKey[] = ['about.privacy1', 'about.privacy2', 'about.privacy3', 'about.privacy4', 'about.privacy5'];
+  const privacyPoints: MessageKey[] = ['about.privacy1', 'about.privacy2', 'about.privacy3', 'about.privacy4', 'about.privacy5', 'about.privacy6'];
   const contentPoints: MessageKey[] = ['about.content1', 'about.content2', 'about.content3'];
 
   function confirmDelete() {
@@ -107,6 +108,12 @@ export default function AboutPage() {
               ))}
             </ul>
             <p className="mt-4 text-[11px] font-semibold text-[#5f6870]">{t('about.updated')}</p>
+          </Panel>
+        </div>
+
+        <div className="mt-5">
+          <Panel eyebrow={t('pwa.installEyebrow')} title={t('pwa.installTitle')} testId="about-install" icon={<Smartphone size={18} />}>
+            <InstallAppHelp />
           </Panel>
         </div>
 

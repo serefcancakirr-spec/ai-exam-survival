@@ -521,5 +521,18 @@ export const TR: Record<MessageKey, string> = {
   'about.contactTitle': "Bize yaz",
   'about.contactText': "Bir sorun, bir fikrin ya da bir soruda gördüğün bir hata mı var? AI Kulübü olarak seni dinlemek isteriz.",
   'about.contactNote': "Lütfen e-postanda tam adın, telefon numaran veya adresin gibi kişisel bilgileri paylaşma.",
+
+  // ---------- Aşama 23: uygulama olarak yükleme ----------
+  'about.privacy6': "Sitenin internetsiz de açılabilmesi için sitenin kendi dosyaları (ve kullandığın yazı tipleri ile dinleme kayıtları) bu tarayıcının önbelleğinde saklanır. Bu dosyalar herkes için aynıdır ve cevaplarından hiçbirini içermez.",
+  'pwa.install': "Uygulama olarak yükle",
+  'pwa.installEyebrow': "Uygulama",
+  'pwa.installTitle': "Uygulama olarak yükle",
+  'pwa.installText': "AI Exam Survival’ı tabletinin ya da telefonunun ana ekranına ekleyebilirsin. Tam ekran açılır ve bir kez açtıktan sonra internetsiz de çalışır. Kayıtların aynı kalır: Uygulama ve site aynı kayıtları kullanır.",
+  'pwa.installAndroid': "Android tablet veya telefon: Aşağıdaki düğmeye dokun. Düğme yoksa tarayıcı menüsünü (⋮) aç ve “Ana ekrana ekle” ya da “Uygulamayı yükle” seçeneğine dokun.",
+  'pwa.installApple': "iPad veya iPhone: Siteyi Safari’de aç, Paylaş düğmesine (oklu kare) dokun ve “Ana Ekrana Ekle” seçeneğine dokun.",
+  'pwa.installed': "Şu anda uygulamayı kullanıyorsun.",
+  'pwa.updateReady': "Yeni sürüm hazır.",
+  'pwa.updateNote': "Kayıtların yerinde kalır.",
+  'pwa.updateButton': "Yenile",
   'quiz.footer': 'AI Exam Survival · Test Merkezi örnek alıştırmaları',
 };
