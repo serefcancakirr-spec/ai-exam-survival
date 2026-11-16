@@ -8,19 +8,15 @@ export const EXAM_CALENDAR_STORAGE_KEY = 'ai-exam-survival:exam-calendar:v1';
 export const EXAM_GRADES = ['9', '10', '11', '12'] as const;
 export type ExamGrade = (typeof EXAM_GRADES)[number];
 
-/** Same subject names as the Study Planner, so exams can be linked to plans later. */
-export const EXAM_SUBJECTS = [
-  'Algebra I',
-  'Algebra II',
-  'Biology',
-  'Chemistry',
-  'English Language Arts',
-  'Geometry',
-  'Physics',
-  'Spanish',
-  'World History',
-  'Other',
-] as const;
+/**
+ * Stage 25: the subjects of a Turkish high school, with the same saved names as Quiz Center (shown in the language in use).
+ * Same list as the Study Planner, so exams can be linked to plans.
+ */
+export const EXAM_SUBJECT_CHOICES = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'Literature', 'History', 'Revolution History', 'Geography', 'Philosophy', 'Religion', 'English', 'Health', 'Other'] as const;
+/** The first (American) list, no longer offered. Exams saved with these names stay readable and keep their name. */
+export const LEGACY_EXAM_SUBJECTS = ['Algebra I', 'Algebra II', 'English Language Arts', 'Geometry', 'Spanish', 'World History'] as const;
+/** Every subject name a saved exam may have. */
+export const EXAM_SUBJECTS = [...EXAM_SUBJECT_CHOICES, ...LEGACY_EXAM_SUBJECTS] as const;
 export type ExamSubject = (typeof EXAM_SUBJECTS)[number];
 
 export const EXAM_LIMITS = { title: 80, notes: 300 } as const;
@@ -215,8 +211,8 @@ export function draftToExam(draft: ExamDraft, id: string, createdAt: string): Ex
 export function createExampleExams(today: string, now = new Date().toISOString()): Exam[] {
   const examples: Array<Omit<Exam, 'id' | 'createdAt'>> = [
     { subject: 'Biology', grade: '9', title: 'Cell structure quiz', date: addDays(today, 1), time: '09:00', notes: 'Organelles and their jobs' },
-    { subject: 'Algebra I', grade: '9', title: 'Linear equations test', date: addDays(today, 5), time: '10:30', notes: 'Solving equations, slope, graphs' },
-    { subject: 'World History', grade: '9', title: 'Causes of World War I essay', date: addDays(today, 12), time: '', notes: 'Outline the main causes with evidence' },
+    { subject: 'Mathematics', grade: '9', title: 'Linear equations test', date: addDays(today, 5), time: '10:30', notes: 'Solving equations, slope, graphs' },
+    { subject: 'History', grade: '9', title: 'Causes of World War I essay', date: addDays(today, 12), time: '', notes: 'Outline the main causes with evidence' },
   ];
   return examples.map((exam) => ({ ...exam, id: createExamId(), createdAt: now }));
 }

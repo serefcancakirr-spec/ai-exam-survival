@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 258/258; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice; stage24-test 8/8: "Nasıl kullanılır?" guide).
+  Expected today: logic 264/264; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice; stage24-test 8/8: "Nasıl kullanılır?" guide; stage25-test 6/6: Turkish subjects in Study Planner and Exam Calendar).
   Every browser test except stage24 runs with `tests/browser/guide-seen.cjs` (the app reads the guide as seen, nothing is written, so it does not open over the page).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
@@ -284,6 +284,17 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   home hero under "Sıradaki adımını bul" (`button-open-guide`, next to the install button) and About under Menti (`button-open-guide-about`).
   `openGuide()` can be called from anywhere: Menti chat "app help" answer's first link "Rehberi başlat" (`ChatLink.action: 'guide'`).
 
+## Turkish high school subjects in Study Planner and Exam Calendar (Stage 25)
+- The first lists were American (Algebra I/II, Geometry, English Language Arts, Spanish, World History). Now both offer the same 13
+  subjects (`PLANNER_SUBJECT_OPTIONS` = `EXAM_SUBJECT_CHOICES`): Mathematics, Physics, Chemistry, Biology, Literature, History,
+  Revolution History (T.C. İnkılap Tarihi ve Atatürkçülük), Geography, Philosophy, Religion, English, Health (Sağlık Bilgisi ve Trafik
+  Kültürü), Other — the same saved names as Quiz Center; display names are `subject.*` keys (teacher asked for İnkılap Tarihi and Sağlık Bilgisi).
+- Old names stay readable and keep their name: `LEGACY_EXAM_SUBJECTS` are part of `EXAM_SUBJECTS` (the calendar's read check), an exam
+  with an old subject keeps it in the edit form, planner subjects are plain strings. Old Progress Tracker rows stay (shown only with data).
+- Progress Tracker: each Quiz Center row now also has `plannerName` (planner sessions and calendar exams join the same row);
+  new rows `revolution-history` (History group) and `health`. Study Coach `CALENDAR_SUBJECT_MAP` knows the new names.
+  Planner example = Biology + Mathematics; calendar examples = Biology, Mathematics, History.
+
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
   appended at the END of `QUIZ_SUBJECTS` (the answer letters of the older questions depend on the subject order). English
@@ -395,6 +406,8 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Maarif questions this year). Live AI not recommended for now.
 - Stage 24 ("Nasıl kullanılır?" guide; suggestion came during the pause; plan shown, teacher chose B = opens by itself once, left the
   button places to Claude; samples approved): built and tested, backup tag `backup/before-stage-24` (local only); merged into `main` (PR #31), deployed, tested on the tablet and approved by the teacher.
+- Stage 25 (Turkish subjects in Study Planner and Exam Calendar; teacher noticed "İngilizce Dil ve Edebiyatı", İspanyolca …; plan approved,
+  teacher added İnkılap Tarihi and Sağlık Bilgisi): built and tested, backup tag `backup/before-stage-25` (local only). Not merged yet.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked

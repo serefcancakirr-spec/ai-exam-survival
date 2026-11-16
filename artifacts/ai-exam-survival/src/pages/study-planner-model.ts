@@ -34,18 +34,11 @@ export type StudyPlannerData = {
   inputSnapshot: string | null;
 };
 
-export const PLANNER_SUBJECT_OPTIONS = [
-  'Algebra I',
-  'Algebra II',
-  'Biology',
-  'Chemistry',
-  'English Language Arts',
-  'Geometry',
-  'Physics',
-  'Spanish',
-  'World History',
-  'Other',
-];
+/**
+ * Stage 25: the subjects of a Turkish high school, with the same saved names as Quiz Center (shown in the language in use).
+ * Subjects saved before with the first (American) names (Algebra I, Spanish …) are kept and shown with their own name.
+ */
+export const PLANNER_SUBJECT_OPTIONS = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'Literature', 'History', 'Revolution History', 'Geography', 'Philosophy', 'Religion', 'English', 'Health', 'Other'];
 
 const STUDY_ACTIVITIES = [
   'Topic review',

@@ -175,6 +175,8 @@ export const TR: Record<MessageKey, string> = {
   'subject.Philosophy': 'Felsefe',
   'subject.Religion': 'Din Kültürü ve Ahlak Bilgisi',
   'subject.Foreign Language': 'Yabancı Dil',
+  'subject.Revolution History': 'T.C. İnkılap Tarihi ve Atatürkçülük',
+  'subject.Health': 'Sağlık Bilgisi ve Trafik Kültürü',
 
   'difficulty.easy': 'Kolay',
   'difficulty.medium': 'Orta',
