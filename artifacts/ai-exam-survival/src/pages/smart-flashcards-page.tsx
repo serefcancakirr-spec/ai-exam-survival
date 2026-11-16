@@ -47,6 +47,15 @@ import {
   type StudyMode,
 } from './flashcards-model';
 import { ENGLISH_LEVELS, LEVEL_DECK_GRADE, createLevelDeck, levelDeckId, levelDeckName } from './flashcards-english-levels';
+import {
+  ENGLISH_GRADE_THEMES,
+  GRADE_DECK_GRADES,
+  createEnglishGradeDeck,
+  englishGradeDeckId,
+  englishGradeDeckName,
+  englishGradeThemeLabel,
+  type GradeDeckGrade,
+} from './flashcards-grade-english';
 import { YDT_DECK_KEYS, YDT_DECK_NAMES, createYdtDeck, ydtDeckId, ydtDeckName, type YdtDeckKey } from './flashcards-ydt-words';
 import type { EnglishLevel } from './quiz-bank-english';
 import { Menti } from '@/components/menti';
@@ -546,6 +555,11 @@ export default function SmartFlashcardsPage() {
   const canPersist = useRef(initialLoad.canPersist);
 
   const [filterGrade, setFilterGrade] = useState<'all' | FlashcardGrade>('all');
+  // Stage 22E: grade shown in the "decks for my grade" box; follows the grade filter when one is chosen. Not saved.
+  const [gradeDeckGrade, setGradeDeckGrade] = useState<GradeDeckGrade>('9');
+  useEffect(() => {
+    if (filterGrade !== 'all') setGradeDeckGrade(filterGrade as GradeDeckGrade);
+  }, [filterGrade]);
   const [filterSubject, setFilterSubject] = useState<'all' | FlashcardSubject>('all');
   const [session, setSession] = useState<Session | null>(() => {
     const deckId = initialLoad.data.selectedDeckId;
@@ -742,6 +756,20 @@ export default function SmartFlashcardsPage() {
     let name = levelDeckName(level, lang);
     if (findDuplicateDeck(name, data.decks, null)) name = `${name} 2`;
     const { deck, cards } = createLevelDeck(level, lang, grade, name);
+    setData((current) => ({ ...current, decks: [...current.decks, deck], cards: [...current.cards, ...cards], selectedDeckId: deck.id }));
+    setSession(createSession(deck.id, 'learn', cards, data));
+    setDeckForm(null);
+    setConfirm(null);
+    setNotice({ tone: 'success', message: `“${deck.name}” was added with ${cards.length} words. Start with Learn mode.` });
+    window.requestAnimationFrame(() => studyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
+
+  // Stage 22E: add an English deck for one MEB theme of a grade (only when the student taps its button).
+  function addEnglishGradeDeck(grade: GradeDeckGrade, theme: number) {
+    if (data.decks.some((deck) => deck.id === englishGradeDeckId(grade, theme))) return;
+    let name = englishGradeDeckName(grade, theme, lang);
+    if (findDuplicateDeck(name, data.decks, null)) name = `${name} 2`;
+    const { deck, cards } = createEnglishGradeDeck(grade, theme, lang, name);
     setData((current) => ({ ...current, decks: [...current.decks, deck], cards: [...current.cards, ...cards], selectedDeckId: deck.id }));
     setSession(createSession(deck.id, 'learn', cards, data));
     setDeckForm(null);
@@ -1316,7 +1344,56 @@ export default function SmartFlashcardsPage() {
           </div>
         )}
 
-        <div className="mt-4 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="english-level-decks">
+        <div className="mt-4 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="grade-decks">
+          <p className="text-[12px] font-bold text-[#384959]">{tx('Decks for my grade')}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+            {tx('English: one deck of 25 words for each theme of the MEB English curriculum, from the theme\'s target vocabulary. A deck is added only when you tap it.')}
+          </p>
+          <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label={tx('Grade')}>
+            {GRADE_DECK_GRADES.map((grade) => (
+              <button
+                key={grade}
+                type="button"
+                onClick={() => setGradeDeckGrade(grade)}
+                aria-pressed={gradeDeckGrade === grade}
+                className={`min-h-11 rounded-[6px] border px-1 text-[13px] font-bold transition-colors ${
+                  gradeDeckGrade === grade
+                    ? 'border-[#5376a0] bg-[#5376a0] text-white'
+                    : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                }`}
+                data-testid={`button-grade-decks-${grade}`}
+              >
+                {tx('Grade {grade}', { grade })}
+              </button>
+            ))}
+          </div>
+          <p className="mt-3 text-[12px] font-bold text-[#384959]">{tx('English')}</p>
+          <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {ENGLISH_GRADE_THEMES[gradeDeckGrade].map(({ theme }) => {
+              const added = data.decks.some((deck) => deck.id === englishGradeDeckId(gradeDeckGrade, theme));
+              const label = englishGradeThemeLabel(gradeDeckGrade, theme, lang);
+              return (
+                <button
+                  key={theme}
+                  type="button"
+                  onClick={() => addEnglishGradeDeck(gradeDeckGrade, theme)}
+                  disabled={added}
+                  aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
+                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                    added
+                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
+                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                  }`}
+                  data-testid={`button-add-grade-deck-english-${gradeDeckGrade}-${theme}`}
+                >
+                  {added ? `✓ ${label}` : `+ ${label}`}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-3 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="english-level-decks">
           <p className="text-[12px] font-bold text-[#384959]">{tx('English word decks by level')}</p>
           <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
             {tx('30 words with an example sentence and the Turkish meaning. A deck is added only when you tap its level.')}

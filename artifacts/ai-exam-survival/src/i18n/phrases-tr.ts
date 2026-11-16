@@ -145,6 +145,10 @@ const FLASHCARDS: Record<string, string> = {
   '{level} deck added': '{level} destesi eklendi',
   'Add the {level} deck': '{level} destesini ekle',
   'YDT word decks': 'YDT kelime desteleri',
+  'Decks for my grade': 'Sınıfıma göre desteler',
+  "English: one deck of 25 words for each theme of the MEB English curriculum, from the theme's target vocabulary. A deck is added only when you tap it.":
+    'İngilizce: MEB İngilizce programının her teması için, temanın hedef kelimelerinden 25 kelimelik bir deste. Deste yalnızca dokununca eklenir.',
+  English: 'İngilizce',
   '30 words each, chosen by counting the words in the ÖSYM YDT English booklets 2018–2026. Each card shows in how many booklets the word appears. A deck is added only when you tap it.': 'Her destede 30 kelime var. Kelimeler, ÖSYM’nin 2018–2026 YDT İngilizce kitapçıklarındaki kelimeler sayılarak seçildi. Her kartta kelimenin kaç kitapçıkta geçtiği yazar. Deste, yalnızca dokunduğunda eklenir.',
   '“{name}” was added with {count} words. Start with Learn mode.': '“{name}” {count} kelimeyle eklendi. Öğren modundan başla.',
   '“{name}” was created. Add your first card below.': '“{name}” oluşturuldu. İlk kartını aşağıdan ekle.',

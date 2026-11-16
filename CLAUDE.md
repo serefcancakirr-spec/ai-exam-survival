@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 228/228; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks).
+  Expected today: logic 234/234; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -227,6 +227,17 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   name "YDT – …" in the language in use). Card front "word — “example”", answer Turkish meaning, explanation = synonym +
   booklet count + option years (`ydtWordNote`, TR/EN, Turkish number endings 9’unda, 6’sında …).
 
+## Grade decks: English (Stage 22E)
+- `src/pages/flashcards-grade-english.ts`: one deck of 25 words per theme of the MEB "İngilizce Dersi (9-12) Öğretim Programı"
+  (grade 9: 8, 10: 8, 11: 8, 12: 6 themes = 30 decks, 750 cards). Every word is from the theme's official "Target Vocabulary";
+  the official lists are kept in `tests/data/meb-english-target-vocabulary.json` and `stage22e-model` checks each word against them.
+  Country/language names and easy revision words were left out. Turkish meanings and example sentences are written for the app.
+- Smart Flashcards box "Sınıfıma göre desteler" (`grade-decks`, above the level decks): grade buttons `button-grade-decks-<grade>`
+  (not saved; follows the grade filter when one is chosen), then the grade's English themes `button-add-grade-deck-english-<grade>-<theme>`.
+  Added only on tap like the level decks: id `english-grade-<grade>-t<theme>`, grade = the theme's grade, subject English,
+  name "9. sınıf İngilizce – Okul Hayatı" / "English 9 – School Life", topic "MEB · <theme>", explanation names the grade and theme.
+  The other subjects join this box in 22F (Mat/Fiz/Kim/Biy) and 22G (Tar/Coğ/Edb/Fel/Din). Never write "MEB onaylı".
+
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
   appended at the END of `QUIZ_SUBJECTS` (the answer letters of the older questions depend on the subject order). English
@@ -321,7 +332,15 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   samples shown and approved): built and tested, backup tag `backup/before-stage-22c-2` (local only); merged into `main` (PR #25), deployed,
   tested on the tablet and approved by the teacher.
 - 22D (YDT word decks, 300 words from the real booklet word count; teacher asked for frequent words from a reliable source;
-  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only). Not merged yet.
+  sample deck and lists shown and approved): built and tested, backup tag `backup/before-stage-22d` (local only); merged into `main` (PR #26), deployed, tested on the tablet and approved by the teacher.
+- 22D tablet test approved by the teacher. Next, planned with the teacher (plan shown; teacher chose 25 cards per deck, all subjects,
+  keep grade 12; split and order approved the next day): grade decks from the MEB Maarif programs on tymm.meb.gov.tr
+  (PDFs at `https://tymm.meb.gov.tr/assets/pdf/<pdf name from /Ders/GetDerslerBySinif>`). English: one deck per theme from the theme's
+  official "Target Vocabulary" (grade 9: 8, 10: 8, 11: 8, 12: 6 themes; program `ingilizce_9_12_ogretim_programi.pdf`). Other subjects:
+  one deck per subject per grade from the units' "Anahtar Kavramlar" (filled up to 25 with terms from the outcomes, marked as such);
+  front = concept, back = short Turkish definition; grade 12 History = T.C. İnkılap Tarihi ve Atatürkçülük. 64 decks, 1,600 cards.
+  Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
+  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only). Not merged yet.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
