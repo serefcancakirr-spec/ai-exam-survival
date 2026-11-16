@@ -76,8 +76,9 @@ const ex = (id, title, date, time = '') => ({ id, subject: 'Physics', grade: '11
     await check('add five exams with subject, grade, title and date', async () => {
       await addExam(page, { subject: 'Physics', grade: '11', title: 'Lab practical', date: '2026-11-05', time: '13:30', notes: 'Pendulum experiment' });
       await addExam(page, { subject: 'Biology', grade: '9', title: 'Cell quiz', date: '2026-11-06', time: '09:00' });
-      await addExam(page, { subject: 'Algebra I', grade: '9', title: 'Equations test', date: '2026-11-10' });
-      await addExam(page, { subject: 'World History', grade: '10', title: 'WWI essay', date: '2026-11-17' });
+      // Stage 25: Turkish high school subjects (were Algebra I and World History).
+      await addExam(page, { subject: 'Mathematics', grade: '9', title: 'Equations test', date: '2026-11-10' });
+      await addExam(page, { subject: 'History', grade: '10', title: 'WWI essay', date: '2026-11-17' });
       await addExam(page, { subject: 'Chemistry', grade: '12', title: 'Old chemistry test', date: '2026-11-04' });
       const saved = await page.evaluate((k) => JSON.parse(localStorage.getItem(k)), KEY);
       assert(saved.exams.length === 5, `saved ${saved.exams.length}`);

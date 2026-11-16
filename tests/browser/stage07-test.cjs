@@ -140,7 +140,8 @@ const titles = (page, id) => t(page, id).locator('[data-testid="topic-name"]').a
       assert((await math.locator('[data-testid="subject-quiz-average"]').innerText()) === '60%', 'math avg');
       assert((await math.locator('[data-testid="subject-accuracy"]').innerText()) === '60%', 'math accuracy');
       assert((await math.locator('[data-testid="subject-trend"]').innerText()).includes('Improving'), 'trend');
-      assert((await math.innerText()).includes('not split by course'), 'source note');
+      // Stage 25: planner sessions and exams named Mathematics join this row, so it now reads "All tools".
+      assert((await math.innerText()).includes('All tools'), 'source note');
     });
     await check('English and History headings keep their own rows', async () => {
       const en = await t(page, 'subject-group-english').locator('[data-testid^="subject-row-"]').evaluateAll((els) => els.map((e) => e.dataset.testid));
