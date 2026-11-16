@@ -24,11 +24,11 @@ sleep 5
 URL="http://127.0.0.1:$PORT"
 # Stage 1–7 tests were written for English, so they run with English chosen.
 for f in stage01-test stage02-flashcards-test stage04-calendar-test stage05-test stage06-coach-test stage07-test; do
-  NODE_OPTIONS="--require $T/browser/en-wrap.cjs" node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
+  NODE_OPTIONS="--require $T/browser/guide-seen.cjs --require $T/browser/en-wrap.cjs" node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
   echo "$f: $(grep -c '^PASS' "$OUT/$f.log") pass, $(grep -c '^FAIL' "$OUT/$f.log") fail"
 done
 for f in stage08a-test stage08b-test stage10-test stage11-test stage13-test stage14-test stage15-test stage17-test stage18-test stage20-test stage21-test stage21b-test stage22-test stage22b-test stage22b2-test stage22b2b-test stage22c-test stage22c2-test stage22d-test stage22e-test stage22f-test stage22g-test; do
-  node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
+  NODE_OPTIONS="--require $T/browser/guide-seen.cjs" node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
   echo "$f: $(grep -c '^PASS' "$OUT/$f.log") pass, $(grep -c '^FAIL' "$OUT/$f.log") fail"
 done
 echo "Known: stage01-test has 3 old placeholder checks that fail by design since Stages 2, 6 and 7."
@@ -45,9 +45,9 @@ for MODE in subfolder domain; do
   PAGES_PID=$!
   sleep 1
   SITE="http://127.0.0.1:$PAGES_PORT${PREFIX%/}"
-  node "$T/browser/stage09-test.cjs" "$SITE" > "$OUT/stage09-test-$MODE.log" 2>&1
+  NODE_OPTIONS="--require $T/browser/guide-seen.cjs" node "$T/browser/stage09-test.cjs" "$SITE" > "$OUT/stage09-test-$MODE.log" 2>&1
   echo "stage09-test ($MODE): $(grep -c '^PASS' "$OUT/stage09-test-$MODE.log") pass, $(grep -c '^FAIL' "$OUT/stage09-test-$MODE.log") fail"
-  node "$T/browser/stage23-test.cjs" "$SITE" "$OUT/pages-$MODE" > "$OUT/stage23-test-$MODE.log" 2>&1
+  NODE_OPTIONS="--require $T/browser/guide-seen.cjs" node "$T/browser/stage23-test.cjs" "$SITE" "$OUT/pages-$MODE" > "$OUT/stage23-test-$MODE.log" 2>&1
   echo "stage23-test ($MODE): $(grep -c '^PASS' "$OUT/stage23-test-$MODE.log") pass, $(grep -c '^FAIL' "$OUT/stage23-test-$MODE.log") fail"
   { kill "$PAGES_PID"; wait "$PAGES_PID"; } 2>/dev/null || true
 done

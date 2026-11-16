@@ -6,6 +6,8 @@ import { Link } from 'wouter';
 import { Menti } from '@/components/menti';
 import { useI18n } from '@/i18n/i18n';
 import { InstallAppHelp } from '@/pwa/pwa-ui';
+import { GuideButton } from '@/guide/usage-guide';
+import { GUIDE_KEY } from '@/guide/guide-model';
 import type { MessageKey } from '@/i18n/translations-en';
 
 /** Every key this app saves in the browser (see CLAUDE.md "Saved data"). */
@@ -19,6 +21,7 @@ export const APP_STORAGE_KEYS = [
   'ai-exam-survival:focus:v1',
   'ai-exam-survival:language:v1',
   'ai-exam-survival:exam-mode:v1',
+  GUIDE_KEY,
 ] as const;
 
 export const CONTACT_EMAIL = 'aiexamsurvival@gmail.com';
@@ -82,6 +85,9 @@ export default function AboutPage() {
             <p className="text-[13px] leading-[1.75] text-[#5e6973]">{t('about.whatText')}</p>
             <div className="mt-4">
               <Menti pose="wave" size={72} message={t('about.mentiText')} testId="menti-about" />
+            </div>
+            <div className="mt-4">
+              <GuideButton variant="panel" testId="button-open-guide-about" />
             </div>
           </Panel>
 

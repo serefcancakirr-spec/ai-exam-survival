@@ -7,6 +7,7 @@ import NotFound from '@/pages/not-found';
 import AboutPage, { FooterAboutLink } from '@/pages/about-page';
 import { MentiChat } from '@/components/menti-chat';
 import { InstallAppButton, UpdateNotice } from '@/pwa/pwa-ui';
+import { GuideButton, UsageGuide } from '@/guide/usage-guide';
 import SiteHeader from '@/components/site-header';
 import ScrollManager from '@/components/scroll-manager';
 import { Menti } from '@/components/menti';
@@ -85,7 +86,8 @@ function Home() {
                   {t('home.ctaHow')} <ArrowDownRight size={16} />
                 </a>
               </div>
-              <div className="mt-4 empty:hidden">
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <GuideButton variant="hero" testId="button-open-guide" />
                 <InstallAppButton variant="hero" testId="button-install-app" />
               </div>
               <div className="mt-10 flex items-center gap-3 text-[12px] font-medium text-[#bbc4cd]">
@@ -319,6 +321,7 @@ function App() {
           <Router />
           <MentiChat />
           <UpdateNotice />
+          <UsageGuide />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

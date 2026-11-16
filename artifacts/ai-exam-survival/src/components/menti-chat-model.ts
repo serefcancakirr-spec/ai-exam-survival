@@ -32,7 +32,8 @@ export type Intent =
 export const CHIP_INTENTS: Intent[] = ['today', 'exams', 'weak', 'cards', 'howto', 'mood', 'anxiety', 'help'];
 
 /** A button to another tool. `section` is an element id on that page to scroll to (for example the focus timer). */
-export type ChatLink = { href: string; label: string; section?: string };
+/** `action: 'guide'` opens the "Nasıl kullanılır?" guide (Stage 24) instead of going to `href`. */
+export type ChatLink = { href: string; label: string; section?: string; action?: 'guide' };
 export type MentiReply = { intent: Intent; lines: string[]; links: ChatLink[]; chips: Intent[]; pose: MentiPose };
 
 // ---------- understanding what the student wrote ----------
@@ -188,6 +189,7 @@ const EN = {
   link_progress: 'See my progress',
   link_coach: 'Ask the Study Coach',
   link_about: 'About and privacy',
+  link_guide: 'Start the guide',
   hello: 'Hi! I’m Menti. 👋',
   helloEmpty: 'You have no saved work yet. Shall we start together? A small plan or a short quiz is a great first step.',
   helloAsk: 'What would you like to talk about?',
@@ -271,6 +273,7 @@ const TR: Record<keyof typeof EN, string> = {
   link_progress: 'İlerlememi gör',
   link_coach: 'Çalışma Koçu’na sor',
   link_about: 'Hakkında ve gizlilik',
+  link_guide: 'Rehberi başlat',
   hello: 'Merhaba! Ben Menti. 👋',
   helloEmpty: 'Henüz kayıtlı bir çalışman yok. Birlikte başlayalım mı? Küçük bir plan ya da kısa bir test harika bir ilk adım olur.',
   helloAsk: 'Ne hakkında konuşmak istersin?',
@@ -369,6 +372,7 @@ const LINKS = {
   progress: (T: typeof EN): ChatLink => ({ href: '/progress-tracker', label: T.link_progress }),
   coach: (T: typeof EN): ChatLink => ({ href: '/ai-study-coach', label: T.link_coach }),
   about: (T: typeof EN): ChatLink => ({ href: '/about', label: T.link_about }),
+  guide: (T: typeof EN): ChatLink => ({ href: '/', label: T.link_guide, action: 'guide' }),
 };
 
 // ---------- replies ----------
@@ -505,7 +509,7 @@ export function replyTo(intent: Intent, facts: StudentFacts, lang: Lang, names: 
     }
 
     case 'help':
-      return r([T.help1, T.help2], [LINKS.planner(T), LINKS.quiz(T), LINKS.cards(T), LINKS.calendar(T)], 'wave');
+      return r([T.help1, T.help2], [LINKS.guide(T), LINKS.planner(T), LINKS.quiz(T), LINKS.cards(T), LINKS.calendar(T)], 'wave');
 
     case 'who':
       return r([T.who1, T.who2], [LINKS.about(T)], 'wave');
