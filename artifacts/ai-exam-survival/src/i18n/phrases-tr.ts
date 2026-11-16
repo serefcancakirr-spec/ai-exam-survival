@@ -146,9 +146,10 @@ const FLASHCARDS: Record<string, string> = {
   'Add the {level} deck': '{level} destesini ekle',
   'YDT word decks': 'YDT kelime desteleri',
   'Decks for my grade': 'Sınıfıma göre desteler',
-  "Mathematics, Physics, Chemistry and Biology: 25 key concepts from the units of the grade's MEB curriculum, each with a short definition.":
-    'Matematik, Fizik, Kimya ve Biyoloji: o sınıfın MEB programındaki ünitelerden 25 anahtar kavram, her biri kısa bir tanımla.',
   'Mathematics and science: key concepts': 'Matematik ve fen: anahtar kavramlar',
+  'Social sciences and literature: key concepts': 'Sosyal bilimler ve edebiyat: anahtar kavramlar',
+  "Other subjects: 25 key concepts from the units of the grade's MEB curriculum, each with a short definition. Grade 12 History uses the İnkılap Tarihi curriculum; Philosophy is in grades 10 and 11.":
+    'Diğer dersler: o sınıfın MEB programındaki ünitelerden 25 anahtar kavram, her biri kısa bir tanımla. 12. sınıf Tarih destesi İnkılap Tarihi programından; Felsefe 10 ve 11. sınıfta.',
   "English: one deck of 25 words for each theme of the MEB English curriculum, from the theme's target vocabulary. A deck is added only when you tap it.":
     'İngilizce: MEB İngilizce programının her teması için, temanın hedef kelimelerinden 25 kelimelik bir deste. Deste yalnızca dokununca eklenir.',
   English: 'İngilizce',

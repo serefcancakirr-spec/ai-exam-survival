@@ -1,0 +1,1625 @@
+{
+ "source": "MEB Türkiye Yüzyılı Maarif Modeli ortaöğretim öğretim programları, tymm.meb.gov.tr/assets/pdf/<pdf>: each unit/theme's \"Anahtar Kavramlar\", text as printed. Grade 12 History = T.C. İnkılap Tarihi ve Atatürkçülük. Türk Dili ve Edebiyatı: the hazırlık (preparatory) themes are left out.",
+ "pdf": {
+  "tarih": "tarih-dersi_20260819_143303_057.pdf",
+  "cografya": "cografya-dersi_20260819_142604_415.pdf",
+  "turk-dili-ve-edebiyati": "turk-dili-ve-edebiyati-dersi_20260819_143230_512.pdf",
+  "felsefe": "felsefe-dersi_20260819_142831_736.pdf",
+  "din-kulturu-ve-ahlak-bilgisi": "din-kulturu-ve-ahlak-bilgisi-dersi_20260819_142709_568.pdf",
+  "tc-inkilap": "tc-inkilap-tarihi-ve-ataturkculuk-dersi_20260819_143332_827.pdf"
+ },
+ "units": [
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "9",
+   "unit": 1,
+   "title": "GEÇMİŞİN İNŞA SÜRECİNDE TARİH",
+   "concepts": [
+    "arşiv",
+    "dijitalleşme",
+    "geçmiş",
+    "kanıt",
+    "olay",
+    "olgu",
+    "tarih",
+    "tarihçi",
+    "tarihsel bilgi",
+    "tarihsel zaman",
+    "yapay zekâ"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "9",
+   "unit": 2,
+   "title": "ESKİ ÇAĞ MEDENİYETLERİ",
+   "concepts": [
+    "artı ürün",
+    "kağan",
+    "konargöçer",
+    "kurultay",
+    "medeniyet",
+    "onlu sistem",
+    "piramit",
+    "saban",
+    "senato",
+    "töre",
+    "yazıt",
+    "ziggurat"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "9",
+   "unit": 3,
+   "title": "ORTA ÇAĞ MEDENİYETLERİ",
+   "concepts": [
+    "divan",
+    "feodalite",
+    "hicret",
+    "hilafet",
+    "kale",
+    "kervan",
+    "kervansaray",
+    "mevali",
+    "skolastik düşünce"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "10",
+   "unit": 1,
+   "title": "TÜRKİSTAN’DAN TÜRKİYE’YE (1040-1299)",
+   "concepts": [
+    "Ahilik",
+    "fetih",
+    "fütüvvet",
+    "gaza",
+    "Haçlı",
+    "medrese",
+    "örf",
+    "sultan",
+    "şifahane",
+    "tekke",
+    "Türkiye"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "10",
+   "unit": 2,
+   "title": "BEYLİKTEN DEVLETE OSMANLI (1299-1453)",
+   "concepts": [
+    "devşirme sistemi",
+    "irfan",
+    "iskân",
+    "istimalet",
+    "kapıkulu",
+    "Rumeli Türklüğü",
+    "tımar",
+    "vakıf"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "10",
+   "unit": 3,
+   "title": "CİHAN DEVLETİ OSMANLI (1453-1683)",
+   "concepts": [
+    "Celâli",
+    "cihanşümul",
+    "ıslahat",
+    "isyan",
+    "koloni",
+    "rasathane",
+    "sömürgecilik",
+    "vezir"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "11",
+   "unit": 1,
+   "title": "DEĞİŞEN DÜNYADA OSMANLI (1683-1789)",
+   "concepts": [
+    "barok",
+    "devrim",
+    "hendesehane",
+    "matbaa",
+    "rokoko",
+    "sanayileşme",
+    "sefaret"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "11",
+   "unit": 2,
+   "title": "DÖNÜŞÜM SÜRECİNDE OSMANLI (1789-1908)",
+   "concepts": [
+    "azınlık",
+    "cumhuriyetçilik",
+    "ihtilal",
+    "kapitalizm",
+    "komünizm",
+    "liberalizm",
+    "meşrutiyet",
+    "milliyetçilik",
+    "panslavizm",
+    "sosyalizm"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tarih",
+   "grade": "11",
+   "unit": 3,
+   "title": "SAVAŞLAR SARMALINDA OSMANLI (1908-1918)",
+   "concepts": [
+    "bloklaşma",
+    "darbe",
+    "fırka",
+    "göç",
+    "komita",
+    "muhacir",
+    "mütareke",
+    "müttefik",
+    "salgın"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 1,
+   "title": "COĞRAFYANIN DOĞASI",
+   "concepts": [
+    "beşerî coğrafya",
+    "beşerî ortam",
+    "buz küre (kriyosfer)",
+    "coğrafya",
+    "coğrafi bakış",
+    "doğal ortam",
+    "fiziki coğrafya",
+    "hava küre (atmosfer)",
+    "su küre (hidrosfer)",
+    "taş küre (litosfer)",
+    "yaşam küre (biyosfer)"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 2,
+   "title": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+   "concepts": [
+    "coğrafi bilgi sistemleri (CBS)",
+    "göreceli konum",
+    "harita",
+    "izohips",
+    "jeopolitik",
+    "koordinat sistemi",
+    "mekân",
+    "mekânsal bilgi teknolojileri",
+    "mekânsal veri",
+    "mutlak konum",
+    "ölçek",
+    "projeksiyon",
+    "saat dilimleri",
+    "ulusal saat",
+    "uzaktan algılama",
+    "yerel saat"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 3,
+   "title": "DOĞAL SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "aşırı hava olayları",
+    "atmosfer",
+    "basınç",
+    "biyoçeşitlilik",
+    "biyosfer",
+    "denizellik",
+    "dönme ve dolanma hareketi",
+    "ekosistem",
+    "eksen eğikliği",
+    "geoit",
+    "güneşlenme süresi",
+    "halk takvimi",
+    "hidrosfer",
+    "iklim",
+    "iklim sistemi",
+    "karasallık",
+    "kentsel ısı adası",
+    "kriyosfer",
+    "küresel iklim değişikliği",
+    "litosfer",
+    "mevsim",
+    "nem",
+    "okyanus akıntısı",
+    "rüzgâr",
+    "sıcaklık",
+    "topoğrafik faktörler",
+    "yağış"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 4,
+   "title": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "bağımlı nüfus",
+    "demografik dönüşüm",
+    "doğum oranı",
+    "genç nüfus",
+    "göç",
+    "nüfus artış hızı",
+    "nüfus piramidi",
+    "nüfus politikası",
+    "nüfus yoğunluğu",
+    "ortanca yaş",
+    "ölüm oranı",
+    "yaşlı nüfus"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 5,
+   "title": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+   "concepts": [
+    "bitki örtüsü",
+    "coğrafi konum",
+    "dağıtım",
+    "gelir düzeyi",
+    "ham madde",
+    "iklim",
+    "iş gücü",
+    "nüfus",
+    "sermaye",
+    "su kaynakları",
+    "teknoloji",
+    "topoğrafik faktörler",
+    "toprak",
+    "tüketim",
+    "üretim"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 6,
+   "title": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+   "concepts": [
+    "afet",
+    "bütüncül afet yönetimi",
+    "ekstrem doğa olayı",
+    "erken uyarı sistemi",
+    "maruziyet",
+    "risk",
+    "tehlike",
+    "Yeşil Vatan"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "9",
+   "unit": 7,
+   "title": "BÖLGELER, ÜLKELER VE KÜRESEL BAĞLANTILAR",
+   "concepts": [
+    "bölge",
+    "işlevsel bölge",
+    "şekilsel bölge"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 1,
+   "title": "COĞRAFYANIN DOĞASI",
+   "concepts": [
+    "coğrafi bakış",
+    "dağılış",
+    "değişim",
+    "hareket",
+    "konum",
+    "mekân",
+    "zaman"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 2,
+   "title": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+   "concepts": [
+    "CBS",
+    "uydu görüntüsü",
+    "uzaktan algılama",
+    "veri"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 3,
+   "title": "DOĞAL SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "alüvyal",
+    "antroposen",
+    "aşınma",
+    "birikme",
+    "çözünme",
+    "deprem",
+    "fay",
+    "jeolojik zaman",
+    "jeotermal",
+    "karstlaşma",
+    "kayaç döngüsü (kayaç çevrimi)",
+    "levha",
+    "orojenez",
+    "taşınma",
+    "tektonizma",
+    "topoğrafya",
+    "volkanizma"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 4,
+   "title": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "bağlantı",
+    "konum",
+    "mekân",
+    "şehir",
+    "yerleşme",
+    "yerleşme fonksiyonu"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 5,
+   "title": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+   "concepts": [
+    "ekonomik faaliyet",
+    "ekonomik sektör",
+    "gayrisafi millî hasıla (GSMH)",
+    "gayrisafi yurt içi hasıla (GSYİH)",
+    "gelişmişlik",
+    "istihdam"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 6,
+   "title": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+   "concepts": [
+    "afet bilinci",
+    "afete dirençli toplum",
+    "afete dirençli yaşam alanı",
+    "Yeşil Vatan"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "10",
+   "unit": 7,
+   "title": "BÖLGELER, ÜLKELER VE KÜRESEL BAĞLANTILAR",
+   "concepts": [
+    "kültür ocağı",
+    "kültürel miras",
+    "Türkistan",
+    "Türk dünyası",
+    "Türk kültürü"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 1,
+   "title": "COĞRAFYANIN DOĞASI",
+   "concepts": [
+    "bağlantı",
+    "bilimsel yaklaşım",
+    "dağılış",
+    "mekânsal sorunlar"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 2,
+   "title": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+   "concepts": [
+    "bulut bilişim",
+    "detay",
+    "genelleme",
+    "katman",
+    "öz nitelik tablosu",
+    "sembol",
+    "sorgulama",
+    "veri girişi",
+    "veri görüntüleme",
+    "yaşayan atlas",
+    "web CBS"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 3,
+   "title": "DOĞAL SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "deniz hukuku",
+    "deniz yetki alanı",
+    "iç sular",
+    "kara suları",
+    "kıta sahanlığı",
+    "Mavi Vatan",
+    "münhasır ekonomik bölge",
+    "sınır oluşturan sular",
+    "sınıraşan sular",
+    "stratejik su yönetimi",
+    "su kaynağı",
+    "su kültürü",
+    "sürdürülebilirlik",
+    "tasarruf"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 4,
+   "title": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "konum",
+    "mekânsal desen",
+    "mekânsal etki",
+    "mekânsal hiyerarşi",
+    "mekânsal organizasyon",
+    "yerleşme"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 5,
+   "title": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+   "concepts": [
+    "arazi kullanımı",
+    "endüstri 4.0",
+    "enerji yönetimi",
+    "gıda güvencesi",
+    "gıda güvenliği",
+    "ham madde",
+    "kritik maden",
+    "organize sanayi bölgesi (OSB)",
+    "sanayi",
+    "sanayi türleri",
+    "stratejik maden",
+    "sürdürülebilirlik",
+    "tarım",
+    "tarım 4.0",
+    "tedarik zinciri",
+    "yenilenebilir enerji",
+    "yenilenemeyen enerji"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 6,
+   "title": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+   "concepts": [
+    "biyoçeşitlilik",
+    "çevre sorunları",
+    "ekosistem",
+    "gezegen sınırı",
+    "mutlak su kıtlığı",
+    "su ayak izi",
+    "su dengesi",
+    "su güvenliği",
+    "su kıtlığı",
+    "su stresi",
+    "su tasarrufu",
+    "sürdürülebilirlik",
+    "yeşil beceriler"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "11",
+   "unit": 7,
+   "title": "BÖLGELER, ÜLKELER VE KÜRESEL BAĞLANTILAR",
+   "concepts": [
+    "enerji kaynakları",
+    "kültürel hinterland",
+    "madencilik",
+    "sanayi",
+    "tarım"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 1,
+   "title": "COĞRAFYANIN DOĞASI",
+   "concepts": [
+    "coğrafi bakış",
+    "coğrafi kanıt",
+    "coğrafya",
+    "kuantum teknolojileri",
+    "nesnelerin interneti",
+    "yapay zekâ",
+    "yeşil dönüşüm ve meslekler"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 2,
+   "title": "MEKÂNSAL BİLGİ TEKNOLOJİLERİ",
+   "concepts": [
+    "analiz",
+    "birleştirme",
+    "çakıştırma",
+    "değişken",
+    "dijital hikâye haritası",
+    "katman",
+    "öz nitelik tablosu",
+    "sembol",
+    "tematik harita",
+    "veri aralığı",
+    "veri girişi",
+    "veri görüntüleme"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 3,
+   "title": "DOĞAL SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "ana kaya",
+    "anıt ağaç",
+    "bitki örtüsü",
+    "biyoçeşitlilik",
+    "endemik bitki",
+    "iklim",
+    "kayaç",
+    "relikt bitki",
+    "topoğrafik faktörler",
+    "toprak",
+    "zaman"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 4,
+   "title": "BEŞERÎ SİSTEMLER VE SÜREÇLER",
+   "concepts": [
+    "değişim",
+    "jeokültür",
+    "kültür",
+    "kültürel peyzaj",
+    "mekân",
+    "sürdürülebilirlik"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 5,
+   "title": "EKONOMİK FAALİYETLER VE ETKİLERİ",
+   "concepts": [
+    "coğrafi işaret",
+    "doğal ve kültürel miras",
+    "e-ticaret",
+    "jeoekonomi",
+    "jeopolitik",
+    "küresel ticaret",
+    "siber güvenlik",
+    "sürdürülebilirlik",
+    "transit ticaret",
+    "ulaşım sistemleri",
+    "ulusötesi şirketler"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 6,
+   "title": "AFETLER VE SÜRDÜRÜLEBİLİR ÇEVRE",
+   "concepts": [
+    "çevre politikaları",
+    "çevre sorunları",
+    "çevresel organizasyonlar",
+    "çoraklaşma",
+    "çölleşme",
+    "doğal miras",
+    "drenaj",
+    "endemik",
+    "erozyon",
+    "kültürel miras",
+    "relikt",
+    "sürdürülebilirlik",
+    "Yeşil Vatan"
+   ]
+  },
+  {
+   "subject": "Geography",
+   "program": "cografya",
+   "grade": "12",
+   "unit": 7,
+   "title": "BÖLGELER, ÜLKELER VE KÜRESEL BAĞLANTILAR",
+   "concepts": [
+    "hizmet sektörü",
+    "sürdürülebilirlik",
+    "ticaret",
+    "turizm",
+    "ulaşım",
+    "uluslararası anlaşmazlık",
+    "uluslararası birliktelik",
+    "uluslararası organizasyon"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "9",
+   "unit": 1,
+   "title": "SÖZÜN İNCELİĞİ",
+   "concepts": [
+    "açık ve örtük ileti",
+    "çağrışım",
+    "edebî dil",
+    "gerçeklik",
+    "günlük dil",
+    "hayal gücü",
+    "imge",
+    "kurmaca",
+    "sembol",
+    "sürükleyicilik",
+    "yaratıcılık"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "9",
+   "unit": 2,
+   "title": "ANLAM ARAYIŞI",
+   "concepts": [
+    "açık ileti",
+    "ana duygu",
+    "ana düşünce",
+    "çağrışım",
+    "konu",
+    "örtük ileti",
+    "tema",
+    "yardımcı düşünce",
+    "yazarın tutumu",
+    "yazar-metin ilişkisi",
+    "yazma amacı"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "9",
+   "unit": 3,
+   "title": "ANLAMIN YAPI TAŞLARI",
+   "concepts": [
+    "ahenk unsurları (ölçü, kafiye, redif, durak, düzeni vb.)",
+    "anlatıcı",
+    "bakış açısı",
+    "bilgi görseli",
+    "giriş-gelişme-sonuç",
+    "kültürel farkındalık",
+    "mekân",
+    "nesnellik",
+    "olay örgüsü",
+    "öznellik",
+    "serim-düğüm-çözüm",
+    "şahıs kadrosu",
+    "zaman"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "9",
+   "unit": 4,
+   "title": "DİLİN ZENGİNLİĞİ",
+   "concepts": [
+    "anlatım özellikleri (duruluk, akıcılık, yalınlık, özgünlük, tutarlılık vb.)",
+    "anlatım teknikleri (geriye dönüş, monolog, diyalog vb.)",
+    "düşünceyi geliştirme yolları (tanımlama, karşılaştırma vb.)",
+    "edebî dil",
+    "öğretici metin",
+    "tenkit",
+    "üslup"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "10",
+   "unit": 1,
+   "title": "SÖZÜN EZGİSİ",
+   "concepts": [
+    "ahenk",
+    "anonim",
+    "ezgi",
+    "gelenek",
+    "kurmaca",
+    "masal anlatıcısı",
+    "masalın bölümleri",
+    "olağanüstülük",
+    "ritim",
+    "sözlü kültür",
+    "varyant",
+    "yapı unsurları (olay, kişiler, zaman, mekân)"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "10",
+   "unit": 2,
+   "title": "KELİMELERİN RİTMİ",
+   "concepts": [
+    "açık ve örtük ileti",
+    "ahenk unsurları",
+    "aruz",
+    "beyit",
+    "gerçeklik",
+    "imge",
+    "kafiye",
+    "ölçü",
+    "ritim",
+    "sembol (simge)"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "10",
+   "unit": 3,
+   "title": "DÜNDEN BUGÜNE",
+   "concepts": [
+    "anlatım biçimleri",
+    "destan",
+    "didaktik üslup",
+    "doğal destan",
+    "fabl",
+    "halk hikâyesi",
+    "kurmaca",
+    "mesnevi",
+    "motif",
+    "olağanüstülük",
+    "sözlü gelenek",
+    "yapma destan"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "10",
+   "unit": 4,
+   "title": "NESİLLERİN MİRASI",
+   "concepts": [
+    "açık ve örtük ileti",
+    "değişim",
+    "dönem",
+    "hikâye",
+    "kurmaca",
+    "millî bilinç",
+    "millî edebiyat",
+    "olağanüstülük",
+    "roman",
+    "sözlü kültür",
+    "şiir",
+    "yaşantı",
+    "yenilik"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "11",
+   "unit": 1,
+   "title": "BİR DİYECEĞİM VAR!",
+   "concepts": [
+    "dilekçe",
+    "elektronik içerik",
+    "e-posta",
+    "figür",
+    "geleneksel Türk tiyatrosu",
+    "gölge oyunu",
+    "Karagöz",
+    "mektup",
+    "mizah"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "11",
+   "unit": 2,
+   "title": "KÜLTÜR YOLCULUĞU",
+   "concepts": [
+    "anlatıcı",
+    "anlatma",
+    "diyalog",
+    "edebî metin",
+    "geriye dönüş",
+    "kişi",
+    "mekân",
+    "metin",
+    "olay örgüsü",
+    "öğretici metin",
+    "özetleme",
+    "söz varlığı",
+    "zaman"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "11",
+   "unit": 3,
+   "title": "YAŞAMIN İZİNDE",
+   "concepts": [
+    "divan edebiyatı geleneği",
+    "gerçek",
+    "kişi tanıtımı",
+    "kurmaca",
+    "kurmaca",
+    "nesnellik",
+    "öznellik",
+    "radyo tiyatrosu",
+    "roman",
+    "tezkire",
+    "üslup",
+    "yaşam öyküsü"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "11",
+   "unit": 4,
+   "title": "HAYATIN AYNASI",
+   "concepts": [
+    "dekor",
+    "diyalog",
+    "dramatik örgü",
+    "gösterme tekniği",
+    "kostüm",
+    "küçürek hikâye",
+    "modern Türk tiyatrosu",
+    "monolog",
+    "oyun",
+    "perde",
+    "sahne"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "12",
+   "unit": 1,
+   "title": "BENİM YOLCULUĞUM",
+   "concepts": [
+    "bakış açısı",
+    "blog",
+    "edebî dil",
+    "edebî günlük",
+    "günlük dil",
+    "kişisel gelişim",
+    "nesnellik",
+    "öznellik",
+    "söz varlığı",
+    "üslup",
+    "yaşam"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "12",
+   "unit": 2,
+   "title": "TOPLUMUN AHENGİ",
+   "concepts": [
+    "açıklık",
+    "akıcılık",
+    "bakış açısı",
+    "dipnot",
+    "edebî dil",
+    "gerçeklik",
+    "görsellik",
+    "günlük dil",
+    "intihal",
+    "kanıtlanabilirlik",
+    "kaynakça",
+    "kurmaca",
+    "nesnellik",
+    "özgünlük",
+    "özlülük",
+    "söz varlığı",
+    "temel hak ve özgürlükler",
+    "toplumsal yaşam",
+    "yansıtma"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "12",
+   "unit": 3,
+   "title": "HAYATIN DENGESİ",
+   "concepts": [
+    "açık ve örtük ileti",
+    "anket",
+    "çevre",
+    "gerçeklik",
+    "görsellik",
+    "günlük dil",
+    "iş birliği",
+    "kurmaca",
+    "özlü anlatım",
+    "sürdürülebilirlik"
+   ]
+  },
+  {
+   "subject": "Literature",
+   "program": "turk-dili-ve-edebiyati",
+   "grade": "12",
+   "unit": 4,
+   "title": "HAYALİMDEKİ YARIN",
+   "concepts": [
+    "açık ve örtük ileti",
+    "edebî dil",
+    "gerçeklik",
+    "günlük dil",
+    "iş birliği",
+    "kurmaca",
+    "öz geçmiş",
+    "söz varlığı",
+    "sunum",
+    "tutarlılık"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 1,
+   "title": "FELSEFENİN DOĞASI",
+   "concepts": [
+    "bilgelik",
+    "felsefe",
+    "filozof",
+    "refleksiyon",
+    "sorgulama"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 2,
+   "title": "FELSEFE, MANTIK VE ARGÜMANTASYON",
+   "concepts": [
+    "akıl yürütme",
+    "argüman",
+    "dil",
+    "düşünme",
+    "mantık",
+    "safsata",
+    "tutarlılık"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 3,
+   "title": "VARLIK FELSEFESİ",
+   "concepts": [
+    "fenomen",
+    "idea",
+    "madde",
+    "oluş",
+    "öz",
+    "töz",
+    "varlık",
+    "varoluş"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 4,
+   "title": "BİLGİ FELSEFESİ",
+   "concepts": [
+    "bilgi",
+    "doğruluk",
+    "gerçeklik"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 5,
+   "title": "AHLAK FELSEFESİ",
+   "concepts": [
+    "ahlak",
+    "erdem",
+    "etik",
+    "iyi",
+    "kötü",
+    "özgürlük",
+    "sorumluluk",
+    "vicdan"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 6,
+   "title": "ESTETİK VE SANAT FELSEFESİ",
+   "concepts": [
+    "estetik",
+    "hoş",
+    "güzellik",
+    "sanat",
+    "sanat eseri"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 7,
+   "title": "SİYASET FELSEFESİ",
+   "concepts": [
+    "adalet",
+    "birey",
+    "devlet",
+    "eşitlik",
+    "iktidar",
+    "özgürlük",
+    "toplum",
+    "ütopya"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 8,
+   "title": "DİN FELSEFESİ",
+   "concepts": [
+    "din",
+    "ibadet",
+    "iman",
+    "inanç",
+    "kutsal",
+    "mucize",
+    "Tanrı",
+    "vahiy"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "10",
+   "unit": 9,
+   "title": "BİLİM FELSEFESİ",
+   "concepts": [
+    "bilim",
+    "bilimsel yöntem",
+    "gözlem",
+    "hipotez",
+    "kuram",
+    "paradigma",
+    "yasa"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "11",
+   "unit": 1,
+   "title": "ÇEVRE SORUNLARI VE FELSEFE",
+   "concepts": [
+    "çevre",
+    "çevre etiği",
+    "değer",
+    "doğa"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "11",
+   "unit": 2,
+   "title": "TEKNOLOJİ VE HAYAT",
+   "concepts": [
+    "ontolojik anlam",
+    "tekhne",
+    "teknoloji karşıtlığı",
+    "teknoloji taraftarlığı",
+    "zaman ve mekân"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "11",
+   "unit": 3,
+   "title": "AKIL VE İNANÇ",
+   "concepts": [
+    "akıl",
+    "gönül",
+    "inanç"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "11",
+   "unit": 4,
+   "title": "EDEBİYAT VE FELSEFE",
+   "concepts": [
+    "edebiyat",
+    "felsefi roman",
+    "felsefi şiir"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "11",
+   "unit": 5,
+   "title": "HAYATIN ANLAMI",
+   "concepts": [
+    "kaygı",
+    "kendi olma",
+    "mutluluk",
+    "ölüm",
+    "saçma",
+    "umutsuzluk",
+    "varoluş",
+    "yabancılaşma"
+   ]
+  },
+  {
+   "subject": "Philosophy",
+   "program": "felsefe",
+   "grade": "11",
+   "unit": 6,
+   "title": "HUKUK VE FELSEFE",
+   "concepts": [
+    "ceza",
+    "hakkaniyet",
+    "hukuk",
+    "suç",
+    "yasa"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "9",
+   "unit": 1,
+   "title": "ALLAH-İNSAN İLİŞKİSİ",
+   "concepts": [
+    "dua",
+    "fıtrat",
+    "hamt",
+    "marifet",
+    "mükellef",
+    "tövbe"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "9",
+   "unit": 2,
+   "title": "İSLAM’DA İNANÇ ESASLARI",
+   "concepts": [
+    "ahiret",
+    "iman",
+    "kutsal kitap",
+    "melek",
+    "tevhit"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "9",
+   "unit": 3,
+   "title": "İSLAM’DA İBADETLER",
+   "concepts": [
+    "ibadet",
+    "ihlas",
+    "ihsan",
+    "itidal",
+    "tefekkür",
+    "tesettür",
+    "tevazu",
+    "yardımlaşma"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "9",
+   "unit": 4,
+   "title": "İSLAM’DA AHLAK İLKELERİ",
+   "concepts": [
+    "adalet",
+    "ahilik",
+    "ahlak",
+    "şecaat",
+    "hikmet",
+    "iffet",
+    "vicdan",
+    "terbiye"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "9",
+   "unit": 5,
+   "title": "KUR’AN’A GÖRE HZ. MUHAMMED",
+   "concepts": [
+    "Ehlibeyt",
+    "hadis",
+    "hatemülenbiya",
+    "nübüvvet",
+    "peygamber",
+    "sünnet",
+    "tebliğ",
+    "tebyin",
+    "temsil",
+    "teşri"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "10",
+   "unit": 1,
+   "title": "İSLAM’DA VARLIK VE BİLGİ",
+   "concepts": [
+    "akıl",
+    "bilgi",
+    "gayb",
+    "mütevatir",
+    "sadık haber",
+    "şehadet",
+    "varlık"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "10",
+   "unit": 2,
+   "title": "ALLAH’I TANIMAK",
+   "concepts": [
+    "delil",
+    "evren",
+    "gaye",
+    "marifetullah",
+    "nizam",
+    "teleoloji"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "10",
+   "unit": 3,
+   "title": "İSLAM’IN EVRENSEL MESAJLARI",
+   "concepts": [
+    "cihat",
+    "emanet",
+    "emniyet",
+    "güven",
+    "hak",
+    "hukuk",
+    "liyakat"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "10",
+   "unit": 4,
+   "title": "DİN, ÇEVRE VE TEKNOLOJİ",
+   "concepts": [
+    "çevre",
+    "teknoloji"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "10",
+   "unit": 5,
+   "title": "İSLAM DÜŞÜNCESİNDE İTİKADİ-SİYASİ VE FIKHİ YORUMLAR",
+   "concepts": [
+    "Ehlisünnet",
+    "fıkıh",
+    "itikat",
+    "mezhep",
+    "tevil"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "11",
+   "unit": 1,
+   "title": "KADER, İRADE VE SORUMLULUK",
+   "concepts": [
+    "insan",
+    "irade",
+    "kader",
+    "kaza",
+    "özgürlük",
+    "sorumluluk"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "11",
+   "unit": 2,
+   "title": "DİN, FELSEFE, BİLİM VE SANAT",
+   "concepts": [
+    "âlim",
+    "Beytülhikme",
+    "darülhadis",
+    "darülkurra",
+    "filozof",
+    "ilim",
+    "medrese",
+    "rasathane"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "11",
+   "unit": 3,
+   "title": "İSLAM MEDENİYETİ VE GÖNÜL COĞRAFYAMIZ",
+   "concepts": [
+    "medeniyet",
+    "mimari",
+    "musiki",
+    "vakıf"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "11",
+   "unit": 4,
+   "title": "İNANÇLA İLGİLİ MESELELER",
+   "concepts": [
+    "din istismarı",
+    "İslamofobi",
+    "iyilik",
+    "kötülük"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "11",
+   "unit": 5,
+   "title": "YAHUDİLİK VE HRİSTİYANLIK",
+   "concepts": [
+    "Ahd-i Atik",
+    "Ahd-i Cedit",
+    "Elohim",
+    "haç",
+    "havra",
+    "İncil",
+    "katedral",
+    "kilise",
+    "Kitab-ı Mukaddes",
+    "Musevi"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "12",
+   "unit": 1,
+   "title": "KUR’AN-I KERİM",
+   "concepts": [
+    "Mushaf",
+    "nüzul",
+    "vahiy"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "12",
+   "unit": 2,
+   "title": "DİN VE AİLE",
+   "concepts": [
+    "aile",
+    "fedakârlık",
+    "mahremiyet",
+    "merhamet",
+    "sadakat",
+    "vefa"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "12",
+   "unit": 3,
+   "title": "GÜNCEL DİNÎ MESELELER",
+   "concepts": [
+    "bidat",
+    "haram",
+    "helal",
+    "hurafe",
+    "icma",
+    "içtihat",
+    "kul hakkı",
+    "mekruh",
+    "zaruratıdiniye",
+    "zaruratıhamse"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "12",
+   "unit": 4,
+   "title": "İSLAM DÜŞÜNCESİNDE TASAVVUFİ YORUMLAR",
+   "concepts": [
+    "edep",
+    "erkân",
+    "insanıkâmil",
+    "semah",
+    "tasavvuf"
+   ]
+  },
+  {
+   "subject": "Religion",
+   "program": "din-kulturu-ve-ahlak-bilgisi",
+   "grade": "12",
+   "unit": 5,
+   "title": "HİNT VE ÇİN DİNLERİ",
+   "concepts": [
+    "guru",
+    "karma",
+    "kast",
+    "nirvana",
+    "pagoda",
+    "reenkarnasyon",
+    "tenasüh",
+    "tien",
+    "yin-yang",
+    "yoga"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tc-inkilap",
+   "grade": "12",
+   "unit": 1,
+   "title": "MODERN TÜRK DEVLETİNİN DOĞUŞU",
+   "concepts": [
+    "antant",
+    "ateşkes",
+    "cemiyet",
+    "genelge",
+    "himaye",
+    "manda",
+    "millî egemenlik",
+    "pakt"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tc-inkilap",
+   "grade": "12",
+   "unit": 2,
+   "title": "TÜRK İNKILABI VE ATATÜRKÇÜLÜK",
+   "concepts": [
+    "cumhuriyetçilik",
+    "devletçilik",
+    "halkçılık",
+    "inkılap",
+    "inkılapçılık",
+    "laiklik",
+    "milliyetçilik",
+    "modernleşme"
+   ]
+  },
+  {
+   "subject": "History",
+   "program": "tc-inkilap",
+   "grade": "12",
+   "unit": 3,
+   "title": "II. DÜNYA SAVAŞI’NDAN KÜRESELLEŞME SÜRECİNE",
+   "concepts": [
+    "askerî darbe",
+    "faşizm",
+    "karaborsa",
+    "komünizm",
+    "kutuplaşma",
+    "küreselleşme",
+    "Mavi Vatan",
+    "mihver",
+    "muhtıra",
+    "müttefik",
+    "Nazizm",
+    "postmodern darbe"
+   ]
+  }
+ ]
+}
