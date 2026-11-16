@@ -31,6 +31,8 @@ for f in stage08a-test stage08b-test stage10-test stage11-test stage13-test stag
   NODE_OPTIONS="--require $T/browser/guide-seen.cjs" node "$T/browser/$f.cjs" "$URL" > "$OUT/$f.log" 2>&1
   echo "$f: $(grep -c '^PASS' "$OUT/$f.log") pass, $(grep -c '^FAIL' "$OUT/$f.log") fail"
 done
+node "$T/browser/stage24-test.cjs" "$URL" > "$OUT/stage24-test.log" 2>&1
+echo "stage24-test: $(grep -c '^PASS' "$OUT/stage24-test.log") pass, $(grep -c '^FAIL' "$OUT/stage24-test.log") fail"
 echo "Known: stage01-test has 3 old placeholder checks that fail by design since Stages 2, 6 and 7."
 pkill -f "vite preview --config vite.config.ts --host 0.0.0.0 --port $PORT" 2>/dev/null || true
 

@@ -56,12 +56,12 @@ test('built sw.js: a version, every file it keeps offline exists, index.html is 
   assert.ok(!sw.includes('__FILES__') && !sw.includes('__VERSION__'), 'placeholders replaced');
 });
 
-test('the service worker and PWA code never touch saved data, and no storage key was added', () => {
+test('the service worker and PWA code never touch saved data, and add no storage key', () => {
   for (const rel of ['pwa/service-worker.js', 'src/pwa/pwa.ts', 'src/pwa/pwa-state.ts', 'src/pwa/pwa-ui.tsx']) {
     const code = read(rel).replace(/^\s*(\/\/|\/\*\*).*$/gm, '');
     assert.ok(!/localStorage|sessionStorage|indexedDB/.test(code), rel);
   }
-  assert.equal(APP_STORAGE_KEYS.length, 9);
+  assert.equal(APP_STORAGE_KEYS.length, 10); // Stage 24 added the guide note
   const sw = read('pwa/service-worker.js');
   assert.match(sw, /startsWith\(PREFIX\)/, 'only its own caches are removed');
 });
