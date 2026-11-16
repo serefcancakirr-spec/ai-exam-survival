@@ -377,7 +377,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
   A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed, tested on the tablet and approved by the teacher. 22F: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22f` (local only); merged into `main` (PR #28), deployed, tested on the tablet and approved by the teacher. 22G: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22g` (local only); merged into `main` (PR #29), deployed, tested on the tablet and approved by the teacher. All 64 grade decks (1,600 cards) are done.
 - Stage 23 (install as an app, PWA; plan and samples shown, teacher chose icon A and the button place): built and tested,
-  backup tag `backup/before-stage-23` (local only); merged into `main` (PR #30), deployed. Tablet test pending.
+  backup tag `backup/before-stage-23` (local only); merged into `main` (PR #30), deployed, tested on the tablet and approved by the teacher. All planned stages (1–23) are done.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
