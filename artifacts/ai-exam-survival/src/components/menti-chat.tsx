@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Send, X } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { openGuide } from '@/guide/usage-guide';
 import { MentiArt } from '@/components/menti';
 import { scrollToSectionSoon } from '@/components/scroll-manager';
 import { useI18n } from '@/i18n/i18n';
@@ -97,6 +98,10 @@ export function MentiChat() {
 
   function follow(link: ChatLink) {
     setOpen(false);
+    if (link.action === 'guide') {
+      openGuide();
+      return;
+    }
     navigate(link.href);
     if (link.section) {
       const id = link.section;

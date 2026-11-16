@@ -510,7 +510,7 @@ export const TR: Record<MessageKey, string> = {
   'about.updated': "Son güncelleme: Kasım 2026",
   'about.deleteEyebrow': "Verilerin",
   'about.deleteTitle': "Bu cihazdaki verilerimi sil",
-  'about.deleteText': "Çalışma planını, test sonuçlarını, kartlarını, sınav takvimini, koç notlarını, odak sayacı ayarlarını ve dil seçimini bu tarayıcıdan siler. Bu işlem geri alınamaz.",
+  'about.deleteText': "Çalışma planını, test sonuçlarını, kartlarını, sınav takvimini, koç notlarını, odak sayacı ayarlarını, dil seçimini ve rehberi gördüğün bilgisini bu tarayıcıdan siler. Bu işlem geri alınamaz.",
   'about.deleteButton': "Bu cihazdaki tüm verilerimi sil",
   'about.deleteQuestion': "Emin misin? Bu cihazdaki bütün kayıtların silinecek ve geri getirilemeyecek.",
   'about.deleteYes': "Evet, sil",

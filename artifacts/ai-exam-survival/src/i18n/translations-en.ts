@@ -511,7 +511,7 @@ export const EN = {
   'about.updated': "Last updated: November 2026",
   'about.deleteEyebrow': "Your data",
   'about.deleteTitle': "Delete my data on this device",
-  'about.deleteText': "Removes your study plan, quiz results, flashcards, exam calendar, coach notes, focus timer settings and language choice from this browser. This cannot be undone.",
+  'about.deleteText': "Removes your study plan, quiz results, flashcards, exam calendar, coach notes, focus timer settings, language choice and the note that you have seen the guide from this browser. This cannot be undone.",
   'about.deleteButton': "Delete all my data on this device",
   'about.deleteQuestion': "Are you sure? All your saved work on this device will be deleted and cannot be brought back.",
   'about.deleteYes': "Yes, delete",

@@ -19,8 +19,9 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 252/252; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice).
+  Expected today: logic 258/258; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice; stage24-test 8/8: "Nasıl kullanılır?" guide).
+  Every browser test except stage24 runs with `tests/browser/guide-seen.cjs` (the app reads the guide as seen, nothing is written, so it does not open over the page).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -35,6 +36,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - `ai-exam-survival:exam-mode:v1` (Stage 22A, teacher approved: YKS exam mode – `{version: 1, results: last 20 exam results,
   current: the exam in progress or null}`; written only after an exam starts or finishes, never by a visit)
 - `ai-exam-survival:focus:v1` (Stage 13, teacher approved: focus timer settings only – workMinutes 15/25/45, sound, volume 0–100, chime; written only when a setting changes)
+- `ai-exam-survival:guide:v1` (Stage 24, teacher approved: `{version: 1, seen: true}`, written only when the "Nasıl kullanılır?" guide is closed)
 Each tool checks its saved data and never overwrites data it cannot read.
 Progress Tracker is completely read-only: it reads the other tools' data and never writes.
 
@@ -273,6 +275,15 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   with Android and iPad/iPhone steps). Shown only when the browser offers installing (`beforeinstallprompt`) and not inside the app.
 - Privacy: `about.privacy6` says the site's files, fonts and played recordings are kept in the browser cache. No new storage key.
 
+## "Nasıl kullanılır?" guide (Stage 24, teacher's choice B: opens by itself once)
+- `src/guide/guide-model.ts` (pure, tested): 7 steps `GUIDE_STEPS` (welcome, planner, quiz, cards, calendar, coach, progress; a different
+  Menti pose each, tool link "Bu araca git" except welcome), texts `GUIDE_TEXTS` tr/en, `shouldAutoOpen` (only on `/`, only when no
+  saved-data key exists except the language choice, and the guide key is absent), `markGuideSeen` (never overwrites an unreadable value).
+- `src/guide/usage-guide.tsx`: `UsageGuide` (mounted once in App.tsx inside the router; centred window on tablets, bottom sheet on phones;
+  Atla / ✕ / Escape / tap outside / Bitir / "Bu araca git" close it and save the key) and `GuideButton` ("Nasıl kullanılır?"):
+  home hero under "Sıradaki adımını bul" (`button-open-guide`, next to the install button) and About under Menti (`button-open-guide-about`).
+  `openGuide()` can be called from anywhere: Menti chat "app help" answer's first link "Rehberi başlat" (`ChatLink.action: 'guide'`).
+
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
   appended at the END of `QUIZ_SUBJECTS` (the answer letters of the older questions depend on the subject order). English
@@ -295,7 +306,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Google Fonts can see the IP address. Update it if any of this changes. MEB note: questions are not approved by MEB
   (`about.content1` names grades 9, 10, 11, Felsefe (10–11), Din Kültürü (9–12) and English A1–C1; mistakes can be reported by e-mail).
 - “Delete all my data on this device” (teacher approved): asks first, then removes only the keys in `APP_STORAGE_KEYS`
-  (the 9 saved-data keys above). A model test checks the list matches every key used in the code.
+  (the 10 saved-data keys above). A model test checks the list matches every key used in the code.
 
 ## Chat with Menti (Stage 18)
 - `src/components/menti-chat.tsx` (mounted once in `App.tsx`, so it is on every page): round Menti button bottom-right
@@ -377,7 +388,13 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
   A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed, tested on the tablet and approved by the teacher. 22F: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22f` (local only); merged into `main` (PR #28), deployed, tested on the tablet and approved by the teacher. 22G: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22g` (local only); merged into `main` (PR #29), deployed, tested on the tablet and approved by the teacher. All 64 grade decks (1,600 cards) are done.
 - Stage 23 (install as an app, PWA; plan and samples shown, teacher chose icon A and the button place): built and tested,
-  backup tag `backup/before-stage-23` (local only). Not merged yet.
+  backup tag `backup/before-stage-23` (local only); merged into `main` (PR #30), deployed, tested on the tablet and approved by the teacher. All planned stages (1–23) are done.
+- After Stage 23 (teacher agreed): a 1–2 week pause while students use the site; only corrections from students and subject
+  teachers in that time. Then, proposed as the next stage (plan and samples first, not approved yet): grade 12 in Quiz Center
+  using the existing TYT/AYT/YDT questions per subject (the Maarif program reaches grade 12 only next year, so no new grade 12
+  Maarif questions this year). Live AI not recommended for now.
+- Stage 24 ("Nasıl kullanılır?" guide; suggestion came during the pause; plan shown, teacher chose B = opens by itself once, left the
+  button places to Claude; samples approved): built and tested, backup tag `backup/before-stage-24` (local only). Not merged yet.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked

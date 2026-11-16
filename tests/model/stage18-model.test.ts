@@ -118,7 +118,8 @@ test('every reply points somewhere useful and links only to real pages', () => {
       for (const lang of ['tr', 'en'] as const) {
         const reply = replyTo(intent, facts, lang);
         assert.ok(reply.lines.length > 0 && reply.lines.every((l) => l.trim() && !/\{\w+\}|undefined|NaN/.test(l)), `${intent} ${lang}: ${reply.lines.join(' | ')}`);
-        reply.links.forEach((l) => assert.ok(pages.has(l.href), `${intent}: ${l.href}`));
+        // Stage 24: the "Rehberi başlat" link opens the guide instead of going to a page.
+        reply.links.forEach((l) => assert.ok(pages.has(l.href) || l.action === 'guide', `${intent}: ${l.href}`));
         if (!['thanks', 'unknown', 'greeting'].includes(intent)) assert.ok(reply.links.length > 0, `${intent} ${lang}: no link`);
       }
     }
