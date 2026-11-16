@@ -146,11 +146,15 @@ const FLASHCARDS: Record<string, string> = {
   'Add the {level} deck': '{level} destesini ekle',
   'YDT word decks': 'YDT kelime desteleri',
   'Decks for my grade': 'Sınıfıma göre desteler',
+  "Mathematics, Physics, Chemistry and Biology: 25 key concepts from the units of the grade's MEB curriculum, each with a short definition.":
+    'Matematik, Fizik, Kimya ve Biyoloji: o sınıfın MEB programındaki ünitelerden 25 anahtar kavram, her biri kısa bir tanımla.',
+  'Mathematics and science: key concepts': 'Matematik ve fen: anahtar kavramlar',
   "English: one deck of 25 words for each theme of the MEB English curriculum, from the theme's target vocabulary. A deck is added only when you tap it.":
     'İngilizce: MEB İngilizce programının her teması için, temanın hedef kelimelerinden 25 kelimelik bir deste. Deste yalnızca dokununca eklenir.',
   English: 'İngilizce',
   '30 words each, chosen by counting the words in the ÖSYM YDT English booklets 2018–2026. Each card shows in how many booklets the word appears. A deck is added only when you tap it.': 'Her destede 30 kelime var. Kelimeler, ÖSYM’nin 2018–2026 YDT İngilizce kitapçıklarındaki kelimeler sayılarak seçildi. Her kartta kelimenin kaç kitapçıkta geçtiği yazar. Deste, yalnızca dokunduğunda eklenir.',
   '“{name}” was added with {count} words. Start with Learn mode.': '“{name}” {count} kelimeyle eklendi. Öğren modundan başla.',
+  '“{name}” was added with {count} cards. Start with Learn mode.': '“{name}” {count} kartla eklendi. Öğren modundan başla.',
   '“{name}” was created. Add your first card below.': '“{name}” oluşturuldu. İlk kartını aşağıdan ekle.',
   // Stage 14
   'A deck called “{name}” already exists. Choose a different name, for example add the grade.':

@@ -19,8 +19,8 @@ Reply in the language the teacher writes in (usually Turkish).
   `PORT=4180 BASE_PATH=/ pnpm run build` and `PORT=4180 BASE_PATH=/ pnpm run serve` (both variables are required).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
-  Expected today: logic 234/234; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks).
+  Expected today: logic 240/240; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
@@ -238,6 +238,17 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   name "9. sınıf İngilizce – Okul Hayatı" / "English 9 – School Life", topic "MEB · <theme>", explanation names the grade and theme.
   The other subjects join this box in 22F (Mat/Fiz/Kim/Biy) and 22G (Tar/Coğ/Edb/Fel/Din). Never write "MEB onaylı".
 
+## Grade decks: Mathematics, Physics, Chemistry, Biology (Stage 22F)
+- `src/pages/flashcards-grade-science.ts`: one deck of 25 concepts per subject and grade (16 decks, 400 cards), from the units'
+  "Anahtar Kavramlar" in the MEB Maarif programs (Fizik calls them "ünite", the others "tema"). Only Biology 10, 11, 12 have fewer than
+  25 key concepts: they are filled from the unit's "İçerik Çerçevesi" (5, 9, 12 cards, `fromContent`, note "programın içeriğinden").
+  Front = concept, answer = short Turkish definition written for the app (subject teachers' check welcome), explanation names
+  program, grade and unit. Official lists in `tests/data/meb-science-key-concepts.json` (Matematik program text starts at grade 9;
+  the part before it is not a grade); `stage22f-model` checks every concept against them.
+- Same "Sınıfıma göre desteler" box, row "Matematik ve fen: anahtar kavramlar": buttons `button-add-grade-deck-<subject>-<grade>`
+  (subject lower case: mathematics, physics, chemistry, biology). Id `<subject>-grade-<grade>`, grade = that grade, subject as saved
+  everywhere, name "10. sınıf Fizik – anahtar kavramlar" / "Physics 10 – key concepts", topic "MEB · Anahtar kavramlar" / "MEB · Key concepts".
+
 ## Felsefe and Din Kültürü in Quiz Center (Stage 22B-2b)
 - New quiz subjects `Philosophy` (Felsefe, grades 10–11 only) and `Religion` (Din Kültürü ve Ahlak Bilgisi, grades 9–12),
   appended at the END of `QUIZ_SUBJECTS` (the answer letters of the older questions depend on the subject order). English
@@ -340,7 +351,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   one deck per subject per grade from the units' "Anahtar Kavramlar" (filled up to 25 with terms from the outcomes, marked as such);
   front = concept, back = short Turkish definition; grade 12 History = T.C. İnkılap Tarihi ve Atatürkçülük. 64 decks, 1,600 cards.
   Proposed split: 22E English (30 decks; show grade 9's 8 decks first), 22F Mat/Fiz/Kim/Biy (16), 22G Tar/Coğ/Edb/Fel/Din (18).
-  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed. Tablet test pending. Next: 22F (Mat/Fiz/Kim/Biy grade decks), plan and samples first.
+  A "Sınıfıma göre desteler" box filtered by grade; added only on tap; no new storage key. 22E: grade 9 sample (8 decks) shown and approved; built and tested, backup tag `backup/before-stage-22e` (local only); merged into `main` (PR #27), deployed, tested on the tablet and approved by the teacher. 22F: grade 9 sample (4 decks) shown and approved; built and tested, backup tag `backup/before-stage-22f` (local only). Not merged yet. Next: 22G (Tar/Coğ/Edb/Fel/Din), samples first.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
