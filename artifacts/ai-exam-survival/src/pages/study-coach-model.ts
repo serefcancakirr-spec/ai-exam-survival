@@ -316,6 +316,13 @@ const CALENDAR_SUBJECT_MAP: Record<string, CoachSubject> = {
   'World History': 'History',
   Spanish: 'Foreign Language',
   Other: 'Other',
+  // Stage 25 (Turkish high school subjects)
+  Mathematics: 'Mathematics',
+  Literature: 'Literature',
+  History: 'History',
+  'Revolution History': 'History',
+  Geography: 'Geography',
+  English: 'English',
 };
 
 export function mapCalendarSubject(subject: string): CoachSubject {

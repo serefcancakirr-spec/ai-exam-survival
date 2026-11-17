@@ -18,7 +18,7 @@ import {
   EXAM_CALENDAR_STORAGE_KEY,
   EXAM_GRADES,
   EXAM_LIMITS,
-  EXAM_SUBJECTS,
+  EXAM_SUBJECT_CHOICES,
   createExamId,
   createExampleExams,
   createInitialExamCalendarData,
@@ -80,7 +80,7 @@ const TONE_STYLES: Record<CountdownTone, { tile: string; pill: string }> = {
   past: { tile: 'bg-[#f8f6f3] text-[#60686f]', pill: 'bg-[#f8f6f3] text-[#5f6870]' },
 };
 
-const emptyDraft: ExamDraft = { subject: 'Algebra I', grade: '9', title: '', date: '', time: '', notes: '' };
+const emptyDraft: ExamDraft = { subject: 'Mathematics', grade: '9', title: '', date: '', time: '', notes: '' };
 
 type Notice = { tone: 'success' | 'error' | 'info'; message: string };
 type StorageLoadResult = { data: ExamCalendarData; message: string; canPersist: boolean };
@@ -298,7 +298,8 @@ function ExamForm({
             className={inputClassName}
             data-testid={`${idPrefix}-subject`}
           >
-            {EXAM_SUBJECTS.map((subject) => (
+            {/* An exam saved with an old subject name keeps it while being edited. */}
+            {[...EXAM_SUBJECT_CHOICES, ...((EXAM_SUBJECT_CHOICES as readonly string[]).includes(draft.subject) ? [] : [draft.subject])].map((subject) => (
               <option key={subject} value={subject}>
                 {subjectLabel(subject)}
               </option>

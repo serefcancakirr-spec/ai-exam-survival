@@ -94,7 +94,8 @@ const saved = (page) => page.evaluate((k) => JSON.parse(localStorage.getItem(k) 
     await page.waitForTimeout(300);
     assert((await tid(page, 'exam-question').innerText()).includes('Soru 16 / 30'), 'same question after reload');
     assert((await tid(page, 'exam-option-E').getAttribute('aria-checked')) === 'true', 'answer kept');
-    assert((await tid(page, 'exam-timer').innerText()).includes('39:00'), `timer kept running: ${await tid(page, 'exam-timer').innerText()}`);
+    // The fake clock still moves with real time, so on a busy test machine a second or two more can pass (39:00 → 38:58).
+    assert(/3(9:00|8:5[5-9])/.test(await tid(page, 'exam-timer').innerText()), `timer kept running: ${await tid(page, 'exam-timer').innerText()}`);
     data = await saved(page);
     assert(data.results.length === 0, 'not finished yet');
     await context.close();

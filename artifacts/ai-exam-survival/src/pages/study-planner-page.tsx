@@ -318,7 +318,7 @@ export default function StudyPlannerPage() {
         },
         {
           id: createPlannerId('subject'),
-          name: 'Algebra II',
+          name: 'Mathematics',
           examDate: addDaysToDateKey(today, 8),
           topics: t('planner.sampleTopicsAlg'),
           difficulty: 'medium',

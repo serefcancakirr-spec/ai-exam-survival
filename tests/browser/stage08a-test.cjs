@@ -241,9 +241,10 @@ async function noOverflow(page) {
   await check('subject names are Turkish on screen but the saved value stays English', async () => {
     const { context, page } = await open(browser, { path: '/study-planner' });
     const options = await tid(page, 'select-subject-to-add').locator('option').allInnerTexts();
-    assert(options.includes('Cebir I') && options.includes('Biyoloji') && options.includes('Dünya Tarihi'), `options: ${options.join(',')}`);
+    // Stage 25: Turkish high school subjects (the first list had Cebir I, Dünya Tarihi …).
+    assert(options.includes('Matematik') && options.includes('Biyoloji') && options.includes('Tarih'), `options: ${options.join(',')}`);
     const values = await tid(page, 'select-subject-to-add').locator('option').evaluateAll((o) => o.map((x) => x.value));
-    assert(values.includes('Algebra I') && values.includes('Biology'), 'option values changed');
+    assert(values.includes('Mathematics') && values.includes('Biology'), 'option values changed');
     await tid(page, 'select-subject-to-add').selectOption('Biology');
     await tid(page, 'button-add-subject').click();
     assert((await tid(page, 'subject-card-0').innerText()).includes('Biyoloji'), 'card not Turkish');

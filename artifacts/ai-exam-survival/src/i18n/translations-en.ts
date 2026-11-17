@@ -173,6 +173,8 @@ export const EN = {
   'subject.Philosophy': 'Philosophy',
   'subject.Religion': 'Religious Culture and Ethics',
   'subject.Foreign Language': 'Foreign Language',
+  'subject.Revolution History': 'Turkish Revolution History',
+  'subject.Health': 'Health and Traffic Culture',
 
   'difficulty.easy': 'Easy',
   'difficulty.medium': 'Medium',

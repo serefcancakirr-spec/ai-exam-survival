@@ -138,7 +138,7 @@ const savedPrep = (page) => page.evaluate((k) => JSON.parse(localStorage.getItem
       await t(page, 'button-add-on-date').click();
       assert((await t(page, 'new-exam-date').inputValue()) === '2026-11-11', 'date not prefilled');
       await t(page, 'new-exam-title').fill('Spanish oral');
-      await t(page, 'new-exam-subject').selectOption('Spanish');
+      await t(page, 'new-exam-subject').selectOption('English'); // Stage 25: Spanish is no longer offered
       await t(page, 'new-exam-save').click();
       assert((await day(page, '2026-11-11').innerText()).includes('Spanish oral'), 'not on the calendar');
       assert((await t(page, 'day-exam-list').innerText()).includes('Spanish oral'), 'not in day details');
