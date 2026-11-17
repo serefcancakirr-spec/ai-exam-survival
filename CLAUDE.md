@@ -407,7 +407,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Stage 24 ("Nasıl kullanılır?" guide; suggestion came during the pause; plan shown, teacher chose B = opens by itself once, left the
   button places to Claude; samples approved): built and tested, backup tag `backup/before-stage-24` (local only); merged into `main` (PR #31), deployed, tested on the tablet and approved by the teacher.
 - Stage 25 (Turkish subjects in Study Planner and Exam Calendar; teacher noticed "İngilizce Dil ve Edebiyatı", İspanyolca …; plan approved,
-  teacher added İnkılap Tarihi and Sağlık Bilgisi): built and tested, backup tag `backup/before-stage-25` (local only). Not merged yet.
+  teacher added İnkılap Tarihi and Sağlık Bilgisi): built and tested, backup tag `backup/before-stage-25` (local only); merged into `main` (PR #32), deployed, tested on the tablet and approved by the teacher.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
