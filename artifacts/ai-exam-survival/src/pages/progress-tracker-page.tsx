@@ -58,10 +58,10 @@ function readRaw(): Record<SourceName, string | null> {
 const EMPTY_RAW: Record<SourceName, string | null> = { quiz: null, planner: null, flashcards: null, calendar: null, prep: null };
 
 const CLASS_STYLES: Record<Classification, { label: string; chip: string }> = {
-  strong: { label: 'Strong', chip: 'bg-[#e8f3f0] text-[#396e5e]' },
-  'needs-work': { label: 'Needs work', chip: 'bg-[#fbf1eb] text-[#8f5847]' },
-  'in-between': { label: 'Getting there', chip: 'bg-[#f1f5f9] text-[#4c6a8c]' },
-  'not-enough': { label: 'Not enough data yet', chip: 'bg-[#f8f6f3] text-[#5f6870]' },
+  strong: { label: 'Strong', chip: 'bg-[#e4f5ec] text-[#2b714e]' },
+  'needs-work': { label: 'Needs work', chip: 'bg-[#fdf1e5] text-[#9d5227]' },
+  'in-between': { label: 'Getting there', chip: 'bg-[#e5f8f6] text-[#26726d]' },
+  'not-enough': { label: 'Not enough data yet', chip: 'bg-[#f1f8f6] text-[#596a72]' },
 };
 
 // ---------- layout pieces ----------
@@ -69,42 +69,42 @@ const CLASS_STYLES: Record<Classification, { label: string; chip: string }> = {
 function ProgressFrame({ children }: { children: ReactNode }) {
   const { tx } = useI18n();
   return (
-    <div className="page-shell min-h-[100dvh] bg-[#f9f7f4]">
+    <div className="page-shell min-h-[100dvh] bg-[#f2f9f7]">
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-4 text-[12px] font-bold text-[#20605c] transition-colors hover:border-[#a6e1de] hover:text-[#26726d]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {tx('Back to home')}
         </Link>
-        <section className="relative mt-6 overflow-hidden rounded-[10px] border border-[#ddd5c6] border-l-[6px] border-l-[#5376a0] bg-[#fbf8f1] px-6 py-8 text-[#2b3a49] sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[16px] border border-[#dee8e5] border-l-[6px] border-l-[#2a7f7a] bg-[#f4f9f8] px-6 py-8 text-[#1a3e3f] sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-[#e8eef4] text-[#4b698c] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[12px] bg-[#d6f3f0] text-[#26716c] sm:h-14 sm:w-14">
               <BarChart3 size={22} />
             </span>
             <div>
-              <p className="text-[13px] font-semibold text-[#8a5a3c]">{tx('Notice the work you have done')}</p>
+              <p className="text-[13px] font-semibold text-[#9b5227]">{tx('Notice the work you have done')}</p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">{tx('Progress Tracker')}</h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4f5a64] sm:text-[15px]">
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4d5b61] sm:text-[15px]">
                 {tx('Real numbers from your quizzes, flashcards, study plan and exams on this device. Nothing here is estimated: when there is not enough data, the tracker says so.')}
               </p>
             </div>
           </div>
         </section>
         <div className="mt-7 flex flex-wrap items-center justify-between gap-2">
-          <p className="text-[11px] font-semibold text-[#5f6870]" data-testid="text-progress-status">
+          <p className="text-[11px] font-semibold text-[#596a72]" data-testid="text-progress-status">
             {tx('Read only · reads your saved data and never changes it')}
           </p>
-          <span className="rounded-full bg-[#ebf0f6] px-3 py-1.5 text-[10px] font-bold text-[#506783]">{tx('From this device')}</span>
+          <span className="rounded-full bg-[#daf5f2] px-3 py-1.5 text-[10px] font-bold text-[#26716c]">{tx('From this device')}</span>
         </div>
         <div className="mt-4 space-y-5 sm:space-y-6">{children}</div>
       </main>
-      <footer className="border-t border-[#e6e9ec] bg-[#f7f5f1]">
+      <footer className="border-t border-[#dbece9] bg-[#eff7f5]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#5f6870]">{tx('AI Exam Survival · Progress Tracker')}<FooterAboutLink /></p>
-          <Link href="/" className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#516986] hover:text-[#3e5977]" data-testid="link-footer-home">
+          <p className="text-[11px] text-[#596a72]">{tx('AI Exam Survival · Progress Tracker')}<FooterAboutLink /></p>
+          <Link href="/" className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#26726d] hover:text-[#20605c]" data-testid="link-footer-home">
             <ArrowLeft size={13} /> {tx('Return to the homepage')}
           </Link>
         </div>
@@ -115,11 +115,11 @@ function ProgressFrame({ children }: { children: ReactNode }) {
 
 function Panel({ eyebrow, title, children, trailing, testId }: { eyebrow: string; title: string; children: ReactNode; trailing?: ReactNode; testId?: string }) {
   return (
-    <section className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6" data-testid={testId}>
+    <section className="min-w-0 rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-5 sm:p-6 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]" data-testid={testId}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[13px] font-semibold text-[#4b698c]">{eyebrow}</p>
-          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">{title}</h2>
+          <p className="text-[13px] font-semibold text-[#26716c]">{eyebrow}</p>
+          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#1f4b4c] sm:text-[22px]">{title}</h2>
         </div>
         {trailing}
       </div>
@@ -130,9 +130,9 @@ function Panel({ eyebrow, title, children, trailing, testId }: { eyebrow: string
 
 function EmptyState({ text, href, label, testId }: { text: string; href: string; label: string; testId?: string }) {
   return (
-    <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-6 text-center" data-testid={testId}>
-      <p className="text-[12px] leading-relaxed text-[#5e676f]">{text}</p>
-      <Link href={href} className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-[6px] bg-[#f1f5f9] px-4 text-[11px] font-extrabold text-[#4c6a8c] hover:bg-[#e8eef6]">
+    <div className="rounded-[16px] border border-dashed border-[#d3e7e4] bg-[#fbfcfd] px-5 py-6 text-center" data-testid={testId}>
+      <p className="text-[12px] leading-relaxed text-[#586871]">{text}</p>
+      <Link href={href} className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-[10px] bg-[#e5f8f6] px-4 text-[11px] font-extrabold text-[#26726d] hover:bg-[#d3f4f0]">
         {label} <ArrowRight size={13} />
       </Link>
     </div>
@@ -141,20 +141,20 @@ function EmptyState({ text, href, label, testId }: { text: string; href: string;
 
 function Tile({ label, value, note, testId }: { label: string; value: string; note: string; testId: string }) {
   return (
-    <div className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-4" data-testid={testId}>
-      <p className="text-[13px] font-semibold text-[#5f6870]">{label}</p>
-      <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] text-[#364656] tabular-nums" data-testid={`${testId}-value`}>
+    <div className="min-w-0 rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-4 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]" data-testid={testId}>
+      <p className="text-[13px] font-semibold text-[#596a72]">{label}</p>
+      <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] text-[#1f4b4c] tabular-nums" data-testid={`${testId}-value`}>
         {value}
       </p>
-      <p className="mt-2 text-[10px] leading-snug text-[#60686f]">{note}</p>
+      <p className="mt-2 text-[10px] leading-snug text-[#596a72]">{note}</p>
     </div>
   );
 }
 
-function Bar({ value, max, color = 'bg-[#54769d]', label }: { value: number; max: number; color?: string; label: string }) {
+function Bar({ value, max, color = 'bg-[#2b807a]', label }: { value: number; max: number; color?: string; label: string }) {
   const pct = max === 0 ? 0 : Math.round((value / max) * 100);
   return (
-    <div className="h-2 overflow-hidden rounded-full bg-[#f0f2f4]" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
+    <div className="h-2 overflow-hidden rounded-full bg-[#eaf3f2]" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
       <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
     </div>
   );
@@ -198,9 +198,9 @@ function TrendIcon({ trend }: { trend: 'up' | 'down' | 'steady' | null }) {
   const { tx } = useI18n();
   if (!trend) return null;
   const map = {
-    up: { icon: <ArrowUpRight size={13} />, text: 'Improving', cls: 'text-[#396e5e]' },
-    down: { icon: <ArrowDownRight size={13} />, text: 'Dropping', cls: 'text-[#8f5847]' },
-    steady: { icon: <Minus size={13} />, text: 'Steady', cls: 'text-[#5f6870]' },
+    up: { icon: <ArrowUpRight size={13} />, text: 'Improving', cls: 'text-[#2b714e]' },
+    down: { icon: <ArrowDownRight size={13} />, text: 'Dropping', cls: 'text-[#9d5227]' },
+    steady: { icon: <Minus size={13} />, text: 'Steady', cls: 'text-[#596a72]' },
   }[trend];
   return (
     <span className={`inline-flex items-center gap-0.5 text-[10px] font-bold ${map.cls}`} data-testid="subject-trend">
@@ -211,36 +211,36 @@ function TrendIcon({ trend }: { trend: 'up' | 'down' | 'steady' | null }) {
 
 function Dash() {
   const { tx } = useI18n();
-  return <span className="text-[#68727c]" aria-label={tx('no data')}>—</span>;
+  return <span className="text-[#62747c]" aria-label={tx('no data')}>—</span>;
 }
 
 function SubjectRowView({ row }: { row: SubjectRow }) {
   const { t, tx, phrase, subject: subjectLabel, locale } = useI18n();
   const cell = (label: string, content: ReactNode, testId: string) => (
     <div className="min-w-0" data-testid={testId}>
-      <p className="text-[11px] font-semibold text-[#616870] md:hidden">{label}</p>
-      <div className="mt-0.5 text-[12px] font-bold text-[#4b5966] md:mt-0">{content}</div>
+      <p className="text-[11px] font-semibold text-[#596a72] md:hidden">{label}</p>
+      <div className="mt-0.5 text-[12px] font-bold text-[#20605c] md:mt-0">{content}</div>
     </div>
   );
   return (
-    <li className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[10px] border border-[#eef0f2] p-4 md:grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] md:items-center md:gap-3 md:rounded-none md:border-0 md:border-t md:px-1 md:py-3.5" data-testid={`subject-row-${row.key}`}>
+    <li className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[16px] border border-[#e7f3f0] p-4 md:grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] md:items-center md:gap-3 md:rounded-none md:border-0 md:border-t md:px-1 md:py-3.5" data-testid={`subject-row-${row.key}`}>
       <div className="col-span-2 min-w-0 md:col-span-1">
         <div className="flex flex-wrap items-center gap-2">
-          <p className="text-[13px] font-extrabold text-[#364656]">{subjectLabel(row.label)}</p>
+          <p className="text-[13px] font-extrabold text-[#1f4b4c]">{subjectLabel(row.label)}</p>
           {row.classification && (
             <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${CLASS_STYLES[row.classification].chip}`} data-testid="subject-class">
               {tx(CLASS_STYLES[row.classification].label)}
             </span>
           )}
         </div>
-        <p className="mt-0.5 text-[10px] text-[#60686f]">{phrase(row.sourcesNote)}</p>
+        <p className="mt-0.5 text-[10px] text-[#596a72]">{phrase(row.sourcesNote)}</p>
       </div>
       {cell(
         tx('Quiz average'),
         row.quiz ? (
           <span className="flex flex-wrap items-center gap-x-2">
             <span data-testid="subject-quiz-average">{row.quiz.average}%</span>
-            <span className="text-[10px] font-semibold text-[#60686f]">
+            <span className="text-[10px] font-semibold text-[#596a72]">
               {tx(row.quiz.count === 1 ? '{count} quiz' : '{count} quizzes', { count: row.quiz.count })}
             </span>
             <TrendIcon trend={row.quiz.trend} />
@@ -255,7 +255,7 @@ function SubjectRowView({ row }: { row: SubjectRow }) {
         row.quiz ? (
           <span>
             <span data-testid="subject-accuracy">{row.quiz.accuracy}%</span>{' '}
-            <span className="text-[10px] font-semibold text-[#60686f]">
+            <span className="text-[10px] font-semibold text-[#596a72]">
               {tx('{done} of {total}', { done: row.quiz.correct, total: row.quiz.answered })}
             </span>
           </span>
@@ -281,13 +281,13 @@ function SubjectRowView({ row }: { row: SubjectRow }) {
           <span data-testid="subject-sessions">
             {tx('{done} of {total}', { done: row.planner.done, total: row.planner.planned })}
             {row.upcomingExams > 0 && (
-              <span className="ml-1.5 text-[10px] font-semibold text-[#60686f]">
+              <span className="ml-1.5 text-[10px] font-semibold text-[#596a72]">
                 · {tx(row.upcomingExams === 1 ? '{count} exam ahead' : '{count} exams ahead', { count: row.upcomingExams })}
               </span>
             )}
           </span>
         ) : row.upcomingExams > 0 ? (
-          <span className="text-[11px] font-semibold text-[#60686f]">
+          <span className="text-[11px] font-semibold text-[#596a72]">
             {tx(row.upcomingExams === 1 ? '{count} exam ahead' : '{count} exams ahead', { count: row.upcomingExams })}
           </span>
         ) : (
@@ -302,13 +302,13 @@ function SubjectRowView({ row }: { row: SubjectRow }) {
 function TopicItem({ topic }: { topic: TopicResult }) {
   const { t, tx, phrase, lang, subject: subjectLabel, locale } = useI18n();
   return (
-    <li className="rounded-[8px] border border-[#eef0f2] p-3.5" data-testid={`topic-${topic.source}`}>
+    <li className="rounded-[12px] border border-[#e7f3f0] p-3.5" data-testid={`topic-${topic.source}`}>
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div className="min-w-0">
-          <p className="break-words text-[12px] font-extrabold text-[#3f4e5d]" data-testid="topic-name" data-content="topic">
+          <p className="break-words text-[12px] font-extrabold text-[#235355]" data-testid="topic-name" data-content="topic">
             {learningName(topic.topic, lang)}
           </p>
-          <p className="text-[10px] text-[#60686f]">
+          <p className="text-[10px] text-[#596a72]">
             {subjectLabel(topic.subject)} ·{' '}
             {tx(topic.source === 'quiz' ? '{good} of {total} quiz answers right' : '{good} of {total} reviewed cards known', {
               good: topic.good,
@@ -316,15 +316,15 @@ function TopicItem({ topic }: { topic: TopicResult }) {
             })}
           </p>
         </div>
-        <span className="font-display text-[18px] font-extrabold tracking-[-.015em] text-[#364656] tabular-nums" data-testid="topic-rate">
+        <span className="font-display text-[18px] font-extrabold tracking-[-.015em] text-[#1f4b4c] tabular-nums" data-testid="topic-rate">
           {topic.rate}%
         </span>
       </div>
       <ul className="mt-2 space-y-1.5">
         {recommendFor({ ...topic, topic: learningName(topic.topic, lang), deckName: topic.deckName && learningName(topic.deckName, lang) }).map((rec) => (
-          <li key={rec.text} className="text-[11px] leading-relaxed text-[#5e6973]">
+          <li key={rec.text} className="text-[11px] leading-relaxed text-[#5a6b73]">
             {phrase(rec.text)}{' '}
-            <Link href={rec.link.href} className="inline-flex min-h-8 items-center gap-0.5 font-extrabold text-[#4c6a8c] hover:text-[#3e5977]" data-testid="topic-link">
+            <Link href={rec.link.href} className="inline-flex min-h-8 items-center gap-0.5 font-extrabold text-[#26726d] hover:text-[#20605c]" data-testid="topic-link">
               {tx(rec.link.label)} <ArrowRight size={12} />
             </Link>
           </li>
@@ -389,8 +389,8 @@ export default function ProgressTrackerPage() {
   return (
     <ProgressFrame>
       {/* ---------- where the numbers come from ---------- */}
-      <section className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-4 py-3.5" data-testid="panel-sources">
-        <p className="text-[13px] font-semibold text-[#5f6870]">{tx('Reading from')}</p>
+      <section className="rounded-[16px] border border-[#dee8e5] bg-[#ffffff] px-4 py-3.5 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]" data-testid="panel-sources">
+        <p className="text-[13px] font-semibold text-[#596a72]">{tx('Reading from')}</p>
         <ul className="mt-2 flex flex-wrap gap-2">
           {(Object.keys(SOURCE_LABELS) as SourceName[]).map((name) => {
             const status = sources[name].status;
@@ -398,7 +398,7 @@ export default function ProgressTrackerPage() {
               <li
                 key={name}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold ${
-                  status === 'damaged' ? 'bg-[#fbf1eb] text-[#8f5847]' : status === 'ok' ? 'bg-[#e8f3f0] text-[#396e5e]' : 'bg-[#f8f6f3] text-[#5f6870]'
+                  status === 'damaged' ? 'bg-[#fdf1e5] text-[#9d5227]' : status === 'ok' ? 'bg-[#e4f5ec] text-[#2b714e]' : 'bg-[#f1f8f6] text-[#596a72]'
                 }`}
                 data-testid={`source-${name}`}
                 data-status={status}
@@ -410,7 +410,7 @@ export default function ProgressTrackerPage() {
           })}
         </ul>
         {damaged.length > 0 && (
-          <p role="alert" className="mt-3 rounded-[8px] bg-[#fdf9f2] px-3 py-2 text-[11px] leading-relaxed text-[#69502e]" data-testid="message-damaged">
+          <p role="alert" className="mt-3 rounded-[12px] bg-[#ffffff] px-3 py-2 text-[11px] leading-relaxed text-[#824420]" data-testid="message-damaged">
             {tx('Some saved data could not be read ({names}). It was left untouched and is not counted below. Everything else is shown normally.', {
               names: damaged.map((n) => tx(SOURCE_LABELS[n].name)).join(', '),
             })}
@@ -419,15 +419,15 @@ export default function ProgressTrackerPage() {
       </section>
 
       {nothingYet && (
-        <div className="rounded-[10px] border border-[#dbe4ee] bg-[#f7f9fc] px-5 py-4" data-testid="getting-started">
+        <div className="rounded-[16px] border border-[#bcece6] bg-[#f0fbfa] px-5 py-4" data-testid="getting-started">
           <Menti pose="wave" size={72} message={t('menti.progressEmpty')} testId="menti-progress" className="mb-3" />
-          <p className="text-[13px] font-extrabold text-[#4b5966]">{tx('Your dashboard fills up as you study.')}</p>
-          <p className="mt-1 text-[12px] leading-relaxed text-[#5e6973]">
+          <p className="text-[13px] font-extrabold text-[#20605c]">{tx('Your dashboard fills up as you study.')}</p>
+          <p className="mt-1 text-[12px] leading-relaxed text-[#5a6b73]">
             {tx('Finish a quiz, review some flashcards, plan a week or add an exam. Each one shows up here automatically.')}
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {(['quiz', 'flashcards', 'planner', 'calendar'] as SourceName[]).map((name) => (
-              <Link key={name} href={SOURCE_LABELS[name].href} className="inline-flex min-h-10 items-center gap-1 rounded-[6px] bg-[#fffdf8] px-3.5 text-[11px] font-extrabold text-[#4c6a8c] hover:text-[#3e5977]">
+              <Link key={name} href={SOURCE_LABELS[name].href} className="inline-flex min-h-10 items-center gap-1 rounded-[10px] bg-[#ffffff] px-3.5 text-[11px] font-extrabold text-[#26726d] hover:text-[#20605c]">
                 {tx(SOURCE_LABELS[name].name)} <ArrowRight size={12} />
               </Link>
             ))}
@@ -448,46 +448,46 @@ export default function ProgressTrackerPage() {
       <div className="grid gap-5 lg:grid-cols-[1.25fr_.75fr]">
         <Panel eyebrow={tx('Last 7 days')} title={tx('Weekly study activity')} testId="panel-week" trailing={<ActivityLegend />}>
           <WeeklyActivityChart week={activity.week} today={today} />
-          <p className="mt-3 text-[10px] leading-relaxed text-[#60686f]" data-testid="text-activity-note">
+          <p className="mt-3 text-[10px] leading-relaxed text-[#596a72]" data-testid="text-activity-note">
             {tx('Planner sessions count on their planned day once you tick them (an approximation, because the planner does not record when you ticked). Flashcards count each card’s most recent review only, so earlier reviews are not shown.')}
           </p>
         </Panel>
 
         <Panel eyebrow={tx('Study consistency')} title={tx('Keep the rhythm')} testId="panel-consistency">
           <div className="grid grid-cols-2 gap-2">
-            <div className="rounded-[10px] bg-[#394f65] p-4 text-white" data-testid="streak-current">
-              <p className="flex items-center gap-1 text-[13px] font-semibold text-[#d9bdaa]">
+            <div className="rounded-[16px] bg-[#235556] p-4 text-white" data-testid="streak-current">
+              <p className="flex items-center gap-1 text-[13px] font-semibold text-[#e7b89e]">
                 <Flame size={12} /> {tx('Current streak')}
               </p>
               <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] tabular-nums" data-testid="streak-current-value">
                 {tx(activity.currentStreak === 1 ? '{count} day' : '{count} days', { count: activity.currentStreak })}
               </p>
             </div>
-            <div className="rounded-[10px] border border-[#eef0f2] p-4" data-testid="streak-best">
-              <p className="text-[13px] font-semibold text-[#5f6870]">{tx('Best streak')}</p>
-              <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] text-[#364656] tabular-nums" data-testid="streak-best-value">
+            <div className="rounded-[16px] border border-[#e7f3f0] p-4" data-testid="streak-best">
+              <p className="text-[13px] font-semibold text-[#596a72]">{tx('Best streak')}</p>
+              <p className="font-display mt-2 text-[28px] font-extrabold leading-none tracking-[-.015em] text-[#1f4b4c] tabular-nums" data-testid="streak-best-value">
                 {tx(activity.bestStreak === 1 ? '{count} day' : '{count} days', { count: activity.bestStreak })}
               </p>
             </div>
           </div>
-          <p className="mt-2 text-[10px] leading-relaxed text-[#60686f]">
+          <p className="mt-2 text-[10px] leading-relaxed text-[#596a72]">
             {tx('A streak counts days in a row with saved activity, up to today or yesterday.')}
           </p>
 
-          <div className="mt-4 border-t border-[#eef0f2] pt-4" data-testid="planner-week">
-            <p className="text-[11px] font-extrabold text-[#4b5966]">{tx('Planned vs completed')}</p>
+          <div className="mt-4 border-t border-[#e7f3f0] pt-4" data-testid="planner-week">
+            <p className="text-[11px] font-extrabold text-[#20605c]">{tx('Planned vs completed')}</p>
             {plannerWeek ? (
               <>
-                <p className="mt-1 text-[10px] text-[#60686f]">
+                <p className="mt-1 text-[10px] text-[#596a72]">
                   {tx('Study Planner week: {from} – {to}', { from: shortDate(plannerWeek.weekStart), to: shortDate(plannerWeek.weekEnd) })}
                 </p>
-                <p className="font-display mt-2 text-[20px] font-extrabold tracking-[-.015em] text-[#364656]" data-testid="planner-done">
+                <p className="font-display mt-2 text-[20px] font-extrabold tracking-[-.015em] text-[#1f4b4c]" data-testid="planner-done">
                   {tx('{done} of {total} sessions', { done: plannerWeek.done, total: plannerWeek.planned })}
                 </p>
                 <div className="mt-2">
-                  <Bar value={plannerWeek.done} max={plannerWeek.planned} label={tx('Planner sessions completed')} color="bg-[#5276a0]" />
+                  <Bar value={plannerWeek.done} max={plannerWeek.planned} label={tx('Planner sessions completed')} color="bg-[#297f7a]" />
                 </div>
-                <p className="mt-2 text-[10px] leading-relaxed text-[#60686f]" data-testid="planner-due">
+                <p className="mt-2 text-[10px] leading-relaxed text-[#596a72]" data-testid="planner-due">
                   {tx('{done} of {due} sessions due so far are done · {minutes} of {planned} minutes', {
                     done: plannerWeek.doneOfDue,
                     due: plannerWeek.dueSoFar,
@@ -497,9 +497,9 @@ export default function ProgressTrackerPage() {
                 </p>
               </>
             ) : (
-              <p className="mt-1 text-[11px] leading-relaxed text-[#60686f]" data-testid="planner-none">
+              <p className="mt-1 text-[11px] leading-relaxed text-[#596a72]" data-testid="planner-none">
                 {tx('No Study Planner week yet.')}{' '}
-                <Link href="/study-planner" className="font-extrabold text-[#4c6a8c]">
+                <Link href="/study-planner" className="font-extrabold text-[#26726d]">
                   {tx('Plan a week')}
                 </Link>
               </p>
@@ -529,20 +529,20 @@ export default function ProgressTrackerPage() {
         ) : (
           <>
             <div className="grid gap-3 md:grid-cols-2" data-testid="subject-callouts">
-              <div className="rounded-[10px] bg-[#f9f7f4] p-4" data-testid="callout-strong">
-                <p className="text-[13px] font-semibold text-[#396e5e]">{tx('Strongest')}</p>
-                <p className="mt-1 text-[13px] font-extrabold text-[#364656]">
+              <div className="rounded-[16px] bg-[#f2f9f7] p-4" data-testid="callout-strong">
+                <p className="text-[13px] font-semibold text-[#2b714e]">{tx('Strongest')}</p>
+                <p className="mt-1 text-[13px] font-extrabold text-[#1f4b4c]">
                   {strongSubjects.length > 0 ? strongSubjects.map((r) => subjectLabel(r.label)).join(', ') : classified.length > 0 ? tx('None at 80% yet') : tx('Not enough data yet')}
                 </p>
               </div>
-              <div className="rounded-[10px] bg-[#fdf7f4] p-4" data-testid="callout-weak">
-                <p className="text-[13px] font-semibold text-[#8f5847]">{tx('Needs work')}</p>
-                <p className="mt-1 text-[13px] font-extrabold text-[#364656]">
+              <div className="rounded-[16px] bg-[#ffffff] p-4" data-testid="callout-weak">
+                <p className="text-[13px] font-semibold text-[#9d5227]">{tx('Needs work')}</p>
+                <p className="mt-1 text-[13px] font-extrabold text-[#1f4b4c]">
                   {weakSubjects.length > 0 ? weakSubjects.map((r) => subjectLabel(r.label)).join(', ') : classified.length > 0 ? tx('None below 60%') : tx('Not enough data yet')}
                 </p>
               </div>
             </div>
-            <p className="mt-2 text-[10px] leading-relaxed text-[#60686f]">
+            <p className="mt-2 text-[10px] leading-relaxed text-[#596a72]">
               {tx('Based on quiz answers: strong at {strong}% or more correct, needs work below {weak}%. A subject needs at least {quizzes} quizzes or {answers} answers before it is rated.', {
                 strong: STRONG_AT,
                 weak: NEEDS_WORK_BELOW,
@@ -551,7 +551,7 @@ export default function ProgressTrackerPage() {
               })}
             </p>
 
-            <div className="mt-4 hidden grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] gap-3 px-1 text-[11px] font-semibold text-[#616870] md:grid" aria-hidden="true">
+            <div className="mt-4 hidden grid-cols-[1.5fr_1fr_1fr_.9fr_.9fr] gap-3 px-1 text-[11px] font-semibold text-[#596a72] md:grid" aria-hidden="true">
               <span>{tx('Subject')}</span>
               <span>{tx('Quiz average')}</span>
               <span>{tx('Answers correct')}</span>
@@ -562,11 +562,11 @@ export default function ProgressTrackerPage() {
               {grouped.map(({ group, rows }) => (
                 <div key={`${group ?? 'single'}-${rows[0].key}`} data-testid={group ? `subject-group-${group.toLowerCase()}` : undefined}>
                   {group && (
-                    <p className="mb-2 mt-1 text-[13px] font-semibold text-[#4b698c] md:mb-0 md:px-1" data-testid="subject-group-title">
+                    <p className="mb-2 mt-1 text-[13px] font-semibold text-[#26716c] md:mb-0 md:px-1" data-testid="subject-group-title">
                       {subjectLabel(group)}
                     </p>
                   )}
-                  <ul className={`space-y-2 md:space-y-0 ${group ? 'md:border-l-2 md:border-[#e6ebf1] md:pl-3' : ''}`}>
+                  <ul className={`space-y-2 md:space-y-0 ${group ? 'md:border-l-2 md:border-[#d6f0ec] md:pl-3' : ''}`}>
                     {rows.map((row) => (
                       <SubjectRowView key={row.key} row={row} />
                     ))}
@@ -588,7 +588,7 @@ export default function ProgressTrackerPage() {
               ))}
             </ul>
           ) : (
-            <p className="text-[12px] leading-relaxed text-[#5f6870]" data-testid="topics-strong-empty">
+            <p className="text-[12px] leading-relaxed text-[#596a72]" data-testid="topics-strong-empty">
               {tx('No topic at {strong}% or more yet. A topic needs at least {count} quiz answers or {count} reviewed cards.', { strong: STRONG_AT, count: TOPIC_MIN_ANSWERS })}
             </p>
           )}
@@ -601,14 +601,14 @@ export default function ProgressTrackerPage() {
               ))}
             </ul>
           ) : (
-            <p className="text-[12px] leading-relaxed text-[#5f6870]" data-testid="topics-revise-empty">
+            <p className="text-[12px] leading-relaxed text-[#596a72]" data-testid="topics-revise-empty">
               {tx('No topic is below {weak}% right now.', { weak: NEEDS_WORK_BELOW })}
             </p>
           )}
         </Panel>
       </div>
       {topics.length > 0 && (
-        <p className="-mt-2 text-[10px] leading-relaxed text-[#60686f]" data-testid="topics-note">
+        <p className="-mt-2 text-[10px] leading-relaxed text-[#596a72]" data-testid="topics-note">
           {tx(betweenTopics === 1 ? '{count} topic is between {weak}% and {top}%,' : '{count} topics are between {weak}% and {top}%,', {
             count: betweenTopics,
             weak: NEEDS_WORK_BELOW,
@@ -628,51 +628,51 @@ export default function ProgressTrackerPage() {
           <>
             <ul className="grid gap-3 md:grid-cols-2" data-testid="exam-list">
               {exams.map((facts) => (
-                <li key={facts.exam.id} className="rounded-[10px] border border-[#eef0f2] p-4" data-testid={`exam-facts-${facts.exam.id}`}>
+                <li key={facts.exam.id} className="rounded-[16px] border border-[#e7f3f0] p-4" data-testid={`exam-facts-${facts.exam.id}`}>
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="min-w-0">
-                      <p className="break-words text-[13px] font-extrabold text-[#3f4e5d]">{facts.exam.title}</p>
-                      <p className="text-[10px] font-semibold text-[#5d676f]">
+                      <p className="break-words text-[13px] font-extrabold text-[#235355]">{facts.exam.title}</p>
+                      <p className="text-[10px] font-semibold text-[#586871]">
                         {subjectLabel(facts.exam.subject)} · {t('common.grade', { grade: facts.exam.grade })} · {formatExamDate(facts.exam.date, locale ?? 'en').long}
                       </p>
                     </div>
-                    <span className="rounded-full bg-[#f1f5f9] px-3 py-1.5 text-[10px] font-extrabold text-[#4c6a8c]" data-testid="exam-countdown">
+                    <span className="rounded-full bg-[#e5f8f6] px-3 py-1.5 text-[10px] font-extrabold text-[#26726d]" data-testid="exam-countdown">
                       {phrase(getCountdown(facts.exam.date, today).label)}
                     </span>
                   </div>
                   <dl className="mt-3 space-y-2.5 text-[11px]">
                     <div data-testid="exam-prep">
-                      <dt className="font-bold text-[#5e676f]">{tx('Preparation steps')}</dt>
-                      <dd className="mt-1 text-[#4b5966]">
+                      <dt className="font-bold text-[#586871]">{tx('Preparation steps')}</dt>
+                      <dd className="mt-1 text-[#20605c]">
                         {facts.prep ? (
                           <>
                             <span className="font-extrabold">
                               {tx('{done} of {total} done', { done: facts.prep.done, total: facts.prep.total })}
                             </span>
                             <div className="mt-1.5">
-                              <Bar value={facts.prep.done} max={facts.prep.total} label={tx('Preparation for {title}', { title: facts.exam.title })} color="bg-[#5e7593]" />
+                              <Bar value={facts.prep.done} max={facts.prep.total} label={tx('Preparation for {title}', { title: facts.exam.title })} color="bg-[#2b807a]" />
                             </div>
                           </>
                         ) : (
-                          <span className="text-[#60686f]">{tx('No steps yet')}</span>
+                          <span className="text-[#596a72]">{tx('No steps yet')}</span>
                         )}
                       </dd>
                     </div>
                     <div data-testid="exam-planner">
-                      <dt className="font-bold text-[#5e676f]">{tx('{subject} sessions in the Study Planner before the exam', { subject: subjectLabel(facts.exam.subject) })}</dt>
-                      <dd className="mt-0.5 text-[#4b5966]">
-                        {facts.planner ? <span className="font-extrabold">{tx('{done} of {total} done', { done: facts.planner.done, total: facts.planner.planned })}</span> : <span className="text-[#60686f]">{tx('None planned')}</span>}
+                      <dt className="font-bold text-[#586871]">{tx('{subject} sessions in the Study Planner before the exam', { subject: subjectLabel(facts.exam.subject) })}</dt>
+                      <dd className="mt-0.5 text-[#20605c]">
+                        {facts.planner ? <span className="font-extrabold">{tx('{done} of {total} done', { done: facts.planner.done, total: facts.planner.planned })}</span> : <span className="text-[#596a72]">{tx('None planned')}</span>}
                       </dd>
                     </div>
                     <div data-testid="exam-quiz">
-                      <dt className="font-bold text-[#5e676f]">{tx('Latest {subject} quiz', { subject: subjectLabel(facts.exam.subject) })}</dt>
-                      <dd className="mt-0.5 text-[#4b5966]">
+                      <dt className="font-bold text-[#586871]">{tx('Latest {subject} quiz', { subject: subjectLabel(facts.exam.subject) })}</dt>
+                      <dd className="mt-0.5 text-[#20605c]">
                         {facts.latestQuiz ? (
                           <span className="font-extrabold">
                             {tx('{percent}% on {date}', { percent: facts.latestQuiz.percentage, date: shortDate(facts.latestQuiz.date) })}
                           </span>
                         ) : (
-                          <span className="text-[#60686f]">{tx('No quiz results for this subject name')}</span>
+                          <span className="text-[#596a72]">{tx('No quiz results for this subject name')}</span>
                         )}
                       </dd>
                     </div>
@@ -680,7 +680,7 @@ export default function ProgressTrackerPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-[10px] leading-relaxed text-[#60686f]">
+            <p className="mt-3 text-[10px] leading-relaxed text-[#596a72]">
               {tx('These are separate facts, not a readiness score. Quiz results are only linked when the subject name is the same in both tools.')}
             </p>
           </>

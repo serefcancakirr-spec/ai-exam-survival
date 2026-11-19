@@ -44,9 +44,9 @@ export function GuideButton({ variant, testId }: { variant: 'hero' | 'panel'; te
   const T = useGuideTexts();
   const style = variant === 'hero'
     ? 'min-h-11 border border-white/30 px-4 text-[14px] text-white transition-colors hover:border-white/60'
-    : 'min-h-11 border border-[#ddd5c6] bg-[#fffdf8] px-5 text-[12px] text-[#3f5d80] transition-colors hover:border-[#ced7e2]';
+    : 'min-h-11 border border-[#dee8e5] bg-[#ffffff] px-5 text-[12px] text-[#1e6560] transition-colors hover:border-[#a6e1de]';
   return (
-    <button type="button" onClick={openGuide} className={`inline-flex items-center gap-2 rounded-[6px] font-bold ${style}`} data-testid={testId}>
+    <button type="button" onClick={openGuide} className={`inline-flex items-center gap-2 rounded-[10px] font-bold ${style}`} data-testid={testId}>
       <Compass size={variant === 'hero' ? 17 : 15} /> {T.open}
     </button>
   );
@@ -90,21 +90,21 @@ export function UsageGuide() {
   };
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-end justify-center bg-[#1f2b38]/55 sm:items-center sm:p-6" data-testid="guide-overlay" onClick={(e) => { if (e.target === e.currentTarget) closeGuide(); }}>
+    <div className="fixed inset-0 z-[70] flex items-end justify-center bg-[#132f2f]/55 sm:items-center sm:p-6" data-testid="guide-overlay" onClick={(e) => { if (e.target === e.currentTarget) closeGuide(); }}>
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="guide-title"
-        className="flex max-h-[88vh] w-full flex-col overflow-y-auto rounded-t-[10px] border border-[#ddd5c6] bg-[#fffdf8] text-[#324150] sm:max-w-[560px] sm:rounded-[10px]"
+        className="flex max-h-[88vh] w-full flex-col overflow-y-auto rounded-t-[10px] border border-[#dee8e5] bg-[#ffffff] text-[#1d4547] sm:max-w-[560px] sm:rounded-[16px] shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]"
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
         data-testid="guide"
         data-step={current.id}
       >
-        <div className="flex items-center justify-between border-b border-[#ebe4d6] px-5 py-3">
-          <p className="text-[13px] font-semibold text-[#4b698c]">
+        <div className="flex items-center justify-between border-b border-[#dee8e5] px-5 py-3">
+          <p className="text-[13px] font-semibold text-[#26716c]">
             {T.dialogLabel} · <span data-testid="guide-step-count">{T.stepOf.replace('{step}', String(step + 1)).replace('{total}', String(GUIDE_STEPS.length))}</span>
           </p>
-          <button type="button" onClick={closeGuide} aria-label={T.close} className="grid h-9 w-9 place-items-center rounded-[6px] text-[#4b5966] hover:bg-[#f4efe5]" data-testid="guide-close">
+          <button type="button" onClick={closeGuide} aria-label={T.close} className="grid h-9 w-9 place-items-center rounded-[10px] text-[#20605c] hover:bg-[#e6f2f0]" data-testid="guide-close">
             <X size={18} />
           </button>
         </div>
@@ -114,14 +114,14 @@ export function UsageGuide() {
             <MentiArt pose={current.pose} />
           </div>
           <div className="min-w-0">
-            <h2 id="guide-title" ref={titleRef} tabIndex={-1} className="font-display no-mark text-[21px] font-extrabold leading-tight tracking-[-.015em] text-[#2b3a49] outline-none sm:text-[24px]" data-testid="guide-title">
+            <h2 id="guide-title" ref={titleRef} tabIndex={-1} className="font-display no-mark text-[21px] font-extrabold leading-tight tracking-[-.015em] text-[#1a3e3f] outline-none sm:text-[24px]" data-testid="guide-title">
               {text.title}
             </h2>
             {text.lines.map((line) => (
-              <p key={line} className="mt-2.5 text-[14px] leading-[1.7] text-[#4f5a64]">{line}</p>
+              <p key={line} className="mt-2.5 text-[14px] leading-[1.7] text-[#4d5b61]">{line}</p>
             ))}
             {current.href && (
-              <button type="button" onClick={() => go(current.href!)} className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-[6px] border border-[#cfd9e5] bg-[#f4f7fa] px-4 text-[13px] font-bold text-[#3f5d80] hover:border-[#9fb3cb]" data-testid="guide-go">
+              <button type="button" onClick={() => go(current.href!)} className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-[10px] border border-[#ade3db] bg-[#eafaf8] px-4 text-[13px] font-bold text-[#1e6560] hover:border-[#49c2ba]" data-testid="guide-go">
                 {T.goTool} <ArrowRight size={15} />
               </button>
             )}
@@ -130,24 +130,24 @@ export function UsageGuide() {
 
         <div className="mt-3 flex items-center justify-center gap-1.5" aria-hidden="true">
           {GUIDE_STEPS.map((s, i) => (
-            <span key={s.id} className={`h-2 rounded-full transition-all ${i === step ? 'w-5 bg-[#54769d]' : 'w-2 bg-[#d9d1c2]'}`} />
+            <span key={s.id} className={`h-2 rounded-full transition-all ${i === step ? 'w-5 bg-[#2b807a]' : 'w-2 bg-[#dee8e5]'}`} />
           ))}
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-2 px-5 pb-5 pt-4">
-          <button type="button" onClick={closeGuide} className={`min-h-10 rounded-[6px] px-3 text-[13px] font-bold text-[#5a6570] hover:text-[#324150] ${last ? 'invisible' : ''}`} data-testid="guide-skip">
+          <button type="button" onClick={closeGuide} className={`min-h-10 rounded-[10px] px-3 text-[13px] font-bold text-[#57666e] hover:text-[#1d4547] ${last ? 'invisible' : ''}`} data-testid="guide-skip">
             {T.skip}
           </button>
           <div className="flex gap-2">
             {step > 0 && (
-              <button type="button" onClick={() => setState({ open: true, step: step - 1 })} className="inline-flex min-h-10 items-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[13px] font-bold text-[#4b5966] hover:border-[#ced7e2]" data-testid="guide-back">
+              <button type="button" onClick={() => setState({ open: true, step: step - 1 })} className="inline-flex min-h-10 items-center gap-1.5 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-4 text-[13px] font-bold text-[#20605c] hover:border-[#a6e1de]" data-testid="guide-back">
                 <ArrowLeft size={15} /> {T.back}
               </button>
             )}
             <button
               type="button"
               onClick={() => (last ? closeGuide() : setState({ open: true, step: step + 1 }))}
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-[6px] bg-[#54769d] px-5 text-[13px] font-bold text-white hover:bg-[#4b6a8e]"
+              className="inline-flex min-h-10 items-center gap-1.5 rounded-[10px] bg-[#2b807a] px-5 text-[13px] font-bold text-white hover:bg-[#26726d]"
               data-testid="guide-next"
             >
               {last ? T.finish : T.next} {!last && <ArrowRight size={15} />}

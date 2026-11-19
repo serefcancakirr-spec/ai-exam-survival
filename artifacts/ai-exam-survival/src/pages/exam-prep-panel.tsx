@@ -17,11 +17,11 @@ import {
 import { englishFromTurkish, translatePhrase, useI18n } from '@/i18n/i18n';
 
 const inputClassName =
-  'mt-1.5 w-full rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-2.5 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
+  'mt-1.5 w-full rounded-[12px] border border-[#dee8e5] bg-[#ffffff] px-3.5 py-2.5 text-[13px] text-[#235355] outline-none transition placeholder:text-[#a6b3b9] focus:border-[#37aea6] focus:ring-2 focus:ring-[#37aea6]/10';
 const smallButton =
-  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c] disabled:cursor-not-allowed disabled:opacity-50';
+  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-3 text-[11px] font-bold text-[#5a6b73] transition-colors hover:border-[#a6e1de] hover:text-[#26726d] disabled:cursor-not-allowed disabled:opacity-50';
 const primarySmall =
-  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[6px] bg-[#54769d] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#527195]';
+  'inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[10px] bg-[#2b807a] px-4 text-[11px] font-extrabold text-white transition-colors hover:bg-[#297a75]';
 
 type Props = {
   exam: Exam;
@@ -47,14 +47,14 @@ export function PrepProgressBar({ done, total }: { done: number; total: number }
   const percent = total === 0 ? 0 : Math.round((done / total) * 100);
   return (
     <div
-      className="h-2 overflow-hidden rounded-full bg-[#f0f2f4]"
+      className="h-2 overflow-hidden rounded-full bg-[#eaf3f2]"
       role="progressbar"
       aria-label={tx('Preparation progress')}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={percent}
     >
-      <div className="h-full rounded-full bg-gradient-to-r from-[#6183aa] to-[#478b76] transition-all" style={{ width: `${percent}%` }} />
+      <div className="h-full rounded-full bg-gradient-to-r from-[#2f8e87] to-[#368f62] transition-all" style={{ width: `${percent}%` }} />
     </div>
   );
 }
@@ -119,10 +119,10 @@ export default function ExamPrepPanel({
   }
 
   return (
-    <div className="mt-3 rounded-[10px] border border-[#e6ebf1] bg-[#fbfcfe] p-4" data-testid={`prep-panel-${exam.id}`}>
+    <div className="mt-3 rounded-[16px] border border-[#d6f0ec] bg-[#fbfcfe] p-4" data-testid={`prep-panel-${exam.id}`}>
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-[12px] font-extrabold text-[#3f4e5d]">{tx('Preparation steps')}</p>
-        <p className="text-[11px] font-bold text-[#4c6a8c]" data-testid="prep-progress-text">
+        <p className="text-[12px] font-extrabold text-[#235355]">{tx('Preparation steps')}</p>
+        <p className="text-[11px] font-bold text-[#26726d]" data-testid="prep-progress-text">
           {progress.total === 0
             ? tx('No steps yet')
             : tx('{done} of {total} done · {percent}%', { done: progress.done, total: progress.total, percent: progress.percent })}
@@ -133,7 +133,7 @@ export default function ExamPrepPanel({
       </div>
 
       {steps.length === 0 ? (
-        <p className="mt-3 text-[11px] leading-relaxed text-[#60686f]" data-testid="prep-empty">
+        <p className="mt-3 text-[11px] leading-relaxed text-[#596a72]" data-testid="prep-empty">
           {tx('Add your own step below, or pick from the suggestions.')}
         </p>
       ) : (
@@ -141,14 +141,14 @@ export default function ExamPrepPanel({
           {steps.map((step) => {
             if (editing?.id === step.id) {
               return (
-                <li key={step.id} className="rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] p-3" data-testid="prep-step">
+                <li key={step.id} className="rounded-[12px] border border-[#dee8e5] bg-[#ffffff] p-3" data-testid="prep-step">
                   <form onSubmit={submitEdit} noValidate data-testid="form-edit-step">
                     {editing.errors.length > 0 && (
                       <p role="alert" className="mb-2 text-[11px] font-bold text-[#865454]">
                         {editing.errors.map(phrase).join(' ')}
                       </p>
                     )}
-                    <label className="block text-[10px] font-bold text-[#5e676f]" htmlFor={`${idBase}-edit-text`}>
+                    <label className="block text-[10px] font-bold text-[#586871]" htmlFor={`${idBase}-edit-text`}>
                       {tx('Step')}
                       <input
                         id={`${idBase}-edit-text`}
@@ -159,8 +159,8 @@ export default function ExamPrepPanel({
                         data-testid="input-edit-step-text"
                       />
                     </label>
-                    <label className="mt-2 block text-[10px] font-bold text-[#5e676f]" htmlFor={`${idBase}-edit-due`}>
-                      {tx('Due date')} <span className="font-semibold text-[#60686f]">{tx('(optional)')}</span>
+                    <label className="mt-2 block text-[10px] font-bold text-[#586871]" htmlFor={`${idBase}-edit-due`}>
+                      {tx('Due date')} <span className="font-semibold text-[#596a72]">{tx('(optional)')}</span>
                       <input
                         id={`${idBase}-edit-due`}
                         type="date"
@@ -185,25 +185,25 @@ export default function ExamPrepPanel({
             const due = getDueLabel(step, today);
             const overdue = due.startsWith('Overdue');
             return (
-              <li key={step.id} className="rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] p-3" data-testid="prep-step">
+              <li key={step.id} className="rounded-[12px] border border-[#dee8e5] bg-[#ffffff] p-3" data-testid="prep-step">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <label className="flex min-w-0 cursor-pointer items-start gap-2.5">
                     <input
                       type="checkbox"
                       checked={step.done}
                       onChange={() => onToggleStep(step.id)}
-                      className="mt-0.5 h-5 w-5 shrink-0 accent-[#6183aa]"
+                      className="mt-0.5 h-5 w-5 shrink-0 accent-[#2f8e87]"
                       data-testid="checkbox-step"
                     />
                     <span className="min-w-0">
                       <span
-                        className={`block break-words text-[12px] font-bold ${step.done ? 'text-[#616870] line-through' : 'text-[#4b5966]'}`}
+                        className={`block break-words text-[12px] font-bold ${step.done ? 'text-[#596a72] line-through' : 'text-[#20605c]'}`}
                         data-testid="step-text"
                       >
                         {shownStep(step)}
                       </span>
                       {due && (
-                        <span className={`mt-0.5 block text-[10px] font-bold ${overdue ? 'text-[#8f5847]' : 'text-[#60686f]'}`} data-testid="step-due">
+                        <span className={`mt-0.5 block text-[10px] font-bold ${overdue ? 'text-[#9d5227]' : 'text-[#596a72]'}`} data-testid="step-due">
                           {phrase(due)}
                         </span>
                       )}
@@ -236,15 +236,15 @@ export default function ExamPrepPanel({
         </ul>
       )}
 
-      <form onSubmit={submitOwn} noValidate className="mt-4 border-t border-[#eef0f2] pt-3" data-testid="form-add-step">
-        <p className="text-[11px] font-extrabold text-[#4b5966]">{tx('Add your own step')}</p>
+      <form onSubmit={submitOwn} noValidate className="mt-4 border-t border-[#e7f3f0] pt-3" data-testid="form-add-step">
+        <p className="text-[11px] font-extrabold text-[#20605c]">{tx('Add your own step')}</p>
         {errors.length > 0 && (
           <p role="alert" className="mt-1.5 text-[11px] font-bold text-[#865454]" data-testid="add-step-error">
             {errors.map(phrase).join(' ')}
           </p>
         )}
         <div className="mt-1 grid gap-2 sm:grid-cols-[1fr_170px_auto] sm:items-end">
-          <label className="block text-[10px] font-bold text-[#5e676f]" htmlFor={`${idBase}-text`}>
+          <label className="block text-[10px] font-bold text-[#586871]" htmlFor={`${idBase}-text`}>
             {tx('Step')}
             <input
               id={`${idBase}-text`}
@@ -259,8 +259,8 @@ export default function ExamPrepPanel({
               data-testid="input-step-text"
             />
           </label>
-          <label className="block text-[10px] font-bold text-[#5e676f]" htmlFor={`${idBase}-due`}>
-            {tx('Due date')} <span className="font-semibold text-[#60686f]">{tx('(optional)')}</span>
+          <label className="block text-[10px] font-bold text-[#586871]" htmlFor={`${idBase}-due`}>
+            {tx('Due date')} <span className="font-semibold text-[#596a72]">{tx('(optional)')}</span>
             <input
               id={`${idBase}-due`}
               type="date"
@@ -279,14 +279,14 @@ export default function ExamPrepPanel({
         </div>
       </form>
 
-      <div className="mt-4 border-t border-[#eef0f2] pt-3" data-testid="prep-suggestions">
+      <div className="mt-4 border-t border-[#e7f3f0] pt-3" data-testid="prep-suggestions">
         {band === 'past' ? (
-          <p className="text-[11px] text-[#60686f]">{tx('This exam has passed, so there are no new suggestions.')}</p>
+          <p className="text-[11px] text-[#596a72]">{tx('This exam has passed, so there are no new suggestions.')}</p>
         ) : (
           <>
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="inline-flex items-center gap-1.5 text-[11px] font-extrabold text-[#4b5966]">
-                <Sparkles size={13} className="text-[#4a688c]" /> {phrase(bandHeading(exam.date, today))}
+              <p className="inline-flex items-center gap-1.5 text-[11px] font-extrabold text-[#20605c]">
+                <Sparkles size={13} className="text-[#26716c]" /> {phrase(bandHeading(exam.date, today))}
               </p>
               <button
                 type="button"
@@ -302,12 +302,12 @@ export default function ExamPrepPanel({
               {suggestions.map((suggestion) => {
                 const added = !notAdded.includes(suggestion);
                 return (
-                  <li key={suggestion.text} className="flex items-center justify-between gap-2 rounded-[11px] bg-[#fffdf8] px-3 py-2" data-testid="suggestion">
+                  <li key={suggestion.text} className="flex items-center justify-between gap-2 rounded-[16px] bg-[#ffffff] px-3 py-2" data-testid="suggestion">
                     <span className="min-w-0">
-                      <span className="block break-words text-[11px] font-semibold text-[#4f5a64]" data-testid="suggestion-text">
+                      <span className="block break-words text-[11px] font-semibold text-[#4d5b61]" data-testid="suggestion-text">
                         {phrase(suggestion.text)}
                       </span>
-                      <span className="block text-[10px] text-[#60686f]">{phrase(getDueLabel({ dueDate: suggestion.dueDate, done: false }, today))}</span>
+                      <span className="block text-[10px] text-[#596a72]">{phrase(getDueLabel({ dueDate: suggestion.dueDate, done: false }, today))}</span>
                     </span>
                     <button
                       type="button"
@@ -327,8 +327,8 @@ export default function ExamPrepPanel({
         )}
       </div>
 
-      <div className="mt-4 flex flex-col gap-2 rounded-[8px] bg-[#f9f7f4] px-3.5 py-3 sm:flex-row sm:items-center sm:justify-between" data-testid="prep-planner">
-        <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#3d685b]">
+      <div className="mt-4 flex flex-col gap-2 rounded-[12px] bg-[#f2f9f7] px-3.5 py-3 sm:flex-row sm:items-center sm:justify-between" data-testid="prep-planner">
+        <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#2e6c4d]">
           <NotebookPen size={14} className="mt-0.5 shrink-0" />
           <span data-testid="prep-planner-text">
             {plannerSummary.status === 'sessions'
@@ -344,7 +344,7 @@ export default function ExamPrepPanel({
         </p>
         <Link
           href="/study-planner"
-          className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 text-[11px] font-bold text-[#396e5e] transition-colors hover:border-[#94baae]"
+          className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-3.5 text-[11px] font-bold text-[#2b714e] transition-colors hover:border-[#72c29a]"
           data-testid="link-open-planner"
         >
           {tx('Open Study Planner')}

@@ -62,27 +62,27 @@ function Home() {
   const { t } = useI18n();
   const part = dayPart(new Date().getHours());
   return (
-    <div className="page-shell min-h-[100dvh] bg-[#f9f7f4]">
+    <div className="page-shell min-h-[100dvh] bg-[#f2f9f7]">
       <main id="top">
-        <section className="relative isolate overflow-hidden bg-[#2f4255] text-white">
+        <section className="relative isolate overflow-hidden bg-[#1d4748] text-white">
           <div className="hero-grid absolute inset-0 -z-10 opacity-50" />
           <div className="mx-auto grid max-w-[1240px] items-center gap-12 px-5 pb-20 pt-14 sm:px-8 sm:pb-24 sm:pt-20 lg:min-h-[630px] lg:grid-cols-[1.04fr_.96fr] lg:gap-10 lg:py-[78px]">
             <div className="relative z-10 max-w-[610px]">
-              <div className="rise-in mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[.07] px-3.5 py-2 text-[13px] font-bold text-[#e6d1c3]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#9d6641]" />
+              <div className="rise-in mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[.07] px-3.5 py-2 text-[13px] font-bold text-[#efcfbc]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#b25b29]" />
                 {t('home.badge')}
               </div>
               <h1 className="font-display rise-in rise-delay-1 max-w-[640px] text-[46px] font-extrabold leading-[1.03] tracking-[-.015em] sm:text-[60px] lg:text-[69px]">
-                {t('home.heroTitleStart')}<span className="relative inline-block text-[#b9c9db]">{t('home.heroTitleEm')}<span className="absolute -bottom-1 left-1 h-[5px] w-[92%] rounded-full bg-[#9a6441]/80" /></span>
+                {t('home.heroTitleStart')}<span className="relative inline-block text-[#7fd6d0]">{t('home.heroTitleEm')}<span className="absolute -bottom-1 left-1 h-[5px] w-[92%] rounded-full bg-[#ad5a2a]/80" /></span>
               </h1>
-              <p className="rise-in rise-delay-2 mt-6 max-w-[480px] text-[16px] leading-[1.75] text-[#c8d0d8] sm:text-[17px]">
+              <p className="rise-in rise-delay-2 mt-6 max-w-[480px] text-[16px] leading-[1.75] text-[#94dbd7] sm:text-[17px]">
                 {t('home.heroText')}
               </p>
               <div className="rise-in rise-delay-2 mt-8 flex flex-wrap items-center gap-3">
-                <a href="#all-tools" className="inline-flex min-h-12 items-center gap-3 rounded-[6px] bg-[#996644] px-6 text-[14px] font-extrabold text-white transition-transform hover:-translate-y-0.5" data-testid="link-start-planning">
+                <a href="#all-tools" className="inline-flex min-h-12 items-center gap-3 rounded-[10px] bg-[#ae5c2c] px-6 text-[14px] font-extrabold text-white transition-transform hover:-translate-y-0.5" data-testid="link-start-planning">
                   {t('home.ctaNextStep')} <ArrowRight size={17} />
                 </a>
-                <a href="#how-it-works" className="inline-flex min-h-12 items-center gap-2 rounded-[6px] px-4 text-[14px] font-bold text-white/85 transition-colors hover:text-[#8c5d3d]" data-testid="link-how-it-works">
+                <a href="#how-it-works" className="inline-flex min-h-12 items-center gap-2 rounded-[10px] px-4 text-[14px] font-bold text-white/85 transition-colors hover:text-[#9f5428]" data-testid="link-how-it-works">
                   {t('home.ctaHow')} <ArrowDownRight size={16} />
                 </a>
               </div>
@@ -90,10 +90,10 @@ function Home() {
                 <GuideButton variant="hero" testId="button-open-guide" />
                 <InstallAppButton variant="hero" testId="button-install-app" />
               </div>
-              <div className="mt-10 flex items-center gap-3 text-[12px] font-medium text-[#bbc4cd]">
+              <div className="mt-10 flex items-center gap-3 text-[12px] font-medium text-[#79d2cc]">
                 <div className="flex -space-x-2">
                   {['M', 'J', 'A'].map((initial, index) => (
-                    <span key={initial} className={`grid h-8 w-8 place-items-center rounded-full border-2 border-[#2f4255] text-[10px] font-bold text-white ${index === 0 ? 'bg-[#59748f]' : index === 1 ? 'bg-[#905b37]' : 'bg-[#5376a0]'}`}>{initial}</span>
+                    <span key={initial} className={`grid h-8 w-8 place-items-center rounded-full border-2 border-[#1d4748] text-[10px] font-bold text-white ${index === 0 ? 'bg-[#2a7d78]' : index === 1 ? 'bg-[#a45020]' : 'bg-[#2a7f7a]'}`}>{initial}</span>
                   ))}
                 </div>
                 <span>{t('home.forGrades')}</span>
@@ -101,7 +101,7 @@ function Home() {
             </div>
 
             <div className="relative mx-auto w-full max-w-[530px] pb-7 pt-2 sm:py-6 lg:ml-auto">
-              <div className="absolute -left-2 top-10 hidden h-20 w-20 rounded-[10px] border border-white/10 sm:block" />
+              <div className="absolute -left-2 top-10 hidden h-20 w-20 rounded-[16px] border border-white/10 sm:block" />
               <Menti
                 pose={part === 'night' ? 'sleepy' : 'wave'}
                 size={116}
@@ -110,67 +110,67 @@ function Home() {
                 testId="menti-home"
                 className="rise-in rise-delay-2 relative z-20 -mb-[18px] justify-start pr-1 sm:pr-4"
               />
-              <div className="float-card relative z-10 rounded-[10px] border border-white/15 bg-[#fafbfd] p-4 text-[#364656] sm:p-5">
-                <div className="flex items-center justify-between border-b border-[#ebeef1] pb-4">
+              <div className="float-card relative z-10 rounded-[16px] border border-white/15 bg-[#fafbfd] p-4 text-[#1f4b4c] sm:p-5">
+                <div className="flex items-center justify-between border-b border-[#e2f0ef] pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 place-items-center rounded-[8px] bg-[#eef3f8] text-[#4c6a8c]"><NotebookPen size={19} /></div>
+                    <div className="grid h-10 w-10 place-items-center rounded-[12px] bg-[#e0f7f4] text-[#26726d]"><NotebookPen size={19} /></div>
                     <div>
                       <p className="text-[13px] font-extrabold tracking-[-.02em]">{t('home.cardWeek')}</p>
-                      <p className="mt-0.5 text-[10px] font-medium text-[#616870]">{t('home.cardWeekSub')}</p>
+                      <p className="mt-0.5 text-[10px] font-medium text-[#596a72]">{t('home.cardWeekSub')}</p>
                     </div>
                   </div>
-                  <span className="rounded-full bg-[#eaf3f0] px-2.5 py-1.5 text-[11px] font-bold text-[#3f7162]">{t('home.cardPreview')}</span>
+                  <span className="rounded-full bg-[#e7f5ee] px-2.5 py-1.5 text-[11px] font-bold text-[#317352]">{t('home.cardPreview')}</span>
                 </div>
                 <div className="grid grid-cols-[1fr_1.1fr] gap-3 pt-4">
-                  <div className="rounded-[10px] bg-[#f7f5f1] p-3.5 sm:p-4">
-                    <div className="flex items-center justify-between text-[10px] font-bold text-[#5f6872]"><span>{t('home.cardThisWeek')}</span><CalendarDays size={14} /></div>
-                    <div className="mt-4 grid grid-cols-5 gap-1 text-center text-[9px] font-semibold text-[#60676d]">
+                  <div className="rounded-[16px] bg-[#eff7f5] p-3.5 sm:p-4">
+                    <div className="flex items-center justify-between text-[10px] font-bold text-[#596a72]"><span>{t('home.cardThisWeek')}</span><CalendarDays size={14} /></div>
+                    <div className="mt-4 grid grid-cols-5 gap-1 text-center text-[9px] font-semibold text-[#586871]">
                       {t('home.cardDays').split(',').map((day, i) => <span key={`${day}${i}`} className="py-1">{day}</span>)}
-                      {['12', '13', '14', '15', '16'].map((day, i) => <span key={day} className={`grid h-7 place-items-center rounded-full ${i === 2 ? 'bg-[#54769d] text-white' : 'text-[#555f69]'}`}>{day}</span>)}
+                      {['12', '13', '14', '15', '16'].map((day, i) => <span key={day} className={`grid h-7 place-items-center rounded-full ${i === 2 ? 'bg-[#2b807a] text-white' : 'text-[#516068]'}`}>{day}</span>)}
                     </div>
-                    <div className="mt-4 border-t border-[#e2e5e9] pt-3">
-                      <p className="text-[11px] font-bold text-[#6e655a]">{t('home.cardNextUp')}</p>
-                      <div className="mt-2 flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#407c6a]" /><span className="text-[10px] font-bold">{t('home.cardNextTask')}</span></div>
+                    <div className="mt-4 border-t border-[#d5e9e5] pt-3">
+                      <p className="text-[11px] font-bold text-[#586871]">{t('home.cardNextUp')}</p>
+                      <div className="mt-2 flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#318058]" /><span className="text-[10px] font-bold">{t('home.cardNextTask')}</span></div>
                     </div>
                   </div>
-                  <div className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-3.5 sm:p-4">
+                  <div className="rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-3.5 sm:p-4 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold text-[#5f6872]">{t('home.cardRhythm')}</span>
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-[#f4f7fa] text-[#4c6a8c]"><BarChart3 size={13} /></span>
+                      <span className="text-[10px] font-bold text-[#596a72]">{t('home.cardRhythm')}</span>
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-[#eafaf8] text-[#26726d]"><BarChart3 size={13} /></span>
                     </div>
-                    <div className="mt-3 flex h-[74px] items-end gap-2 border-b border-[#eff1f3] pb-2">
-                      {[33, 48, 40, 66, 53, 81, 61].map((height, i) => <span key={i} className={`w-full rounded-t-[5px] ${i === 5 ? 'bg-[#5276a0]' : i === 3 ? 'bg-[#467e6d]' : 'bg-[#e0e8f0]'}`} style={{ height: `${height}%` }} />)}
+                    <div className="mt-3 flex h-[74px] items-end gap-2 border-b border-[#e9f3f1] pb-2">
+                      {[33, 48, 40, 66, 53, 81, 61].map((height, i) => <span key={i} className={`w-full rounded-t-[5px] ${i === 5 ? 'bg-[#297f7a]' : i === 3 ? 'bg-[#37815c]' : 'bg-[#c8efea]'}`} style={{ height: `${height}%` }} />)}
                     </div>
-                    <p className="mt-2.5 text-[9px] font-medium text-[#60676d]">{t('home.cardSmall')}</p>
-                    <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-[#f7f9fc] px-2.5 py-2 text-[9px] font-bold text-[#506783]"><CheckCircle2 size={12} /> {t('home.cardBlocks')}</div>
+                    <p className="mt-2.5 text-[9px] font-medium text-[#586871]">{t('home.cardSmall')}</p>
+                    <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-[#f0fbfa] px-2.5 py-2 text-[9px] font-bold text-[#26716c]"><CheckCircle2 size={12} /> {t('home.cardBlocks')}</div>
                   </div>
                 </div>
-                <div className="mt-3 flex items-center gap-3 rounded-[10px] bg-[#394f65] px-4 py-3 text-white">
-                  <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-white/10 text-[#895c3d]"><Sparkles size={16} /></span>
+                <div className="mt-3 flex items-center gap-3 rounded-[16px] bg-[#235556] px-4 py-3 text-white">
+                  <span className="grid h-8 w-8 place-items-center rounded-[16px] bg-white/10 text-[#9d5227]"><Sparkles size={16} /></span>
                   <p className="text-[10px] font-medium leading-relaxed text-white/80"><span className="block text-[11px] font-bold text-white">{t('home.cardNotAll')}</span>{t('home.cardOneStep')}</p>
-                  <ArrowUpRight className="ml-auto text-[#cda991]" size={16} />
+                  <ArrowUpRight className="ml-auto text-[#dfa37f]" size={16} />
                 </div>
               </div>
-              <div className="float-card-late absolute -bottom-1 -left-3 z-20 flex items-center gap-2.5 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-3 sm:-left-8">
-                <span className="grid h-9 w-9 place-items-center rounded-[8px] bg-[#eaf3f0] text-[#396f5f]"><Check size={18} strokeWidth={2.5} /></span>
-                <span><span className="block text-[10px] font-bold text-[#364656]">{t('home.oneThing')}</span><span className="mt-0.5 block text-[9px] text-[#5f676d]">{t('home.yourPace')}</span></span>
+              <div className="float-card-late absolute -bottom-1 -left-3 z-20 flex items-center gap-2.5 rounded-[16px] border border-[#dee8e5] bg-[#ffffff] px-3.5 py-3 sm:-left-8 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]">
+                <span className="grid h-9 w-9 place-items-center rounded-[12px] bg-[#e7f5ee] text-[#2b724e]"><Check size={18} strokeWidth={2.5} /></span>
+                <span><span className="block text-[10px] font-bold text-[#1f4b4c]">{t('home.oneThing')}</span><span className="mt-0.5 block text-[9px] text-[#586871]">{t('home.yourPace')}</span></span>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#839cb7]/70 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#39aaa2]/70 to-transparent" />
         </section>
 
         <section className="mx-auto max-w-[1240px] px-5 pb-8 pt-10 sm:px-8 sm:pt-12">
-          <div className="flex flex-col gap-5 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <div className="flex flex-col gap-5 rounded-[16px] border border-[#dee8e5] bg-[#ffffff] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]">
             <div className="max-w-[365px]">
-              <p className="font-display text-[17px] font-extrabold tracking-[-.015em] text-[#364656]">{t('home.onePlace')}</p>
-              <p className="mt-1 text-[12px] leading-relaxed text-[#5f666e]">{t('home.simplerPath')}</p>
+              <p className="font-display text-[17px] font-extrabold tracking-[-.015em] text-[#1f4b4c]">{t('home.onePlace')}</p>
+              <p className="mt-1 text-[12px] leading-relaxed text-[#58676f]">{t('home.simplerPath')}</p>
             </div>
             <div className="grid grid-cols-3 gap-3 sm:gap-8">
               {[['01', t('home.step1')], ['02', t('home.step2')], ['03', t('home.step3')]].map(([num, label]) => (
                 <div key={num} className="flex items-center gap-2.5">
-                  <span className="font-display text-[13px] font-extrabold text-[#49698d]">{num}</span>
-                  <span className="max-w-[90px] text-[10px] font-bold leading-tight text-[#5e6973] sm:text-[11px]">{label}</span>
+                  <span className="font-display text-[13px] font-extrabold text-[#25716c]">{num}</span>
+                  <span className="max-w-[90px] text-[10px] font-bold leading-tight text-[#5a6b73] sm:text-[11px]">{label}</span>
                 </div>
               ))}
             </div>
@@ -180,41 +180,41 @@ function Home() {
         <section id="all-tools" className="mx-auto max-w-[1240px] px-5 pb-20 pt-20 sm:px-8 sm:pb-28 sm:pt-28">
           <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-12 md:flex-row md:items-end">
             <div className="max-w-[600px]">
-              <p className="mb-3 text-[13px] font-semibold text-[#4b698c]">{t('home.toolkitEyebrow')}</p>
-              <h2 className="font-display text-[35px] font-extrabold leading-[1.08] tracking-[-.015em] text-[#364656] sm:text-[48px]">{t('home.toolkitTitleA')}<br className="hidden sm:block" />{t('home.toolkitTitleB')}</h2>
+              <p className="mb-3 text-[13px] font-semibold text-[#26716c]">{t('home.toolkitEyebrow')}</p>
+              <h2 className="font-display text-[35px] font-extrabold leading-[1.08] tracking-[-.015em] text-[#1f4b4c] sm:text-[48px]">{t('home.toolkitTitleA')}<br className="hidden sm:block" />{t('home.toolkitTitleB')}</h2>
             </div>
-            <p className="max-w-[330px] text-[14px] leading-[1.75] text-[#60676f]">{t('home.toolkitText')}</p>
+            <p className="max-w-[330px] text-[14px] leading-[1.75] text-[#586871]">{t('home.toolkitText')}</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <ToolCard id="study-planner" number="01" title={t('nav.studyPlanner')} eyebrow={t('home.plannerEyebrow')} description={t('home.plannerText')} icon={<NotebookPen size={21} />} tone="bg-[#f1f5f9] text-[#4a688c]" note={t('home.plannerNote')} />
-            <ToolCard id="quiz-center" number="02" title={t('nav.quizCenter')} eyebrow={t('home.quizEyebrow')} description={t('home.quizText')} icon={<Compass size={21} />} tone="bg-[#e8f3f0] text-[#396f5f]" note={t('home.quizNote')} />
-            <ToolCard id="smart-flashcards" number="03" title={t('nav.smartFlashcards')} eyebrow={t('home.flashEyebrow')} description={t('home.flashText')} icon={<Layers3 size={21} />} tone="bg-[#fbf1eb] text-[#885e44]" note={t('home.flashNote')} />
-            <ToolCard id="ai-study-coach" number="04" title={t('nav.aiStudyCoach')} eyebrow={t('home.coachEyebrow')} description={t('home.coachText')} icon={<MessageCircle size={21} />} tone="bg-[#eff4f9] text-[#536980]" note={t('home.coachNote')} />
-            <ToolCard id="progress-tracker" number="05" title={t('nav.progressTracker')} eyebrow={t('home.progressEyebrow')} description={t('home.progressText')} icon={<BarChart3 size={21} />} tone="bg-[#ebf5ee] text-[#486d58]" note={t('home.progressNote')} />
-            <ToolCard id="exam-calendar" number="06" title={t('nav.examCalendar')} eyebrow={t('home.calendarEyebrow')} description={t('home.calendarText')} icon={<CalendarDays size={21} />} tone="bg-[#f0f4f9] text-[#546884]" note={t('home.calendarNote')} />
+            <ToolCard id="study-planner" number="01" title={t('nav.studyPlanner')} eyebrow={t('home.plannerEyebrow')} description={t('home.plannerText')} icon={<NotebookPen size={21} />} tone="bg-[#e5f8f6] text-[#26716c]" note={t('home.plannerNote')} />
+            <ToolCard id="quiz-center" number="02" title={t('nav.quizCenter')} eyebrow={t('home.quizEyebrow')} description={t('home.quizText')} icon={<Compass size={21} />} tone="bg-[#e4f5ec] text-[#2b724e]" note={t('home.quizNote')} />
+            <ToolCard id="smart-flashcards" number="03" title={t('nav.smartFlashcards')} eyebrow={t('home.flashEyebrow')} description={t('home.flashText')} icon={<Layers3 size={21} />} tone="bg-[#fdf1e5] text-[#9f5328]" note={t('home.flashNote')} />
+            <ToolCard id="ai-study-coach" number="04" title={t('nav.aiStudyCoach')} eyebrow={t('home.coachEyebrow')} description={t('home.coachText')} icon={<MessageCircle size={21} />} tone="bg-[#e2f8f5] text-[#26716c]" note={t('home.coachNote')} />
+            <ToolCard id="progress-tracker" number="05" title={t('nav.progressTracker')} eyebrow={t('home.progressEyebrow')} description={t('home.progressText')} icon={<BarChart3 size={21} />} tone="bg-[#e8f6ef] text-[#307150]" note={t('home.progressNote')} />
+            <ToolCard id="exam-calendar" number="06" title={t('nav.examCalendar')} eyebrow={t('home.calendarEyebrow')} description={t('home.calendarText')} icon={<CalendarDays size={21} />} tone="bg-[#e3f8f5] text-[#26716c]" note={t('home.calendarNote')} />
           </div>
         </section>
 
-        <section id="how-it-works" className="relative bg-[#efe9dc]">
+        <section id="how-it-works" className="relative bg-[#ddedea]">
           <div className="mx-auto grid max-w-[1240px] gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-24">
             <div>
-              <p className="mb-3 text-[13px] font-semibold text-[#4b6789]">{t('home.rhythmEyebrow')}</p>
-              <h2 className="font-display max-w-[470px] text-[36px] font-extrabold leading-[1.08] tracking-[-.015em] text-[#364656] sm:text-[47px]">{t('home.rhythmTitleA')}<br />{t('home.rhythmTitleB')}</h2>
-              <p className="mt-5 max-w-[390px] text-[14px] leading-[1.8] text-[#5f6770]">{t('home.rhythmText')}</p>
-              <a href="#all-tools" className="mt-7 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#4c6a8c] transition-colors hover:text-[#456487]" data-testid="link-see-all-tools">{t('home.seeAll')} <ArrowRight size={16} /></a>
+              <p className="mb-3 text-[13px] font-semibold text-[#256f6b]">{t('home.rhythmEyebrow')}</p>
+              <h2 className="font-display max-w-[470px] text-[36px] font-extrabold leading-[1.08] tracking-[-.015em] text-[#1f4b4c] sm:text-[47px]">{t('home.rhythmTitleA')}<br />{t('home.rhythmTitleB')}</h2>
+              <p className="mt-5 max-w-[390px] text-[14px] leading-[1.8] text-[#586871]">{t('home.rhythmText')}</p>
+              <a href="#all-tools" className="mt-7 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#26726d] transition-colors hover:text-[#226c68]" data-testid="link-see-all-tools">{t('home.seeAll')} <ArrowRight size={16} /></a>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                { icon: <Bookmark size={17} />, title: t('home.how1Title'), text: t('home.how1Text'), color: 'text-[#49698e] bg-[#f1f5f9]' },
-                { icon: <Clock3 size={17} />, title: t('home.how2Title'), text: t('home.how2Text'), color: 'text-[#3a7160] bg-[#e6f1ee]' },
-                { icon: <CheckCircle2 size={17} />, title: t('home.how3Title'), text: t('home.how3Text'), color: 'text-[#825f35] bg-[#faf2e4]' },
-                { icon: <ChevronDown size={17} />, title: t('home.how4Title'), text: t('home.how4Text'), color: 'text-[#56687a] bg-[#eef3f8]' },
+                { icon: <Bookmark size={17} />, title: t('home.how1Title'), text: t('home.how1Text'), color: 'text-[#24726c] bg-[#e5f8f6]' },
+                { icon: <Clock3 size={17} />, title: t('home.how2Title'), text: t('home.how2Text'), color: 'text-[#2c7450] bg-[#e2f2ea]' },
+                { icon: <CheckCircle2 size={17} />, title: t('home.how3Title'), text: t('home.how3Text'), color: 'text-[#9e5024] bg-[#fdf1e5]' },
+                { icon: <ChevronDown size={17} />, title: t('home.how4Title'), text: t('home.how4Text'), color: 'text-[#26716c] bg-[#e0f7f4]' },
               ].map((step, index) => (
                 <div key={step.title} className={`rounded-[19px] border border-white/80 bg-white/75 p-5 ${index === 1 ? 'sm:translate-y-5' : ''}`}>
-                  <span className={`grid h-9 w-9 place-items-center rounded-[8px] ${step.color}`}>{step.icon}</span>
-                  <h3 className="mt-4 text-[14px] font-extrabold tracking-[-.02em] text-[#3f4e5d]">{step.title}</h3>
-                  <p className="mt-1.5 text-[12px] leading-[1.65] text-[#5d676f]">{step.text}</p>
+                  <span className={`grid h-9 w-9 place-items-center rounded-[12px] ${step.color}`}>{step.icon}</span>
+                  <h3 className="mt-4 text-[14px] font-extrabold tracking-[-.02em] text-[#235355]">{step.title}</h3>
+                  <p className="mt-1.5 text-[12px] leading-[1.65] text-[#586871]">{step.text}</p>
                 </div>
               ))}
             </div>
@@ -222,27 +222,27 @@ function Home() {
         </section>
 
         <section className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 sm:py-24">
-          <div className="relative overflow-hidden rounded-[10px] bg-[#394f65] px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-14">
+          <div className="relative overflow-hidden rounded-[16px] bg-[#235556] px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-14">
             <div className="relative flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
               <div className="max-w-[560px]">
-                <p className="mb-2 text-[13px] font-semibold text-[#d9bdaa]">{t('home.ctaEyebrow')}</p>
+                <p className="mb-2 text-[13px] font-semibold text-[#e7b89e]">{t('home.ctaEyebrow')}</p>
                 <h2 className="no-mark font-display text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[40px]">{t('home.ctaTitle')}</h2>
-                <p className="mt-3 max-w-[445px] text-[13px] leading-[1.75] text-[#cad3dc]">{t('home.ctaText')}</p>
+                <p className="mt-3 max-w-[445px] text-[13px] leading-[1.75] text-[#9cded9]">{t('home.ctaText')}</p>
               </div>
-              <a href="#all-tools" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-[6px] bg-[#9b6845] px-6 text-[13px] font-extrabold text-white transition-transform hover:-translate-y-0.5" data-testid="link-browse-previews">{t('home.ctaBrowse')} <ArrowRight size={16} /></a>
+              <a href="#all-tools" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-[10px] bg-[#b05d2c] px-6 text-[13px] font-extrabold text-white transition-transform hover:-translate-y-0.5" data-testid="link-browse-previews">{t('home.ctaBrowse')} <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-[#e6e9ec] bg-[#f7f5f1]">
+      <footer className="border-t border-[#dbece9] bg-[#eff7f5]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <a href="#top" className="flex items-center gap-2.5" data-testid="link-footer-home">
-            <span className="grid h-8 w-8 place-items-center rounded-[11px] bg-[#3b536c] text-white"><GraduationCap size={17} /></span>
-            <span className="font-display text-[14px] font-extrabold tracking-[-.015em] text-[#314253]">AI Exam Survival</span>
+            <span className="grid h-8 w-8 place-items-center rounded-[16px] bg-[#1e5956] text-white"><GraduationCap size={17} /></span>
+            <span className="font-display text-[14px] font-extrabold tracking-[-.015em] text-[#1d4748]">AI Exam Survival</span>
           </a>
-          <p className="text-[11px] leading-relaxed text-[#5f6870]">{t('home.footerText')}<FooterAboutLink /></p>
-          <a href="#all-tools" className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#516986] hover:text-[#3e5977]" data-testid="link-footer-tools">{t('home.footerExplore')} <ArrowUpRight size={13} /></a>
+          <p className="text-[11px] leading-relaxed text-[#596a72]">{t('home.footerText')}<FooterAboutLink /></p>
+          <a href="#all-tools" className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#26726d] hover:text-[#20605c]" data-testid="link-footer-tools">{t('home.footerExplore')} <ArrowUpRight size={13} /></a>
         </div>
       </footer>
     </div>
@@ -266,19 +266,19 @@ function ToolCard({ id, title, eyebrow, description, icon, tone, note }: ToolCar
     <Link
       href={`/${id}`}
       aria-label={t('home.openTool', { title })}
-      className="group block rounded-[10px] focus-visible:outline-none"
+      className="group block rounded-[16px] focus-visible:outline-none"
       data-testid={`link-tool-${id}`}
     >
-      <article id={id} className="relative flex min-h-[265px] scroll-mt-24 flex-col rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#d2dce7] group-hover:shadow-[0_16px_36px_rgba(59,78,97,.09)] sm:p-6">
+      <article id={id} className="relative flex min-h-[265px] scroll-mt-24 flex-col rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#b0e5de] group-hover:shadow-[0_16px_36px_rgba(15,61,58,.09)] sm:p-6">
         <div className="flex items-start justify-between">
           <span className={`grid h-11 w-11 place-items-center rounded-[15px] ${tone}`}>{icon}</span>
         </div>
-        <p className="mt-5 text-[13px] font-semibold text-[#616871]">{eyebrow}</p>
-        <h3 className="mt-1.5 font-display text-[21px] font-extrabold tracking-[-.015em] text-[#384959]">{title}</h3>
-        <p className="mt-2 max-w-[330px] text-[12px] leading-[1.7] text-[#5e666e]">{description}</p>
+        <p className="mt-5 text-[13px] font-semibold text-[#596a72]">{eyebrow}</p>
+        <h3 className="mt-1.5 font-display text-[21px] font-extrabold tracking-[-.015em] text-[#204e4f]">{title}</h3>
+        <p className="mt-2 max-w-[330px] text-[12px] leading-[1.7] text-[#58676f]">{description}</p>
         <div className="mt-auto flex items-end justify-between gap-3 pt-5">
-          <span className="text-[10px] font-semibold leading-relaxed text-[#60676e]">{note}</span>
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#e9ecef] text-[#576779] transition-all group-hover:border-[#dee7f1] group-hover:bg-[#f4f7fb] group-hover:text-[#4c6a8c]">
+          <span className="text-[10px] font-semibold leading-relaxed text-[#586871]">{note}</span>
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#e0efed] text-[#26716c] transition-all group-hover:border-[#c1f0e9] group-hover:bg-[#ebfaf8] group-hover:text-[#26726d]">
             <ArrowUpRight size={16} />
           </span>
         </div>

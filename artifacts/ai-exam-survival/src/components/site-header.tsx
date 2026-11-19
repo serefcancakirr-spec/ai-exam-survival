@@ -42,7 +42,7 @@ export default function SiteHeader() {
   }, [location]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#eaedf0] bg-[#fbf9f7]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-[#e1efee] bg-[#ffffff]/95 backdrop-blur-xl">
       <div className="mx-auto flex h-[74px] max-w-[1240px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/"
@@ -51,11 +51,11 @@ export default function SiteHeader() {
           className="flex items-center gap-3"
           data-testid="link-home"
         >
-          <span className="grid h-10 w-10 place-items-center rounded-[8px] bg-[#3b536c] text-white">
+          <span className="grid h-10 w-10 place-items-center rounded-[12px] bg-[#1e5956] text-white">
             <GraduationCap size={22} strokeWidth={1.8} />
           </span>
-          <span className="font-display text-[17px] font-extrabold tracking-[-.015em] text-[#314253]">
-            AI Exam<span className="text-[#48698e]"> Survival</span>
+          <span className="font-display text-[17px] font-extrabold tracking-[-.015em] text-[#1d4748]">
+            AI Exam<span className="text-[#24716c]"> Survival</span>
           </span>
         </Link>
 
@@ -67,7 +67,7 @@ export default function SiteHeader() {
             <Link
               key={item.id}
               href={item.href}
-              className="whitespace-nowrap text-[13px] font-semibold text-[#5e676f] transition-colors hover:text-[#4f6a88]"
+              className="whitespace-nowrap text-[13px] font-semibold text-[#586871] transition-colors hover:text-[#26726d]"
               data-testid={`link-nav-${item.id}`}
             >
               {t(item.label)}
@@ -76,7 +76,7 @@ export default function SiteHeader() {
           <Link
             href="/#all-tools"
             onClick={goToAllTools}
-            className="whitespace-nowrap text-[13px] font-semibold text-[#5e676f] transition-colors hover:text-[#4f6a88]"
+            className="whitespace-nowrap text-[13px] font-semibold text-[#586871] transition-colors hover:text-[#26726d]"
             data-testid="link-nav-all-tools"
           >
             {t('nav.moreTools')}
@@ -88,7 +88,7 @@ export default function SiteHeader() {
           <Link
             href="/#all-tools"
             onClick={goToAllTools}
-            className="hidden items-center gap-2 rounded-full bg-[#54769d] px-5 py-3 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#527195] sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-[#2b807a] px-5 py-3 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#297a75] sm:inline-flex"
             data-testid="link-explore-tools"
           >
             {t('nav.exploreTools')} <ArrowRight size={15} />
@@ -99,7 +99,7 @@ export default function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
-            className="grid h-11 w-11 place-items-center rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] text-[#384a5d] lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-[12px] border border-[#dee8e5] bg-[#ffffff] text-[#214f51] lg:hidden"
             data-testid="button-mobile-menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -110,13 +110,13 @@ export default function SiteHeader() {
       {menuOpen && (
         <nav
           id="mobile-navigation"
-          className="border-t border-[#eaedf0] bg-[#fbf9f7] px-5 pb-5 pt-3 lg:hidden"
+          className="border-t border-[#e1efee] bg-[#ffffff] px-5 pb-5 pt-3 lg:hidden"
           aria-label={t('nav.mobile')}
         >
           <Link
             href="/"
             onClick={closeMenu}
-            className="flex min-h-12 items-center justify-between border-b border-[#eaedf0] text-sm font-bold text-[#384a5d]"
+            className="flex min-h-12 items-center justify-between border-b border-[#e1efee] text-sm font-bold text-[#214f51]"
             data-testid="link-mobile-home"
           >
             {t('nav.home')} <ArrowUpRight size={16} />
@@ -126,7 +126,7 @@ export default function SiteHeader() {
               key={item.id}
               href={item.href}
               onClick={closeMenu}
-              className="flex min-h-12 items-center justify-between border-b border-[#eaedf0] text-sm font-semibold text-[#4b5966]"
+              className="flex min-h-12 items-center justify-between border-b border-[#e1efee] text-sm font-semibold text-[#20605c]"
               data-testid={`link-mobile-${item.id}`}
             >
               {t(item.label)} <ArrowUpRight size={16} />
@@ -135,7 +135,7 @@ export default function SiteHeader() {
           <Link
             href="/#all-tools"
             onClick={goToAllTools}
-            className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-[8px] bg-[#54769d] text-sm font-bold text-white"
+            className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-[12px] bg-[#2b807a] text-sm font-bold text-white"
             data-testid="link-mobile-explore"
           >
             {t('nav.browseAll')} <ArrowRight size={16} />

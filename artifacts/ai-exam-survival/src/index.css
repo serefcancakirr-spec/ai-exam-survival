@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -33,40 +33,40 @@
 }
 
 :root {
-  --background: 41 47% 94%;
-  --foreground: 210 24% 20%;
-  --border: 210 12% 88%;
-  --input: 210 12% 88%;
-  --ring: 213 32% 60%;
-  --card: 36 0% 100%;
-  --card-foreground: 210 24% 20%;
-  --popover: 36 0% 100%;
-  --popover-foreground: 210 24% 20%;
-  --primary: 211 32% 54%;
-  --primary-foreground: 36 0% 100%;
-  --secondary: 162 32% 43%;
-  --secondary-foreground: 210 24% 20%;
-  --muted: 210 14% 93%;
-  --muted-foreground: 210 10% 40%;
-  --accent: 213 42% 96%;
-  --accent-foreground: 213 32% 42%;
-  --destructive: 0 50% 51%;
-  --destructive-foreground: 36 0% 100%;
-  --chart-1: 211 32% 54%;
-  --chart-2: 162 32% 43%;
-  --chart-3: 213 32% 60%;
-  --chart-4: 37 59% 61%;
+  --background: 168 33% 97%;
+  --foreground: 182 42% 16%;
+  --border: 165 18% 89%;
+  --input: 165 18% 86%;
+  --ring: 175 84% 32%;
+  --card: 0 0% 100%;
+  --card-foreground: 182 42% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 182 42% 16%;
+  --primary: 175 70% 29%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 152 45% 34%;
+  --secondary-foreground: 182 42% 16%;
+  --muted: 168 25% 94%;
+  --muted-foreground: 200 10% 38%;
+  --accent: 170 50% 95%;
+  --accent-foreground: 176 60% 25%;
+  --destructive: 0 62% 46%;
+  --destructive-foreground: 0 0% 100%;
+  --chart-1: 175 70% 32%;
+  --chart-2: 152 45% 40%;
+  --chart-3: 172 45% 55%;
+  --chart-4: 28 80% 58%;
   --chart-5: 331 46% 63%;
-  --sidebar: 36 29% 97%;
-  --sidebar-foreground: 210 24% 20%;
-  --sidebar-border: 210 12% 88%;
-  --sidebar-primary: 211 32% 54%;
-  --sidebar-primary-foreground: 36 0% 100%;
-  --sidebar-accent: 213 42% 96%;
-  --sidebar-accent-foreground: 213 32% 42%;
-  --sidebar-ring: 213 32% 60%;
-  --app-font-sans: 'Source Sans 3', sans-serif;
-  --app-font-serif: 'Lora', Georgia, serif;
+  --sidebar: 168 30% 98%;
+  --sidebar-foreground: 182 42% 16%;
+  --sidebar-border: 165 18% 89%;
+  --sidebar-primary: 175 70% 29%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 170 50% 95%;
+  --sidebar-accent-foreground: 176 60% 25%;
+  --sidebar-ring: 175 84% 32%;
+  --app-font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --app-font-serif: 'Plus Jakarta Sans', system-ui, sans-serif;
   --app-font-mono: 'SFMono-Regular', Consolas, monospace;
   --radius: 1rem;
 }
@@ -116,13 +116,13 @@
   }
   button, a { -webkit-tap-highlight-color: transparent; }
   a:focus-visible, button:focus-visible {
-    outline: 3px solid #57a890;
+    outline: 3px solid #0d9488;
     outline-offset: 4px;
   }
-  ::selection { background: #e0e9f3; color: #2c3b4a; }
+  ::selection { background: #c5f0eb; color: #1a4041; }
 }
 
-.font-display { font-family: var(--app-font-serif); }
+.font-display { font-family: var(--app-font-serif); font-weight: 700; letter-spacing: -.01em; }
 .page-shell { overflow: clip; }
 /* Stage 20A: the grid pattern behind the home hero was removed for a calmer look (class kept). */
 .hero-grid { background: none; }
@@ -176,11 +176,7 @@
   .focus-breathe { animation: none !important; transform: none; }
 }
 
-/* Stage 20B "Okul Defteri": section titles get a soft highlighter-pen line under them. */
+/* Variant B "Calm focus": section titles stay clean, no highlighter line (selector kept for .no-mark). */
 h2.font-display:not([class*="text-white"]):not(.no-mark):not(#menti-chat-title) {
-  text-decoration-line: underline;
-  text-decoration-color: #ead9bb;
-  text-decoration-thickness: .28em;
-  text-underline-offset: -.1em;
-  text-decoration-skip-ink: none;
+  text-decoration-line: none;
 }
