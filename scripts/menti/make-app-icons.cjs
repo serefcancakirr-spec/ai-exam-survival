@@ -1,4 +1,4 @@
-// Stage 23: draws the app icons (Menti's face on the deep blue of the home hero, teacher's choice A)
+// Stage 23: draws the app icons (Menti's face on the deep colour of the home hero, teacher's choice A; Stage 26: deep teal)
 // from public/favicon.svg. Run after changing the favicon: node scripts/menti/make-app-icons.cjs
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -8,7 +8,7 @@ const APP = path.resolve(__dirname, '../../artifacts/ai-exam-survival');
 const OUT = path.join(APP, 'public/icons');
 const face = fs.readFileSync(path.join(APP, 'public/favicon.svg'));
 const faceUri = `data:image/svg+xml;base64,${face.toString('base64')}`;
-const BLUE = '#2f4255';
+const BLUE = '#1d4748';
 
 // name, size in pixels, face width as a share of the size.
 // Maskable icons are cut to a circle (safe zone = 80 % circle), so the face is smaller there.

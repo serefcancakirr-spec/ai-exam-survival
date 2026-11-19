@@ -9,7 +9,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - Before editing: make a backup (a git branch or tag such as `backup/before-stage-09`).
 - After a stage: typecheck, build, run all tests (new and previous), compare untouched pages, give a preview link and tablet testing steps.
 - Never start the next stage without the teacher's approval.
-- Do not redesign. Keep the design (Stage 20A "Sisli Mavi ve Kum" colours + Stage 20B "Okul Defteri" touches), navigation, all modules and all saved student data.
+- Do not redesign. Keep the design (Stage 26 "Sakin turkuaz", which replaced Stage 20A/20B), navigation, all modules and all saved student data.
 - No live AI, paid APIs, API keys, authentication or database unless the teacher approves.
 - Do not change unrelated modules. Never invent statistics or readiness percentages.
 
@@ -20,7 +20,7 @@ Reply in the language the teacher writes in (usually Turkish).
 - Typecheck: `pnpm run typecheck` in `artifacts/ai-exam-survival`.
 - All tests (typecheck, build, logic tests, browser tests): `bash tests/run-tests.sh` from the repository root.
   Expected today: logic 264/264; browser stage01 59 pass + 3 known old failures, all other suites 0 failures
-  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: calm design, Okul Defteri look and readable text; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice; stage24-test 8/8: "Nasıl kullanılır?" guide; stage25-test 6/6: Turkish subjects in Study Planner and Exam Calendar).
+  (stage09-test 18/18 twice: github.io sub-folder and custom domain; stage10-test 23/23: Menti; stage11-test 19/19: Turkish content; stage13-test 26/26: focus timer and moods; stage14-test 13/13: deck names and study advice; stage15-test 31/31: grade 9, 10 and 11 MEB questions; stage17-test 15/15: About and Privacy; stage18-test 21/21: Menti chat; stage20-test 30/30: readable text (WCAG AA) and the Stage 26 "Sakin turkuaz" look; stage21-test 10/10: English levels and level decks; stage21b-test 9/9: English reading and listening; stage22-test 10/10: TYT exam mode; stage22b-test 7/7: AYT Sayısal exams; stage22b2-test 8/8: AYT Sözel, EA and full AYT; stage22b2b-test 8/8: Felsefe and Din Kültürü in Quiz Center; stage22c-test 8/8: YDT; stage22c2-test 5/5: YDT in the real booklet layout; stage22d-test 5/5: YDT word decks; stage22e-test 5/5: English grade decks; stage22f-test 5/5: Mathematics and science grade decks; stage22g-test 5/5: social sciences and literature grade decks; stage23-test 6/6 twice: install as an app, offline, new version notice; stage24-test 8/8: "Nasıl kullanılır?" guide; stage25-test 6/6: Turkish subjects in Study Planner and Exam Calendar).
   Every browser test except stage24 runs with `tests/browser/guide-seen.cjs` (the app reads the guide as seen, nothing is written, so it does not open over the page).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
@@ -28,7 +28,7 @@ Reply in the language the teacher writes in (usually Turkish).
 ## Design helper skill (installed at the teacher's request, 19 Nov 2026)
 - `.claude/skills/ui-ux-pro-max/`: the "UI UX Pro Max" skill (github.com/nextlevelbuilder/ui-ux-pro-max-skill, MIT; see its SOURCE.md).
   Local design data and a search script only (no network, installs nothing). Its advice never overrides these rules: keep the
-  Stage 20A/20B design and pass the stage20 contrast test; any visual change still needs a plan, samples and the teacher's approval.
+  Stage 26 design and pass the stage20 contrast test; any visual change still needs a plan, samples and the teacher's approval.
 
 ## Saved data (localStorage) – never rename, never change the shape
 - `ai-exam-survival:study-planner:v1`
@@ -97,7 +97,18 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Menti study advice under the mode tabs (from real progress): all new → Learn, cards marked "Review again" → Review,
   all mastered or mostly known → Practice, 3+ "Review again" in one round (not in Review) → reassurance. Writes nothing.
 
-## Calm design "Sisli Mavi ve Kum" (Stage 20A, teacher's choice B)
+## Current look: "Sakin turkuaz" (Stage 26, teacher's choice B of three variants made with the UI UX Pro Max skill)
+- Replaces the Stage 20A/20B look below (kept as history). Styling only: every page's text, structure and logic is unchanged.
+- Colours: teal main colour (#0D9488 family; page-header margin line #2a7f7a), orange call-to-action buttons and small labels,
+  page background light teal-white #f5faf9, tool headers #f4f9f8, white cards with soft grey-green borders (#dee8e5), deep teal blocks
+  (home hero #1d4748, dark summary/CTA blocks), fresh green for "good / done", slate text. Menti keeps its own blue (`menti.tsx` untouched).
+- Font: Plus Jakarta Sans for headings and text (Google Fonts import in `index.css`; `body` word-spacing .05em); headings weight 700.
+- Rounder corners (buttons 10px, small boxes 12px, cards 16px) and soft, light teal-tinted shadows (alpha ≤ .25). No capital letter-spaced
+  labels, no decorative circles, no highlighter line under section titles. App icons and `theme-color` use the deep teal #1d4748.
+- `tests/browser/stage20-test.cjs` checks contrast on every page plus these rules (font, soft shadows only, teal header line, background).
+- Made by re-colouring by hue and role (keeping each colour's brightness so contrast stays the same); preview branches were local only.
+
+## Calm design "Sisli Mavi ve Kum" (Stage 20A, teacher's choice B) — replaced by Stage 26
 - Only colours, fonts and decoration changed; every page's text and structure is the same as before (checked page by page).
 - Colours: misty blue main colour, warm clay accents (home call-to-action buttons, labels on the deep blue header blocks),
   sage green for "good / done / mastered / strong / ok", soft orange for "needs work", warm cream background. The deep blue
@@ -109,7 +120,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   pages on tablet and phone, empty pages, a quiz and the Menti chat. New colours must keep this test green.
 - Weekly chart series: planner blue, quiz sage, flashcards clay, exam prep sand.
 
-## "Okul Defteri" touches (Stage 20B, teacher's choice B: "less AI-looking, more natural")
+## "Okul Defteri" touches (Stage 20B, teacher's choice B: "less AI-looking, more natural") — replaced by Stage 26
 - Labels in normal case (no small CAPITAL letter-spaced labels), no decorative circles/blobs, no soft floating shadows
   (thin selection rings stay; Menti, its speech bubble and the chat button keep their own look), smaller corners
   (cards 10px, small boxes 8px, buttons 6px), white boxes are warm paper `#fffdf8` with pencil-grey borders `#ddd5c6`,
@@ -413,6 +424,10 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
   button places to Claude; samples approved): built and tested, backup tag `backup/before-stage-24` (local only); merged into `main` (PR #31), deployed, tested on the tablet and approved by the teacher.
 - Stage 25 (Turkish subjects in Study Planner and Exam Calendar; teacher noticed "İngilizce Dil ve Edebiyatı", İspanyolca …; plan approved,
   teacher added İnkılap Tarihi and Sağlık Bilgisi): built and tested, backup tag `backup/before-stage-25` (local only); merged into `main` (PR #32), deployed, tested on the tablet and approved by the teacher.
+- Design skill (PR #33, merged): UI UX Pro Max installed as a project skill. A first indigo preview, then three variants made by three
+  sub-agents (A indigo clay 51, B calm teal 53, C bright blue-yellow 48 of 60; scores from the stage20/stage24 tests plus Claude's review).
+- Stage 26 ("Sakin turkuaz" look = variant B; plan approved, icon background follows the new deep teal): built and tested, backup tag
+  `backup/before-stage-26` (local only). Not merged yet.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
