@@ -427,7 +427,7 @@ Progress Tracker is completely read-only: it reads the other tools' data and nev
 - Design skill (PR #33, merged): UI UX Pro Max installed as a project skill. A first indigo preview, then three variants made by three
   sub-agents (A indigo clay 51, B calm teal 53, C bright blue-yellow 48 of 60; scores from the stage20/stage24 tests plus Claude's review).
 - Stage 26 ("Sakin turkuaz" look = variant B; plan approved, icon background follows the new deep teal): built and tested, backup tag
-  `backup/before-stage-26` (local only). Not merged yet.
+  `backup/before-stage-26` (local only); merged into `main` (PR #34), deployed. Tablet test pending.
 - Network: the personal environment also allows dokuman.osym.gov.tr, www.osym.gov.tr, dergipark.org.tr, www.wgtn.ac.nz
   (ÖSYM booklets and word-list sources for Stage 22D).
 - Order approved by the teacher: 19A → 19B (grade 11 History, Geography, Literature) → Stage 20 new calm design (teacher asked
