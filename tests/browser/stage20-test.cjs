@@ -158,19 +158,20 @@ function lowContrast(page) {
     assert(bad.length === 0, bad.slice(0, 6).join(' || '));
   });
 
-  await check('fonts: headings use Lora, text uses Source Sans 3; letter spacing of big titles is relaxed', async () => {
+  // Stage 26 ("Sakin turkuaz", teacher's choice B): Plus Jakarta Sans replaced Lora / Source Sans 3.
+  await check('fonts: headings and text use Plus Jakarta Sans; letter spacing of big titles is relaxed', async () => {
     const { context, page } = await open(browser, { path: '/' });
     const f = await page.evaluate(() => ({
       body: getComputedStyle(document.body).fontFamily,
       h1: getComputedStyle(document.querySelector('h1')).fontFamily,
       spacing: parseFloat(getComputedStyle(document.querySelector('h1')).letterSpacing) / parseFloat(getComputedStyle(document.querySelector('h1')).fontSize),
-      css: [...document.styleSheets].some((s) => { try { return [...s.cssRules].some((r) => /Lora/.test(r.cssText) && /Source\+Sans\+3/.test(r.cssText)); } catch { return false; } }),
+      css: [...document.styleSheets].some((s) => { try { return [...s.cssRules].some((r) => /Plus\+Jakarta\+Sans/.test(r.cssText)); } catch { return false; } }),
     }));
     await context.close();
-    assert(/^"?Source Sans 3/.test(f.body), f.body);
-    assert(/^"?Lora/.test(f.h1), f.h1);
+    assert(/^"?Plus Jakarta Sans/.test(f.body), f.body);
+    assert(/^"?Plus Jakarta Sans/.test(f.h1), f.h1);
     assert(f.spacing > -0.02, `h1 letter spacing ${f.spacing}em`);
-    assert(f.css, 'Google Fonts import for Lora and Source Sans 3');
+    assert(f.css, 'Google Fonts import for Plus Jakarta Sans');
   });
 
   await check('calm details: no grid pattern behind the hero, the preview cards do not float', async () => {
@@ -204,7 +205,8 @@ function lowContrast(page) {
     }
   });
 
-  await check('20B: no small CAPITAL letter-spaced labels, no decorative circles, no floating shadows on any page', async () => {
+  // Stage 26: soft, light teal-tinted shadows are part of the new look; heavy dark shadows are still not allowed.
+  await check('no small CAPITAL letter-spaced labels, no decorative circles, only soft light shadows on any page', async () => {
     for (const path of PAGES) {
       const { context, page } = await open(browser, { path });
       const d = await page.evaluate(() => {
@@ -216,8 +218,9 @@ function lowContrast(page) {
           if (s.textTransform === 'uppercase' && el.textContent.trim()) caps.push(el.textContent.trim().slice(0, 30));
           if (s.position === 'absolute' && r.width >= 100 && r.height >= 100 && parseFloat(s.borderTopLeftRadius) >= r.width / 2 - 1) circles.push(`${Math.round(r.width)}px`);
           // invisible shadows and thin selection rings (0 0 0 Npx) are fine; only soft floating shadows count
-          const sh = s.boxShadow.replace(/rgba?\([^)]*\) 0px 0px 0px \d+px,? ?/g, '').trim();
-          if (sh && sh !== 'none' && r.width > 0) shadows.push(`${el.tagName} ${s.boxShadow.slice(0, 40)}`);
+          const heavy = [...s.boxShadow.matchAll(/rgba\([^)]*,\s*([\d.]+)\)/g)].some((m) => parseFloat(m[1]) > 0.25)
+            || /rgb\(\d+, \d+, \d+\)(?! 0px 0px 0px)/.test(s.boxShadow.replace(/rgba?\([^)]*\) 0px 0px 0px \d+px,? ?/g, ''));
+          if (heavy && r.width > 0) shadows.push(`${el.tagName} ${s.boxShadow.slice(0, 60)}`);
         }
         return { caps, circles, shadows };
       });
@@ -228,7 +231,8 @@ function lowContrast(page) {
     }
   });
 
-  await check('20B: tool page headers are light paper with a blue margin line; the page background is warm paper', async () => {
+  // Stage 26: tool page headers are light teal-white with a 6px teal margin line; the page background is light teal-white.
+  await check('tool page headers are light with a teal margin line; the page background is light teal-white', async () => {
     for (const path of PAGES.filter((x) => !['/', '/not-a-page'].includes(x))) {
       const { context, page } = await open(browser, { path });
       const d = await page.evaluate(() => {
@@ -237,8 +241,8 @@ function lowContrast(page) {
         return { bg: s.backgroundColor, left: s.borderLeftColor, leftW: s.borderLeftWidth, body: getComputedStyle(document.body).backgroundColor };
       });
       await context.close();
-      assert(d.bg === 'rgb(251, 248, 241)' && d.left === 'rgb(83, 118, 160)' && d.leftW === '6px', `${path} ${JSON.stringify(d)}`);
-      assert(d.body === 'rgb(247, 242, 233)', `${path} body ${d.body}`);
+      assert(d.bg === 'rgb(244, 249, 248)' && d.left === 'rgb(42, 127, 122)' && d.leftW === '6px', `${path} ${JSON.stringify(d)}`);
+      assert(d.body === 'rgb(245, 250, 249)', `${path} body ${d.body}`);
     }
   });
 

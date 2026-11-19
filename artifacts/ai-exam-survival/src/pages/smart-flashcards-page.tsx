@@ -82,15 +82,15 @@ import { useI18n } from '@/i18n/i18n';
 // ---------- shared styles (match Study Planner and Quiz Center) ----------
 
 const inputClassName =
-  'mt-2 w-full rounded-[8px] border border-[#ddd5c6] bg-[#fffdf8] px-3.5 py-3 text-[13px] text-[#3f4e5d] outline-none transition placeholder:text-[#abb1b8] focus:border-[#84a0c0] focus:ring-2 focus:ring-[#84a0c0]/10';
+  'mt-2 w-full rounded-[12px] border border-[#dee8e5] bg-[#ffffff] px-3.5 py-3 text-[13px] text-[#235355] outline-none transition placeholder:text-[#a6b3b9] focus:border-[#37aea6] focus:ring-2 focus:ring-[#37aea6]/10';
 const primaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#527195] disabled:cursor-not-allowed disabled:opacity-45';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] bg-[#2b807a] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#297a75] disabled:cursor-not-allowed disabled:opacity-45';
 const secondaryButton =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c] disabled:cursor-not-allowed disabled:opacity-45';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-4 text-[12px] font-bold text-[#5a6b73] transition-colors hover:border-[#a6e1de] hover:text-[#26726d] disabled:cursor-not-allowed disabled:opacity-45';
 const smallButton =
-  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-3 text-[11px] font-bold text-[#5e6973] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]';
+  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-3 text-[11px] font-bold text-[#5a6b73] transition-colors hover:border-[#a6e1de] hover:text-[#26726d]';
 const dangerSmallButton =
-  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-[6px] bg-[#a35b5b] px-3 text-[11px] font-bold text-white transition-colors hover:bg-[#8a4a4a]';
+  'inline-flex min-h-9 items-center justify-center gap-1.5 rounded-[10px] bg-[#a35b5b] px-3 text-[11px] font-bold text-white transition-colors hover:bg-[#8a4a4a]';
 
 const STATUS_LABELS: Record<CardStatus, string> = {
   new: 'New',
@@ -99,10 +99,10 @@ const STATUS_LABELS: Record<CardStatus, string> = {
   mastered: 'Mastered',
 };
 const STATUS_STYLES: Record<CardStatus, { chip: string; bar: string }> = {
-  new: { chip: 'bg-[#f8f6f3] text-[#5e676f]', bar: 'bg-[#dde1e6]' },
-  again: { chip: 'bg-[#fbf1eb] text-[#895b42]', bar: 'bg-[#a4643a]' },
-  learning: { chip: 'bg-[#f1f5f9] text-[#4a688c]', bar: 'bg-[#5276a0]' },
-  mastered: { chip: 'bg-[#e8f3f0] text-[#396f5f]', bar: 'bg-[#417d6b]' },
+  new: { chip: 'bg-[#f1f8f6] text-[#586871]', bar: 'bg-[#cfe5e2]' },
+  again: { chip: 'bg-[#fdf1e5] text-[#9b5227]', bar: 'bg-[#ba571f]' },
+  learning: { chip: 'bg-[#e5f8f6] text-[#26716c]', bar: 'bg-[#297f7a]' },
+  mastered: { chip: 'bg-[#e4f5ec] text-[#2b724e]', bar: 'bg-[#328159]' },
 };
 const STATUS_ORDER: CardStatus[] = ['again', 'new', 'learning', 'mastered'];
 
@@ -203,30 +203,30 @@ const emptyCardDraft: CardDraft = { front: '', answer: '', explanation: '' };
 function FlashcardsFrame({ children, storageUnavailable }: { children: ReactNode; storageUnavailable: boolean }) {
   const { t, tx, phrase, subject: subjectLabel } = useI18n();
   return (
-    <div className="page-shell min-h-[100dvh] bg-[#f9f7f4]">
+    <div className="page-shell min-h-[100dvh] bg-[#f2f9f7]">
       <main className="mx-auto max-w-[1240px] px-5 pb-16 pt-7 sm:px-8 sm:pb-24 sm:pt-10">
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[12px] font-bold text-[#4b5966] transition-colors hover:border-[#ced7e2] hover:text-[#4c6a8c]"
+          className="inline-flex min-h-10 items-center gap-2 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-4 text-[12px] font-bold text-[#20605c] transition-colors hover:border-[#a6e1de] hover:text-[#26726d]"
           data-testid="link-back-home"
         >
           <ArrowLeft size={15} /> {tx('Back to home')}
         </Link>
 
-        <section className="relative mt-6 overflow-hidden rounded-[10px] border border-[#ddd5c6] border-l-[6px] border-l-[#5376a0] bg-[#fbf8f1] px-6 py-8 text-[#2b3a49] sm:px-9 sm:py-10">
+        <section className="relative mt-6 overflow-hidden rounded-[16px] border border-[#dee8e5] border-l-[6px] border-l-[#2a7f7a] bg-[#f4f9f8] px-6 py-8 text-[#1a3e3f] sm:px-9 sm:py-10">
           <div className="hero-grid absolute inset-0 opacity-40" />
           <div className="relative flex max-w-[760px] items-start gap-4 sm:gap-5">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-[#e8eef4] text-[#4b698c] sm:h-14 sm:w-14">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[12px] bg-[#d6f3f0] text-[#26716c] sm:h-14 sm:w-14">
               <Layers3 size={22} />
             </span>
             <div>
-              <p className="text-[13px] font-semibold text-[#8a5a3c]">
+              <p className="text-[13px] font-semibold text-[#9b5227]">
                 {tx('Recall it, remember it')}
               </p>
               <h1 className="font-display mt-2 text-[32px] font-extrabold leading-tight tracking-[-.015em] sm:text-[44px]">
                 {tx('Smart Flashcards')}
               </h1>
-              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4f5a64] sm:text-[15px]">
+              <p className="mt-3 max-w-[620px] text-[13px] leading-[1.75] text-[#4d5b61] sm:text-[15px]">
                 {tx('Make your own decks for grades 9–12, flip cards to check your recall, and let Review mode bring back the cards you find hardest.')}
               </p>
             </div>
@@ -234,12 +234,12 @@ function FlashcardsFrame({ children, storageUnavailable }: { children: ReactNode
         </section>
 
         <div className="mt-7 flex flex-wrap items-center justify-between gap-2">
-          <p className="text-[11px] font-semibold text-[#5f6870]" data-testid="text-flashcards-save-status">
+          <p className="text-[11px] font-semibold text-[#596a72]" data-testid="text-flashcards-save-status">
             {storageUnavailable
               ? tx('Browser saving is unavailable for flashcards')
               : tx('Your cards and progress stay in this browser')}
           </p>
-          <span className="rounded-full bg-[#ebf0f6] px-3 py-1.5 text-[10px] font-bold text-[#506783]">
+          <span className="rounded-full bg-[#daf5f2] px-3 py-1.5 text-[10px] font-bold text-[#26716c]">
             {tx('Saved on this device')}
           </span>
         </div>
@@ -247,12 +247,12 @@ function FlashcardsFrame({ children, storageUnavailable }: { children: ReactNode
         <div className="mt-4 space-y-5 sm:space-y-6">{children}</div>
       </main>
 
-      <footer className="border-t border-[#e6e9ec] bg-[#f7f5f1]">
+      <footer className="border-t border-[#dbece9] bg-[#eff7f5]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-[11px] text-[#5f6870]">{tx('AI Exam Survival · Smart Flashcards')}<FooterAboutLink /></p>
+          <p className="text-[11px] text-[#596a72]">{tx('AI Exam Survival · Smart Flashcards')}<FooterAboutLink /></p>
           <Link
             href="/"
-            className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#516986] hover:text-[#3e5977]"
+            className="inline-flex min-h-9 items-center gap-2 text-[11px] font-bold text-[#26726d] hover:text-[#20605c]"
             data-testid="link-footer-home"
           >
             <ArrowLeft size={13} /> {tx('Return to the homepage')}
@@ -278,13 +278,13 @@ function Panel({
 }) {
   return (
     <section
-      className="min-w-0 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6"
+      className="min-w-0 rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-5 sm:p-6 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]"
       data-testid={testId}
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[13px] font-semibold text-[#4b698c]">{eyebrow}</p>
-          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#364656] sm:text-[22px]">
+          <p className="text-[13px] font-semibold text-[#26716c]">{eyebrow}</p>
+          <h2 className="font-display mt-1.5 text-[20px] font-extrabold tracking-[-.015em] text-[#1f4b4c] sm:text-[22px]">
             {title}
           </h2>
         </div>
@@ -298,15 +298,15 @@ function Panel({
 function NoticeBanner({ notice }: { notice: Notice }) {
   const { phrase } = useI18n();
   const styles = {
-    success: 'border-[#d3e5de] bg-[#f8f6f3] text-[#366b58]',
+    success: 'border-[#c9e8d9] bg-[#f1f8f6] text-[#286d4b]',
     error: 'border-[#ebd6d6] bg-[#fef7f7] text-[#865454]',
-    info: 'border-[#dbe4ee] bg-[#f7f9fc] text-[#506986]',
+    info: 'border-[#bcece6] bg-[#f0fbfa] text-[#26726c]',
   };
   return (
     <div
       role={notice.tone === 'error' ? 'alert' : 'status'}
       aria-live="polite"
-      className={`rounded-[13px] border px-4 py-3 text-[12px] leading-relaxed ${styles[notice.tone]}`}
+      className={`rounded-[20px] border px-4 py-3 text-[12px] leading-relaxed ${styles[notice.tone]}`}
       data-testid={`flashcards-notice-${notice.tone}`}
     >
       <p className="font-bold">{phrase(notice.message)}</p>
@@ -323,7 +323,7 @@ function NoticeBanner({ notice }: { notice: Notice }) {
 
 function StatusBar({ counts, total }: { counts: Record<CardStatus, number>; total: number }) {
   return (
-    <div className="flex h-2 overflow-hidden rounded-full bg-[#f0f2f4]" aria-hidden="true">
+    <div className="flex h-2 overflow-hidden rounded-full bg-[#eaf3f2]" aria-hidden="true">
       {total > 0 &&
         STATUS_ORDER.map((status) =>
           counts[status] > 0 ? (
@@ -367,7 +367,7 @@ function InlineConfirm({
     <div
       role="alertdialog"
       aria-label={message}
-      className="flex flex-col gap-3 rounded-[8px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+      className="flex flex-col gap-3 rounded-[12px] border border-[#ebd6d6] bg-[#fef7f7] px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
       data-testid={testId}
     >
       <p className="text-[12px] font-bold text-[#865454]">{message}</p>
@@ -403,7 +403,7 @@ function DeckForm({
     <form
       onSubmit={onSubmit}
       noValidate
-      className="rounded-[10px] border border-[#eaedf0] bg-[#fcfdfd] p-4"
+      className="rounded-[16px] border border-[#e1efee] bg-[#fcfdfd] p-4"
       data-testid="form-deck"
     >
       {errors.length > 0 && (
@@ -412,7 +412,7 @@ function DeckForm({
         </div>
       )}
       <div className="grid gap-3 sm:grid-cols-2">
-        <label className="block text-[11px] font-bold text-[#4b5966] sm:col-span-2" htmlFor="deck-name">
+        <label className="block text-[11px] font-bold text-[#20605c] sm:col-span-2" htmlFor="deck-name">
           {tx('Deck name')}
           <input
             id="deck-name"
@@ -424,7 +424,7 @@ function DeckForm({
             data-testid="input-deck-name"
           />
         </label>
-        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor="deck-grade">
+        <label className="block text-[11px] font-bold text-[#20605c]" htmlFor="deck-grade">
           {tx('Grade')}
           <select
             id="deck-grade"
@@ -440,7 +440,7 @@ function DeckForm({
             ))}
           </select>
         </label>
-        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor="deck-subject">
+        <label className="block text-[11px] font-bold text-[#20605c]" htmlFor="deck-subject">
           {tx('Subject')}
           <select
             id="deck-subject"
@@ -456,8 +456,8 @@ function DeckForm({
             ))}
           </select>
         </label>
-        <label className="block text-[11px] font-bold text-[#4b5966] sm:col-span-2" htmlFor="deck-topic">
-          {tx('Topic')} <span className="font-semibold text-[#60686f]">{tx('(optional)')}</span>
+        <label className="block text-[11px] font-bold text-[#20605c] sm:col-span-2" htmlFor="deck-topic">
+          {tx('Topic')} <span className="font-semibold text-[#596a72]">{tx('(optional)')}</span>
           <input
             id="deck-topic"
             value={draft.topic}
@@ -507,7 +507,7 @@ function CardForm({
         </div>
       )}
       <div className="grid gap-3 md:grid-cols-2">
-        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor={`${idPrefix}-front`}>
+        <label className="block text-[11px] font-bold text-[#20605c]" htmlFor={`${idPrefix}-front`}>
           {tx('Front · question or concept')}
           <textarea
             id={`${idPrefix}-front`}
@@ -520,7 +520,7 @@ function CardForm({
             data-testid={`${idPrefix}-front`}
           />
         </label>
-        <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor={`${idPrefix}-answer`}>
+        <label className="block text-[11px] font-bold text-[#20605c]" htmlFor={`${idPrefix}-answer`}>
           {tx('Back · answer')}
           <textarea
             id={`${idPrefix}-answer`}
@@ -533,8 +533,8 @@ function CardForm({
             data-testid={`${idPrefix}-answer`}
           />
         </label>
-        <label className="block text-[11px] font-bold text-[#4b5966] md:col-span-2" htmlFor={`${idPrefix}-explanation`}>
-          {tx('Back · explanation')} <span className="font-semibold text-[#60686f]">{tx('(optional, helps you remember why)')}</span>
+        <label className="block text-[11px] font-bold text-[#20605c] md:col-span-2" htmlFor={`${idPrefix}-explanation`}>
+          {tx('Back · explanation')} <span className="font-semibold text-[#596a72]">{tx('(optional, helps you remember why)')}</span>
           <textarea
             id={`${idPrefix}-explanation`}
             rows={2}
@@ -1037,13 +1037,13 @@ export default function SmartFlashcardsPage() {
               : tx('Nice progress! Test yourself with Practice to see what has stuck.');
     const canSwitch = advice.suggest !== activeSession.mode && advice.kind !== 'hard-round';
     return (
-      <div className="mt-3 rounded-[10px] border border-[#e6ebf1] bg-[#f9fbfd] px-3 py-3" data-testid="study-guide" data-advice={advice.kind}>
+      <div className="mt-3 rounded-[16px] border border-[#d6f0ec] bg-[#f5fcfb] px-3 py-3" data-testid="study-guide" data-advice={advice.kind}>
         <Menti pose={advice.pose} size={60} message={message} testId="menti-guide">
           {canSwitch && (
             <button
               type="button"
               onClick={() => changeMode(advice.suggest)}
-              className="inline-flex min-h-9 items-center rounded-[6px] bg-[#54769d] px-3.5 text-[11px] font-extrabold text-white hover:bg-[#527195]"
+              className="inline-flex min-h-9 items-center rounded-[10px] bg-[#2b807a] px-3.5 text-[11px] font-extrabold text-white hover:bg-[#297a75]"
               data-testid="button-guide-switch"
             >
               {tx('Switch to {mode}', { mode: tx(MODE_INFO[advice.suggest].label) })}
@@ -1057,17 +1057,17 @@ export default function SmartFlashcardsPage() {
   function renderStudyArea() {
     if (!selectedDeck) {
       return (
-        <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-empty">
-          <p className="text-[13px] font-bold text-[#4f5a64]">{tx('Choose a deck to start studying.')}</p>
-          <p className="mt-1 text-[11px] text-[#60686f]">{tx('Or create a new deck in your library above.')}</p>
+        <div className="rounded-[16px] border border-dashed border-[#d3e7e4] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-empty">
+          <p className="text-[13px] font-bold text-[#4d5b61]">{tx('Choose a deck to start studying.')}</p>
+          <p className="mt-1 text-[11px] text-[#596a72]">{tx('Or create a new deck in your library above.')}</p>
         </div>
       );
     }
     if (deckCards.length === 0) {
       return (
-        <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-no-cards">
-          <p className="text-[13px] font-bold text-[#4f5a64]">{tx('This deck has no cards yet.')}</p>
-          <p className="mt-1 text-[11px] text-[#60686f]">{tx('Add your first card in “Cards in this deck” below.')}</p>
+        <div className="rounded-[16px] border border-dashed border-[#d3e7e4] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-no-cards">
+          <p className="text-[13px] font-bold text-[#4d5b61]">{tx('This deck has no cards yet.')}</p>
+          <p className="mt-1 text-[11px] text-[#596a72]">{tx('Add your first card in “Cards in this deck” below.')}</p>
         </div>
       );
     }
@@ -1075,10 +1075,10 @@ export default function SmartFlashcardsPage() {
 
     if (activeSession.mode === 'review' && activeSession.order.length === 0) {
       return (
-        <div className="rounded-[10px] border border-[#dee9e6] bg-[#f9f7f4] px-5 py-10 text-center" data-testid="review-nothing">
-          <CheckCircle2 className="mx-auto text-[#396f5f]" size={26} />
-          <p className="mt-3 text-[13px] font-bold text-[#3d685b]">{tx('Nothing to review right now.')}</p>
-          <p className="mx-auto mt-1 max-w-[380px] text-[11px] leading-relaxed text-[#586a64]">
+        <div className="rounded-[16px] border border-[#d4ece0] bg-[#f2f9f7] px-5 py-10 text-center" data-testid="review-nothing">
+          <CheckCircle2 className="mx-auto text-[#2b724e]" size={26} />
+          <p className="mt-3 text-[13px] font-bold text-[#2e6c4d]">{tx('Nothing to review right now.')}</p>
+          <p className="mx-auto mt-1 max-w-[380px] text-[11px] leading-relaxed text-[#586871]">
             {tx('Every card in this deck is mastered. Try Practice mode to test yourself again.')}
           </p>
           <button type="button" onClick={() => changeMode('practice')} className={`${primaryButton} mt-4`} data-testid="button-go-practice">
@@ -1090,8 +1090,8 @@ export default function SmartFlashcardsPage() {
 
     if (activeSession.order.length === 0) {
       return (
-        <div className="rounded-[10px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-restart">
-          <p className="text-[13px] font-bold text-[#4f5a64]">{tx('This round has no cards left.')}</p>
+        <div className="rounded-[16px] border border-dashed border-[#d3e7e4] bg-[#fbfcfd] px-5 py-10 text-center" data-testid="study-restart">
+          <p className="text-[13px] font-bold text-[#4d5b61]">{tx('This round has no cards left.')}</p>
           <button type="button" onClick={() => changeMode(activeSession.mode)} className={`${primaryButton} mt-4`} data-testid="button-restart-round">
             <RotateCcw size={15} /> {tx('Start a new round')}
           </button>
@@ -1102,16 +1102,16 @@ export default function SmartFlashcardsPage() {
     if (activeSession.finished) {
       const skipped = activeSession.order.length - sessionMarks.length;
       return (
-        <div className="rounded-[10px] border border-[#e6ebf1] bg-[#f8fafc] px-5 py-8 text-center sm:px-8" data-testid="session-summary">
+        <div className="rounded-[16px] border border-[#d6f0ec] bg-[#f1fcfa] px-5 py-8 text-center sm:px-8" data-testid="session-summary">
           <Menti pose="clap" size={80} message={t('menti.flashDone')} testId="menti-flashcards" className="mb-4 justify-center" />
-          <p className="text-[13px] font-semibold text-[#4b698c]">
+          <p className="text-[13px] font-semibold text-[#26716c]">
             {tx('{mode} round complete', { mode: tx(MODE_INFO[activeSession.mode].label) })}
           </p>
-          <p className="font-display mt-2 text-[24px] font-extrabold tracking-[-.015em] text-[#364656]">
+          <p className="font-display mt-2 text-[24px] font-extrabold tracking-[-.015em] text-[#1f4b4c]">
             {tx('{known} known · {again} to review', { known: knownInSession, again: againInSession })}
           </p>
           {skipped > 0 && (
-            <p className="mt-1 text-[11px] text-[#5f6870]">
+            <p className="mt-1 text-[11px] text-[#596a72]">
               {tx(skipped === 1 ? '{count} card skipped without a mark.' : '{count} cards skipped without a mark.', { count: skipped })}
             </p>
           )}
@@ -1133,12 +1133,12 @@ export default function SmartFlashcardsPage() {
     return (
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="rounded-full bg-[#f8f6f3] px-3 py-1.5 text-[10px] font-bold text-[#5e676f]" data-testid="text-card-position">
+          <span className="rounded-full bg-[#f1f8f6] px-3 py-1.5 text-[10px] font-bold text-[#586871]" data-testid="text-card-position">
             {progressLabel}
           </span>
           <div className="flex items-center gap-2">
             {currentMark && (
-              <span className="text-[10px] font-bold text-[#5f6870]" data-testid="text-current-mark">
+              <span className="text-[10px] font-bold text-[#596a72]" data-testid="text-current-mark">
                 {tx('Marked: {mark}', { mark: tx(currentMark === 'know' ? 'I know this' : 'Review again') })}
               </span>
             )}
@@ -1151,7 +1151,7 @@ export default function SmartFlashcardsPage() {
           onClick={flip}
           aria-pressed={activeSession.flipped}
           aria-label={activeSession.flipped ? tx('Show the front of the card') : tx('Flip to see the answer')}
-          className="group mt-4 block w-full rounded-[10px] text-left [perspective:1600px]"
+          className="group mt-4 block w-full rounded-[16px] text-left [perspective:1600px]"
           data-testid="button-flashcard-flip"
         >
           <span
@@ -1160,35 +1160,35 @@ export default function SmartFlashcardsPage() {
             }`}
           >
             <span
-              className="flex min-h-[230px] flex-col items-center justify-center rounded-[10px] border border-[#e6ebf1] bg-[#f8fafc] px-6 py-8 text-center transition-colors [grid-area:1/1] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] group-hover:border-[#ced7e2] sm:min-h-[260px]"
+              className="flex min-h-[230px] flex-col items-center justify-center rounded-[16px] border border-[#d6f0ec] bg-[#f1fcfa] px-6 py-8 text-center transition-colors [grid-area:1/1] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] group-hover:border-[#a6e1de] sm:min-h-[260px]"
               aria-hidden={activeSession.flipped}
               data-testid="flashcard-front"
             >
-              <span className="rounded-full bg-[#fffdf8] px-3 py-1.5 text-[11px] font-semibold text-[#506883]">
+              <span className="rounded-full bg-[#ffffff] px-3 py-1.5 text-[11px] font-semibold text-[#26716c]">
                 {tx('Front')}
               </span>
-              <span className="font-display mt-5 block max-w-[560px] break-words text-[22px] font-extrabold leading-snug tracking-[-.015em] text-[#364656] sm:text-[27px]" data-content="card">
+              <span className="font-display mt-5 block max-w-[560px] break-words text-[22px] font-extrabold leading-snug tracking-[-.015em] text-[#1f4b4c] sm:text-[27px]" data-content="card">
                 {localizeCard(currentCard, lang).front}
               </span>
-              <span className="mt-5 block text-[10px] font-semibold text-[#5f666d]">{tx('Tap to reveal the answer')}</span>
+              <span className="mt-5 block text-[10px] font-semibold text-[#58676f]">{tx('Tap to reveal the answer')}</span>
             </span>
             <span
-              className="flex min-h-[230px] flex-col items-center justify-center rounded-[10px] border border-[#d5e6e1] bg-[#f9f7f4] px-6 py-8 text-center [grid-area:1/1] [transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] sm:min-h-[260px]"
+              className="flex min-h-[230px] flex-col items-center justify-center rounded-[16px] border border-[#cbe9da] bg-[#f2f9f7] px-6 py-8 text-center [grid-area:1/1] [transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] sm:min-h-[260px]"
               aria-hidden={!activeSession.flipped}
               data-testid="flashcard-back"
             >
-              <span className="rounded-full bg-[#fffdf8] px-3 py-1.5 text-[11px] font-semibold text-[#396e5e]">
+              <span className="rounded-full bg-[#ffffff] px-3 py-1.5 text-[11px] font-semibold text-[#2b714e]">
                 {tx('Answer')}
               </span>
-              <span className="font-display mt-4 block max-w-[560px] break-words text-[19px] font-extrabold leading-snug tracking-[-.015em] text-[#364656] sm:text-[23px]" data-content="card">
+              <span className="font-display mt-4 block max-w-[560px] break-words text-[19px] font-extrabold leading-snug tracking-[-.015em] text-[#1f4b4c] sm:text-[23px]" data-content="card">
                 {localizeCard(currentCard, lang).answer}
               </span>
               {currentCard.explanation && (
-                <span className="mt-3 block max-w-[540px] break-words text-[12px] leading-[1.7] text-[#586a64] sm:text-[13px]" data-content="card">
+                <span className="mt-3 block max-w-[540px] break-words text-[12px] leading-[1.7] text-[#586871] sm:text-[13px]" data-content="card">
                   {localizeCard(currentCard, lang).explanation}
                 </span>
               )}
-              <span className="mt-4 block text-[10px] font-semibold text-[#6c665d]">{tx('Tap to see the front again')}</span>
+              <span className="mt-4 block text-[10px] font-semibold text-[#596a72]">{tx('Tap to see the front again')}</span>
             </span>
           </span>
         </button>
@@ -1198,7 +1198,7 @@ export default function SmartFlashcardsPage() {
             type="button"
             onClick={() => mark('again')}
             disabled={needsFlip}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[6px] border border-[#e9d9cb] bg-[#fcf5f1] px-5 text-[12px] font-extrabold text-[#8f5847] transition-colors hover:bg-[#faebe0] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] border border-[#f1d6c7] bg-[#fdf5ec] px-5 text-[12px] font-extrabold text-[#9d5227] transition-colors hover:bg-[#fcebda] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
             data-testid="button-mark-again"
           >
             <RotateCcw size={16} /> {tx('Review Again')}
@@ -1207,19 +1207,19 @@ export default function SmartFlashcardsPage() {
             type="button"
             onClick={() => mark('know')}
             disabled={needsFlip}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[6px] bg-[#3b7262] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#316052] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] bg-[#2d7451] px-5 text-[12px] font-extrabold text-white transition-colors hover:bg-[#256344] disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[180px]"
             data-testid="button-mark-know"
           >
             <Check size={16} /> {tx('I Know This')}
           </button>
         </div>
         {needsFlip && (
-          <p className="mt-2 text-center text-[10px] font-semibold text-[#60686f]" data-testid="text-flip-first">
+          <p className="mt-2 text-center text-[10px] font-semibold text-[#596a72]" data-testid="text-flip-first">
             {tx('Flip the card first, then mark how you did.')}
           </p>
         )}
 
-        <div className="mt-4 flex items-center justify-between gap-2 border-t border-[#eef0f2] pt-4">
+        <div className="mt-4 flex items-center justify-between gap-2 border-t border-[#e7f3f0] pt-4">
           <button
             type="button"
             onClick={() => move(-1)}
@@ -1237,7 +1237,7 @@ export default function SmartFlashcardsPage() {
             type="button"
             onClick={() => move(1)}
             aria-label={activeSession.mode !== 'learn' && activeSession.index >= activeSession.order.length - 1 ? tx('Finish round') : tx('Next card')}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-4 text-[12px] font-bold text-white transition-colors hover:bg-[#527195]"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] bg-[#2b807a] px-4 text-[12px] font-bold text-white transition-colors hover:bg-[#297a75]"
             data-testid="button-flashcard-next"
           >
             <span className="hidden sm:inline">
@@ -1247,7 +1247,7 @@ export default function SmartFlashcardsPage() {
           </button>
         </div>
         {activeSession.mode === 'learn' && activeSession.completedLaps > 0 && (
-          <p className="mt-3 text-center text-[11px] font-semibold text-[#3f7162]" data-testid="text-lap-complete">
+          <p className="mt-3 text-center text-[11px] font-semibold text-[#317352]" data-testid="text-lap-complete">
             {activeSession.completedLaps > 1
               ? tx('You have been through the whole deck {count} times. Nice work.', { count: activeSession.completedLaps })
               : tx('You have been through the whole deck. Nice work.')}
@@ -1264,7 +1264,7 @@ export default function SmartFlashcardsPage() {
       {storageMessage && (
         <div
           role="alert"
-          className="rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] leading-relaxed text-[#69502e]"
+          className="rounded-[12px] border border-[#f4d3bf] bg-[#ffffff] px-4 py-3 text-[12px] leading-relaxed text-[#824420]"
           data-testid="message-flashcards-storage"
         >
           {phrase(storageMessage)}
@@ -1284,7 +1284,7 @@ export default function SmartFlashcardsPage() {
         }
       >
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor="filter-grade">
+          <label className="block text-[11px] font-bold text-[#20605c]" htmlFor="filter-grade">
             {tx('Grade')}
             <select
               id="filter-grade"
@@ -1301,7 +1301,7 @@ export default function SmartFlashcardsPage() {
               ))}
             </select>
           </label>
-          <label className="block text-[11px] font-bold text-[#4b5966]" htmlFor="filter-subject">
+          <label className="block text-[11px] font-bold text-[#20605c]" htmlFor="filter-subject">
             {tx('Subject')}
             <select
               id="filter-subject"
@@ -1334,9 +1334,9 @@ export default function SmartFlashcardsPage() {
         )}
 
         {visibleDecks.length === 0 ? (
-          <div className="mt-4 rounded-[8px] border border-dashed border-[#dfe3e7] bg-[#fbfcfd] px-4 py-6 text-center" data-testid="decks-empty">
-            <p className="text-[12px] font-bold text-[#4f5a64]">{tx('No decks match these filters.')}</p>
-            <p className="mt-1 text-[11px] text-[#60686f]">{tx('Choose “All grades” and “All subjects”, or create a new deck.')}</p>
+          <div className="mt-4 rounded-[12px] border border-dashed border-[#d3e7e4] bg-[#fbfcfd] px-4 py-6 text-center" data-testid="decks-empty">
+            <p className="text-[12px] font-bold text-[#4d5b61]">{tx('No decks match these filters.')}</p>
+            <p className="mt-1 text-[11px] text-[#596a72]">{tx('Choose “All grades” and “All subjects”, or create a new deck.')}</p>
           </div>
         ) : (
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-testid="deck-list">
@@ -1352,21 +1352,21 @@ export default function SmartFlashcardsPage() {
                   aria-pressed={isSelected}
                   className={`flex min-w-0 flex-col rounded-[17px] border p-4 text-left transition-colors ${
                     isSelected
-                      ? 'border-[#98afca] bg-[#f8fafc]'
-                      : 'border-[#ddd5c6] bg-[#fffdf8] hover:border-[#d2dce7]'
+                      ? 'border-[#3dbeb6] bg-[#f1fcfa]'
+                      : 'border-[#dee8e5] bg-[#ffffff] hover:border-[#b0e5de]'
                   }`}
                   data-testid={`deck-${deck.id}`}
                 >
                   <span className="flex w-full items-start justify-between gap-2">
                     <span className="min-w-0">
-                      <span className="block break-words text-[14px] font-extrabold text-[#384959]" data-content="card">{deckName(deck, lang)}</span>
-                      <span className="mt-1 block text-[10px] font-bold text-[#5f6870]">
+                      <span className="block break-words text-[14px] font-extrabold text-[#204e4f]" data-content="card">{deckName(deck, lang)}</span>
+                      <span className="mt-1 block text-[10px] font-bold text-[#596a72]">
                         {t('common.grade', { grade: deck.grade })} · {subjectLabel(deck.subject)}
                         {deck.topic ? <span data-content="card">{` · ${deckTopic(deck, lang)}`}</span> : ''}
                       </span>
                     </span>
                     {deck.starter && (
-                      <span className="shrink-0 rounded-full bg-[#eaf3f0] px-2 py-1 text-[11px] font-semibold text-[#3f7162]">
+                      <span className="shrink-0 rounded-full bg-[#e7f5ee] px-2 py-1 text-[11px] font-semibold text-[#317352]">
                         {tx('Starter')}
                       </span>
                     )}
@@ -1374,7 +1374,7 @@ export default function SmartFlashcardsPage() {
                   <span className="mt-4 block w-full">
                     <StatusBar counts={counts} total={cards.length} />
                   </span>
-                  <span className="mt-2 flex w-full flex-wrap justify-between gap-1 text-[10px] font-semibold text-[#5f6870]">
+                  <span className="mt-2 flex w-full flex-wrap justify-between gap-1 text-[10px] font-semibold text-[#596a72]">
                     <span>
                       {tx(cards.length === 1 ? '{count} card' : '{count} cards', { count: cards.length })}
                     </span>
@@ -1388,12 +1388,12 @@ export default function SmartFlashcardsPage() {
           </div>
         )}
 
-        <div className="mt-4 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="grade-decks">
-          <p className="text-[12px] font-bold text-[#384959]">{tx('Decks for my grade')}</p>
-          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+        <div className="mt-4 rounded-[12px] border border-[#dee8e5] bg-[#f4f9f8] px-4 py-3" data-testid="grade-decks">
+          <p className="text-[12px] font-bold text-[#204e4f]">{tx('Decks for my grade')}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#596a72]">
             {tx('English: one deck of 25 words for each theme of the MEB English curriculum, from the theme\'s target vocabulary. A deck is added only when you tap it.')}
           </p>
-          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+          <p className="mt-1 text-[11px] leading-relaxed text-[#596a72]">
             {tx('Other subjects: 25 key concepts from the units of the grade\'s MEB curriculum, each with a short definition. Grade 12 History uses the İnkılap Tarihi curriculum; Philosophy is in grades 10 and 11.')}
           </p>
           <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label={tx('Grade')}>
@@ -1403,10 +1403,10 @@ export default function SmartFlashcardsPage() {
                 type="button"
                 onClick={() => setGradeDeckGrade(grade)}
                 aria-pressed={gradeDeckGrade === grade}
-                className={`min-h-11 rounded-[6px] border px-1 text-[13px] font-bold transition-colors ${
+                className={`min-h-11 rounded-[10px] border px-1 text-[13px] font-bold transition-colors ${
                   gradeDeckGrade === grade
-                    ? 'border-[#5376a0] bg-[#5376a0] text-white'
-                    : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                    ? 'border-[#2a7f7a] bg-[#2a7f7a] text-white'
+                    : 'border-[#dee8e5] bg-[#ffffff] text-[#26726d] hover:border-[#7fd4ce]'
                 }`}
                 data-testid={`button-grade-decks-${grade}`}
               >
@@ -1414,7 +1414,7 @@ export default function SmartFlashcardsPage() {
               </button>
             ))}
           </div>
-          <p className="mt-3 text-[12px] font-bold text-[#384959]">{tx('English')}</p>
+          <p className="mt-3 text-[12px] font-bold text-[#204e4f]">{tx('English')}</p>
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
             {ENGLISH_GRADE_THEMES[gradeDeckGrade].map(({ theme }) => {
               const added = data.decks.some((deck) => deck.id === englishGradeDeckId(gradeDeckGrade, theme));
@@ -1426,10 +1426,10 @@ export default function SmartFlashcardsPage() {
                   onClick={() => addEnglishGradeDeck(gradeDeckGrade, theme)}
                   disabled={added}
                   aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
-                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                  className={`min-h-11 rounded-[12px] border px-3 text-left text-[13px] font-bold transition-colors ${
                     added
-                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
-                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                      ? 'cursor-default border-[#c1e4d3] bg-[#eaf6f0] text-[#206d47]'
+                      : 'border-[#dee8e5] bg-[#ffffff] text-[#26726d] hover:border-[#7fd4ce]'
                   }`}
                   data-testid={`button-add-grade-deck-english-${gradeDeckGrade}-${theme}`}
                 >
@@ -1438,7 +1438,7 @@ export default function SmartFlashcardsPage() {
               );
             })}
           </div>
-          <p className="mt-3 text-[12px] font-bold text-[#384959]">{tx('Mathematics and science: key concepts')}</p>
+          <p className="mt-3 text-[12px] font-bold text-[#204e4f]">{tx('Mathematics and science: key concepts')}</p>
           <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
             {SCIENCE_SUBJECTS.map((subject) => {
               const added = data.decks.some((deck) => deck.id === scienceGradeDeckId(gradeDeckGrade, subject));
@@ -1450,10 +1450,10 @@ export default function SmartFlashcardsPage() {
                   onClick={() => addScienceGradeDeck(gradeDeckGrade, subject)}
                   disabled={added}
                   aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
-                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                  className={`min-h-11 rounded-[12px] border px-3 text-left text-[13px] font-bold transition-colors ${
                     added
-                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
-                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                      ? 'cursor-default border-[#c1e4d3] bg-[#eaf6f0] text-[#206d47]'
+                      : 'border-[#dee8e5] bg-[#ffffff] text-[#26726d] hover:border-[#7fd4ce]'
                   }`}
                   data-testid={`button-add-grade-deck-${subject.toLowerCase()}-${gradeDeckGrade}`}
                 >
@@ -1462,7 +1462,7 @@ export default function SmartFlashcardsPage() {
               );
             })}
           </div>
-          <p className="mt-3 text-[12px] font-bold text-[#384959]">{tx('Social sciences and literature: key concepts')}</p>
+          <p className="mt-3 text-[12px] font-bold text-[#204e4f]">{tx('Social sciences and literature: key concepts')}</p>
           <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-5">
             {socialSubjectsOf(gradeDeckGrade).map((subject) => {
               const added = data.decks.some((deck) => deck.id === socialGradeDeckId(gradeDeckGrade, subject));
@@ -1474,10 +1474,10 @@ export default function SmartFlashcardsPage() {
                   onClick={() => addSocialGradeDeck(gradeDeckGrade, subject)}
                   disabled={added}
                   aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
-                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                  className={`min-h-11 rounded-[12px] border px-3 text-left text-[13px] font-bold transition-colors ${
                     added
-                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
-                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                      ? 'cursor-default border-[#c1e4d3] bg-[#eaf6f0] text-[#206d47]'
+                      : 'border-[#dee8e5] bg-[#ffffff] text-[#26726d] hover:border-[#7fd4ce]'
                   }`}
                   data-testid={`button-add-grade-deck-${subject.toLowerCase()}-${gradeDeckGrade}`}
                 >
@@ -1488,9 +1488,9 @@ export default function SmartFlashcardsPage() {
           </div>
         </div>
 
-        <div className="mt-3 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="english-level-decks">
-          <p className="text-[12px] font-bold text-[#384959]">{tx('English word decks by level')}</p>
-          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+        <div className="mt-3 rounded-[12px] border border-[#dee8e5] bg-[#f4f9f8] px-4 py-3" data-testid="english-level-decks">
+          <p className="text-[12px] font-bold text-[#204e4f]">{tx('English word decks by level')}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#596a72]">
             {tx('30 words with an example sentence and the Turkish meaning. A deck is added only when you tap its level.')}
           </p>
           <div className="mt-3 grid grid-cols-5 gap-2">
@@ -1503,10 +1503,10 @@ export default function SmartFlashcardsPage() {
                   onClick={() => addLevelDeck(level)}
                   disabled={added}
                   aria-label={added ? tx('{level} deck added', { level }) : tx('Add the {level} deck', { level })}
-                  className={`min-h-11 rounded-[8px] border px-1 text-[13px] font-bold transition-colors ${
+                  className={`min-h-11 rounded-[12px] border px-1 text-[13px] font-bold transition-colors ${
                     added
-                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
-                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                      ? 'cursor-default border-[#c1e4d3] bg-[#eaf6f0] text-[#206d47]'
+                      : 'border-[#dee8e5] bg-[#ffffff] text-[#26726d] hover:border-[#7fd4ce]'
                   }`}
                   data-testid={`button-add-level-deck-${level.toLowerCase()}`}
                 >
@@ -1517,9 +1517,9 @@ export default function SmartFlashcardsPage() {
           </div>
         </div>
 
-        <div className="mt-3 rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3" data-testid="ydt-word-decks">
-          <p className="text-[12px] font-bold text-[#384959]">{tx('YDT word decks')}</p>
-          <p className="mt-1 text-[11px] leading-relaxed text-[#5f6870]">
+        <div className="mt-3 rounded-[12px] border border-[#dee8e5] bg-[#f4f9f8] px-4 py-3" data-testid="ydt-word-decks">
+          <p className="text-[12px] font-bold text-[#204e4f]">{tx('YDT word decks')}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-[#596a72]">
             {tx('30 words each, chosen by counting the words in the ÖSYM YDT English booklets 2018–2026. Each card shows in how many booklets the word appears. A deck is added only when you tap it.')}
           </p>
           <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -1533,10 +1533,10 @@ export default function SmartFlashcardsPage() {
                   onClick={() => addYdtDeck(key)}
                   disabled={added}
                   aria-label={added ? tx('{level} deck added', { level: label }) : tx('Add the {level} deck', { level: label })}
-                  className={`min-h-11 rounded-[8px] border px-3 text-left text-[13px] font-bold transition-colors ${
+                  className={`min-h-11 rounded-[12px] border px-3 text-left text-[13px] font-bold transition-colors ${
                     added
-                      ? 'cursor-default border-[#cfe0d8] bg-[#eef5f1] text-[#2f6b59]'
-                      : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4c6a8c] hover:border-[#b9c7d6]'
+                      ? 'cursor-default border-[#c1e4d3] bg-[#eaf6f0] text-[#206d47]'
+                      : 'border-[#dee8e5] bg-[#ffffff] text-[#26726d] hover:border-[#7fd4ce]'
                   }`}
                   data-testid={`button-add-ydt-deck-${key}`}
                 >
@@ -1547,8 +1547,8 @@ export default function SmartFlashcardsPage() {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#eef0f2] pt-4">
-          <p className="text-[10px] leading-relaxed text-[#60686f]">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#e7f3f0] pt-4">
+          <p className="text-[10px] leading-relaxed text-[#596a72]">
             {tx(data.decks.length === 1 ? '{decks} deck · {cards} cards in your library' : '{decks} decks · {cards} cards in your library', {
               decks: data.decks.length,
               cards: data.cards.length,
@@ -1569,7 +1569,7 @@ export default function SmartFlashcardsPage() {
         >
           {selectedDeck && (
             <div className="mb-4">
-              <div className="grid grid-cols-3 gap-1 rounded-full bg-[#f8f5f1] p-1" role="tablist" aria-label={tx('Study mode')}>
+              <div className="grid grid-cols-3 gap-1 rounded-full bg-[#eff7f6] p-1" role="tablist" aria-label={tx('Study mode')}>
                 {(Object.keys(MODE_INFO) as StudyMode[]).map((mode) => {
                   const selected = activeSession?.mode === mode;
                   return (
@@ -1580,7 +1580,7 @@ export default function SmartFlashcardsPage() {
                       aria-selected={selected}
                       onClick={() => changeMode(mode)}
                       className={`min-h-10 rounded-full px-3 text-[12px] font-extrabold transition-colors ${
-                        selected ? 'bg-[#fffdf8] text-[#4c6a8c]' : 'text-[#5e676f] hover:text-[#4c6a8c]'
+                        selected ? 'bg-[#ffffff] text-[#26726d]' : 'text-[#586871] hover:text-[#26726d]'
                       }`}
                       data-testid={`tab-mode-${mode}`}
                     >
@@ -1590,7 +1590,7 @@ export default function SmartFlashcardsPage() {
                 })}
               </div>
               {activeSession && (
-                <p className="mt-2 text-[11px] leading-relaxed text-[#5f6870]" data-testid="text-mode-hint">
+                <p className="mt-2 text-[11px] leading-relaxed text-[#596a72]" data-testid="text-mode-hint">
                   {tx(MODE_INFO[activeSession.mode].hint)}
                 </p>
               )}
@@ -1607,18 +1607,18 @@ export default function SmartFlashcardsPage() {
                 <StatusBar counts={deckCounts} total={deckCards.length} />
                 <dl className="mt-4 grid grid-cols-2 gap-2">
                   {STATUS_ORDER.map((status) => (
-                    <div key={status} className="rounded-[8px] border border-[#eef0f2] px-3 py-2.5" data-testid={`count-${status}`}>
-                      <dt className="flex items-center gap-1.5 text-[10px] font-bold text-[#5f6870]">
+                    <div key={status} className="rounded-[12px] border border-[#e7f3f0] px-3 py-2.5" data-testid={`count-${status}`}>
+                      <dt className="flex items-center gap-1.5 text-[10px] font-bold text-[#596a72]">
                         <span className={`h-2 w-2 rounded-full ${STATUS_STYLES[status].bar}`} />
                         {tx(STATUS_LABELS[status])}
                       </dt>
-                      <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.015em] text-[#364656] tabular-nums">
+                      <dd className="font-display mt-1 text-[22px] font-extrabold tracking-[-.015em] text-[#1f4b4c] tabular-nums">
                         {deckCounts[status]}
                       </dd>
                     </div>
                   ))}
                 </dl>
-                <p className="mt-3 text-[10px] leading-relaxed text-[#60686f]">
+                <p className="mt-3 text-[10px] leading-relaxed text-[#596a72]">
                   {tx('“I Know This” moves a card up: New → Learning → Mastered. “Review Again” sends it back to Review again.')}
                 </p>
                 {confirm?.kind === 'reset-progress' && confirm.id === selectedDeck.id ? (
@@ -1643,15 +1643,15 @@ export default function SmartFlashcardsPage() {
                 )}
               </div>
             ) : (
-              <p className="text-[12px] text-[#5f6870]">{tx('Choose a deck to see its progress.')}</p>
+              <p className="text-[12px] text-[#596a72]">{tx('Choose a deck to see its progress.')}</p>
             )}
           </Panel>
 
           <Panel eyebrow={tx('Review tip')} title={tx('Make recall active')}>
-            <div className="grid h-11 w-11 place-items-center rounded-[8px] bg-[#f1f5f9] text-[#4a688c]">
+            <div className="grid h-11 w-11 place-items-center rounded-[12px] bg-[#e5f8f6] text-[#26716c]">
               <Target size={20} />
             </div>
-            <p className="mt-4 text-[12px] leading-[1.75] text-[#60676f]">
+            <p className="mt-4 text-[12px] leading-[1.75] text-[#586871]">
               {tx('Try to answer before you flip the card. Pausing to recall the idea helps you notice what you know and what needs another review.')}
             </p>
           </Panel>
@@ -1709,9 +1709,9 @@ export default function SmartFlashcardsPage() {
             </div>
           )}
 
-          <div className="rounded-[10px] border border-[#eaedf0] bg-[#fcfdfd] p-4">
-            <p className="mb-3 flex items-center gap-2 text-[12px] font-extrabold text-[#3f4e5d]">
-              <BookOpen size={15} className="text-[#4a688c]" /> {tx('Add a card')}
+          <div className="rounded-[16px] border border-[#e1efee] bg-[#fcfdfd] p-4">
+            <p className="mb-3 flex items-center gap-2 text-[12px] font-extrabold text-[#235355]">
+              <BookOpen size={15} className="text-[#26716c]" /> {tx('Add a card')}
             </p>
             <CardForm
               draft={newCard.draft}
@@ -1724,7 +1724,7 @@ export default function SmartFlashcardsPage() {
           </div>
 
           {deckCards.length === 0 ? (
-            <p className="mt-4 text-center text-[11px] text-[#60686f]" data-testid="cards-empty">
+            <p className="mt-4 text-center text-[11px] text-[#596a72]" data-testid="cards-empty">
               {tx('No cards yet. Your first card will appear here.')}
             </p>
           ) : (
@@ -1733,7 +1733,7 @@ export default function SmartFlashcardsPage() {
                 const status = getCardStatus(data.progress[card.id]);
                 if (editingCard?.id === card.id) {
                   return (
-                    <li key={card.id} className="rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-4" data-testid={`card-item-${card.id}`}>
+                    <li key={card.id} className="rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-4 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]" data-testid={`card-item-${card.id}`}>
                       <CardForm
                         draft={editingCard.draft}
                         errors={editingCard.errors}
@@ -1747,17 +1747,17 @@ export default function SmartFlashcardsPage() {
                   );
                 }
                 return (
-                  <li key={card.id} className="rounded-[10px] border border-[#eef0f2] p-4" data-testid={`card-item-${card.id}`}>
+                  <li key={card.id} className="rounded-[16px] border border-[#e7f3f0] p-4" data-testid={`card-item-${card.id}`}>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="flex min-w-0 gap-3">
-                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[9px] bg-[#f1f5f9] text-[10px] font-extrabold text-[#4c6a8c]">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[16px] bg-[#e5f8f6] text-[10px] font-extrabold text-[#26726d]">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                         <div className="min-w-0">
-                          <p className="break-words text-[13px] font-extrabold text-[#3f4e5d]" data-content="card">{localizeCard(card, lang).front}</p>
-                          <p className="mt-1 break-words text-[12px] text-[#5e6973]" data-content="card">{localizeCard(card, lang).answer}</p>
+                          <p className="break-words text-[13px] font-extrabold text-[#235355]" data-content="card">{localizeCard(card, lang).front}</p>
+                          <p className="mt-1 break-words text-[12px] text-[#5a6b73]" data-content="card">{localizeCard(card, lang).answer}</p>
                           {card.explanation && (
-                            <p className="mt-1 break-words text-[11px] leading-relaxed text-[#60686f]" data-content="card">{localizeCard(card, lang).explanation}</p>
+                            <p className="mt-1 break-words text-[11px] leading-relaxed text-[#596a72]" data-content="card">{localizeCard(card, lang).explanation}</p>
                           )}
                         </div>
                       </div>

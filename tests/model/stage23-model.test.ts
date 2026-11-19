@@ -22,8 +22,8 @@ test('manifest: names, colours, relative addresses (works at / and /ai-exam-surv
   assert.equal(m.short_name, 'Exam Survival');
   assert.equal(m.display, 'standalone');
   assert.equal(m.lang, 'tr');
-  assert.equal(m.theme_color, '#2f4255');
-  assert.equal(m.background_color, '#f7f3ea');
+  assert.equal(m.theme_color, '#1d4748'); // Stage 26: deep teal
+  assert.equal(m.background_color, '#f5faf9');
   for (const key of ['id', 'start_url', 'scope']) assert.equal(m[key], './', key);
   const sizes = new Set<string>();
   for (const icon of m.icons) {
@@ -40,7 +40,7 @@ test('index.html links the manifest, the Apple icon and the theme colour through
   const html = read('index.html');
   assert.match(html, /<link rel="manifest" href="%BASE_URL%manifest\.webmanifest"/);
   assert.match(html, /<link rel="apple-touch-icon" href="%BASE_URL%icons\/apple-touch-icon\.png"/);
-  assert.match(html, /<meta name="theme-color" content="#2f4255"/);
+  assert.match(html, /<meta name="theme-color" content="#1d4748"/);
   assert.match(html, /apple-mobile-web-app-title" content="Exam Survival"/);
 });
 

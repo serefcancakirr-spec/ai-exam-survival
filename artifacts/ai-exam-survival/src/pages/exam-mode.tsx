@@ -75,9 +75,9 @@ const GROUP_TEST_ID: Record<string, string> = { 'exam.groupTyt': 'tyt', 'exam.gr
 const START_TEST_ID: Record<ExamKind, string> = { 'tyt-mini': 'mini', 'tyt-full': 'full', 'ayt-say-mini': 'ayt-say-mini', 'ayt-mat': 'ayt-mat', 'ayt-fen': 'ayt-fen', 'ayt-soz-mini': 'ayt-soz-mini', 'ayt-ea-mini': 'ayt-ea-mini', 'ayt-tde': 'ayt-tde', 'ayt-sos2': 'ayt-sos2', 'ayt-full': 'ayt-full', 'ydt-mini': 'ydt-mini', 'ydt-full': 'ydt-full' };
 
 const button =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] border border-[#ddd5c6] bg-[#fffdf8] px-4 text-[13px] font-bold text-[#4c6a8c] transition-colors hover:border-[#b9c7d6] disabled:cursor-not-allowed disabled:opacity-45';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] border border-[#dee8e5] bg-[#ffffff] px-4 text-[13px] font-bold text-[#26726d] transition-colors hover:border-[#7fd4ce] disabled:cursor-not-allowed disabled:opacity-45';
 const primary =
-  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[6px] bg-[#54769d] px-5 text-[13px] font-bold text-white transition-colors hover:bg-[#4d6c91]';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] bg-[#2b807a] px-5 text-[13px] font-bold text-white transition-colors hover:bg-[#277570]';
 
 function loadData() {
   try {
@@ -152,9 +152,9 @@ export function ExamMode({ onActiveChange }: { onActiveChange: (active: boolean)
   const openResult = openResultId ? data.results.find((r) => r.id === openResultId) ?? null : null;
 
   return (
-    <section id="exam-mode" className="scroll-mt-24 rounded-[10px] border border-[#ddd5c6] bg-[#fffdf8] p-5 sm:p-6" data-testid="exam-mode">
+    <section id="exam-mode" className="scroll-mt-24 rounded-[16px] border border-[#dee8e5] bg-[#ffffff] p-5 sm:p-6 shadow-[0_1px_2px_rgba(15,61,58,.05),0_6px_20px_rgba(15,61,58,.06)]" data-testid="exam-mode">
       {storageBlocked && (
-        <p className="mb-4 rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-3 text-[12px] text-[#69502e]" role="alert" data-testid="exam-storage-note">
+        <p className="mb-4 rounded-[12px] border border-[#f4d3bf] bg-[#ffffff] px-4 py-3 text-[12px] text-[#824420]" role="alert" data-testid="exam-storage-note">
           {t('exam.storageBlocked')}
         </p>
       )}
@@ -188,59 +188,59 @@ function ExamHome({ results, onStart, onOpen }: { results: ExamResult[]; onStart
     <div>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[13px] font-semibold text-[#8a5a3c]">{t('exam.eyebrow')}</p>
-          <h2 className="font-display mt-1 text-[24px] font-extrabold text-[#2b3a49]">{t('exam.title')}</h2>
+          <p className="text-[13px] font-semibold text-[#9b5227]">{t('exam.eyebrow')}</p>
+          <h2 className="font-display mt-1 text-[24px] font-extrabold text-[#1a3e3f]">{t('exam.title')}</h2>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-[6px] border border-[#ddd5c6] bg-[#fbf8f1] px-2.5 py-1 text-[12px] font-semibold text-[#4b698c]">
+        <span className="inline-flex items-center gap-1.5 rounded-[10px] border border-[#dee8e5] bg-[#f4f9f8] px-2.5 py-1 text-[12px] font-semibold text-[#26716c]">
           <GraduationCap size={14} aria-hidden="true" /> {t('exam.badge')}
         </span>
       </div>
-      <p className="mt-3 max-w-[680px] text-[13px] leading-[1.7] text-[#4f5a64]">{t('exam.intro')}</p>
+      <p className="mt-3 max-w-[680px] text-[13px] leading-[1.7] text-[#4d5b61]">{t('exam.intro')}</p>
 
       {GROUPS.map((group) => (
       <div key={group.title} className="mt-4">
-      <h3 className="text-[14px] font-bold text-[#2b3a49]">{t(group.title)}</h3>
+      <h3 className="text-[14px] font-bold text-[#1a3e3f]">{t(group.title)}</h3>
       <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-testid={`exam-group-${GROUP_TEST_ID[group.title]}`}>
         {group.kinds.map((kind) => (
           <button
             key={kind}
             type="button"
             onClick={() => onStart(kind)}
-            className="flex min-h-[88px] flex-col items-start justify-center rounded-[8px] border border-[#ddd5c6] bg-[#fbf8f1] px-4 py-3 text-left transition-colors hover:border-[#5376a0]"
+            className="flex min-h-[88px] flex-col items-start justify-center rounded-[12px] border border-[#dee8e5] bg-[#f4f9f8] px-4 py-3 text-left transition-colors hover:border-[#2a7f7a]"
             data-testid={`button-exam-start-${START_TEST_ID[kind]}`}
           >
-            <span className="text-[15px] font-bold text-[#2b3a49]">{t(KIND_KEY[kind])}</span>
-            <span className="mt-1 text-[12px] text-[#4f5a64]">
+            <span className="text-[15px] font-bold text-[#1a3e3f]">{t(KIND_KEY[kind])}</span>
+            <span className="mt-1 text-[12px] text-[#4d5b61]">
               {t('exam.kindInfo', { count: EXAM_PLAN[kind].questions, minutes: EXAM_PLAN[kind].minutes })}
             </span>
-            <span className="mt-2 inline-flex items-center gap-1 text-[12px] font-bold text-[#4c6a8c]">
+            <span className="mt-2 inline-flex items-center gap-1 text-[12px] font-bold text-[#26726d]">
               {t('exam.start')} <ArrowRight size={14} aria-hidden="true" />
             </span>
           </button>
         ))}
       </div>
-      {group.title === 'exam.groupAytFull' && <p className="mt-2 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-full-note">{t('exam.fullNote')}</p>}
-      {group.title === 'exam.groupYdt' && <p className="mt-2 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-ydt-note">{t('exam.ydtNote')}</p>}
+      {group.title === 'exam.groupAytFull' && <p className="mt-2 text-[12px] leading-relaxed text-[#586871]" data-testid="exam-full-note">{t('exam.fullNote')}</p>}
+      {group.title === 'exam.groupYdt' && <p className="mt-2 text-[12px] leading-relaxed text-[#586871]" data-testid="exam-ydt-note">{t('exam.ydtNote')}</p>}
       </div>
       ))}
-      <p className="mt-3 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-note">{t('exam.note')}</p>
+      <p className="mt-3 text-[12px] leading-relaxed text-[#586871]" data-testid="exam-note">{t('exam.note')}</p>
 
-      <h3 className="font-display mt-6 text-[17px] font-bold text-[#2b3a49]">{t('exam.historyTitle')}</h3>
+      <h3 className="font-display mt-6 text-[17px] font-bold text-[#1a3e3f]">{t('exam.historyTitle')}</h3>
       {results.length === 0 ? (
-        <p className="mt-2 text-[12px] text-[#5f676f]" data-testid="exam-history-empty">{t('exam.historyEmpty')}</p>
+        <p className="mt-2 text-[12px] text-[#586871]" data-testid="exam-history-empty">{t('exam.historyEmpty')}</p>
       ) : (
         <ul className="mt-2 space-y-2" data-testid="exam-history">
           {results.map((result) => (
-            <li key={result.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[8px] border border-[#ddd5c6] px-3 py-2.5" data-testid="exam-history-item">
-              <span className="min-w-0 text-[13px] text-[#2b3a49]">
+            <li key={result.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[12px] border border-[#dee8e5] px-3 py-2.5" data-testid="exam-history-item">
+              <span className="min-w-0 text-[13px] text-[#1a3e3f]">
                 <span className="font-bold">{t(KIND_KEY[result.kind])}</span>
-                <span className="text-[#5f676f]"> · {new Date(result.finishedAt).toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', { day: 'numeric', month: 'long' })}</span>
-                <span className="block text-[12px] text-[#4f5a64]">
+                <span className="text-[#586871]"> · {new Date(result.finishedAt).toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', { day: 'numeric', month: 'long' })}</span>
+                <span className="block text-[12px] text-[#4d5b61]">
                   {result.sections.map((s) => `${t(SECTION_KEY[s.section])} ${fmt(s.net)}`).join(' · ')}
                 </span>
               </span>
               <span className="flex items-center gap-2">
-                <span className="text-[13px] font-bold text-[#2f6b59]">{t('exam.totalNetShort', { net: fmt(result.totalNet) })}</span>
+                <span className="text-[13px] font-bold text-[#206d47]">{t('exam.totalNetShort', { net: fmt(result.totalNet) })}</span>
                 <button type="button" className={button} onClick={() => onOpen(result.id)} data-testid="button-exam-open">
                   {t('exam.open')}
                 </button>
@@ -293,13 +293,13 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
 
   return (
     <div data-testid="exam-runner">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-[8px] bg-[#2f4255] px-4 py-3 text-white">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-[12px] bg-[#1d4748] px-4 py-3 text-white">
         <div>
           <p className="text-[15px] font-bold">{t(EXAM_KIND_TITLE[exam.kind])}</p>
-          <p className="text-[12px] text-[#d8e1ea]">{t('exam.answeredOf', { answered, total: questions.length })}</p>
+          <p className="text-[12px] text-[#bde9e3]">{t('exam.answeredOf', { answered, total: questions.length })}</p>
         </div>
         <p
-          className={`inline-flex items-center gap-2 text-[24px] font-extrabold tabular-nums ${lowTime ? 'text-[#ffd9c7]' : ''}`}
+          className={`inline-flex items-center gap-2 text-[24px] font-extrabold tabular-nums ${lowTime ? 'text-[#fadcbd]' : ''}`}
           role="timer"
           aria-label={t('exam.timeLeft', { time: formatClock(left) })}
           data-testid="exam-timer"
@@ -320,10 +320,10 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
               role="tab"
               aria-selected={selected}
               onClick={() => go(sectionStart(s))}
-              className={`min-h-10 rounded-[6px] border px-3 text-[13px] font-bold ${selected ? 'border-[#5376a0] bg-[#eef2f6] text-[#2f4c6e]' : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4f5b66]'}`}
+              className={`min-h-10 rounded-[10px] border px-3 text-[13px] font-bold ${selected ? 'border-[#2a7f7a] bg-[#e2f5f3] text-[#225253]' : 'border-[#dee8e5] bg-[#ffffff] text-[#4d5c63]'}`}
               data-testid={`exam-tab-${s}`}
             >
-              {t(SECTION_KEY[s])} <span className="font-semibold text-[#5f676f]">{done}/{items.length}</span>
+              {t(SECTION_KEY[s])} <span className="font-semibold text-[#586871]">{done}/{items.length}</span>
             </button>
           );
         })}
@@ -340,9 +340,9 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
               onClick={() => go(i)}
               aria-current={isCurrent ? 'true' : undefined}
               aria-label={t(isAnswered ? 'exam.gridAnswered' : 'exam.gridBlank', { number: i + 1 })}
-              className={`min-h-9 rounded-[6px] border text-[12px] font-bold tabular-nums ${
-                isCurrent ? 'border-[#2f4c6e] ring-2 ring-[#5376a0]' : 'border-[#ddd5c6]'
-              } ${isAnswered ? 'bg-[#e4ebf3] text-[#2f4c6e]' : 'bg-[#fffdf8] text-[#4f5b66]'}`}
+              className={`min-h-9 rounded-[10px] border text-[12px] font-bold tabular-nums ${
+                isCurrent ? 'border-[#225253] ring-2 ring-[#2a7f7a]' : 'border-[#dee8e5]'
+              } ${isAnswered ? 'bg-[#cbf2ed] text-[#225253]' : 'bg-[#ffffff] text-[#4d5c63]'}`}
               data-testid={`exam-grid-${i + 1}`}
             >
               {i + 1}
@@ -351,12 +351,12 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
         })}
       </div>
 
-      <article className="mt-4 rounded-[8px] border border-[#ddd5c6] p-4 sm:p-5" data-testid="exam-question" data-question={question.id}>
-        <p className="text-[12px] font-semibold text-[#4b698c]">
+      <article className="mt-4 rounded-[12px] border border-[#dee8e5] p-4 sm:p-5" data-testid="exam-question" data-question={question.id}>
+        <p className="text-[12px] font-semibold text-[#26716c]">
           {t('exam.questionOf', { number: index + 1, total: questions.length })} · {t(SUBJECT_KEY[question.subject])} · {question.topic}
         </p>
-        {question.passage && <p className="mt-3 whitespace-pre-line text-[15px] leading-[1.75] text-[#2b3a49]" data-testid="exam-passage">{question.passage}</p>}
-        <p className="mt-3 text-[16px] font-bold leading-[1.6] text-[#2b3a49]">{question.prompt}</p>
+        {question.passage && <p className="mt-3 whitespace-pre-line text-[15px] leading-[1.75] text-[#1a3e3f]" data-testid="exam-passage">{question.passage}</p>}
+        <p className="mt-3 text-[16px] font-bold leading-[1.6] text-[#1a3e3f]">{question.prompt}</p>
         <div className="mt-4 grid gap-2" role="radiogroup" aria-label={t('exam.optionsLabel')}>
           {question.options.map((text, k) => {
             const letter = TYT_LETTERS[k];
@@ -368,12 +368,12 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
                 role="radio"
                 aria-checked={selected}
                 onClick={() => choose(letter)}
-                className={`flex min-h-12 items-start gap-3 rounded-[8px] border px-3 py-2.5 text-left text-[14px] leading-relaxed transition-colors ${
-                  selected ? 'border-[#5376a0] bg-[#eef2f6] text-[#2b3a49]' : 'border-[#ddd5c6] bg-[#fffdf8] text-[#2b3a49] hover:border-[#b9c7d6]'
+                className={`flex min-h-12 items-start gap-3 rounded-[12px] border px-3 py-2.5 text-left text-[14px] leading-relaxed transition-colors ${
+                  selected ? 'border-[#2a7f7a] bg-[#e2f5f3] text-[#1a3e3f]' : 'border-[#dee8e5] bg-[#ffffff] text-[#1a3e3f] hover:border-[#7fd4ce]'
                 }`}
                 data-testid={`exam-option-${letter}`}
               >
-                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[12px] font-bold ${selected ? 'bg-[#54769d] text-white' : 'bg-[#f1ece2] text-[#4f5b66]'}`}>{letter}</span>
+                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[12px] font-bold ${selected ? 'bg-[#2b807a] text-white' : 'bg-[#e1efed] text-[#4d5c63]'}`}>{letter}</span>
                 <span className="pt-0.5">{text}</span>
               </button>
             );
@@ -399,8 +399,8 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
       </div>
 
       {confirming && (
-        <div className="mt-3 rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] p-4" role="alertdialog" aria-label={t('exam.finish')} data-testid="exam-finish-confirm">
-          <p className="text-[13px] font-bold text-[#69502e]">
+        <div className="mt-3 rounded-[12px] border border-[#f4d3bf] bg-[#ffffff] p-4" role="alertdialog" aria-label={t('exam.finish')} data-testid="exam-finish-confirm">
+          <p className="text-[13px] font-bold text-[#824420]">
             {blank > 0 ? t('exam.confirmBlank', { blank }) : t('exam.confirmAll')}
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -413,7 +413,7 @@ function ExamRunner({ exam, onChange, onFinish }: { exam: RunningExam; onChange:
           </div>
         </div>
       )}
-      <p className="mt-3 text-[12px] leading-relaxed text-[#5f676f]">{t('exam.runningNote')}</p>
+      <p className="mt-3 text-[12px] leading-relaxed text-[#586871]">{t('exam.runningNote')}</p>
     </div>
   );
 }
@@ -444,9 +444,9 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
     <div data-testid="exam-result">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[13px] font-semibold text-[#8a5a3c]">{t('exam.resultEyebrow')}</p>
-          <h2 className="font-display mt-1 text-[22px] font-extrabold text-[#2b3a49]">{t(KIND_KEY[result.kind])}</h2>
-          <p className="mt-1 text-[12px] text-[#5f676f]">
+          <p className="text-[13px] font-semibold text-[#9b5227]">{t('exam.resultEyebrow')}</p>
+          <h2 className="font-display mt-1 text-[22px] font-extrabold text-[#1a3e3f]">{t(KIND_KEY[result.kind])}</h2>
+          <p className="mt-1 text-[12px] text-[#586871]">
             {new Date(result.finishedAt).toLocaleString(lang === 'tr' ? 'tr-TR' : 'en-GB', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
           </p>
         </div>
@@ -455,7 +455,7 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
         </button>
       </div>
       {result.timedOut && (
-        <p className="mt-3 rounded-[8px] border border-[#e8d7c0] bg-[#fdf9f2] px-4 py-2.5 text-[13px] font-semibold text-[#69502e]" data-testid="exam-timed-out">
+        <p className="mt-3 rounded-[12px] border border-[#f4d3bf] bg-[#ffffff] px-4 py-2.5 text-[13px] font-semibold text-[#824420]" data-testid="exam-timed-out">
           {t('exam.timedOut')}
         </p>
       )}
@@ -463,39 +463,39 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
       <div className="mt-4 overflow-x-auto">
         <table className="w-full min-w-[420px] border-collapse text-[13px] tabular-nums">
           <thead>
-            <tr className="text-left text-[12px] text-[#4f5a64]">
-              <th className="border-b border-[#ddd5c6] py-2 pr-2 font-semibold">{t('exam.colTest')}</th>
+            <tr className="text-left text-[12px] text-[#4d5b61]">
+              <th className="border-b border-[#dee8e5] py-2 pr-2 font-semibold">{t('exam.colTest')}</th>
               {(['colQuestions', 'colCorrect', 'colWrong', 'colBlank', 'colNet'] as const).map((k) => (
-                <th key={k} className="border-b border-[#ddd5c6] px-2 py-2 text-right font-semibold">{t(`exam.${k}` as MessageKey)}</th>
+                <th key={k} className="border-b border-[#dee8e5] px-2 py-2 text-right font-semibold">{t(`exam.${k}` as MessageKey)}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {result.sections.map((s) => (
               <tr key={s.section} data-testid={`exam-result-row-${s.section}`}>
-                <td className="border-b border-[#eee7da] py-2 pr-2 font-semibold text-[#2b3a49]">{t(SECTION_KEY[s.section])}</td>
-                <td className="border-b border-[#eee7da] px-2 py-2 text-right">{s.total}</td>
-                <td className="border-b border-[#eee7da] px-2 py-2 text-right text-[#2f6b59]">{s.correct}</td>
-                <td className="border-b border-[#eee7da] px-2 py-2 text-right text-[#8f5847]">{s.wrong}</td>
-                <td className="border-b border-[#eee7da] px-2 py-2 text-right">{s.blank}</td>
-                <td className="border-b border-[#eee7da] px-2 py-2 text-right font-bold">{fmt(s.net)}</td>
+                <td className="border-b border-[#dee8e5] py-2 pr-2 font-semibold text-[#1a3e3f]">{t(SECTION_KEY[s.section])}</td>
+                <td className="border-b border-[#dee8e5] px-2 py-2 text-right">{s.total}</td>
+                <td className="border-b border-[#dee8e5] px-2 py-2 text-right text-[#206d47]">{s.correct}</td>
+                <td className="border-b border-[#dee8e5] px-2 py-2 text-right text-[#9d5227]">{s.wrong}</td>
+                <td className="border-b border-[#dee8e5] px-2 py-2 text-right">{s.blank}</td>
+                <td className="border-b border-[#dee8e5] px-2 py-2 text-right font-bold">{fmt(s.net)}</td>
               </tr>
             ))}
-            <tr className="bg-[#f3efe6]" data-testid="exam-total-row">
-              <td className="py-2 pl-1 pr-2 font-bold text-[#2b3a49]">{t('exam.total')}</td>
+            <tr className="bg-[#e6f2ef]" data-testid="exam-total-row">
+              <td className="py-2 pl-1 pr-2 font-bold text-[#1a3e3f]">{t('exam.total')}</td>
               <td className="px-2 py-2 text-right font-bold">{totals.total}</td>
-              <td className="px-2 py-2 text-right font-bold text-[#2f6b59]">{totals.correct}</td>
-              <td className="px-2 py-2 text-right font-bold text-[#8f5847]">{totals.wrong}</td>
+              <td className="px-2 py-2 text-right font-bold text-[#206d47]">{totals.correct}</td>
+              <td className="px-2 py-2 text-right font-bold text-[#9d5227]">{totals.wrong}</td>
               <td className="px-2 py-2 text-right font-bold">{totals.blank}</td>
               <td className="px-2 py-2 text-right text-[15px] font-extrabold" data-testid="exam-total-net">{fmt(result.totalNet)}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-[12px] leading-relaxed text-[#5f676f]" data-testid="exam-net-note">{t('exam.netNote')}</p>
+      <p className="mt-2 text-[12px] leading-relaxed text-[#586871]" data-testid="exam-net-note">{t('exam.netNote')}</p>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-2">
-        <h3 className="font-display text-[17px] font-bold text-[#2b3a49]">{t('exam.reviewTitle')}</h3>
+        <h3 className="font-display text-[17px] font-bold text-[#1a3e3f]">{t('exam.reviewTitle')}</h3>
         <div className="flex flex-wrap gap-2" role="group" aria-label={t('exam.reviewTitle')}>
           {(['all', 'wrong', 'blank'] as const).map((f) => (
             <button
@@ -503,7 +503,7 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
               type="button"
               aria-pressed={filter === f}
               onClick={() => setFilter(f)}
-              className={`min-h-9 rounded-[6px] border px-3 text-[12px] font-bold ${filter === f ? 'border-[#5376a0] bg-[#eef2f6] text-[#2f4c6e]' : 'border-[#ddd5c6] bg-[#fffdf8] text-[#4f5b66]'}`}
+              className={`min-h-9 rounded-[10px] border px-3 text-[12px] font-bold ${filter === f ? 'border-[#2a7f7a] bg-[#e2f5f3] text-[#225253]' : 'border-[#dee8e5] bg-[#ffffff] text-[#4d5c63]'}`}
               data-testid={`button-exam-review-${f}`}
             >
               {t(`exam.filter.${f}` as MessageKey)}
@@ -511,27 +511,27 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
           ))}
         </div>
       </div>
-      {items.length === 0 && <p className="mt-3 text-[12px] text-[#5f676f]">{t('exam.reviewEmpty')}</p>}
+      {items.length === 0 && <p className="mt-3 text-[12px] text-[#586871]">{t('exam.reviewEmpty')}</p>}
       <div className="mt-3 space-y-3">
         {items.map(({ q, i, chosen }) => {
           const correct = chosen === q.answer;
           return (
-            <article key={q.id} className="rounded-[8px] border border-[#ddd5c6] p-4" data-testid="exam-review-item">
+            <article key={q.id} className="rounded-[12px] border border-[#dee8e5] p-4" data-testid="exam-review-item">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-[12px] font-semibold text-[#4b698c]">
+                <p className="text-[12px] font-semibold text-[#26716c]">
                   {t('exam.questionOf', { number: i + 1, total: result.questionIds.length })} · {t(SUBJECT_KEY[q.subject])} · {q.topic}
                 </p>
-                <span className={`text-[12px] font-bold ${!chosen ? 'text-[#5f676f]' : correct ? 'text-[#2f6b59]' : 'text-[#8f5847]'}`}>
+                <span className={`text-[12px] font-bold ${!chosen ? 'text-[#586871]' : correct ? 'text-[#206d47]' : 'text-[#9d5227]'}`}>
                   {!chosen ? t('exam.markBlank') : correct ? t('exam.markCorrect') : t('exam.markWrong')}
                 </span>
               </div>
               {q.passage && (
                 <details className="mt-2">
-                  <summary className="cursor-pointer text-[12px] font-bold text-[#4c6a8c]">{t('exam.showPassage')}</summary>
-                  <p className="mt-2 whitespace-pre-line text-[14px] leading-[1.7] text-[#2b3a49]">{q.passage}</p>
+                  <summary className="cursor-pointer text-[12px] font-bold text-[#26726d]">{t('exam.showPassage')}</summary>
+                  <p className="mt-2 whitespace-pre-line text-[14px] leading-[1.7] text-[#1a3e3f]">{q.passage}</p>
                 </details>
               )}
-              <p className="mt-2 text-[14px] font-bold leading-relaxed text-[#2b3a49]">{q.prompt}</p>
+              <p className="mt-2 text-[14px] font-bold leading-relaxed text-[#1a3e3f]">{q.prompt}</p>
               <ul className="mt-2 grid gap-1.5">
                 {q.options.map((text, k) => {
                   const letter = TYT_LETTERS[k];
@@ -540,8 +540,8 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
                   return (
                     <li
                       key={letter}
-                      className={`rounded-[8px] border px-3 py-2 text-[13px] ${
-                        isAnswer ? 'border-[#a9cfc0] bg-[#eef6f2] font-semibold text-[#2f6b59]' : isChosenWrong ? 'border-[#e6c3b8] bg-[#fcf2ef] text-[#8f5847]' : 'border-[#eee7da] text-[#4f5a64]'
+                      className={`rounded-[12px] border px-3 py-2 text-[13px] ${
+                        isAnswer ? 'border-[#9ad4b7] bg-[#ebf7f1] font-semibold text-[#206d47]' : isChosenWrong ? 'border-[#f0c1a5] bg-[#fdf3e8] text-[#9d5227]' : 'border-[#dee8e5] text-[#4d5b61]'
                       }`}
                     >
                       <span className="font-bold">{letter})</span> {text}
@@ -551,8 +551,8 @@ function ExamResultView({ result, onBack, onNew }: { result: ExamResult; onBack:
                   );
                 })}
               </ul>
-              <p className="mt-2 text-[13px] leading-relaxed text-[#4f5a64]">
-                <span className="font-bold text-[#2b3a49]">{t('exam.explanation')}</span> {q.explanation}
+              <p className="mt-2 text-[13px] leading-relaxed text-[#4d5b61]">
+                <span className="font-bold text-[#1a3e3f]">{t('exam.explanation')}</span> {q.explanation}
               </p>
             </article>
           );
