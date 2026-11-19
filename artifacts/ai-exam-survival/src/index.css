@@ -180,3 +180,6 @@
 h2.font-display:not([class*="text-white"]):not(.no-mark):not(#menti-chat-title) {
   text-decoration-line: none;
 }
+
+/* Plus Jakarta Sans has a narrow space: open words up a little so Turkish text reads easily. */
+body { word-spacing: .05em; }
