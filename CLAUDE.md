@@ -25,6 +25,11 @@ Reply in the language the teacher writes in (usually Turkish).
   Add new tests for each stage under `tests/model` (node:test, TypeScript) or `tests/browser` (Playwright, clock fixed to 5 Nov 2026, Europe/Istanbul).
 - Pages: Home, Study Planner, Quiz Center, Smart Flashcards, Exam Calendar (month view + preparation steps), AI Study Coach (rule-based, no live AI), Progress Tracker, About and Privacy (`/about`, Stage 17).
 
+## Design helper skill (installed at the teacher's request, 19 Nov 2026)
+- `.claude/skills/ui-ux-pro-max/`: the "UI UX Pro Max" skill (github.com/nextlevelbuilder/ui-ux-pro-max-skill, MIT; see its SOURCE.md).
+  Local design data and a search script only (no network, installs nothing). Its advice never overrides these rules: keep the
+  Stage 20A/20B design and pass the stage20 contrast test; any visual change still needs a plan, samples and the teacher's approval.
+
 ## Saved data (localStorage) – never rename, never change the shape
 - `ai-exam-survival:study-planner:v1`
 - `ai-exam-survival:quiz-center:v1` (up to 30 attempts, newest first)
